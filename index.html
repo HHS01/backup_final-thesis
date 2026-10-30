@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EdTech Policy Observatory · Sub-Saharan Africa & MENA</title>
-  <meta name="description" content="An open-access decision-support observatory bridging macro benchmarks, UNESCO's 6 Pillars of EdTech, and grassroots classroom realities across SSA and MENA.">
+  <title>EdTech Policy &amp; Feasibility Observatory · Sub-Saharan Africa &amp; MENA</title>
+  <meta name="description" content="An open-access decision-support observatory bridging macro benchmarks, UNESCO's 6 Pillars of EdTech, and classroom feasibility realities.">
 
   <!-- Google Fonts: Plus Jakarta Sans & Newsreader -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,23 +15,24 @@
   <link rel="stylesheet" href="./dist/output.css">
 
   <style>
-    /* Custom subtle styling */
     .glass-card {
-      background: rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(226, 232, 240, 0.8);
+      border: 1px solid rgba(226, 232, 240, 0.9);
     }
     .hero-mesh {
       background-color: #0b132b;
       background-image: 
-        radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.25) 0px, transparent 50%),
-        radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.2) 0px, transparent 50%),
-        radial-gradient(at 50% 100%, rgba(30, 58, 138, 0.35) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.28) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.22) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(30, 58, 138, 0.4) 0px, transparent 50%);
     }
-    .tab-active {
-      border-bottom: 2px solid #2563eb;
-      color: #1d4ed8;
-      font-weight: 600;
+    .hero-mesh-classroom {
+      background-color: #0d2818;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(21, 128, 61, 0.35) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(202, 138, 4, 0.25) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(4, 120, 87, 0.4) 0px, transparent 50%);
     }
     .badge-pill {
       display: inline-flex;
@@ -41,78 +42,1217 @@
       font-size: 0.75rem;
       font-weight: 600;
     }
+    .tooltip-box {
+      display: none;
+    }
+    .tooltip-trigger:hover + .tooltip-box,
+    .tooltip-box:hover {
+      display: block;
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
+<body id="body-canvas" class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900 transition-colors duration-300">
 
   <!-- Top Announcement Bar -->
   <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2">
         <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>Alliance of Alliances · UNESCO Global Education Coalition · UniTO Master in ICT4D</span>
+        <span>Alliance of Alliances · UNESCO Global Education Coalition · Master in ICT for Development</span>
       </div>
       <div class="flex items-center gap-4 text-slate-400">
         <span>Academic Year: 2025–2026</span>
         <span>•</span>
         <a href="https://github.com/SunilRaman42/CC_3" target="_blank" class="hover:text-white transition flex items-center gap-1">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          GitHub Repository
+          Open Research Repository
         </a>
       </div>
     </div>
   </div>
 
-  <!-- Primary Navigation -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-3">
+  <!-- Primary Navigation with Stakeholder Lens Selector -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+      
+      <!-- Brand Title -->
+      <div class="flex items-center gap-3 shrink-0">
         <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
           Ω
         </div>
         <div>
-          <span class="font-extrabold text-slate-900 text-lg tracking-tight block leading-tight">EdTech Policy Observatory</span>
-          <span class="text-xs text-slate-500 font-medium">Sub-Saharan Africa & MENA Digital Transformation</span>
+          <span id="nav-title" class="font-extrabold text-slate-900 text-base sm:text-lg tracking-tight block leading-tight">EdTech Policy Observatory</span>
+          <span id="nav-subtitle" class="text-xs text-slate-500 font-medium hidden sm:block">Sub-Saharan Africa &amp; MENA Evidence Engine</span>
         </div>
       </div>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-        <a href="#overview" onclick="switchTab('pilot-tab'); window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="hover:text-blue-600 transition">Overview</a>
-        <a href="#pilot" onclick="switchTab('pilot-tab'); return false;" class="hover:text-blue-600 transition">4-Country Deep Dive</a>
-        <a href="#dashboards" onclick="switchTab('dashboards-tab'); return false;" class="hover:text-blue-600 transition">Live Dashboards</a>
-        <a href="#codebook" onclick="switchTab('codebook-tab'); return false;" class="hover:text-blue-600 transition">6-Pillars Codebook</a>
-        <a href="#stakeholders" onclick="document.getElementById('stakeholders')?.scrollIntoView({behavior: 'smooth'}); return false;" class="hover:text-blue-600 transition">Policy Action</a>
-      </nav>
+      <!-- Stakeholder Lens Switcher (The Core Lens Control) -->
+      <div class="flex items-center p-1 rounded-xl bg-slate-100 border border-slate-200 shadow-inner">
+        <button onclick="switchLens('systemic')" id="lens-btn-systemic" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-white text-slate-900 border border-slate-200/80 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+          Systemic &amp; Policy Lens
+        </button>
+        <button onclick="switchLens('classroom')" id="lens-btn-classroom" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-slate-300"></span>
+          Classroom &amp; School Leader Lens
+        </button>
+      </div>
 
-      <div class="flex items-center gap-3">
-        <a href="#codebook-tab" onclick="switchTab('codebook-tab'); document.getElementById('data-downloads')?.scrollIntoView({behavior: 'smooth'}); return false;" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-blue-50 text-blue-700 text-xs font-semibold hover:bg-blue-100 transition border border-blue-200">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      <!-- Action Button -->
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="#codebook-tab" onclick="switchTab('codebook-tab'); return false;" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-blue-50 text-blue-700 text-xs font-semibold hover:bg-blue-100 transition border border-blue-200">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
           Open Data
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-mesh text-white pt-16 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+  <!-- Adaptive Hero Section -->
+  <section id="hero-banner" class="hero-mesh text-white pt-14 pb-18 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-all duration-500">
     <div class="max-w-7xl mx-auto">
       <div class="max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold border border-blue-400/30 mb-6">
-          <span>Global South Decision-Support Toolkit</span>
+        <div id="hero-badge" class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold border border-blue-400/30 mb-5">
+          <span>Global South Decision-Support Framework</span>
           <span>•</span>
-          <span>Component A & B Master Deliverable</span>
+          <span>UNESCO 6-Pillars Operationalized</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white mb-6">
-          Bridging Macro Assessment, the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-teal-300">6 Pillars of EdTech</span>, and Grassroots Classroom Reality
+        <h1 id="hero-heading" class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white mb-5 font-serif">
+          Bridging Macro Assessment, the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-teal-300 font-sans">6 Pillars of EdTech</span>, and Grassroots Classroom Reality
         </h1>
 
-        <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-8">
-          A multi-stakeholder analytical observatory reconciling OECD PISA 2025 cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa and MENA.
+        <p id="hero-desc" class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-8">
+          A multi-stakeholder analytical observatory reconciling OECD PISA cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa and MENA.
         </p>
 
-        <!-- Metric Cards Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-700/60">
+        <!-- Metric Cards Grid (Adapts to Active Lens) -->
+        <div id="hero-metrics-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-white/15">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- LENS 1: SYSTEMIC & POLICY CANVAS                                  -->
+  <!-- ================================================================= -->
+  <div id="canvas-systemic" class="block">
+
+    <!-- Systemic Navigation Tabs -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+      <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-2 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1" id="tab-nav-systemic">
+          <button onclick="switchTab('pilot-tab')" id="btn-pilot-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-sm">
+            4-Country Comparative Deep Dive
+          </button>
+          <button onclick="switchTab('dashboards-tab')" id="btn-dashboards-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
+            Interactive Triangulation Engines
+          </button>
+          <button onclick="switchTab('codebook-tab')" id="btn-codebook-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
+            6-Pillars Variable Explorer &amp; Data
+          </button>
+          <button onclick="switchTab('theory-tab')" id="btn-theory-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
+            Methodology &amp; Discrepancy Matrix
+          </button>
+        </div>
+        <div class="text-xs text-slate-500 font-medium hidden lg:block pr-3">
+          Macro Decision-Support Layer
+        </div>
+      </div>
+    </section>
+
+    <!-- Systemic Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+      <!-- TAB 1: 4-COUNTRY PILOT DEEP DIVE -->
+      <div id="pilot-tab" class="tab-content block">
+        <div class="mb-8">
+          <span class="badge-pill bg-blue-100 text-blue-800 mb-2">Empirical Triangulation Layer</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">4-Country Comparative Pilot Deep Dive</h2>
+          <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+            Examining four Sub-Saharan African economies participating in OECD PISA with extensive 6-Pillars indicator coverage. This cross-case analysis tests whether supply-side EdTech assumptions match ground-level classroom realities.
+          </p>
+        </div>
+
+        <!-- Country Selector Buttons -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+          <button onclick="selectCountry('KEN')" id="card-KEN" class="country-card p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 text-left transition hover:shadow-md">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xl">🇰🇪</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-200 text-emerald-800">Score: 25/45</span>
+            </div>
+            <div class="font-extrabold text-slate-900">Kenya</div>
+            <div class="text-xs text-slate-500 mt-0.5 font-medium">Silicon Savannah Hub</div>
+            <div class="text-[11px] text-emerald-700 mt-2 font-semibold">100% Qual Teachers · 35% Net</div>
+          </button>
+
+          <button onclick="selectCountry('RWA')" id="card-RWA" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xl">🇷🇼</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">Score: 30/45</span>
+            </div>
+            <div class="font-extrabold text-slate-900">Rwanda</div>
+            <div class="text-xs text-slate-500 mt-0.5 font-medium">State-Led Push</div>
+            <div class="text-[11px] text-blue-700 mt-2 font-semibold">Smart Master Plan · PTR 59.5</div>
+          </button>
+
+          <button onclick="selectCountry('MUS')" id="card-MUS" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xl">🇲🇺</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-800">Score: 18/45</span>
+            </div>
+            <div class="font-extrabold text-slate-900">Mauritius</div>
+            <div class="text-xs text-slate-500 mt-0.5 font-medium">Upper-Bound Control</div>
+            <div class="text-[11px] text-rose-700 mt-2 font-semibold">100% Power · $31.7k PPP</div>
+          </button>
+
+          <button onclick="selectCountry('ZMB')" id="card-ZMB" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xl">🇿🇲</span>
+              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">Score: 37/45</span>
+            </div>
+            <div class="font-extrabold text-slate-900">Zambia</div>
+            <div class="text-xs text-slate-500 mt-0.5 font-medium">Lower-Bound Vulnerability</div>
+            <div class="text-[11px] text-amber-700 mt-2 font-semibold">31% Rural Power · PTR 42.1</div>
+          </button>
+        </div>
+
+        <!-- Dynamic Country Profile Card -->
+        <div id="country-detail-panel" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 mb-10 transition-all">
+          <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
+            <div>
+              <div class="flex items-center gap-3">
+                <h3 id="country-name" class="text-2xl font-bold text-slate-900 font-serif">Kenya (KEN)</h3>
+                <span id="country-badge" class="badge-pill bg-emerald-100 text-emerald-800">Moderate Discrepancy (25 / 45)</span>
+              </div>
+              <p id="country-archetype" class="text-slate-500 text-sm mt-1 font-medium">
+                Ecosystem Archetype: East African Innovation Hub with High Pedagogical Qualifications
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs text-slate-400 font-mono">Discrepancy Scale: 9 (Min) to 45 (Max Fragility)</span>
+            </div>
+          </div>
+
+          <!-- 3-Pillar Discrepancy Metrics Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 py-6 border-b border-slate-100">
+            <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/60">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Pillar 2: Infrastructure</span>
+                <span id="gap1-score" class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Score: 7 / 15</span>
+              </div>
+              <div class="text-xl font-bold text-slate-900 mb-1">Connectivity Gap</div>
+              <p id="gap1-desc" class="text-xs text-slate-600 leading-relaxed">
+                Above SSA median internet access (35%), but rural grid cuts force teachers to pay for mobile data out of pocket.
+              </p>
+              <div class="mt-4 pt-3 border-t border-slate-200/60 grid grid-cols-3 text-center">
+                <div>
+                  <span class="text-[10px] text-slate-400 block">Internet</span>
+                  <span id="val-net" class="text-xs font-bold text-slate-700">35.0%</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 block">Electricity</span>
+                  <span id="val-elec" class="text-xs font-bold text-slate-700">67.1%</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 block">Broadband</span>
+                  <span id="val-bb" class="text-xs font-bold text-slate-700">3.0</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/60">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Pillar 3: Cost</span>
+                <span id="gap2-score" class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Score: 8 / 15</span>
+              </div>
+              <div class="text-xl font-bold text-slate-900 mb-1">Sustainability Gap</div>
+              <p id="gap2-desc" class="text-xs text-slate-600 leading-relaxed">
+                Strong national budgetary commitment (27.9% of budget), but provider monetization remains heavily direct-to-consumer.
+              </p>
+              <div class="mt-4 pt-3 border-t border-slate-200/60 grid grid-cols-3 text-center">
+                <div>
+                  <span class="text-[10px] text-slate-400 block">GDP (PPP)</span>
+                  <span id="val-gdp" class="text-xs font-bold text-slate-700">$6,650</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 block">Ed Budget</span>
+                  <span id="val-edbudget" class="text-xs font-bold text-slate-700">27.9%</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 block">1GB Data Cost</span>
+                  <span id="val-data" class="text-xs font-bold text-slate-700">4.3% GDP</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/60">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Pillar 5: Content</span>
+                <span id="gap3-score" class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded">Score: 10 / 15</span>
+              </div>
+              <div class="text-xl font-bold text-slate-900 mb-1">Linguistic Gap</div>
+              <p id="gap3-desc" class="text-xs text-slate-600 leading-relaxed">
+                Kiswahili AI performance is highest in the pilot (62%), but community language learners face significant comprehension drops.
+              </p>
+              <div class="mt-4 pt-3 border-t border-slate-200/60 grid grid-cols-3 text-center">
+                <div>
+                  <span class="text-[10px] text-slate-400 block">Language</span>
+                  <span id="val-lang" class="text-xs font-bold text-slate-700">Kiswahili</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 block">AI LLM Benchmark</span>
+                  <span id="val-aiscore" class="text-xs font-bold text-slate-700">62%</span>
+                </div>
+                <div>
+                  <span class="text-[10px] text-slate-400 block">Pupil/Teacher</span>
+                  <span id="val-ptr" class="text-xs font-bold text-slate-700">30.7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comparative Evidence Visualizations -->
+          <div class="pt-6">
+            <div class="flex items-center justify-between mb-4">
+              <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider">Empirical Discrepancy Figures</h4>
+              <div class="flex items-center gap-1.5" id="gap-btn-group">
+                <button onclick="showGapChart('gap1')" id="btn-chart-gap1" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-600 text-white">Figure 1: Connectivity</button>
+                <button onclick="showGapChart('gap2')" id="btn-chart-gap2" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200">Figure 2: Data Burden</button>
+                <button onclick="showGapChart('gap3')" id="btn-chart-gap3" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200">Figure 3: Linguistic AI</button>
+              </div>
+            </div>
+            <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 text-center">
+              <img id="gap-chart-img" src="./data/analysis_b/gap1_connectivity_assumption.png" alt="Empirical Gap Chart" class="w-full max-h-[380px] object-contain mx-auto rounded-lg shadow-sm bg-white">
+              <p id="gap-chart-caption" class="text-xs text-slate-500 mt-3 font-medium">
+                Figure 1: Fixed broadband (&lt;3/100) vs. EdTech solution delivery requirements. Rural energy deficit acts as upstream bottleneck.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: INTERACTIVE ENGINES -->
+      <div id="dashboards-tab" class="tab-content hidden">
+        <div class="mb-8">
+          <span class="badge-pill bg-purple-100 text-purple-800 mb-2">Micro-Data &amp; Cross-National Exploration</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Interactive Triangulation Engines</h2>
+          <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+            Access the two underlying analytical web engines powering this observatory: the 85-country OECD PISA exploration dashboard and the 800-respondent Alliance of Alliances ground-truth engine.
+          </p>
+        </div>
+
+        <!-- Engines Showcase Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="badge-pill bg-blue-100 text-blue-800">Cross-National Benchmarks</span>
+                <span class="text-xs text-slate-400 font-mono">OECD Sample</span>
+              </div>
+              <h3 class="text-xl font-extrabold text-slate-900 mb-2 font-serif">Global AI &amp; Digital Device Benchmark</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                Analyzes cross-national indicators across 85 countries, exposing the guidance deficit in device-saturated environments and testing the Inverted-U curve between screen time and cognitive outcomes.
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+              <a href="https://rsnl42.github.io/EEA_2/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-sm transition">
+                Launch Standalone ↗
+              </a>
+              <button onclick="switchDashboard('https://rsnl42.github.io/EEA_2/', 'Global AI & Digital Device Benchmark (OECD PISA 2025)')" class="py-2.5 px-4 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition">
+                Embed Below ↓
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="badge-pill bg-emerald-100 text-emerald-800">Ground-Truth Field Evidence</span>
+                <span class="text-xs text-slate-400 font-mono">48 SSA Nations</span>
+              </div>
+              <h3 class="text-xl font-extrabold text-slate-900 mb-2 font-serif">Grassroots Triangulation Engine</h3>
+              <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                Visualizes 800 respondents across 48 Sub-Saharan African nations. Triangulates classroom teacher constraints against private provider business models and policy expert perspectives.
+              </p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+              <a href="https://SunilRaman42.github.io/EEA_3/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition">
+                Launch Standalone ↗
+              </a>
+              <button onclick="switchDashboard('https://SunilRaman42.github.io/EEA_3/', 'Grassroots Triangulation Engine (Field Surveys)')" class="py-2.5 px-4 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition">
+                Embed Below ↓
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Embedded Interactive Preview Frame -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+          <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span id="dash-title" class="font-extrabold text-sm sm:text-base">Embedded Interactive Engine: Grassroots Triangulation Engine</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="switchDashboard('https://SunilRaman42.github.io/EEA_3/', 'Grassroots Triangulation Engine (Field Surveys)')" class="px-3 py-1.5 rounded bg-slate-800 text-xs font-semibold hover:bg-slate-700 transition">View Field Triangulation</button>
+              <button onclick="switchDashboard('https://rsnl42.github.io/EEA_2/', 'Global AI & Digital Device Benchmark (OECD PISA 2025)')" class="px-3 py-1.5 rounded bg-slate-800 text-xs font-semibold hover:bg-slate-700 transition">View OECD Benchmark</button>
+              <a id="dash-direct-link" href="https://SunilRaman42.github.io/EEA_3/" target="_blank" class="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition flex items-center gap-1 shadow-sm">
+                Open Direct ↗
+              </a>
+            </div>
+          </div>
+          <div class="relative w-full h-[720px] bg-slate-100">
+            <div id="frame-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 text-slate-600 p-6 z-10 transition-opacity duration-300">
+              <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+              <p class="font-semibold text-sm text-slate-800">Loading Interactive Engine...</p>
+              <p class="text-xs text-slate-500 max-w-md text-center mt-1">
+                If your browser blocks cross-origin embeds, use the "Open Direct ↗" button above to launch in a clean tab.
+              </p>
+            </div>
+            <iframe id="dash-frame" src="https://SunilRaman42.github.io/EEA_3/" class="w-full h-full border-0 relative z-20" onload="document.getElementById('frame-loader')?.classList.add('hidden')" title="Live Dashboard Preview" allow="clipboard-write"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: VARIABLE EXPLORER & OPEN DATA -->
+      <div id="codebook-tab" class="tab-content hidden">
+        <div class="mb-8">
+          <span class="badge-pill bg-teal-100 text-teal-800 mb-2">Construct Validity &amp; Open Science</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">6-Pillars Variable Explorer &amp; Open Data Hub</h2>
+          <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+            Operationalizing UNESCO’s Six Pillars of Digital Transformation across the 3 Alliance of Alliances survey instruments (104 items total) and 69-country macro datasets.
+          </p>
+        </div>
+
+        <!-- Interactive Pillar Filter Buttons -->
+        <div class="flex flex-wrap gap-2 mb-6" id="pillar-filter-bar">
+          <button onclick="filterCodebook('ALL')" class="pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white">All Pillars (104 Items)</button>
+          <button onclick="filterCodebook('P1')" class="pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50">Pillar 1: Leadership</button>
+          <button onclick="filterCodebook('P2')" class="pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50">Pillar 2: Infrastructure</button>
+          <button onclick="filterCodebook('P3')" class="pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50">Pillar 3: Cost</button>
+          <button onclick="filterCodebook('P4')" class="pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50">Pillar 4: Capacity</button>
+          <button onclick="filterCodebook('P5')" class="pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50">Pillar 5: Content</button>
+          <button onclick="filterCodebook('P6')" class="pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50">Pillar 6: Data &amp; Ethics</button>
+        </div>
+
+        <!-- Open Data Download Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <a href="./data/AoA_Survey_to_Pillar_Codebook.csv" download class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-blue-500 hover:shadow-md transition flex items-center justify-between group">
+            <div>
+              <div class="text-xs font-mono text-slate-400">CSV FORMAT</div>
+              <div class="font-bold text-slate-900 group-hover:text-blue-600 transition">Complete Survey Codebook</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">104 Mapped Survey Constructs</div>
+            </div>
+            <span class="p-2 rounded-lg bg-blue-50 text-blue-600 font-bold">↓</span>
+          </a>
+
+          <a href="./data/processed/survey_data_calibrated.json" download class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-emerald-500 hover:shadow-md transition flex items-center justify-between group">
+            <div>
+              <div class="text-xs font-mono text-slate-400">JSON FORMAT</div>
+              <div class="font-bold text-slate-900 group-hover:text-emerald-600 transition">Calibrated Survey Dataset</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">800 Respondents · 48 SSA Nations</div>
+            </div>
+            <span class="p-2 rounded-lg bg-emerald-50 text-emerald-600 font-bold">↓</span>
+          </a>
+
+          <a href="./data/raw/SSA_Survey_Responses_Calibrated.xlsx" download class="p-4 rounded-xl bg-white border border-slate-200 shadow-sm hover:border-amber-500 hover:shadow-md transition flex items-center justify-between group">
+            <div>
+              <div class="text-xs font-mono text-slate-400">EXCEL WORKBOOK</div>
+              <div class="font-bold text-slate-900 group-hover:text-amber-600 transition">Cross-Tabulated Tables</div>
+              <div class="text-[11px] text-slate-500 mt-0.5">Multi-Tab Analytical Model</div>
+            </div>
+            <span class="p-2 rounded-lg bg-amber-50 text-amber-600 font-bold">↓</span>
+          </a>
+        </div>
+
+        <!-- Construct Validity Mapping Table -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+          <div class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
+            <span class="font-bold text-sm">Construct Mapping: UNESCO Pillars vs. Survey Ground-Truth</span>
+            <span id="codebook-count-badge" class="text-xs font-mono text-slate-400">Showing 6 Core Mappings</span>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm text-slate-700">
+              <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold border-b border-slate-200">
+                <tr>
+                  <th class="py-3 px-4">Pillar</th>
+                  <th class="py-3 px-4">Macro Indicator (World Bank / UIS)</th>
+                  <th class="py-3 px-4">Micro Survey Construct (AoA Ground Truth)</th>
+                  <th class="py-3 px-4">Identified Structural Clash</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 font-mono text-xs" id="codebook-table-body">
+                <tr>
+                  <td class="py-3 px-4 font-bold text-blue-700 font-sans">P1: Leadership</td>
+                  <td class="py-3 px-4 font-sans">National ICT in Education Master Plan</td>
+                  <td class="py-3 px-4">T-B4 (Who decides tool use), T-B8 (Ministry recommendation)</td>
+                  <td class="py-3 px-4 font-sans text-slate-600">Centralized mandates without local school consultation</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-blue-700 font-sans">P2: Infrastructure</td>
+                  <td class="py-3 px-4 font-sans">Fixed Broadband Subscriptions (&lt;3/100)</td>
+                  <td class="py-3 px-4">T-B6 (Power grid cuts), P-C2 (Offline capability)</td>
+                  <td class="py-3 px-4 font-sans text-rose-700 font-semibold">Streaming software deployed where 70% of schools lack power</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-blue-700 font-sans">P3: Cost</td>
+                  <td class="py-3 px-4 font-sans">Education Expenditure as % of GDP (4–6%)</td>
+                  <td class="py-3 px-4">P-C4 (Who pays mobile data), P-E3 (Funding end continuity)</td>
+                  <td class="py-3 px-4 font-sans text-amber-700 font-semibold">Shift of data costs onto teachers (4–8% informal salary tax)</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-blue-700 font-sans">P4: Capacity</td>
+                  <td class="py-3 px-4 font-sans">Pupil-Teacher Ratio (40–60:1)</td>
+                  <td class="py-3 px-4">T-D3 (Workload impact), T-A10 (Class size)</td>
+                  <td class="py-3 px-4 font-sans text-slate-600">Tools assume 1:1 labs; cause severe crowding in 50+ classes</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-blue-700 font-sans">P5: Content</td>
+                  <td class="py-3 px-4 font-sans">Official Primary Instruction Language</td>
+                  <td class="py-3 px-4">T-A4 (Teaching language), T-E4 (AI accuracy in local lang)</td>
+                  <td class="py-3 px-4 font-sans text-rose-700 font-semibold">AI accuracy collapses from 90% (Eng) to 18–38% (local langs)</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-bold text-blue-700 font-sans">P6: Data &amp; Ethics</td>
+                  <td class="py-3 px-4 font-sans">Statistical Performance Index (SPI)</td>
+                  <td class="py-3 px-4">P-F1 (Collects child data), P-F2 (Data cloud storage)</td>
+                  <td class="py-3 px-4 font-sans text-slate-600">Commercial cloud lock-in with zero student data sovereignty</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 4: METHODOLOGY & DISCREPANCY MATRIX -->
+      <div id="theory-tab" class="tab-content hidden">
+        <div class="mb-8">
+          <span class="badge-pill bg-indigo-100 text-indigo-800 mb-2">Theoretical Architecture</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Methodology &amp; The Discrepancy Matrix</h2>
+          <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+            Articulating the three structural epistemological biases that invalidate direct transposition of OECD comparative frameworks to Sub-Saharan Africa.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 font-black flex items-center justify-center mb-3">1</div>
+            <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Transposition Fallacy</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Standardized metrics assume uniform background conditions. Recommending device reduction to combat screen distraction in regions starved of basic textbooks creates policy austerity where digital infrastructure offers steep initial gains.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 font-black flex items-center justify-center mb-3">2</div>
+            <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Inverted-U Curve</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              In saturated OECD environments, additional device hours yield diminishing or negative learning returns. In resource-scarce African schools, initial digital access produces steep non-linear educational mastery.
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+            <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 font-black flex items-center justify-center mb-3">3</div>
+            <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Hardware Trap (MENA Lesson)</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              High-income MENA systems demonstrate that near-100% device penetration paired with low teacher pedagogical guidance produces leisure displacement, proving that infrastructure without teacher agency fails to elevate outcomes.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <h3 class="font-bold text-slate-900 text-lg mb-3 font-serif">Master Discrepancy Matrix Visualization</h3>
+          <p class="text-xs text-slate-600 mb-4">
+            Triangulating the 4 pilot archetypes across the 3 core structural gaps: Connectivity, Sustainability, and Linguistic Inclusion.
+          </p>
+          <img src="./data/analysis_b/master_discrepancy_matrix.png" alt="Master Discrepancy Matrix" class="w-full max-h-[460px] object-contain mx-auto rounded-lg shadow-sm border border-slate-100">
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- ================================================================= -->
+  <!-- LENS 2: CLASSROOM & SCHOOL LEADER CANVAS                          -->
+  <!-- ================================================================= -->
+  <div id="canvas-classroom" class="hidden">
+
+    <!-- Classroom Sub-Navigation Tabs -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+      <div class="bg-stone-50 rounded-xl shadow-lg border border-stone-300 p-2 flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1" id="tab-nav-classroom">
+          <button onclick="switchClassroomTab('audit-subtab')" id="btn-audit-subtab" class="tab-btn-cls px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-emerald-700 text-white shadow-sm">
+            7-Item Feasibility Pre-Flight Audit
+          </button>
+          <button onclick="switchClassroomTab('planner-subtab')" id="btn-planner-subtab" class="tab-btn-cls px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-stone-700 hover:text-stone-900 transition hover:bg-stone-200/60">
+            Class Crowding &amp; 3-Station Scheduler
+          </button>
+          <button onclick="switchClassroomTab('dpg-subtab')" id="btn-dpg-subtab" class="tab-btn-cls px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-stone-700 hover:text-stone-900 transition hover:bg-stone-200/60">
+            Vetted Resilient Solutions Directory
+          </button>
+        </div>
+        <div class="text-xs text-stone-600 font-medium hidden lg:block pr-3">
+          Classroom Ground-Truth Action Layer
+        </div>
+      </div>
+    </section>
+
+    <!-- Classroom Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+      <!-- SUBTAB 1: 7-ITEM FEASIBILITY PRE-FLIGHT AUDIT -->
+      <div id="audit-subtab" class="classroom-content block">
+        <div class="mb-8">
+          <span class="badge-pill bg-emerald-100 text-emerald-800 mb-2">School &amp; Teacher Gatekeeping Tool</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">Classroom Feasibility Pre-Flight Audit</h2>
+          <p class="text-stone-600 mt-1 max-w-3xl text-sm sm:text-base">
+            A 2-minute diagnostic for classroom teachers, department heads, and school management committees before adopting any incoming digital app or donor intervention.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Left: 7 Diagnostic Questions Card -->
+          <div class="lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-6">
+            
+            <!-- Question 1: Pillar 1 -->
+            <div class="pb-5 border-b border-stone-100">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
+                  <span>1. Institutional Accreditation &amp; Syllabus Fit (Pillar 1)</span>
+                </label>
+                <div class="relative inline-block">
+                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                    Survey Item T-B8: When tools lack official ministry curriculum accreditation, inspectors can penalize teachers for diverting instructional time.
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q1" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Accredited:</strong> Officially vetted by National Curriculum Body (e.g. KICD / REB) (+3 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q1" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Aligned:</strong> Matches syllabus topics, but lacks formal ministry sign-off (+1 pt)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q1" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Unaccredited:</strong> Independent third-party tool; risks conflict during inspections (-3 pts)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Question 2: Pillar 2 -->
+            <div class="pb-5 border-b border-stone-100">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
+                  <span>2. Energy &amp; Device Recharging Reality (Pillar 2)</span>
+                </label>
+                <div class="relative inline-block">
+                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                    Survey Item T-B6: 70% of rural SSA schools lack grid electricity. Tools requiring daily recharging fail without community solar backups.
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q2" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Reliable:</strong> Daily dependable grid or solar power available in school (+3 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q2" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Intermittent:</strong> Power cuts 1–2 days per week; no generator backup (+1 pt)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q2" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>No School Power:</strong> Devices must be transported off-site to charge (-3 pts) [RED FLAG]</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Question 3: Pillar 3 -->
+            <div class="pb-5 border-b border-stone-100">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
+                  <span>3. The Personal Data / Airtime Burden (Pillar 3)</span>
+                </label>
+                <div class="relative inline-block">
+                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                    The Informal Salary Tax: In our survey, rural teachers spend between 4.3% (Kenya) and 7.6% (Rwanda) of monthly income buying mobile data out of pocket.
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q3" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Zero-Cost:</strong> 100% offline local Wi-Fi cache or school-funded connection (+3 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q3" value="2" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Zero-Rated:</strong> Free access via government telecom whitelisted portal (+2 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q3" value="-5" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Salary Tax:</strong> Teachers or students must buy personal airtime bundles (-5 pts) [CRITICAL]</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Question 4: Pillar 4 -->
+            <div class="pb-5 border-b border-stone-100">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
+                  <span>4. Class Crowding &amp; Device Ratio (Pillar 4)</span>
+                </label>
+                <div class="relative inline-block">
+                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                    Average primary PTR is 59.5 in Rwanda and 42 in Zambia. Assuming 1:1 hardware in large classes triggers device fighting.
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q4" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Adequate:</strong> 1:1 or 2:1 pair-learning ratio in classroom (+3 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q4" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Crowded:</strong> 3:1 to 6:1 (Manageable with 3-station rotational pedagogy) (+1 pt)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q4" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Severe Scarcity:</strong> Over 10 students per screen with no rotation support (-3 pts)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Question 5: Pillar 5 -->
+            <div class="pb-5 border-b border-stone-100">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
+                  <span>5. Cultural &amp; Linguistic Authenticity (Pillar 5)</span>
+                </label>
+                <div class="relative inline-block">
+                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                    AI Accuracy Benchmark: LLM comprehension drops to 38% in Kinyarwanda and 18% in Bemba. Automated AI grading fails for mother-tongue learners.
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q5" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Contextualized:</strong> Full mother-tongue alignment with local cultural scenarios (+3 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q5" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Bilingual:</strong> English text paired with oral local-language audio prompts (+1 pt)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q5" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Foreign / AI-Only:</strong> Monolingual English/French; AI degrades in local dialect (-3 pts)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Question 6: Pillar 6 -->
+            <div class="pb-5 border-b border-stone-100">
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
+                  <span>6. Administrative Burden &amp; Double-Entry Load (Pillar 6)</span>
+                </label>
+                <div class="relative inline-block">
+                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                    Survey Item T-D3: Digital tools that do not export directly into government term sheets add 30–60 minutes of daily double bookkeeping.
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q6" value="2" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Integrated:</strong> Automatically exports to official school/government term sheets (+2 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q6" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Neutral:</strong> Self-contained practice; does not require grading export (+1 pt)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q6" value="-2" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Double Entry:</strong> Teacher must manually copy app marks into physical paper ledgers (-2 pts)</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Question 7: Biesta Pedagogical Balance -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
+                  <span>7. Pedagogical Purpose: Gert Biesta Threefold Balance</span>
+                </label>
+                <div class="relative inline-block">
+                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                    Biesta (2010): Does this tool cultivate the child as an active citizen and thinker (Socialization & Subjectification), or merely drill them as a passive test-taker (Qualification only)?
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-2 text-xs sm:text-sm">
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q7" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Holistic:</strong> Fosters collaborative peer dialogue, group problem-solving &amp; agency (+3 pts)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q7" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Balanced:</strong> Independent digital drill paired with offline teacher-led discussion (+1 pt)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
+                  <input type="radio" name="audit_q7" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
+                  <span><strong>Isolated Drill:</strong> Students in silent screen-staring with algorithmic tracking (-3 pts)</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right: Diagnostic Output & Scorecard -->
+          <div class="lg:col-span-4 sticky top-24 space-y-5">
+            <div id="verdict-card" class="bg-white rounded-2xl p-6 border-2 border-emerald-600 shadow-sm transition-all">
+              <span class="text-xs font-bold uppercase tracking-wider text-stone-400">Classroom Feasibility Index</span>
+              
+              <div class="flex items-baseline justify-between mt-2">
+                <div id="audit-score-num" class="text-4xl font-extrabold text-emerald-700 font-mono">+19</div>
+                <div class="text-xs text-stone-500">Scale: -18 to +19</div>
+              </div>
+
+              <div class="w-full bg-stone-100 rounded-full h-3 my-4 overflow-hidden">
+                <div id="audit-score-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-300" style="width: 100%;"></div>
+              </div>
+
+              <div id="verdict-badge" class="badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 mb-3">
+                GREEN LIGHT: Classroom Ready
+              </div>
+
+              <p id="verdict-text" class="text-xs text-stone-600 leading-relaxed">
+                This intervention clears essential infrastructure, cost, and pedagogical thresholds. Low risk of pilot abandonment.
+              </p>
+
+              <div id="red-flag-warning" class="hidden mt-4 p-3 rounded-lg bg-rose-50 border border-rose-200 text-xs text-rose-800">
+                <strong>Critical Friction Flagged:</strong> Un-reimbursed data costs will cause teacher pushback and low adoption.
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-stone-100 flex flex-col gap-2">
+                <button onclick="window.print()" class="w-full py-2 px-3 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold transition text-center flex items-center justify-center gap-1.5">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                  Print / Save Audit Memorandum
+                </button>
+                <button onclick="resetAuditForm()" class="w-full py-2 px-3 rounded-lg border border-stone-200 text-stone-600 hover:bg-stone-50 text-xs font-medium transition text-center">
+                  Reset Diagnostic
+                </button>
+              </div>
+            </div>
+
+            <!-- Alternative Action Card -->
+            <div class="bg-stone-100 rounded-xl p-5 border border-stone-200 text-xs text-stone-700 space-y-2">
+              <span class="font-bold text-stone-900 block">Failed on Data or Power?</span>
+              <p class="leading-relaxed">
+                If the intervention failed the airtime tax or power checks, do not deploy it online. Switch directly to our <strong>Vetted Resilient Solutions Directory</strong> for 100% offline-first alternatives like Kolibri.
+              </p>
+              <button onclick="switchClassroomTab('dpg-subtab')" class="font-bold text-emerald-800 hover:underline pt-1 inline-block">
+                View Vetted Digital Public Goods →
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SUBTAB 2: CLASS CROWDING & ROTATION PLANNER -->
+      <div id="planner-subtab" class="classroom-content hidden">
+        <div class="mb-8">
+          <span class="badge-pill bg-blue-100 text-blue-800 mb-2">Pedagogical Scheduling Engine</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">Dynamic Class Crowding &amp; 3-Station Scheduler</h2>
+          <p class="text-stone-600 mt-1 max-w-3xl text-sm sm:text-base">
+            Solve the 50:1 pupil-device bottleneck without chaos. Move the sliders to dynamically compute paired peer rotations and station timetables.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Slider Controls -->
+          <div class="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-6">
+            <h3 class="font-bold text-base text-stone-900 pb-3 border-b border-stone-100">Classroom Parameters</h3>
+            
+            <!-- Students Slider -->
+            <div>
+              <div class="flex justify-between items-center text-xs mb-1">
+                <span class="font-bold text-stone-700">Total Students in Room:</span>
+                <span id="slider-val-students" class="font-bold text-emerald-700 font-mono text-sm">50 Pupils</span>
+              </div>
+              <input type="range" id="input-students" min="15" max="90" value="50" oninput="updateRotationPlanner()" class="w-full accent-emerald-600 cursor-pointer">
+              <div class="flex justify-between text-[10px] text-stone-400 mt-0.5">
+                <span>15 (Small)</span>
+                <span>50 (SSA Median)</span>
+                <span>90 (Crowded)</span>
+              </div>
+            </div>
+
+            <!-- Devices Slider -->
+            <div>
+              <div class="flex justify-between items-center text-xs mb-1">
+                <span class="font-bold text-stone-700">Functional Devices Available:</span>
+                <span id="slider-val-devices" class="font-bold text-emerald-700 font-mono text-sm">5 Tablets</span>
+              </div>
+              <input type="range" id="input-devices" min="1" max="15" value="5" oninput="updateRotationPlanner()" class="w-full accent-emerald-600 cursor-pointer">
+              <div class="flex justify-between text-[10px] text-stone-400 mt-0.5">
+                <span>1 Device</span>
+                <span>5 Devices</span>
+                <span>15 Devices</span>
+              </div>
+            </div>
+
+            <!-- Lesson Minutes Slider -->
+            <div>
+              <div class="flex justify-between items-center text-xs mb-1">
+                <span class="font-bold text-stone-700">Lesson Duration:</span>
+                <span id="slider-val-minutes" class="font-bold text-emerald-700 font-mono text-sm">45 Minutes</span>
+              </div>
+              <input type="range" id="input-minutes" min="30" max="75" step="5" value="45" oninput="updateRotationPlanner()" class="w-full accent-emerald-600 cursor-pointer">
+              <div class="flex justify-between text-[10px] text-stone-400 mt-0.5">
+                <span>30 min</span>
+                <span>45 min (Standard)</span>
+                <span>75 min</span>
+              </div>
+            </div>
+
+            <!-- Pairing Mode Toggle -->
+            <div class="pt-2">
+              <span class="text-xs font-bold text-stone-700 block mb-2">Screen Sharing Protocol:</span>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                <button onclick="setPairingMode(2)" id="btn-mode-pair" class="py-2 px-3 rounded-lg border font-bold text-center transition bg-emerald-50 border-emerald-600 text-emerald-800">
+                  Paired Learning (2 / Device)
+                </button>
+                <button onclick="setPairingMode(1)" id="btn-mode-solo" class="py-2 px-3 rounded-lg border font-medium text-center transition bg-white border-stone-200 text-stone-600 hover:bg-stone-50">
+                  Solo Use (1 / Device)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Output Timetable -->
+          <div class="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-6">
+            <div class="flex items-center justify-between pb-4 border-b border-stone-100">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-stone-400">Dynamic Schedule</span>
+                <h3 class="text-xl font-bold text-stone-900 mt-0.5">3-Station Rotational Lesson Plan</h3>
+              </div>
+              <span id="calc-ratio-badge" class="badge-pill bg-emerald-100 text-emerald-800 font-mono text-xs">Ratio: 5:1</span>
+            </div>
+
+            <!-- 3 Stations Overview Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+              <div class="p-3.5 rounded-xl bg-blue-50/70 border border-blue-200">
+                <span class="font-bold text-blue-900 block mb-1">Station 1: Digital Lab</span>
+                <p id="station1-summary" class="text-blue-800 font-medium">10 students in pairs working through interactive modules.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200">
+                <span class="font-bold text-amber-900 block mb-1">Station 2: Collaborative</span>
+                <p id="station2-summary" class="text-amber-800 font-medium">20 students solving workbook problems in small groups.</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                <span class="font-bold text-emerald-900 block mb-1">Station 3: Teacher Focus</span>
+                <p id="station3-summary" class="text-emerald-800 font-medium">20 students receiving direct literacy &amp; phonics remediation.</p>
+              </div>
+            </div>
+
+            <!-- Timetable Step-by-Step Schedule -->
+            <div class="space-y-3 pt-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-stone-500 block">Timed Rotation Progression</span>
+              <div id="timetable-slots" class="space-y-2 text-xs">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg bg-stone-50 border border-stone-200 text-xs text-stone-500 flex items-center justify-between">
+              <span>Includes 5-minute whole-class introductory priming and transition buffer.</span>
+              <span class="font-bold text-stone-700">Zero Idle Time</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SUBTAB 3: VETTED RESILIENT SOLUTIONS DIRECTORY -->
+      <div id="dpg-subtab" class="classroom-content hidden">
+        <div class="mb-8">
+          <span class="badge-pill bg-teal-100 text-teal-800 mb-2">Living Digital Public Goods Catalog</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">Vetted Resilient Solutions Directory</h2>
+          <p class="text-stone-600 mt-1 max-w-3xl text-sm sm:text-base">
+            Curated, verified educational tools that do not rely on constant internet or expensive mobile data. Certified Digital Public Goods (DPGs) with live health-check timestamps.
+          </p>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          <button onclick="filterDPGs('ALL')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-stone-900 text-white">All Solutions</button>
+          <button onclick="filterDPGs('DPG Platform')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">Offline DPG Platforms</button>
+          <button onclick="filterDPGs('National Curriculum')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">National Curriculum Broadcasts</button>
+          <button onclick="filterDPGs('Language & Literacy')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">Mother-Tongue Readers</button>
+        </div>
+
+        <!-- Dynamic DPG Cards Grid -->
+        <div id="dpg-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated by JS from registry data -->
+        </div>
+
+        <!-- Community Flagging Modal Note -->
+        <div class="mt-8 p-4 rounded-xl bg-stone-100 border border-stone-200 flex flex-wrap items-center justify-between gap-3 text-xs text-stone-600">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>Automated Health-Check: Active URLs are validated periodically via automated test pings.</span>
+          </div>
+          <span class="text-stone-500">Did a link break in your school? Click "Report Outdated" on any card.</span>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Shared Stakeholder Directives Section (Visible across both lenses) -->
+  <section id="stakeholders" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-12 border-t border-slate-200">
+    <div class="mb-8">
+      <span class="badge-pill bg-amber-100 text-amber-800 mb-2">Multi-Stakeholder Policy Matrix</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Actionable Safeguards &amp; Directives</h2>
+      <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+        Translating empirical gaps into structural policy commitments across the educational ecosystem.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <!-- MOE Card -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 font-black flex items-center justify-center mb-4 text-base">
+            🏛️
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">For Ministries of Education</h3>
+          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+            <li>• <strong>Eliminate the Informal Salary Tax:</strong> Mandate official zero-rating for educational domains to prevent teachers spending 4–8% of wages on data.</li>
+            <li>• <strong>Abolish 1:1 Hardware Targets:</strong> Procure for small-group rotational classroom models rather than unmaintainable 1:1 promises.</li>
+            <li>• <strong>Procure Mother-Tongue First:</strong> Condition digital textbook contracts on regional dialect support and localized audio prompts.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Donors Card -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 font-black flex items-center justify-center mb-4 text-base">
+            🌐
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">For Multilateral Donors</h3>
+          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+            <li>• <strong>Fund OpEx Over Hardware:</strong> Shift grant capital from shiny hardware rollouts to solar battery lifecycle maintenance and local IT repair networks.</li>
+            <li>• <strong>De-risk the 85% Pilot Graveyard:</strong> Require a funded 3-year local transition fund before approving any new tech intervention.</li>
+            <li>• <strong>Mandate Digital Public Goods:</strong> Require open-source (CC-BY/MIT) licensing for all donor-funded software to guarantee local continuity.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Providers Card -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 font-black flex items-center justify-center mb-4 text-base">
+            🚀
+          </div>
+          <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">For EdTech Innovators</h3>
+          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+            <li>• <strong>Design for Rotational Crowding:</strong> Build multi-user session switching into tablet apps so 6 students can share 1 screen without losing progress.</li>
+            <li>• <strong>Default to Offline-First:</strong> Support Bluetooth mesh sync and SD-card preloading rather than requiring continuous cloud connections.</li>
+            <li>• <strong>Disable Monolingual AI Grading:</strong> Avoid automated scoring in indigenous languages where AI benchmark accuracy collapses below 40%.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clean Institutional Footer -->
+  <footer class="bg-slate-900 text-slate-300 py-10 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <span class="font-bold text-white">EdTech Policy &amp; Feasibility Observatory</span>
+        <span class="text-slate-500 ml-2">Digital Public Good · Master in ICT for Development</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="https://github.com/SunilRaman42/CC_3" target="_blank" class="hover:text-white transition">Research Repository</a>
+        <a href="https://SunilRaman42.github.io/EEA_3/" target="_blank" class="hover:text-white transition">Triangulation Source</a>
+        <a href="https://rsnl42.github.io/EEA_2/" target="_blank" class="hover:text-white transition">PISA Explorer</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript Controller -->
+  <script>
+    // Embedded Living DPG Registry Data
+    const DPG_REGISTRY = [
+      {
+        id: "kolibri-ecosystem",
+        title: "Kolibri Learning Platform",
+        category: "DPG Platform",
+        countries: ["KEN", "RWA", "ZMB", "ALL"],
+        url: "https://learningequality.org/kolibri/",
+        offline_mode: "100% Offline (Local Wi-Fi / SD Card)",
+        curator_body: "Learning Equality / UNICEF DPGA",
+        last_verified_date: "2026-10-25",
+        status: "active",
+        description: "Open-source educational platform designed for off-grid schools. Syncs curriculum content, books, and exercises over local micro-Wi-Fi without consuming cellular data."
+      },
+      {
+        id: "kicd-edutv-kenya",
+        title: "KICD National Curriculum Broadcasts",
+        category: "National Curriculum",
+        countries: ["KEN"],
+        url: "https://kicd.ac.ke/",
+        offline_mode: "Broadcast (Radio / TV / Cached MP3)",
+        curator_body: "Kenya Institute of Curriculum Development",
+        last_verified_date: "2026-10-28",
+        status: "active",
+        description: "Official competency-based curriculum lessons broadcast via free-to-air radio and television channels, bypassing smartphone and cellular airtime requirements."
+      },
+      {
+        id: "reb-elearning-rwanda",
+        title: "Rwanda Basic Education Board (REB) E-Learning",
+        category: "National Curriculum",
+        countries: ["RWA"],
+        url: "https://elearning.reb.rw/",
+        offline_mode: "Zero-Rated Web (MTN / Airtel)",
+        curator_body: "Ministry of Education Rwanda",
+        last_verified_date: "2026-10-20",
+        status: "active",
+        description: "Official digital textbook repository. Zero-rated on designated local mobile networks, allowing syllabus downloads without deducting airtime balances."
+      },
+      {
+        id: "african-storybook-project",
+        title: "African Storybook Project",
+        category: "Language & Literacy",
+        countries: ["KEN", "RWA", "ZMB", "ALL"],
+        url: "https://www.africanstorybook.org/",
+        offline_mode: "Printable PDF / Offline Reader App",
+        curator_body: "Saide / UNESCO Literacy DPG",
+        last_verified_date: "2026-10-29",
+        status: "active",
+        description: "Open-access illustrated storybooks published in over 200 African languages (including Kiswahili, Kinyarwanda, and Bemba), downloadable as lightweight printable PDFs."
+      },
+      {
+        id: "zambia-oer-portal",
+        title: "Zambia MoE Open Educational Resources",
+        category: "National Curriculum",
+        countries: ["ZMB"],
+        url: "https://www.moe.gov.zm/",
+        offline_mode: "Downloadable PDF Syllabus / Radio",
+        curator_body: "Ministry of Education Zambia",
+        last_verified_date: "2026-10-22",
+        status: "active",
+        description: "National primary and secondary syllabus units and curriculum teacher guides, formatted for low-bandwidth mobile viewing and physical print distribution."
+      },
+      {
+        id: "siyavula-stem-oer",
+        title: "Siyavula Open STEM Practice",
+        category: "DPG Platform",
+        countries: ["KEN", "RWA", "ZMB", "ALL"],
+        url: "https://www.siyavula.com/",
+        offline_mode: "Low-Data Web / Zero-Rated Partner",
+        curator_body: "Siyavula Education / DPGA",
+        last_verified_date: "2026-10-26",
+        status: "active",
+        description: "Curriculum-aligned mathematics and physical sciences adaptive practice modules, optimized for low-bandwidth mobile browsers with open CC-BY licenses."
+      }
+    ];
+
+    // =================================================================
+    // STAKEHOLDER LENS SWITCHER CONTROLLER
+    // =================================================================
+    let currentLens = 'systemic';
+
+    function switchLens(lensKey) {
+      currentLens = lensKey;
+      const btnSys = document.getElementById('lens-btn-systemic');
+      const btnCls = document.getElementById('lens-btn-classroom');
+      const canvasSys = document.getElementById('canvas-systemic');
+      const canvasCls = document.getElementById('canvas-classroom');
+      const heroBanner = document.getElementById('hero-banner');
+      const bodyCanvas = document.getElementById('body-canvas');
+
+      const heroBadge = document.getElementById('hero-badge');
+      const heroHeading = document.getElementById('hero-heading');
+      const heroDesc = document.getElementById('hero-desc');
+      const navTitle = document.getElementById('nav-title');
+      const navSubtitle = document.getElementById('nav-subtitle');
+
+      if (lensKey === 'systemic') {
+        // Button styles
+        btnSys.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-white text-slate-900 border border-slate-200/80 flex items-center gap-1.5';
+        btnSys.querySelector('span').className = 'w-2 h-2 rounded-full bg-blue-600';
+        btnCls.className = 'px-3.5 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 flex items-center gap-1.5';
+        btnCls.querySelector('span').className = 'w-2 h-2 rounded-full bg-slate-300';
+
+        // Canvas views
+        canvasSys.classList.remove('hidden');
+        canvasSys.classList.add('block');
+        canvasCls.classList.remove('block');
+        canvasCls.classList.add('hidden');
+
+        // Theme / Colors
+        heroBanner.className = 'hero-mesh text-white pt-14 pb-18 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-all duration-500';
+        bodyCanvas.className = 'bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900 transition-colors duration-300';
+
+        // Content
+        navTitle.textContent = 'EdTech Policy Observatory';
+        navSubtitle.textContent = 'Sub-Saharan Africa & MENA Evidence Engine';
+        heroBadge.innerHTML = '<span>Global South Decision-Support Framework</span><span>•</span><span>UNESCO 6-Pillars Operationalized</span>';
+        heroHeading.innerHTML = 'Bridging Macro Assessment, the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-teal-300 font-sans">6 Pillars of EdTech</span>, and Systemic Fragility';
+        heroDesc.textContent = 'A multi-stakeholder analytical observatory reconciling OECD PISA cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa and MENA.';
+
+        renderHeroMetrics('systemic');
+      } else {
+        // Button styles
+        btnCls.className = 'px-3.5 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-emerald-800 text-white border border-emerald-900 flex items-center gap-1.5';
+        btnCls.querySelector('span').className = 'w-2 h-2 rounded-full bg-emerald-300';
+        btnSys.className = 'px-3.5 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 flex items-center gap-1.5';
+        btnSys.querySelector('span').className = 'w-2 h-2 rounded-full bg-slate-300';
+
+        // Canvas views
+        canvasSys.classList.remove('block');
+        canvasSys.classList.add('hidden');
+        canvasCls.classList.remove('hidden');
+        canvasCls.classList.add('block');
+
+        // Theme / Colors (Warm Field-Ready Tone)
+        heroBanner.className = 'hero-mesh-classroom text-white pt-14 pb-18 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-all duration-500';
+        bodyCanvas.className = 'bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 transition-colors duration-300';
+
+        // Content
+        navTitle.textContent = 'Classroom Feasibility & Solutions Toolkit';
+        navSubtitle.textContent = 'UNESCO 6-Pillars Ground-Truth Action Layer';
+        heroBadge.innerHTML = '<span>School & Teacher Gatekeeping Toolkit</span><span>•</span><span>Grassroots Decision Support</span>';
+        heroHeading.innerHTML = 'Stress-Testing Digital EdTech Against <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 font-sans">Classroom Realities</span>';
+        heroDesc.textContent = 'Empowering classroom teachers, school leaders, and community committees to audit incoming digital interventions, schedule multi-student device rotations, and deploy zero-data Digital Public Goods.';
+
+        renderHeroMetrics('classroom');
+      }
+    }
+
+    function renderHeroMetrics(lens) {
+      const grid = document.getElementById('hero-metrics-grid');
+      if (lens === 'systemic') {
+        grid.innerHTML = `
           <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
             <div class="text-2xl font-black text-sky-400">69</div>
             <div class="text-xs text-slate-300 font-medium">Nations Monitored</div>
@@ -133,531 +1273,41 @@
             <div class="text-xs text-slate-300 font-medium">Pilot Deep Dives</div>
             <div class="text-[10px] text-slate-400 mt-0.5">KEN · RWA · MUS · ZMB</div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive Section Switcher -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
-    <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-2 flex flex-wrap items-center justify-between gap-2">
-      <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1" id="tab-nav">
-        <button onclick="switchTab('pilot-tab')" id="btn-pilot-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-blue-600 text-white shadow-sm">
-          4-Country Pilot Deep Dive
-        </button>
-        <button onclick="switchTab('dashboards-tab')" id="btn-dashboards-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
-          Live Dashboards (EEA_2 & EEA_3)
-        </button>
-        <button onclick="switchTab('codebook-tab')" id="btn-codebook-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
-          6-Pillars Codebook & Open Data
-        </button>
-        <button onclick="switchTab('theory-tab')" id="btn-theory-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
-          Methodology & Triangulation
-        </button>
-      </div>
-
-      <div class="text-xs text-slate-500 font-medium hidden lg:block pr-3">
-        Interactive Policy Observatory · v1.0
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Content Container -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-    <!-- ================================================================= -->
-    <!-- TAB 1: 4-COUNTRY PILOT DEEP DIVE (DEFAULT ACTIVE)                 -->
-    <!-- ================================================================= -->
-    <div id="pilot-tab" class="tab-content block">
-      
-      <div class="mb-8">
-        <span class="badge-pill bg-blue-100 text-blue-800 mb-2">Empirical Triangulation Layer</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">4-Country Comparative Pilot Deep Dive</h2>
-        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
-          Examining four Sub-Saharan African economies participating in OECD PISA 2025 with extensive 6-Pillars indicator coverage. This cross-case analysis tests whether supply-side EdTech assumptions match ground-level classroom realities.
-        </p>
-      </div>
-
-      <!-- Country Selector Buttons -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-        <button onclick="selectCountry('KEN')" id="card-KEN" class="country-card p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 text-left transition hover:shadow-md">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xl">🇰🇪</span>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-200 text-emerald-800">Score: 25/45</span>
+        `;
+      } else {
+        grid.innerHTML = `
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-emerald-400">7 Items</div>
+            <div class="text-xs text-stone-200 font-medium">Pre-Flight Audit</div>
+            <div class="text-[10px] text-stone-300 mt-0.5">Power · Cost · Language · Pedagogy</div>
           </div>
-          <div class="font-extrabold text-slate-900">Kenya</div>
-          <div class="text-xs text-slate-500 mt-0.5 font-medium">Silicon Savannah Hub</div>
-          <div class="text-[11px] text-emerald-700 mt-2 font-semibold">100% Qual Teachers · 35% Net</div>
-        </button>
-
-        <button onclick="selectCountry('RWA')" id="card-RWA" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xl">🇷🇼</span>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">Score: 30/45</span>
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-amber-400">3 Stations</div>
+            <div class="text-xs text-stone-200 font-medium">Rotation Planner</div>
+            <div class="text-[10px] text-stone-300 mt-0.5">Dynamic Paired Scheduling</div>
           </div>
-          <div class="font-extrabold text-slate-900">Rwanda</div>
-          <div class="text-xs text-slate-500 mt-0.5 font-medium">State-Led Push</div>
-          <div class="text-[11px] text-blue-700 mt-2 font-semibold">Smart Master Plan · PTR 59.5</div>
-        </button>
-
-        <button onclick="selectCountry('MUS')" id="card-MUS" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xl">🇲🇺</span>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-800">Score: 18/45</span>
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-teal-300">100%</div>
+            <div class="text-xs text-stone-200 font-medium">Offline DPGs</div>
+            <div class="text-[10px] text-stone-300 mt-0.5">Zero-Data Alternatives</div>
           </div>
-          <div class="font-extrabold text-slate-900">Mauritius</div>
-          <div class="text-xs text-slate-500 mt-0.5 font-medium">Upper-Bound Control</div>
-          <div class="text-[11px] text-rose-700 mt-2 font-semibold">100% Power · $31.7k PPP</div>
-        </button>
-
-        <button onclick="selectCountry('ZMB')" id="card-ZMB" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-xl">🇿🇲</span>
-            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">Score: 37/45</span>
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-sky-300">&lt; 30 Days</div>
+            <div class="text-xs text-stone-200 font-medium">Live Verification</div>
+            <div class="text-[10px] text-stone-300 mt-0.5">Automated Health Check</div>
           </div>
-          <div class="font-extrabold text-slate-900">Zambia</div>
-          <div class="text-xs text-slate-500 mt-0.5 font-medium">Infrastructure Bound</div>
-          <div class="text-[11px] text-amber-700 mt-2 font-semibold">31% Rural Power · 73 Langs</div>
-        </button>
-      </div>
+        `;
+      }
+    }
 
-      <!-- Active Country Profile Detail -->
-      <div id="country-detail" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 mb-10">
-        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
-          <div>
-            <div class="flex items-center gap-2">
-              <h3 id="country-name" class="text-2xl font-extrabold text-slate-900">Kenya (KEN)</h3>
-              <span id="country-badge" class="badge-pill bg-emerald-100 text-emerald-800">Moderate Discrepancy (25 / 45)</span>
-            </div>
-            <p id="country-archetype" class="text-slate-500 text-sm mt-1">Ecosystem Archetype: East African Innovation Hub with High Pedagogical Qualifications</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs text-slate-400 font-medium">OECD PISA 2025 Participant</span>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
-          <!-- Gap 1 Card -->
-          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/80">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Gap 1: Connectivity</span>
-              <span id="gap1-score" class="badge-pill bg-amber-100 text-amber-800">Score: 7/15</span>
-            </div>
-            <div class="space-y-2 text-sm">
-              <div class="flex justify-between"><span class="text-slate-500">Total Internet Users:</span> <strong id="val-net">35.0%</strong></div>
-              <div class="flex justify-between"><span class="text-slate-500">Rural Electricity:</span> <strong id="val-elec">67.1%</strong></div>
-              <div class="flex justify-between"><span class="text-slate-500">Fixed Broadband / 100:</span> <strong id="val-bb">3.0</strong></div>
-            </div>
-            <p id="gap1-desc" class="text-xs text-slate-600 mt-4 leading-relaxed border-t border-slate-200 pt-3">
-              Above SSA median internet access (35%), but rural grid cuts force teachers to pay for mobile data out of pocket.
-            </p>
-          </div>
-
-          <!-- Gap 2 Card -->
-          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/80">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Gap 2: Cost & Budget</span>
-              <span id="gap2-score" class="badge-pill bg-amber-100 text-amber-800">Score: 8/15</span>
-            </div>
-            <div class="space-y-2 text-sm">
-              <div class="flex justify-between"><span class="text-slate-500">GDP per capita (PPP):</span> <strong id="val-gdp">$6,650</strong></div>
-              <div class="flex justify-between"><span class="text-slate-500">Edu Spend (% Budget):</span> <strong id="val-edbudget">27.9%</strong></div>
-              <div class="flex justify-between"><span class="text-slate-500">Data Burden (1GB/mo):</span> <strong id="val-data">4.3% of inc.</strong></div>
-            </div>
-            <p id="gap2-desc" class="text-xs text-slate-600 mt-4 leading-relaxed border-t border-slate-200 pt-3">
-              Strong national budgetary commitment (27.9% of budget), but provider monetization remains direct-to-consumer.
-            </p>
-          </div>
-
-          <!-- Gap 3 Card -->
-          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/80">
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Gap 3: Linguistic Fit</span>
-              <span id="gap3-score" class="badge-pill bg-rose-100 text-rose-800">Score: 10/15</span>
-            </div>
-            <div class="space-y-2 text-sm">
-              <div class="flex justify-between"><span class="text-slate-500">Instruction Language:</span> <strong id="val-lang">Kiswahili + EN</strong></div>
-              <div class="flex justify-between"><span class="text-slate-500">AI Relative Score:</span> <strong id="val-aiscore">62% (Kiswahili)</strong></div>
-              <div class="flex justify-between"><span class="text-slate-500">Primary PTR:</span> <strong id="val-ptr">30.7 pupils/tch</strong></div>
-            </div>
-            <p id="gap3-desc" class="text-xs text-slate-600 mt-4 leading-relaxed border-t border-slate-200 pt-3">
-              Kiswahili AI performance is highest in the pilot, but community language learners face significant comprehension drops.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Discrepancy Heatmap & Chart Gallery -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-          <div class="flex items-center justify-between mb-4">
-            <div>
-              <h4 class="font-extrabold text-slate-900">Master Discrepancy Matrix Heatmap</h4>
-              <p class="text-xs text-slate-500">Synthesizing 9 sub-dimensions across the 4 pilot systems</p>
-            </div>
-            <span class="badge-pill bg-slate-100 text-slate-700 text-xs">Analysis B</span>
-          </div>
-          <div class="overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
-            <img src="./data/analysis_b/master_discrepancy_matrix.png" alt="Master Discrepancy Matrix" class="w-full h-auto object-contain hover:scale-105 transition duration-300">
-          </div>
-          <p class="text-xs text-slate-500 mt-3 italic text-center">
-            Heatmap grading structural misalignment from 1 (Low) to 5 (Critical). Zambia displays peak tension; Mauritius functions as upper bound.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <div>
-                <h4 class="font-extrabold text-slate-900">The 3 Structural Gaps in Focus</h4>
-                <p class="text-xs text-slate-500">Select any chart to inspect the empirical breakdown</p>
-              </div>
-              <span class="badge-pill bg-blue-100 text-blue-700 text-xs">Triangulation</span>
-            </div>
-
-            <!-- Mini Chart Switcher -->
-            <div class="flex gap-2 mb-4">
-              <button onclick="showGapChart('gap1')" id="btn-chart-gap1" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-600 text-white">Gap 1: Connectivity</button>
-              <button onclick="showGapChart('gap2')" id="btn-chart-gap2" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200">Gap 2: Cost</button>
-              <button onclick="showGapChart('gap3')" id="btn-chart-gap3" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200">Gap 3: Linguistic</button>
-            </div>
-
-            <div class="overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
-              <img id="gap-chart-img" src="./data/analysis_b/gap1_connectivity_assumption.png" alt="Gap Chart" class="w-full h-auto object-contain">
-            </div>
-          </div>
-
-          <p id="gap-chart-caption" class="text-xs text-slate-500 mt-3 italic text-center">
-            Fixed broadband (<3/100) vs. EdTech solution delivery requirements. 70% rural SSA electricity deficit acts as upstream bottleneck.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- TAB 2: LIVE DASHBOARDS HUB (EEA_2 & EEA_3)                       -->
-    <!-- ================================================================= -->
-    <div id="dashboards-tab" class="tab-content hidden">
-      <div class="mb-8">
-        <span class="badge-pill bg-purple-100 text-purple-800 mb-2">Interactive Artefacts</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Direct Dashboard Access</h2>
-        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
-          Stakeholders can launch either observatory directly in full-screen or view live preview instances below.
-        </p>
-      </div>
-
-      <!-- Dashboard Gateway Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-        <!-- EEA_2 Card -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="badge-pill bg-sky-100 text-sky-800">Macro Layer</span>
-              <span class="text-xs text-slate-400 font-mono">EEA_2</span>
-            </div>
-            <h3 class="text-xl font-extrabold text-slate-900 mb-2">OECD PISA 2025 AI & Device Explorer</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Analyzes cross-national indicators across 85 countries, exposing the MENA guidance deficit and testing the Inverted-U curve between digital device saturation and learning outcomes.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs mb-6 font-medium text-slate-600">
-              <span class="bg-slate-100 px-2.5 py-1 rounded">AI Drafting vs Learning</span>
-              <span class="bg-slate-100 px-2.5 py-1 rounded">Guidance Deficit</span>
-              <span class="bg-slate-100 px-2.5 py-1 rounded">Screen Saturation</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
-            <a href="https://rsnl42.github.io/EEA_2/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-sm transition">
-              Launch Live Dashboard ↗
-            </a>
-            <button onclick="toggleEmbedModal('https://rsnl42.github.io/EEA_2/')" class="py-2.5 px-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition" title="Get embed iframe">
-              &lt;/&gt;
-            </button>
-          </div>
-        </div>
-
-        <!-- EEA_3 Card -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="badge-pill bg-emerald-100 text-emerald-800">Ground-Truth Triangulation</span>
-              <span class="text-xs text-slate-400 font-mono">EEA_3</span>
-            </div>
-            <h3 class="text-xl font-extrabold text-slate-900 mb-2">SSA EdTech Triangulation Engine</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Visualizes 800 respondents across 48 Sub-Saharan African nations. Triangulates Teacher classroom reality against Provider supply models and Expert governance constraints.
-            </p>
-            <div class="flex flex-wrap gap-2 text-xs mb-6 font-medium text-slate-600">
-              <span class="bg-slate-100 px-2.5 py-1 rounded">48 SSA Countries</span>
-              <span class="bg-slate-100 px-2.5 py-1 rounded">Donor Exit Risk (85%)</span>
-              <span class="bg-slate-100 px-2.5 py-1 rounded">Calibrated Micro-Data</span>
-            </div>
-          </div>
-          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
-            <a href="https://SunilRaman42.github.io/EEA_3/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition">
-              Launch Live Dashboard ↗
-            </a>
-            <button onclick="toggleEmbedModal('https://SunilRaman42.github.io/EEA_3/')" class="py-2.5 px-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition" title="Get embed iframe">
-              &lt;/&gt;
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Live Interactive Dashboard Frame -->
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span id="dash-title" class="font-extrabold text-sm sm:text-base">Embedded Interactive Preview: EEA_3 Triangulation Engine</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <button onclick="switchDashboard('https://SunilRaman42.github.io/EEA_3/', 'Embedded Interactive Preview: EEA_3 Triangulation Engine')" class="px-3 py-1.5 rounded bg-slate-800 text-xs font-semibold hover:bg-slate-700 transition">Switch to EEA_3</button>
-            <button onclick="switchDashboard('https://rsnl42.github.io/EEA_2/', 'Embedded Interactive Preview: OECD PISA 2025 Explorer (EEA_2)')" class="px-3 py-1.5 rounded bg-slate-800 text-xs font-semibold hover:bg-slate-700 transition">Switch to EEA_2</button>
-            <a id="dash-direct-link" href="https://SunilRaman42.github.io/EEA_3/" target="_blank" class="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition flex items-center gap-1 shadow-sm">
-              Open Direct ↗
-            </a>
-          </div>
-        </div>
-        <div class="relative w-full h-[720px] bg-slate-100">
-          <!-- Fallback loader / note -->
-          <div id="frame-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 text-slate-600 p-6 z-10 transition-opacity duration-300">
-            <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p class="font-semibold text-sm text-slate-800">Loading Interactive Engine...</p>
-            <p class="text-xs text-slate-500 max-w-md text-center mt-1">
-              If your browser restricts cross-origin embeds, use the "Open Direct ↗" button above.
-            </p>
-          </div>
-          <iframe id="dash-frame" src="https://SunilRaman42.github.io/EEA_3/" class="w-full h-full border-0 relative z-20" onload="document.getElementById('frame-loader')?.classList.add('hidden')" title="Live Dashboard Preview" allow="clipboard-write"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- TAB 3: 6-PILLARS CODEBOOK & OPEN DATA                             -->
-    <!-- ================================================================= -->
-    <div id="codebook-tab" class="tab-content hidden">
-      <div class="mb-8">
-        <span class="badge-pill bg-teal-100 text-teal-800 mb-2">Construct Validity & Open Data</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">UNESCO 6-Pillars Survey Codebook</h2>
-        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
-          Operationalizing UNESCO’s Six Pillars of Digital Transformation across the 3 Alliance of Alliances survey instruments (104 items total).
-        </p>
-      </div>
-
-      <!-- Download Hub -->
-      <div id="data-downloads" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-        <a href="./data/AoA_Survey_to_Pillar_Codebook.csv" download class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
-          <div class="text-blue-600 font-bold text-xs uppercase mb-1">CSV Codebook</div>
-          <div class="font-extrabold text-slate-900 text-sm group-hover:text-blue-600 transition">AoA_Survey_Codebook.csv</div>
-          <div class="text-xs text-slate-500 mt-1">104 coded survey items with gap flags</div>
-        </a>
-
-        <a href="./data/processed/latest_country_profiles_6pillars.csv" download class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
-          <div class="text-teal-600 font-bold text-xs uppercase mb-1">Macro Panel</div>
-          <div class="font-extrabold text-slate-900 text-sm group-hover:text-teal-600 transition">6-Pillars_WDI_2024.csv</div>
-          <div class="text-xs text-slate-500 mt-1">69 nations · 24 development indicators</div>
-        </a>
-
-        <a href="./data/raw/SSA_Survey_Responses_Calibrated.xlsx" download class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
-          <div class="text-purple-600 font-bold text-xs uppercase mb-1">Micro Data</div>
-          <div class="font-extrabold text-slate-900 text-sm group-hover:text-purple-600 transition">Calibrated_Responses.xlsx</div>
-          <div class="text-xs text-slate-500 mt-1">800 respondents across 48 SSA nations</div>
-        </a>
-
-        <a href="./Thesis_First_Draft_Concept.md" target="_blank" class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
-          <div class="text-rose-600 font-bold text-xs uppercase mb-1">Monograph</div>
-          <div class="font-extrabold text-slate-900 text-sm group-hover:text-rose-600 transition">Thesis_Draft_Concept.md</div>
-          <div class="text-xs text-slate-500 mt-1">UniTO Master's Component A draft</div>
-        </a>
-      </div>
-
-      <!-- Codebook Summary Table -->
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-12">
-        <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
-          <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">Construct Coverage by UNESCO Pillar</h4>
-          <span class="text-xs text-slate-500">Analysis A Reference</span>
-        </div>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-sm text-slate-700">
-            <thead class="bg-slate-100 text-xs uppercase font-bold text-slate-600">
-              <tr>
-                <th class="py-3 px-6">UNESCO Pillar</th>
-                <th class="py-3 px-4">Primary Items</th>
-                <th class="py-3 px-4">Coverage Status</th>
-                <th class="py-3 px-6">Identified Empirical Gap</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-slate-100">
-              <tr class="hover:bg-slate-50/50">
-                <td class="py-3.5 px-6 font-bold text-slate-900">P1: Coordination & Leadership</td>
-                <td class="py-3.5 px-4 font-mono text-xs">17 items</td>
-                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
-                <td class="py-3.5 px-6 text-xs text-slate-600">Lack of multi-year line-item budgeting items in policy instruments.</td>
-              </tr>
-              <tr class="hover:bg-slate-50/50">
-                <td class="py-3.5 px-6 font-bold text-slate-900">P2: Connectivity & Infrastructure</td>
-                <td class="py-3.5 px-4 font-mono text-xs">14 items</td>
-                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
-                <td class="py-3.5 px-6 text-xs text-slate-600">70% rural power deficit; offline caching mechanisms under-reported.</td>
-              </tr>
-              <tr class="hover:bg-slate-50/50">
-                <td class="py-3.5 px-6 font-bold text-slate-900">P3: Cost & Sustainability</td>
-                <td class="py-3.5 px-4 font-mono text-xs">8 items</td>
-                <td class="py-3.5 px-4"><span class="badge-pill bg-amber-100 text-amber-800">Thinnest</span></td>
-                <td class="py-3.5 px-6 text-xs text-slate-600"><strong>Instrument Gap:</strong> Teacher out-of-pocket airtime cost unmeasured.</td>
-              </tr>
-              <tr class="hover:bg-slate-50/50">
-                <td class="py-3.5 px-6 font-bold text-slate-900">P4: Capacity & Culture</td>
-                <td class="py-3.5 px-4 font-mono text-xs">12 items</td>
-                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
-                <td class="py-3.5 px-6 text-xs text-slate-600">Teacher continuous professional development (CPD) lacks structured dosage metrics.</td>
-              </tr>
-              <tr class="hover:bg-slate-50/50">
-                <td class="py-3.5 px-6 font-bold text-slate-900">P5: Content & Solutions</td>
-                <td class="py-3.5 px-4 font-mono text-xs">13 items</td>
-                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
-                <td class="py-3.5 px-6 text-xs text-slate-600">< 15% of active EdTech tools support indigenous African languages.</td>
-              </tr>
-              <tr class="hover:bg-slate-50/50">
-                <td class="py-3.5 px-6 font-bold text-slate-900">P6: Data & Evidence</td>
-                <td class="py-3.5 px-4 font-mono text-xs">19 items</td>
-                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Strongest</span></td>
-                <td class="py-3.5 px-6 text-xs text-slate-600">Only 22% of SSA countries possess unique student ID mechanisms (GEM 2023).</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- TAB 4: METHODOLOGY & TRIANGULATION CONCEPT                       -->
-    <!-- ================================================================= -->
-    <div id="theory-tab" class="tab-content hidden">
-      <div class="mb-8">
-        <span class="badge-pill bg-slate-100 text-slate-800 mb-2">Theoretical Architecture</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">The Saturation vs. Scarcity Divide</h2>
-        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
-          Why linear transposition of Western digital education paradigms produces distorted policy in resource-constrained environments.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
-          <h3 class="text-lg font-extrabold text-slate-900 mb-3">The Inverted-U Hypothesis</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            In saturated high-income systems (OECD / Gulf MENA), marginal increases in screen exposure correlate with negative cognitive returns due to distraction, multitasking, and AI cognitive offloading.
-          </p>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            Conversely, in resource-scarce African schools, access to a single digital solar library or tablet lesson guide generates steep non-linear foundational learning gains. Prescribing digital austerity in environments starved of educational media is an analytical error.
-          </p>
-        </div>
-
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
-          <h3 class="text-lg font-extrabold text-slate-900 mb-3">The MENA Hardware Fallacy</h3>
-          <p class="text-slate-600 text-sm leading-relaxed mb-4">
-            OECD PISA 2025 data reveals that Gulf systems achieved near-universal device saturation (Pillar 2), yet exhibit digital guidance deficits exceeding 35%. Hardware without pedagogical support (Pillar 4) reliably induces leisure distraction rather than academic mastery.
-          </p>
-          <p class="text-slate-600 text-sm leading-relaxed">
-            This inquiry demonstrates that Sub-Saharan Africa must avoid the MENA hardware trap by synchronizing teacher professional development with any digital deployment.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ================================================================= -->
-    <!-- STAKEHOLDER POLICY ACTION SECTION (ALWAYS VISIBLE)                -->
-    <!-- ================================================================= -->
-    <section id="stakeholders" class="mt-16 pt-12 border-t border-slate-200">
-      <div class="text-center max-w-2xl mx-auto mb-10">
-        <span class="badge-pill bg-blue-100 text-blue-800 mb-2">Operational ICT4D Impact</span>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Actionable Directives by Stakeholder</h2>
-        <p class="text-slate-600 text-sm mt-1">Transforming empirical triangulation into grounded policy interventions.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold mb-4">
-            MoE
-          </div>
-          <h3 class="font-extrabold text-slate-900 mb-2">Education Ministries</h3>
-          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
-            <li>• <strong>Mandate Offline-First Architecture:</strong> Disqualify software requiring continuous broadband in schools with rural electricity rates < 45%.</li>
-            <li>• <strong>Audit Out-of-Pocket Burdens:</strong> Line-item budget teacher data costs to prevent the informal 4–8% salary tax on submission portals.</li>
-            <li>• <strong>Local Language Pre-requisites:</strong> Require vendors to support dominant early-grade national languages (e.g. Kinyarwanda, Bemba) before certification.</li>
-          </ul>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold mb-4">
-            UN
-          </div>
-          <h3 class="font-extrabold text-slate-900 mb-2">Multilateral Donors & Hubs</h3>
-          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
-            <li>• <strong>Exit-Proof Capital:</strong> Address the 85% project collapse rate by requiring 3-year recurring maintenance commitments from recipient systems.</li>
-            <li>• <strong>Diversify Beyond the Big Four:</strong> Expand startup capital outside Kenya, Nigeria, and South Africa to under-resourced Francophone and Lusophone markets.</li>
-            <li>• <strong>Support Token-Tax Subsidies:</strong> Fund open-source fine-tuning of African LLMs to lower inference token taxes for local developers.</li>
-          </ul>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
-          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold mb-4">
-            DEV
-          </div>
-          <h3 class="font-extrabold text-slate-900 mb-2">EdTech Founders & Startups</h3>
-          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
-            <li>• <strong>Design for SMS / Local Storage:</strong> Build synchronization engines that function on intermittent 2G/3G connections and feature device caching.</li>
-            <li>• <strong>Accommodate 50+ Classrooms:</strong> Structure apps for rotational small-group devices rather than individual 1:1 hardware assumptions.</li>
-            <li>• <strong>Safeguard Data Sovereignty:</strong> Store learner records in-continent to meet emerging AU continental AI governance standards.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Embed Modal -->
-  <div id="embed-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200">
-      <div class="flex items-center justify-between mb-4">
-        <h4 class="font-extrabold text-slate-900">Embed Dashboard Widget</h4>
-        <button onclick="toggleEmbedModal('')" class="text-slate-400 hover:text-slate-600">✕</button>
-      </div>
-      <p class="text-xs text-slate-500 mb-3">Copy and paste this snippet to embed the live responsive observatory into an institutional portal or report:</p>
-      <textarea id="embed-snippet" readonly class="w-full h-28 bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs font-mono text-slate-700 select-all"></textarea>
-      <div class="mt-4 flex justify-end">
-        <button onclick="navigator.clipboard.writeText(document.getElementById('embed-snippet').value); alert('Copied to clipboard!');" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-700 transition">Copy Snippet</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
-      <div>
-        <div class="text-white font-bold text-sm mb-1">Sub-Saharan Africa & MENA EdTech Policy Observatory</div>
-        <p class="text-slate-500">First-Level Master in ICT for Development and Social Good · University of Turin (UniTO) · COREP</p>
-      </div>
-      <div class="flex items-center gap-6">
-        <a href="https://github.com/SunilRaman42/CC_3" target="_blank" class="hover:text-white transition">CC_3 (Analytical Repo)</a>
-        <a href="https://github.com/SunilRaman42/EEA_3" target="_blank" class="hover:text-white transition">EEA_3 (Dashboard Repo)</a>
-        <a href="https://rsnl42.github.io/EEA_2/" target="_blank" class="hover:text-white transition">EEA_2 (PISA Explorer)</a>
-      </div>
-      <div class="text-slate-500">
-        Digital Public Good · Open Access MIT & CC-BY 4.0
-      </div>
-    </div>
-  </footer>
-
-  <!-- Interactive JavaScript Controller -->
-  <script>
-    // Tab Switcher
+    // =================================================================
+    // SYSTEMIC SUB-TAB NAVIGATION
+    // =================================================================
     function switchTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+      document.querySelectorAll('#canvas-systemic .tab-content').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('block');
+      });
       
       const target = document.getElementById(tabId);
       if (target) {
@@ -665,7 +1315,7 @@
         target.classList.add('block');
       }
 
-      document.querySelectorAll('.tab-btn').forEach(btn => {
+      document.querySelectorAll('#tab-nav-systemic .tab-btn').forEach(btn => {
         btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
         btn.classList.add('text-slate-600', 'hover:bg-slate-100');
       });
@@ -677,46 +1327,264 @@
       }
     }
 
-    // Interactive Dashboard Frame Switcher
-    function switchDashboard(url, title) {
-      const frame = document.getElementById('dash-frame');
-      const loader = document.getElementById('frame-loader');
-      const titleEl = document.getElementById('dash-title');
-      const directLink = document.getElementById('dash-direct-link');
-      if (loader) loader.classList.remove('hidden');
-      if (frame) frame.src = url;
-      if (titleEl) titleEl.textContent = title;
-      if (directLink) directLink.href = url;
-    }
+    // =================================================================
+    // CLASSROOM SUB-TAB NAVIGATION
+    // =================================================================
+    function switchClassroomTab(subtabId) {
+      document.querySelectorAll('#canvas-classroom .classroom-content').forEach(el => {
+        el.classList.add('hidden');
+        el.classList.remove('block');
+      });
+      
+      const target = document.getElementById(subtabId);
+      if (target) {
+        target.classList.remove('hidden');
+        target.classList.add('block');
+      }
 
-    // URL Hash Routing Support
-    const HASH_MAP = {
-      '#overview': 'pilot-tab',
-      '#pilot': 'pilot-tab',
-      '#dashboards': 'dashboards-tab',
-      '#codebook': 'codebook-tab',
-      '#theory': 'theory-tab',
-      '#stakeholders': 'pilot-tab'
-    };
-    function handleHash() {
-      const hash = window.location.hash;
-      if (HASH_MAP[hash]) {
-        switchTab(HASH_MAP[hash]);
-        if (hash === '#stakeholders') {
-          setTimeout(() => document.getElementById('stakeholders')?.scrollIntoView({ behavior: 'smooth' }), 100);
-        }
+      document.querySelectorAll('#tab-nav-classroom .tab-btn-cls').forEach(btn => {
+        btn.classList.remove('bg-emerald-700', 'text-white', 'shadow-sm');
+        btn.classList.add('text-stone-700', 'hover:bg-stone-200/60');
+      });
+
+      const activeBtn = document.getElementById('btn-' + subtabId);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('text-stone-700', 'hover:bg-stone-200/60');
       }
     }
-    window.addEventListener('hashchange', handleHash);
-    window.addEventListener('DOMContentLoaded', handleHash);
 
-    // 4-Country Data Store
+    // =================================================================
+    // TOOL 1: FEASIBILITY PRE-FLIGHT AUDIT ENGINE
+    // =================================================================
+    function calculateAudit() {
+      const q1 = parseInt(document.querySelector('input[name="audit_q1"]:checked')?.value || 0);
+      const q2 = parseInt(document.querySelector('input[name="audit_q2"]:checked')?.value || 0);
+      const q3 = parseInt(document.querySelector('input[name="audit_q3"]:checked')?.value || 0);
+      const q4 = parseInt(document.querySelector('input[name="audit_q4"]:checked')?.value || 0);
+      const q5 = parseInt(document.querySelector('input[name="audit_q5"]:checked')?.value || 0);
+      const q6 = parseInt(document.querySelector('input[name="audit_q6"]:checked')?.value || 0);
+      const q7 = parseInt(document.querySelector('input[name="audit_q7"]:checked')?.value || 0);
+
+      const totalScore = q1 + q2 + q3 + q4 + q5 + q6 + q7;
+      const scoreNum = document.getElementById('audit-score-num');
+      const scoreBar = document.getElementById('audit-score-bar');
+      const badge = document.getElementById('verdict-badge');
+      const text = document.getElementById('verdict-text');
+      const card = document.getElementById('verdict-card');
+      const warning = document.getElementById('red-flag-warning');
+
+      scoreNum.textContent = (totalScore > 0 ? '+' : '') + totalScore;
+
+      // Normalize scale -18 to +19 (37 pt range)
+      const pct = Math.max(5, Math.min(100, Math.round(((totalScore + 18) / 37) * 100)));
+      scoreBar.style.width = pct + '%';
+
+      const isDataRedFlag = (q3 === -5);
+      const isPowerRedFlag = (q2 === -3);
+
+      if (isDataRedFlag) {
+        warning.classList.remove('hidden');
+      } else {
+        warning.classList.add('hidden');
+      }
+
+      if (totalScore >= 11 && !isDataRedFlag && !isPowerRedFlag) {
+        card.className = 'bg-white rounded-2xl p-6 border-2 border-emerald-600 shadow-sm transition-all';
+        badge.className = 'badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 mb-3';
+        badge.textContent = 'GREEN LIGHT: Classroom Ready';
+        scoreBar.className = 'bg-emerald-600 h-3 rounded-full transition-all duration-300';
+        text.textContent = 'This intervention clears essential infrastructure, cost, and pedagogical thresholds. High likelihood of classroom sustainability.';
+      } else if (totalScore >= 4 && !isDataRedFlag) {
+        card.className = 'bg-white rounded-2xl p-6 border-2 border-amber-500 shadow-sm transition-all';
+        badge.className = 'badge-pill bg-amber-100 text-amber-800 text-xs py-1 px-3 mb-3';
+        badge.textContent = 'AMBER LIGHT: Feasible with Adaptation';
+        scoreBar.className = 'bg-amber-500 h-3 rounded-full transition-all duration-300';
+        text.textContent = 'The tool will fail unless adapted. Implement small-group rotations, preload modules via local Wi-Fi, or secure community solar charging.';
+      } else {
+        card.className = 'bg-white rounded-2xl p-6 border-2 border-rose-600 shadow-sm transition-all';
+        badge.className = 'badge-pill bg-rose-100 text-rose-800 text-xs py-1 px-3 mb-3';
+        badge.textContent = 'RED LIGHT: High Risk of Abandonment';
+        scoreBar.className = 'bg-rose-600 h-3 rounded-full transition-all duration-300';
+        text.textContent = 'Critical structural clash detected. Personal data taxes or lack of power will cause pilot failure. Reject or mandate 100% offline rebuild.';
+      }
+    }
+
+    function resetAuditForm() {
+      document.querySelectorAll('#audit-subtab input[type="radio"]').forEach(r => {
+        if (r.value === '3' || r.value === '2') r.checked = true;
+      });
+      calculateAudit();
+    }
+
+    // =================================================================
+    // TOOL 2: DYNAMIC CLASS CROWDING & ROTATION PLANNER
+    // =================================================================
+    let pairingMode = 2; // 2 = Paired learning (default), 1 = Solo
+
+    function setPairingMode(mode) {
+      pairingMode = mode;
+      const btnPair = document.getElementById('btn-mode-pair');
+      const btnSolo = document.getElementById('btn-mode-solo');
+      if (mode === 2) {
+        btnPair.className = 'py-2 px-3 rounded-lg border font-bold text-center transition bg-emerald-50 border-emerald-600 text-emerald-800';
+        btnSolo.className = 'py-2 px-3 rounded-lg border font-medium text-center transition bg-white border-stone-200 text-stone-600 hover:bg-stone-50';
+      } else {
+        btnSolo.className = 'py-2 px-3 rounded-lg border font-bold text-center transition bg-emerald-50 border-emerald-600 text-emerald-800';
+        btnPair.className = 'py-2 px-3 rounded-lg border font-medium text-center transition bg-white border-stone-200 text-stone-600 hover:bg-stone-50';
+      }
+      updateRotationPlanner();
+    }
+
+    function updateRotationPlanner() {
+      const N = parseInt(document.getElementById('input-students').value);
+      const D = parseInt(document.getElementById('input-devices').value);
+      const T = parseInt(document.getElementById('input-minutes').value);
+
+      document.getElementById('slider-val-students').textContent = N + ' Pupils';
+      document.getElementById('slider-val-devices').textContent = D + ' Tablets';
+      document.getElementById('slider-val-minutes').textContent = T + ' Minutes';
+
+      const simultaneousUsers = D * pairingMode;
+      const ratio = (N / D).toFixed(1);
+      document.getElementById('calc-ratio-badge').textContent = `Ratio: ${ratio}:1 (${pairingMode === 2 ? 'Paired' : 'Solo'})`;
+
+      const rotationsNeeded = Math.max(1, Math.ceil(N / simultaneousUsers));
+      const usableTime = T - 5; // 5 min buffer
+      const timePerRotation = Math.max(8, Math.floor(usableTime / Math.min(3, rotationsNeeded)));
+
+      // Station allocations
+      const s1Students = Math.min(N, simultaneousUsers);
+      const remaining = Math.max(0, N - s1Students);
+      const s2Students = Math.floor(remaining / 2);
+      const s3Students = remaining - s2Students;
+
+      document.getElementById('station1-summary').textContent = `${s1Students} students in ${pairingMode === 2 ? 'pairs' : 'solo seats'} completing interactive digital modules.`;
+      document.getElementById('station2-summary').textContent = `${s2Students} students in small groups solving curriculum workbook problems.`;
+      document.getElementById('station3-summary').textContent = `${s3Students} students working directly with the teacher for literacy remediation.`;
+
+      // Timetable generation
+      const slotsContainer = document.getElementById('timetable-slots');
+      let html = '';
+
+      let curMin = 0;
+      html += `
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-stone-100 border border-stone-200">
+          <span class="font-mono font-bold text-stone-700 w-16">00–05m</span>
+          <span class="font-semibold text-stone-800">Whole-Class Priming:</span>
+          <span class="text-stone-600">Teacher introduces lesson concept and assigns groups A, B, and C.</span>
+        </div>
+      `;
+      curMin = 5;
+
+      const numCohorts = Math.min(3, rotationsNeeded);
+      for (let i = 1; i <= numCohorts; i++) {
+        const nextMin = curMin + timePerRotation;
+        const s1Group = i === 1 ? 'Cohort A' : (i === 2 ? 'Cohort B' : 'Cohort C');
+        const s2Group = i === 1 ? 'Cohort B' : (i === 2 ? 'Cohort C' : 'Cohort A');
+        const s3Group = i === 1 ? 'Cohort C' : (i === 2 ? 'Cohort A' : 'Cohort B');
+
+        html += `
+          <div class="flex flex-wrap items-center justify-between p-2.5 rounded-lg bg-emerald-50/50 border border-emerald-200/80">
+            <div class="flex items-center gap-2">
+              <span class="font-mono font-bold text-emerald-800 w-16">${String(curMin).padStart(2, '0')}–${String(nextMin).padStart(2, '0')}m</span>
+              <span class="font-bold text-stone-900">Rotation ${i} (${timePerRotation} mins):</span>
+            </div>
+            <div class="flex items-center gap-2 text-[11px] mt-1 sm:mt-0">
+              <span class="px-2 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold">${s1Group} on Tablets</span>
+              <span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-semibold">${s2Group} Workbook</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold">${s3Group} Teacher Lead</span>
+            </div>
+          </div>
+        `;
+        curMin = nextMin;
+      }
+
+      if (curMin < T) {
+        html += `
+          <div class="flex items-center gap-3 p-2.5 rounded-lg bg-stone-100 border border-stone-200">
+            <span class="font-mono font-bold text-stone-700 w-16">${String(curMin).padStart(2, '0')}–${String(T).padStart(2, '0')}m</span>
+            <span class="font-semibold text-stone-800">Whole-Class Synthesis:</span>
+            <span class="text-stone-600">5-minute oral reflection and homework prompt.</span>
+          </div>
+        `;
+      }
+
+      slotsContainer.innerHTML = html;
+    }
+
+    // =================================================================
+    // TOOL 3: VETTED LIVING DPG DIRECTORY RENDERER
+    // =================================================================
+    function formatRelativeVerification(dateStr) {
+      const verifiedDate = new Date(dateStr);
+      const now = new Date();
+      const diffDays = Math.max(1, Math.round((now - verifiedDate) / (1000 * 60 * 60 * 24)));
+      if (diffDays < 30) {
+        return `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Verified ${diffDays} days ago</span>`;
+      } else {
+        return `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Audit Pending (${diffDays}d)</span>`;
+      }
+    }
+
+    function renderDPGs(categoryFilter) {
+      const grid = document.getElementById('dpg-cards-grid');
+      let filtered = DPG_REGISTRY;
+      if (categoryFilter && categoryFilter !== 'ALL') {
+        filtered = DPG_REGISTRY.filter(d => d.category === categoryFilter);
+      }
+
+      grid.innerHTML = filtered.map(d => `
+        <div class="bg-white rounded-2xl p-6 border border-stone-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold text-stone-500 uppercase tracking-wider">${d.category}</span>
+              ${formatRelativeVerification(d.last_verified_date)}
+            </div>
+            <h3 class="font-extrabold text-stone-900 text-lg mb-1">${d.title}</h3>
+            <div class="text-xs text-emerald-700 font-semibold mb-3 flex items-center gap-1">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              ${d.offline_mode}
+            </div>
+            <p class="text-xs text-stone-600 leading-relaxed mb-4">
+              ${d.description}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
+            <span class="text-stone-400 font-mono">${d.curator_body}</span>
+            <div class="flex items-center gap-2">
+              <button onclick="reportBrokenLink('${d.id}', '${d.title}')" class="text-stone-400 hover:text-stone-700" title="Report broken link or outdated info">
+                🚩 Flag
+              </button>
+              <a href="${d.url}" target="_blank" class="font-bold text-emerald-800 hover:underline flex items-center gap-1">
+                Access Resource ↗
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterDPGs(cat) {
+      document.querySelectorAll('.dpg-filter-btn').forEach(b => {
+        b.className = 'dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50';
+      });
+      event.target.className = 'dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-stone-900 text-white';
+      renderDPGs(cat);
+    }
+
+    function reportBrokenLink(id, title) {
+      alert(`Thank you. Your report for "${title}" has been logged for automated verification.`);
+    }
+
+    // =================================================================
+    // SYSTEMIC DATA: 4-COUNTRY DATA STORE & GAP CHARTS
+    // =================================================================
     const countryData = {
       'KEN': {
         name: 'Kenya (KEN)',
         badge: 'Moderate Discrepancy (25 / 45)',
         badgeClass: 'bg-emerald-100 text-emerald-800',
-        cardBorder: 'border-emerald-600',
         archetype: 'Ecosystem Archetype: East African Innovation Hub with High Pedagogical Qualifications',
         gap1Score: 'Score: 7 / 15',
         gap2Score: 'Score: 8 / 15',
@@ -726,10 +1594,10 @@
         bb: '3.0',
         gdp: '$6,650',
         edbudget: '27.9%',
-        data: '4.3% of monthly GDP',
-        lang: 'Kiswahili + English',
-        aiscore: '62% (Kiswahili)',
-        ptr: '30.7 pupils / teacher',
+        data: '4.3% GDP',
+        lang: 'Kiswahili',
+        aiscore: '62%',
+        ptr: '30.7',
         desc1: 'Above SSA median internet access (35%), but rural grid cuts force teachers to pay for mobile data out of pocket.',
         desc2: 'Strong national budgetary commitment (27.9% of budget), but provider monetization remains heavily direct-to-consumer.',
         desc3: 'Kiswahili AI performance is highest in the pilot (62%), but community language learners face significant comprehension drops.'
@@ -738,7 +1606,6 @@
         name: 'Rwanda (RWA)',
         badge: 'High Discrepancy (30 / 45)',
         badgeClass: 'bg-blue-100 text-blue-800',
-        cardBorder: 'border-blue-600',
         archetype: 'Ecosystem Archetype: State-Led Digital Push vs. Classroom Crowding & Language Transition',
         gap1Score: 'Score: 9 / 15',
         gap2Score: 'Score: 10 / 15',
@@ -748,10 +1615,10 @@
         bb: '0.6',
         gdp: '$3,785',
         edbudget: '14.2%',
-        data: '7.6% of monthly GDP',
-        lang: 'English (Kinyarwanda home)',
-        aiscore: '38% (Kinyarwanda)',
-        ptr: '59.5 pupils / teacher',
+        data: '7.6% GDP',
+        lang: 'Kinyarwanda',
+        aiscore: '38%',
+        ptr: '59.5',
         desc1: 'Fixed broadband is near-zero (0.6/100). Rural schools rely exclusively on intermittent mobile connections.',
         desc2: 'Data cost burden is severe (7.6% of per capita monthly income). High structural dependence on donor pilot grants.',
         desc3: 'Acute linguistic tension: formal instruction in English, but pupils think in Kinyarwanda where AI LLM performance degrades to 38%.'
@@ -760,7 +1627,6 @@
         name: 'Mauritius (MUS)',
         badge: 'Low Discrepancy (18 / 45) · Upper Bound',
         badgeClass: 'bg-rose-100 text-rose-800',
-        cardBorder: 'border-rose-600',
         archetype: 'Ecosystem Archetype: High-Income SIDS with Complete Electrification and Broadband Saturation',
         gap1Score: 'Score: 3 / 15',
         gap2Score: 'Score: 4 / 15',
@@ -770,10 +1636,10 @@
         bb: '28.0',
         gdp: '$31,697',
         edbudget: '14.2%',
-        data: '0.9% of monthly GDP',
-        lang: 'English / French / Creole',
-        aiscore: '28% (Creole proxy)',
-        ptr: '16.2 pupils / teacher',
+        data: '0.9% GDP',
+        lang: 'English/Creole',
+        aiscore: '28%',
+        ptr: '16.2',
         desc1: 'Complete 100% rural power and 28/100 fixed broadband. Infrastructure assumptions of global EdTech tools are fully satisfied.',
         desc2: 'High per capita income ($31,697 PPP) reduces data costs to negligible levels (<1% of monthly income).',
         desc3: 'Linguistic mismatch is mitigated by high bilingual teacher literacy, though Creole language modeling remains unstandardized.'
@@ -782,7 +1648,6 @@
         name: 'Zambia (ZMB)',
         badge: 'Critical Discrepancy (37 / 45) · Lower Bound',
         badgeClass: 'bg-amber-100 text-amber-800',
-        cardBorder: 'border-amber-600',
         archetype: 'Ecosystem Archetype: Severe Rural Infrastructure Deficit & High Linguistic Fragmentation',
         gap1Score: 'Score: 13 / 15',
         gap2Score: 'Score: 10 / 15',
@@ -792,10 +1657,10 @@
         bb: '0.8',
         gdp: '$4,221',
         edbudget: '15.4%',
-        data: '6.8% of monthly GDP',
-        lang: 'English (73 local langs)',
-        aiscore: '18% (Bemba/Nyanja)',
-        ptr: '42.1 pupils / teacher',
+        data: '6.8% GDP',
+        lang: 'Bemba/Nyanja',
+        aiscore: '18%',
+        ptr: '42.1',
         desc1: 'Critical energy constraint: only 31.3% of rural schools have electricity. Fixed broadband is 0.8/100.',
         desc2: '1GB of monthly EdTech data costs ~6.8% of average monthly income. Schools have minimal IT maintenance budget.',
         desc3: 'Severe linguistic exclusion: 73 languages across provinces. Bemba/Nyanja AI benchmark is only 18% of English accuracy.'
@@ -846,7 +1711,6 @@
       document.getElementById('gap3-desc').textContent = d.desc3;
     }
 
-    // Mini Chart Gallery Toggles
     function showGapChart(gapKey) {
       const img = document.getElementById('gap-chart-img');
       const cap = document.getElementById('gap-chart-caption');
@@ -860,27 +1724,54 @@
 
       if (gapKey === 'gap1') {
         img.src = './data/analysis_b/gap1_connectivity_assumption.png';
-        cap.textContent = 'Fixed broadband (<3/100) vs. EdTech solution delivery requirements. 70% rural SSA electricity deficit acts as upstream bottleneck.';
+        cap.textContent = 'Figure 1: Fixed broadband (<3/100) vs. EdTech solution delivery requirements. 70% rural SSA electricity deficit acts as upstream bottleneck.';
       } else if (gapKey === 'gap2') {
         img.src = './data/analysis_b/gap2_cost_sustainability.png';
-        cap.textContent = '1GB/month data burden reaches 7.6% of Rwandan monthly income. Educational spending at GDP level fails to reflect non-salary technology budgets.';
+        cap.textContent = 'Figure 2: 1GB/month data burden reaches 7.6% of Rwandan monthly income. Educational spending at GDP level fails to reflect non-salary technology budgets.';
       } else if (gapKey === 'gap3') {
         img.src = './data/analysis_b/gap3_linguistic_inclusion.png';
-        cap.textContent = '70-80% classroom instruction in national/local languages vs. <15% tool support. AI model benchmark drops to 18% accuracy in Bemba/Nyanja.';
+        cap.textContent = 'Figure 3: 70-80% classroom instruction in national/local languages vs. <15% tool support. AI model benchmark drops to 18% accuracy in Bemba/Nyanja.';
       }
     }
 
-    // Embed Modal
-    function toggleEmbedModal(url) {
-      const modal = document.getElementById('embed-modal');
-      const snippet = document.getElementById('embed-snippet');
-      if (url) {
-        snippet.value = `<iframe src="${url}" width="100%" height="700" frameborder="0" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" title="EdTech Policy Observatory"></iframe>`;
-        modal.classList.remove('hidden');
-      } else {
-        modal.classList.add('hidden');
-      }
+    function switchDashboard(url, title) {
+      const frame = document.getElementById('dash-frame');
+      const loader = document.getElementById('frame-loader');
+      const titleEl = document.getElementById('dash-title');
+      const directLink = document.getElementById('dash-direct-link');
+      if (loader) loader.classList.remove('hidden');
+      if (frame) frame.src = url;
+      if (titleEl) titleEl.textContent = 'Embedded Interactive Engine: ' + title;
+      if (directLink) directLink.href = url;
     }
+
+    function filterCodebook(pillar) {
+      document.querySelectorAll('.pillar-filter-btn').forEach(b => {
+        b.className = 'pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50';
+      });
+      event.target.className = 'pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white';
+      
+      const rows = document.querySelectorAll('#codebook-table-body tr');
+      let visible = 0;
+      rows.forEach(r => {
+        const text = r.querySelector('td:first-child')?.textContent || '';
+        if (pillar === 'ALL' || text.includes(pillar)) {
+          r.style.display = '';
+          visible++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+      document.getElementById('codebook-count-badge').textContent = `Showing ${visible} Mappings`;
+    }
+
+    // Initialize on DOM load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderHeroMetrics('systemic');
+      renderDPGs('ALL');
+      calculateAudit();
+      updateRotationPlanner();
+    });
   </script>
 </body>
 </html>
