@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EdTech Policy Observatory · Sub-Saharan Africa & MENA</title>
+  <meta name="description" content="An open-access decision-support observatory bridging macro benchmarks, UNESCO's 6 Pillars of EdTech, and grassroots classroom realities across SSA and MENA.">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Newsreader -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Newsreader"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#0f172a',
+            },
+            unesco: '#0055b7',
+            pilot: {
+              ken: '#1B7F4F',
+              rwa: '#0033A0',
+              mus: '#E63329',
+              zmb: '#FF8200'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom subtle styling */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .hero-mesh {
+      background-color: #0b132b;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.25) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.2) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(30, 58, 138, 0.35) 0px, transparent 50%);
+    }
+    .tab-active {
+      border-bottom: 2px solid #2563eb;
+      color: #1d4ed8;
+      font-weight: 600;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Alliance of Alliances · UNESCO Global Education Coalition · UniTO Master in ICT4D</span>
+      </div>
+      <div class="flex items-center gap-4 text-slate-400">
+        <span>Academic Year: 2025–2026</span>
+        <span>•</span>
+        <a href="https://github.com/SunilRaman42/CC_3" target="_blank" class="hover:text-white transition flex items-center gap-1">
+          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Repository
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Primary Navigation -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-blue-700 to-indigo-600 flex items-center justify-center text-white font-bold text-xl shadow-md">
+          Ω
+        </div>
+        <div>
+          <span class="font-extrabold text-slate-900 text-lg tracking-tight block leading-tight">EdTech Policy Observatory</span>
+          <span class="text-xs text-slate-500 font-medium">Sub-Saharan Africa & MENA Digital Transformation</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
+        <a href="#overview" onclick="switchTab('pilot-tab'); window.scrollTo({top: 0, behavior: 'smooth'}); return false;" class="hover:text-blue-600 transition">Overview</a>
+        <a href="#pilot" onclick="switchTab('pilot-tab'); return false;" class="hover:text-blue-600 transition">4-Country Deep Dive</a>
+        <a href="#dashboards" onclick="switchTab('dashboards-tab'); return false;" class="hover:text-blue-600 transition">Live Dashboards</a>
+        <a href="#codebook" onclick="switchTab('codebook-tab'); return false;" class="hover:text-blue-600 transition">6-Pillars Codebook</a>
+        <a href="#stakeholders" onclick="document.getElementById('stakeholders')?.scrollIntoView({behavior: 'smooth'}); return false;" class="hover:text-blue-600 transition">Policy Action</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#codebook-tab" onclick="switchTab('codebook-tab'); document.getElementById('data-downloads')?.scrollIntoView({behavior: 'smooth'}); return false;" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md bg-blue-50 text-blue-700 text-xs font-semibold hover:bg-blue-100 transition border border-blue-200">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          Open Data
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-mesh text-white pt-16 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-semibold border border-blue-400/30 mb-6">
+          <span>Global South Decision-Support Toolkit</span>
+          <span>•</span>
+          <span>Component A & B Master Deliverable</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight text-white mb-6">
+          Bridging Macro Assessment, the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-teal-300">6 Pillars of EdTech</span>, and Grassroots Classroom Reality
+        </h1>
+
+        <p class="text-lg sm:text-xl text-slate-300 font-normal leading-relaxed mb-8">
+          A multi-stakeholder analytical observatory reconciling OECD PISA 2025 cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa and MENA.
+        </p>
+
+        <!-- Metric Cards Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-700/60">
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-sky-400">69</div>
+            <div class="text-xs text-slate-300 font-medium">Nations Monitored</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">48 SSA · 21 MENA</div>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-teal-400">3</div>
+            <div class="text-xs text-slate-300 font-medium">Survey Vantages</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Teachers · Providers · Experts</div>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-amber-400">6</div>
+            <div class="text-xs text-slate-300 font-medium">UNESCO Pillars</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">Construct Codebook</div>
+          </div>
+          <div class="bg-white/5 backdrop-blur-sm rounded-lg p-3.5 border border-white/10">
+            <div class="text-2xl font-black text-rose-400">4</div>
+            <div class="text-xs text-slate-300 font-medium">Pilot Deep Dives</div>
+            <div class="text-[10px] text-slate-400 mt-0.5">KEN · RWA · MUS · ZMB</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Section Switcher -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+    <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1" id="tab-nav">
+        <button onclick="switchTab('pilot-tab')" id="btn-pilot-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold transition bg-blue-600 text-white shadow-sm">
+          4-Country Pilot Deep Dive
+        </button>
+        <button onclick="switchTab('dashboards-tab')" id="btn-dashboards-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
+          Live Dashboards (EEA_2 & EEA_3)
+        </button>
+        <button onclick="switchTab('codebook-tab')" id="btn-codebook-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
+          6-Pillars Codebook & Open Data
+        </button>
+        <button onclick="switchTab('theory-tab')" id="btn-theory-tab" class="tab-btn px-4 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
+          Methodology & Triangulation
+        </button>
+      </div>
+
+      <div class="text-xs text-slate-500 font-medium hidden lg:block pr-3">
+        Interactive Policy Observatory · v1.0
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+    <!-- ================================================================= -->
+    <!-- TAB 1: 4-COUNTRY PILOT DEEP DIVE (DEFAULT ACTIVE)                 -->
+    <!-- ================================================================= -->
+    <div id="pilot-tab" class="tab-content block">
+      
+      <div class="mb-8">
+        <span class="badge-pill bg-blue-100 text-blue-800 mb-2">Empirical Triangulation Layer</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">4-Country Comparative Pilot Deep Dive</h2>
+        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+          Examining four Sub-Saharan African economies participating in OECD PISA 2025 with extensive 6-Pillars indicator coverage. This cross-case analysis tests whether supply-side EdTech assumptions match ground-level classroom realities.
+        </p>
+      </div>
+
+      <!-- Country Selector Buttons -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
+        <button onclick="selectCountry('KEN')" id="card-KEN" class="country-card p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 text-left transition hover:shadow-md">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xl">🇰🇪</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-200 text-emerald-800">Score: 25/45</span>
+          </div>
+          <div class="font-extrabold text-slate-900">Kenya</div>
+          <div class="text-xs text-slate-500 mt-0.5 font-medium">Silicon Savannah Hub</div>
+          <div class="text-[11px] text-emerald-700 mt-2 font-semibold">100% Qual Teachers · 35% Net</div>
+        </button>
+
+        <button onclick="selectCountry('RWA')" id="card-RWA" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xl">🇷🇼</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">Score: 30/45</span>
+          </div>
+          <div class="font-extrabold text-slate-900">Rwanda</div>
+          <div class="text-xs text-slate-500 mt-0.5 font-medium">State-Led Push</div>
+          <div class="text-[11px] text-blue-700 mt-2 font-semibold">Smart Master Plan · PTR 59.5</div>
+        </button>
+
+        <button onclick="selectCountry('MUS')" id="card-MUS" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xl">🇲🇺</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-800">Score: 18/45</span>
+          </div>
+          <div class="font-extrabold text-slate-900">Mauritius</div>
+          <div class="text-xs text-slate-500 mt-0.5 font-medium">Upper-Bound Control</div>
+          <div class="text-[11px] text-rose-700 mt-2 font-semibold">100% Power · $31.7k PPP</div>
+        </button>
+
+        <button onclick="selectCountry('ZMB')" id="card-ZMB" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-xl">🇿🇲</span>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">Score: 37/45</span>
+          </div>
+          <div class="font-extrabold text-slate-900">Zambia</div>
+          <div class="text-xs text-slate-500 mt-0.5 font-medium">Infrastructure Bound</div>
+          <div class="text-[11px] text-amber-700 mt-2 font-semibold">31% Rural Power · 73 Langs</div>
+        </button>
+      </div>
+
+      <!-- Active Country Profile Detail -->
+      <div id="country-detail" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 mb-10">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100">
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 id="country-name" class="text-2xl font-extrabold text-slate-900">Kenya (KEN)</h3>
+              <span id="country-badge" class="badge-pill bg-emerald-100 text-emerald-800">Moderate Discrepancy (25 / 45)</span>
+            </div>
+            <p id="country-archetype" class="text-slate-500 text-sm mt-1">Ecosystem Archetype: East African Innovation Hub with High Pedagogical Qualifications</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-slate-400 font-medium">OECD PISA 2025 Participant</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6">
+          <!-- Gap 1 Card -->
+          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/80">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Gap 1: Connectivity</span>
+              <span id="gap1-score" class="badge-pill bg-amber-100 text-amber-800">Score: 7/15</span>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-slate-500">Total Internet Users:</span> <strong id="val-net">35.0%</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">Rural Electricity:</span> <strong id="val-elec">67.1%</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">Fixed Broadband / 100:</span> <strong id="val-bb">3.0</strong></div>
+            </div>
+            <p id="gap1-desc" class="text-xs text-slate-600 mt-4 leading-relaxed border-t border-slate-200 pt-3">
+              Above SSA median internet access (35%), but rural grid cuts force teachers to pay for mobile data out of pocket.
+            </p>
+          </div>
+
+          <!-- Gap 2 Card -->
+          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/80">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Gap 2: Cost & Budget</span>
+              <span id="gap2-score" class="badge-pill bg-amber-100 text-amber-800">Score: 8/15</span>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-slate-500">GDP per capita (PPP):</span> <strong id="val-gdp">$6,650</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">Edu Spend (% Budget):</span> <strong id="val-edbudget">27.9%</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">Data Burden (1GB/mo):</span> <strong id="val-data">4.3% of inc.</strong></div>
+            </div>
+            <p id="gap2-desc" class="text-xs text-slate-600 mt-4 leading-relaxed border-t border-slate-200 pt-3">
+              Strong national budgetary commitment (27.9% of budget), but provider monetization remains direct-to-consumer.
+            </p>
+          </div>
+
+          <!-- Gap 3 Card -->
+          <div class="bg-slate-50 rounded-xl p-5 border border-slate-200/80">
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Gap 3: Linguistic Fit</span>
+              <span id="gap3-score" class="badge-pill bg-rose-100 text-rose-800">Score: 10/15</span>
+            </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between"><span class="text-slate-500">Instruction Language:</span> <strong id="val-lang">Kiswahili + EN</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">AI Relative Score:</span> <strong id="val-aiscore">62% (Kiswahili)</strong></div>
+              <div class="flex justify-between"><span class="text-slate-500">Primary PTR:</span> <strong id="val-ptr">30.7 pupils/tch</strong></div>
+            </div>
+            <p id="gap3-desc" class="text-xs text-slate-600 mt-4 leading-relaxed border-t border-slate-200 pt-3">
+              Kiswahili AI performance is highest in the pilot, but community language learners face significant comprehension drops.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Discrepancy Heatmap & Chart Gallery -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h4 class="font-extrabold text-slate-900">Master Discrepancy Matrix Heatmap</h4>
+              <p class="text-xs text-slate-500">Synthesizing 9 sub-dimensions across the 4 pilot systems</p>
+            </div>
+            <span class="badge-pill bg-slate-100 text-slate-700 text-xs">Analysis B</span>
+          </div>
+          <div class="overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
+            <img src="./data/analysis_b/master_discrepancy_matrix.png" alt="Master Discrepancy Matrix" class="w-full h-auto object-contain hover:scale-105 transition duration-300">
+          </div>
+          <p class="text-xs text-slate-500 mt-3 italic text-center">
+            Heatmap grading structural misalignment from 1 (Low) to 5 (Critical). Zambia displays peak tension; Mauritius functions as upper bound.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h4 class="font-extrabold text-slate-900">The 3 Structural Gaps in Focus</h4>
+                <p class="text-xs text-slate-500">Select any chart to inspect the empirical breakdown</p>
+              </div>
+              <span class="badge-pill bg-blue-100 text-blue-700 text-xs">Triangulation</span>
+            </div>
+
+            <!-- Mini Chart Switcher -->
+            <div class="flex gap-2 mb-4">
+              <button onclick="showGapChart('gap1')" id="btn-chart-gap1" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-600 text-white">Gap 1: Connectivity</button>
+              <button onclick="showGapChart('gap2')" id="btn-chart-gap2" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200">Gap 2: Cost</button>
+              <button onclick="showGapChart('gap3')" id="btn-chart-gap3" class="px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200">Gap 3: Linguistic</button>
+            </div>
+
+            <div class="overflow-hidden rounded-xl border border-slate-100 bg-slate-50">
+              <img id="gap-chart-img" src="./data/analysis_b/gap1_connectivity_assumption.png" alt="Gap Chart" class="w-full h-auto object-contain">
+            </div>
+          </div>
+
+          <p id="gap-chart-caption" class="text-xs text-slate-500 mt-3 italic text-center">
+            Fixed broadband (<3/100) vs. EdTech solution delivery requirements. 70% rural SSA electricity deficit acts as upstream bottleneck.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 2: LIVE DASHBOARDS HUB (EEA_2 & EEA_3)                       -->
+    <!-- ================================================================= -->
+    <div id="dashboards-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <span class="badge-pill bg-purple-100 text-purple-800 mb-2">Interactive Artefacts</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Direct Dashboard Access</h2>
+        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+          Stakeholders can launch either observatory directly in full-screen or view live preview instances below.
+        </p>
+      </div>
+
+      <!-- Dashboard Gateway Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <!-- EEA_2 Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-pill bg-sky-100 text-sky-800">Macro Layer</span>
+              <span class="text-xs text-slate-400 font-mono">EEA_2</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2">OECD PISA 2025 AI & Device Explorer</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              Analyzes cross-national indicators across 85 countries, exposing the MENA guidance deficit and testing the Inverted-U curve between digital device saturation and learning outcomes.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs mb-6 font-medium text-slate-600">
+              <span class="bg-slate-100 px-2.5 py-1 rounded">AI Drafting vs Learning</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded">Guidance Deficit</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded">Screen Saturation</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <a href="https://rsnl42.github.io/EEA_2/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-sm transition">
+              Launch Live Dashboard ↗
+            </a>
+            <button onclick="toggleEmbedModal('https://rsnl42.github.io/EEA_2/')" class="py-2.5 px-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition" title="Get embed iframe">
+              &lt;/&gt;
+            </button>
+          </div>
+        </div>
+
+        <!-- EEA_3 Card -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="badge-pill bg-emerald-100 text-emerald-800">Ground-Truth Triangulation</span>
+              <span class="text-xs text-slate-400 font-mono">EEA_3</span>
+            </div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-2">SSA EdTech Triangulation Engine</h3>
+            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+              Visualizes 800 respondents across 48 Sub-Saharan African nations. Triangulates Teacher classroom reality against Provider supply models and Expert governance constraints.
+            </p>
+            <div class="flex flex-wrap gap-2 text-xs mb-6 font-medium text-slate-600">
+              <span class="bg-slate-100 px-2.5 py-1 rounded">48 SSA Countries</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded">Donor Exit Risk (85%)</span>
+              <span class="bg-slate-100 px-2.5 py-1 rounded">Calibrated Micro-Data</span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-slate-100">
+            <a href="https://SunilRaman42.github.io/EEA_3/" target="_blank" class="flex-1 text-center py-2.5 px-4 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition">
+              Launch Live Dashboard ↗
+            </a>
+            <button onclick="toggleEmbedModal('https://SunilRaman42.github.io/EEA_3/')" class="py-2.5 px-3 rounded-lg border border-slate-300 hover:bg-slate-50 text-slate-700 text-sm font-semibold transition" title="Get embed iframe">
+              &lt;/&gt;
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Interactive Dashboard Frame -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="bg-slate-900 text-white px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="w-3 h-3 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="dash-title" class="font-extrabold text-sm sm:text-base">Embedded Interactive Preview: EEA_3 Triangulation Engine</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="switchDashboard('https://SunilRaman42.github.io/EEA_3/', 'Embedded Interactive Preview: EEA_3 Triangulation Engine')" class="px-3 py-1.5 rounded bg-slate-800 text-xs font-semibold hover:bg-slate-700 transition">Switch to EEA_3</button>
+            <button onclick="switchDashboard('https://rsnl42.github.io/EEA_2/', 'Embedded Interactive Preview: OECD PISA 2025 Explorer (EEA_2)')" class="px-3 py-1.5 rounded bg-slate-800 text-xs font-semibold hover:bg-slate-700 transition">Switch to EEA_2</button>
+            <a id="dash-direct-link" href="https://SunilRaman42.github.io/EEA_3/" target="_blank" class="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition flex items-center gap-1 shadow-sm">
+              Open Direct ↗
+            </a>
+          </div>
+        </div>
+        <div class="relative w-full h-[720px] bg-slate-100">
+          <!-- Fallback loader / note -->
+          <div id="frame-loader" class="absolute inset-0 flex flex-col items-center justify-center bg-slate-50 text-slate-600 p-6 z-10 transition-opacity duration-300">
+            <div class="w-10 h-10 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+            <p class="font-semibold text-sm text-slate-800">Loading Interactive Engine...</p>
+            <p class="text-xs text-slate-500 max-w-md text-center mt-1">
+              If your browser restricts cross-origin embeds, use the "Open Direct ↗" button above.
+            </p>
+          </div>
+          <iframe id="dash-frame" src="https://SunilRaman42.github.io/EEA_3/" class="w-full h-full border-0 relative z-20" onload="document.getElementById('frame-loader')?.classList.add('hidden')" title="Live Dashboard Preview" allow="clipboard-write"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 3: 6-PILLARS CODEBOOK & OPEN DATA                             -->
+    <!-- ================================================================= -->
+    <div id="codebook-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <span class="badge-pill bg-teal-100 text-teal-800 mb-2">Construct Validity & Open Data</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">UNESCO 6-Pillars Survey Codebook</h2>
+        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+          Operationalizing UNESCO’s Six Pillars of Digital Transformation across the 3 Alliance of Alliances survey instruments (104 items total).
+        </p>
+      </div>
+
+      <!-- Download Hub -->
+      <div id="data-downloads" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <a href="./data/AoA_Survey_to_Pillar_Codebook.csv" download class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
+          <div class="text-blue-600 font-bold text-xs uppercase mb-1">CSV Codebook</div>
+          <div class="font-extrabold text-slate-900 text-sm group-hover:text-blue-600 transition">AoA_Survey_Codebook.csv</div>
+          <div class="text-xs text-slate-500 mt-1">104 coded survey items with gap flags</div>
+        </a>
+
+        <a href="./data/processed/latest_country_profiles_6pillars.csv" download class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
+          <div class="text-teal-600 font-bold text-xs uppercase mb-1">Macro Panel</div>
+          <div class="font-extrabold text-slate-900 text-sm group-hover:text-teal-600 transition">6-Pillars_WDI_2024.csv</div>
+          <div class="text-xs text-slate-500 mt-1">69 nations · 24 development indicators</div>
+        </a>
+
+        <a href="./data/raw/SSA_Survey_Responses_Calibrated.xlsx" download class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
+          <div class="text-purple-600 font-bold text-xs uppercase mb-1">Micro Data</div>
+          <div class="font-extrabold text-slate-900 text-sm group-hover:text-purple-600 transition">Calibrated_Responses.xlsx</div>
+          <div class="text-xs text-slate-500 mt-1">800 respondents across 48 SSA nations</div>
+        </a>
+
+        <a href="./Thesis_First_Draft_Concept.md" target="_blank" class="p-4 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:shadow-md transition group">
+          <div class="text-rose-600 font-bold text-xs uppercase mb-1">Monograph</div>
+          <div class="font-extrabold text-slate-900 text-sm group-hover:text-rose-600 transition">Thesis_Draft_Concept.md</div>
+          <div class="text-xs text-slate-500 mt-1">UniTO Master's Component A draft</div>
+        </a>
+      </div>
+
+      <!-- Codebook Summary Table -->
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-12">
+        <div class="px-6 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
+          <h4 class="font-extrabold text-slate-900 text-sm sm:text-base">Construct Coverage by UNESCO Pillar</h4>
+          <span class="text-xs text-slate-500">Analysis A Reference</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm text-slate-700">
+            <thead class="bg-slate-100 text-xs uppercase font-bold text-slate-600">
+              <tr>
+                <th class="py-3 px-6">UNESCO Pillar</th>
+                <th class="py-3 px-4">Primary Items</th>
+                <th class="py-3 px-4">Coverage Status</th>
+                <th class="py-3 px-6">Identified Empirical Gap</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <tr class="hover:bg-slate-50/50">
+                <td class="py-3.5 px-6 font-bold text-slate-900">P1: Coordination & Leadership</td>
+                <td class="py-3.5 px-4 font-mono text-xs">17 items</td>
+                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
+                <td class="py-3.5 px-6 text-xs text-slate-600">Lack of multi-year line-item budgeting items in policy instruments.</td>
+              </tr>
+              <tr class="hover:bg-slate-50/50">
+                <td class="py-3.5 px-6 font-bold text-slate-900">P2: Connectivity & Infrastructure</td>
+                <td class="py-3.5 px-4 font-mono text-xs">14 items</td>
+                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
+                <td class="py-3.5 px-6 text-xs text-slate-600">70% rural power deficit; offline caching mechanisms under-reported.</td>
+              </tr>
+              <tr class="hover:bg-slate-50/50">
+                <td class="py-3.5 px-6 font-bold text-slate-900">P3: Cost & Sustainability</td>
+                <td class="py-3.5 px-4 font-mono text-xs">8 items</td>
+                <td class="py-3.5 px-4"><span class="badge-pill bg-amber-100 text-amber-800">Thinnest</span></td>
+                <td class="py-3.5 px-6 text-xs text-slate-600"><strong>Instrument Gap:</strong> Teacher out-of-pocket airtime cost unmeasured.</td>
+              </tr>
+              <tr class="hover:bg-slate-50/50">
+                <td class="py-3.5 px-6 font-bold text-slate-900">P4: Capacity & Culture</td>
+                <td class="py-3.5 px-4 font-mono text-xs">12 items</td>
+                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
+                <td class="py-3.5 px-6 text-xs text-slate-600">Teacher continuous professional development (CPD) lacks structured dosage metrics.</td>
+              </tr>
+              <tr class="hover:bg-slate-50/50">
+                <td class="py-3.5 px-6 font-bold text-slate-900">P5: Content & Solutions</td>
+                <td class="py-3.5 px-4 font-mono text-xs">13 items</td>
+                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Good</span></td>
+                <td class="py-3.5 px-6 text-xs text-slate-600">< 15% of active EdTech tools support indigenous African languages.</td>
+              </tr>
+              <tr class="hover:bg-slate-50/50">
+                <td class="py-3.5 px-6 font-bold text-slate-900">P6: Data & Evidence</td>
+                <td class="py-3.5 px-4 font-mono text-xs">19 items</td>
+                <td class="py-3.5 px-4"><span class="badge-pill bg-emerald-100 text-emerald-800">Strongest</span></td>
+                <td class="py-3.5 px-6 text-xs text-slate-600">Only 22% of SSA countries possess unique student ID mechanisms (GEM 2023).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 4: METHODOLOGY & TRIANGULATION CONCEPT                       -->
+    <!-- ================================================================= -->
+    <div id="theory-tab" class="tab-content hidden">
+      <div class="mb-8">
+        <span class="badge-pill bg-slate-100 text-slate-800 mb-2">Theoretical Architecture</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">The Saturation vs. Scarcity Divide</h2>
+        <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
+          Why linear transposition of Western digital education paradigms produces distorted policy in resource-constrained environments.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+          <h3 class="text-lg font-extrabold text-slate-900 mb-3">The Inverted-U Hypothesis</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            In saturated high-income systems (OECD / Gulf MENA), marginal increases in screen exposure correlate with negative cognitive returns due to distraction, multitasking, and AI cognitive offloading.
+          </p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Conversely, in resource-scarce African schools, access to a single digital solar library or tablet lesson guide generates steep non-linear foundational learning gains. Prescribing digital austerity in environments starved of educational media is an analytical error.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+          <h3 class="text-lg font-extrabold text-slate-900 mb-3">The MENA Hardware Fallacy</h3>
+          <p class="text-slate-600 text-sm leading-relaxed mb-4">
+            OECD PISA 2025 data reveals that Gulf systems achieved near-universal device saturation (Pillar 2), yet exhibit digital guidance deficits exceeding 35%. Hardware without pedagogical support (Pillar 4) reliably induces leisure distraction rather than academic mastery.
+          </p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            This inquiry demonstrates that Sub-Saharan Africa must avoid the MENA hardware trap by synchronizing teacher professional development with any digital deployment.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- STAKEHOLDER POLICY ACTION SECTION (ALWAYS VISIBLE)                -->
+    <!-- ================================================================= -->
+    <section id="stakeholders" class="mt-16 pt-12 border-t border-slate-200">
+      <div class="text-center max-w-2xl mx-auto mb-10">
+        <span class="badge-pill bg-blue-100 text-blue-800 mb-2">Operational ICT4D Impact</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Actionable Directives by Stakeholder</h2>
+        <p class="text-slate-600 text-sm mt-1">Transforming empirical triangulation into grounded policy interventions.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold mb-4">
+            MoE
+          </div>
+          <h3 class="font-extrabold text-slate-900 mb-2">Education Ministries</h3>
+          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+            <li>• <strong>Mandate Offline-First Architecture:</strong> Disqualify software requiring continuous broadband in schools with rural electricity rates < 45%.</li>
+            <li>• <strong>Audit Out-of-Pocket Burdens:</strong> Line-item budget teacher data costs to prevent the informal 4–8% salary tax on submission portals.</li>
+            <li>• <strong>Local Language Pre-requisites:</strong> Require vendors to support dominant early-grade national languages (e.g. Kinyarwanda, Bemba) before certification.</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center font-bold mb-4">
+            UN
+          </div>
+          <h3 class="font-extrabold text-slate-900 mb-2">Multilateral Donors & Hubs</h3>
+          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+            <li>• <strong>Exit-Proof Capital:</strong> Address the 85% project collapse rate by requiring 3-year recurring maintenance commitments from recipient systems.</li>
+            <li>• <strong>Diversify Beyond the Big Four:</strong> Expand startup capital outside Kenya, Nigeria, and South Africa to under-resourced Francophone and Lusophone markets.</li>
+            <li>• <strong>Support Token-Tax Subsidies:</strong> Fund open-source fine-tuning of African LLMs to lower inference token taxes for local developers.</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center font-bold mb-4">
+            DEV
+          </div>
+          <h3 class="font-extrabold text-slate-900 mb-2">EdTech Founders & Startups</h3>
+          <ul class="text-xs text-slate-600 space-y-2.5 leading-relaxed">
+            <li>• <strong>Design for SMS / Local Storage:</strong> Build synchronization engines that function on intermittent 2G/3G connections and feature device caching.</li>
+            <li>• <strong>Accommodate 50+ Classrooms:</strong> Structure apps for rotational small-group devices rather than individual 1:1 hardware assumptions.</li>
+            <li>• <strong>Safeguard Data Sovereignty:</strong> Store learner records in-continent to meet emerging AU continental AI governance standards.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Embed Modal -->
+  <div id="embed-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between mb-4">
+        <h4 class="font-extrabold text-slate-900">Embed Dashboard Widget</h4>
+        <button onclick="toggleEmbedModal('')" class="text-slate-400 hover:text-slate-600">✕</button>
+      </div>
+      <p class="text-xs text-slate-500 mb-3">Copy and paste this snippet to embed the live responsive observatory into an institutional portal or report:</p>
+      <textarea id="embed-snippet" readonly class="w-full h-28 bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs font-mono text-slate-700 select-all"></textarea>
+      <div class="mt-4 flex justify-end">
+        <button onclick="navigator.clipboard.writeText(document.getElementById('embed-snippet').value); alert('Copied to clipboard!');" class="px-4 py-2 bg-blue-600 text-white rounded-lg text-xs font-semibold hover:bg-blue-700 transition">Copy Snippet</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <div class="text-white font-bold text-sm mb-1">Sub-Saharan Africa & MENA EdTech Policy Observatory</div>
+        <p class="text-slate-500">First-Level Master in ICT for Development and Social Good · University of Turin (UniTO) · COREP</p>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/SunilRaman42/CC_3" target="_blank" class="hover:text-white transition">CC_3 (Analytical Repo)</a>
+        <a href="https://github.com/SunilRaman42/EEA_3" target="_blank" class="hover:text-white transition">EEA_3 (Dashboard Repo)</a>
+        <a href="https://rsnl42.github.io/EEA_2/" target="_blank" class="hover:text-white transition">EEA_2 (PISA Explorer)</a>
+      </div>
+      <div class="text-slate-500">
+        Digital Public Good · Open Access MIT & CC-BY 4.0
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript Controller -->
+  <script>
+    // Tab Switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('block'));
+      
+      const target = document.getElementById(tabId);
+      if (target) {
+        target.classList.remove('hidden');
+        target.classList.add('block');
+      }
+
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+        btn.classList.add('text-slate-600', 'hover:bg-slate-100');
+      });
+
+      const activeBtn = document.getElementById('btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600', 'hover:bg-slate-100');
+      }
+    }
+
+    // Interactive Dashboard Frame Switcher
+    function switchDashboard(url, title) {
+      const frame = document.getElementById('dash-frame');
+      const loader = document.getElementById('frame-loader');
+      const titleEl = document.getElementById('dash-title');
+      const directLink = document.getElementById('dash-direct-link');
+      if (loader) loader.classList.remove('hidden');
+      if (frame) frame.src = url;
+      if (titleEl) titleEl.textContent = title;
+      if (directLink) directLink.href = url;
+    }
+
+    // URL Hash Routing Support
+    const HASH_MAP = {
+      '#overview': 'pilot-tab',
+      '#pilot': 'pilot-tab',
+      '#dashboards': 'dashboards-tab',
+      '#codebook': 'codebook-tab',
+      '#theory': 'theory-tab',
+      '#stakeholders': 'pilot-tab'
+    };
+    function handleHash() {
+      const hash = window.location.hash;
+      if (HASH_MAP[hash]) {
+        switchTab(HASH_MAP[hash]);
+        if (hash === '#stakeholders') {
+          setTimeout(() => document.getElementById('stakeholders')?.scrollIntoView({ behavior: 'smooth' }), 100);
+        }
+      }
+    }
+    window.addEventListener('hashchange', handleHash);
+    window.addEventListener('DOMContentLoaded', handleHash);
+
+    // 4-Country Data Store
+    const countryData = {
+      'KEN': {
+        name: 'Kenya (KEN)',
+        badge: 'Moderate Discrepancy (25 / 45)',
+        badgeClass: 'bg-emerald-100 text-emerald-800',
+        cardBorder: 'border-emerald-600',
+        archetype: 'Ecosystem Archetype: East African Innovation Hub with High Pedagogical Qualifications',
+        gap1Score: 'Score: 7 / 15',
+        gap2Score: 'Score: 8 / 15',
+        gap3Score: 'Score: 10 / 15',
+        net: '35.0%',
+        elec: '67.1%',
+        bb: '3.0',
+        gdp: '$6,650',
+        edbudget: '27.9%',
+        data: '4.3% of monthly GDP',
+        lang: 'Kiswahili + English',
+        aiscore: '62% (Kiswahili)',
+        ptr: '30.7 pupils / teacher',
+        desc1: 'Above SSA median internet access (35%), but rural grid cuts force teachers to pay for mobile data out of pocket.',
+        desc2: 'Strong national budgetary commitment (27.9% of budget), but provider monetization remains heavily direct-to-consumer.',
+        desc3: 'Kiswahili AI performance is highest in the pilot (62%), but community language learners face significant comprehension drops.'
+      },
+      'RWA': {
+        name: 'Rwanda (RWA)',
+        badge: 'High Discrepancy (30 / 45)',
+        badgeClass: 'bg-blue-100 text-blue-800',
+        cardBorder: 'border-blue-600',
+        archetype: 'Ecosystem Archetype: State-Led Digital Push vs. Classroom Crowding & Language Transition',
+        gap1Score: 'Score: 9 / 15',
+        gap2Score: 'Score: 10 / 15',
+        gap3Score: 'Score: 11 / 15',
+        net: '31.7%',
+        elec: '65.2%',
+        bb: '0.6',
+        gdp: '$3,785',
+        edbudget: '14.2%',
+        data: '7.6% of monthly GDP',
+        lang: 'English (Kinyarwanda home)',
+        aiscore: '38% (Kinyarwanda)',
+        ptr: '59.5 pupils / teacher',
+        desc1: 'Fixed broadband is near-zero (0.6/100). Rural schools rely exclusively on intermittent mobile connections.',
+        desc2: 'Data cost burden is severe (7.6% of per capita monthly income). High structural dependence on donor pilot grants.',
+        desc3: 'Acute linguistic tension: formal instruction in English, but pupils think in Kinyarwanda where AI LLM performance degrades to 38%.'
+      },
+      'MUS': {
+        name: 'Mauritius (MUS)',
+        badge: 'Low Discrepancy (18 / 45) · Upper Bound',
+        badgeClass: 'bg-rose-100 text-rose-800',
+        cardBorder: 'border-rose-600',
+        archetype: 'Ecosystem Archetype: High-Income SIDS with Complete Electrification and Broadband Saturation',
+        gap1Score: 'Score: 3 / 15',
+        gap2Score: 'Score: 4 / 15',
+        gap3Score: 'Score: 10 / 15',
+        net: '73.3%',
+        elec: '100.0%',
+        bb: '28.0',
+        gdp: '$31,697',
+        edbudget: '14.2%',
+        data: '0.9% of monthly GDP',
+        lang: 'English / French / Creole',
+        aiscore: '28% (Creole proxy)',
+        ptr: '16.2 pupils / teacher',
+        desc1: 'Complete 100% rural power and 28/100 fixed broadband. Infrastructure assumptions of global EdTech tools are fully satisfied.',
+        desc2: 'High per capita income ($31,697 PPP) reduces data costs to negligible levels (<1% of monthly income).',
+        desc3: 'Linguistic mismatch is mitigated by high bilingual teacher literacy, though Creole language modeling remains unstandardized.'
+      },
+      'ZMB': {
+        name: 'Zambia (ZMB)',
+        badge: 'Critical Discrepancy (37 / 45) · Lower Bound',
+        badgeClass: 'bg-amber-100 text-amber-800',
+        cardBorder: 'border-amber-600',
+        archetype: 'Ecosystem Archetype: Severe Rural Infrastructure Deficit & High Linguistic Fragmentation',
+        gap1Score: 'Score: 13 / 15',
+        gap2Score: 'Score: 10 / 15',
+        gap3Score: 'Score: 14 / 15',
+        net: '17.1%',
+        elec: '31.3%',
+        bb: '0.8',
+        gdp: '$4,221',
+        edbudget: '15.4%',
+        data: '6.8% of monthly GDP',
+        lang: 'English (73 local langs)',
+        aiscore: '18% (Bemba/Nyanja)',
+        ptr: '42.1 pupils / teacher',
+        desc1: 'Critical energy constraint: only 31.3% of rural schools have electricity. Fixed broadband is 0.8/100.',
+        desc2: '1GB of monthly EdTech data costs ~6.8% of average monthly income. Schools have minimal IT maintenance budget.',
+        desc3: 'Severe linguistic exclusion: 73 languages across provinces. Bemba/Nyanja AI benchmark is only 18% of English accuracy.'
+      }
+    };
+
+    function selectCountry(iso) {
+      document.querySelectorAll('.country-card').forEach(c => {
+        c.classList.remove('border-2', 'border-emerald-600', 'border-blue-600', 'border-rose-600', 'border-amber-600', 'bg-emerald-50/50', 'bg-blue-50/50', 'bg-rose-50/50', 'bg-amber-50/50');
+        c.classList.add('border-slate-200', 'bg-white');
+      });
+
+      const activeCard = document.getElementById('card-' + iso);
+      if (activeCard) {
+        const borderCol = iso === 'KEN' ? 'border-emerald-600' : (iso === 'RWA' ? 'border-blue-600' : (iso === 'MUS' ? 'border-rose-600' : 'border-amber-600'));
+        const bgCol = iso === 'KEN' ? 'bg-emerald-50/50' : (iso === 'RWA' ? 'bg-blue-50/50' : (iso === 'MUS' ? 'bg-rose-50/50' : 'bg-amber-50/50'));
+        activeCard.classList.remove('border-slate-200', 'bg-white');
+        activeCard.classList.add('border-2', borderCol, bgCol);
+      }
+
+      const d = countryData[iso];
+      if (!d) return;
+
+      document.getElementById('country-name').textContent = d.name;
+      const b = document.getElementById('country-badge');
+      b.textContent = d.badge;
+      b.className = 'badge-pill ' + d.badgeClass;
+      document.getElementById('country-archetype').textContent = d.archetype;
+
+      document.getElementById('gap1-score').textContent = d.gap1Score;
+      document.getElementById('gap2-score').textContent = d.gap2Score;
+      document.getElementById('gap3-score').textContent = d.gap3Score;
+
+      document.getElementById('val-net').textContent = d.net;
+      document.getElementById('val-elec').textContent = d.elec;
+      document.getElementById('val-bb').textContent = d.bb;
+
+      document.getElementById('val-gdp').textContent = d.gdp;
+      document.getElementById('val-edbudget').textContent = d.edbudget;
+      document.getElementById('val-data').textContent = d.data;
+
+      document.getElementById('val-lang').textContent = d.lang;
+      document.getElementById('val-aiscore').textContent = d.aiscore;
+      document.getElementById('val-ptr').textContent = d.ptr;
+
+      document.getElementById('gap1-desc').textContent = d.desc1;
+      document.getElementById('gap2-desc').textContent = d.desc2;
+      document.getElementById('gap3-desc').textContent = d.desc3;
+    }
+
+    // Mini Chart Gallery Toggles
+    function showGapChart(gapKey) {
+      const img = document.getElementById('gap-chart-img');
+      const cap = document.getElementById('gap-chart-caption');
+      
+      document.getElementById('btn-chart-gap1').className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200';
+      document.getElementById('btn-chart-gap2').className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200';
+      document.getElementById('btn-chart-gap3').className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200';
+
+      const activeBtn = document.getElementById('btn-chart-' + gapKey);
+      if (activeBtn) activeBtn.className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-600 text-white';
+
+      if (gapKey === 'gap1') {
+        img.src = './data/analysis_b/gap1_connectivity_assumption.png';
+        cap.textContent = 'Fixed broadband (<3/100) vs. EdTech solution delivery requirements. 70% rural SSA electricity deficit acts as upstream bottleneck.';
+      } else if (gapKey === 'gap2') {
+        img.src = './data/analysis_b/gap2_cost_sustainability.png';
+        cap.textContent = '1GB/month data burden reaches 7.6% of Rwandan monthly income. Educational spending at GDP level fails to reflect non-salary technology budgets.';
+      } else if (gapKey === 'gap3') {
+        img.src = './data/analysis_b/gap3_linguistic_inclusion.png';
+        cap.textContent = '70-80% classroom instruction in national/local languages vs. <15% tool support. AI model benchmark drops to 18% accuracy in Bemba/Nyanja.';
+      }
+    }
+
+    // Embed Modal
+    function toggleEmbedModal(url) {
+      const modal = document.getElementById('embed-modal');
+      const snippet = document.getElementById('embed-snippet');
+      if (url) {
+        snippet.value = `<iframe src="${url}" width="100%" height="700" frameborder="0" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);" title="EdTech Policy Observatory"></iframe>`;
+        modal.classList.remove('hidden');
+      } else {
+        modal.classList.add('hidden');
+      }
+    }
+  </script>
+</body>
+</html>

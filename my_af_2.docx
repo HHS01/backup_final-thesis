@@ -1,0 +1,84 @@
+TECHNOLOGY FOCUS
+
+1. What is the expected technology output?
+
+The output is an interactive dashboard that provides macro, meso and potentially micro level info about the state of EdTech in Sub-Saharan Africa and MENA 
+
+
+2. What is the expected contribution of technology in relation to the “social good” goals?
+
+The dashboard will make it easier to visualise the current strengths and limitations, and shed light on areas of the EdTech ecosystem that needs investing in; kind of like a SWOT analysis. Will work towards improvement of multiple targets of SDG #4, potentially touching on SDGs #8 (work/economic growth), #10 (reduced inequality), #16 (strong institutions) as well
+
+
+
+
+National ministries/central gov (policymakers) are one of the major actors/stakeholders. EdTech orgs, another. Teachers and experts will provide the ground reality perspective (at the micro level).
+
+
+
+RESEARCH APPROACH
+
+4. How does the project work with the technology? 
+
+The dashboard is created using a reusable script that fetches data from reliable/trustworthy public API/open data sources to provide a broad & comprehensive overview of various indicators related to the 6 pillars. So basically an observation and analysis tool.
+
+
+5. Consider the people involved in the actions concerning technology. What are their interests and expectations? What are their roles? What power do they hold on that technology?
+
+
+Not all actors have the same vision/expectations/demands from this. Whilst their shared vision might be to improve the accessibility to education services and improving overall performances, esp in STEM  (using test scores as the proxy indicator to gauge efficacy), service providers/vendors have a vested interest to push for a digital solution. 
+Governments have to be prudent about identifying the urgent gaps that need to be filled and allocating public funds accordingly. The same data (viz) can be used to tell different stories depending on what's been included/excluded (based on the framing).
+
+
+6. What kind of (participatory) methodologies are adopted in the tech design, development, test, use, evaluation phases - if any?
+
+Surveying the teachers allows for the identification of gaps and designing of interventions in a more bottom-up and collaborative way that will be adopted by the local communities.
+
+
+
+
+
+TECHNOLOGY DEVELOPMENT
+
+8. What are the main technical constraints?
+
+lack of non-paywalled data of indicators to provide a more thorough/comprehensive view 
+lack of adequate data for certain countries (data imbalance); data ‘lag’
+
+
+9. What are the main (technological / digital) barriers and divides?
+
+
+how it relates to actionable outcomes out in the real world
+use of proxy indicators 
+
+
+
+TECHNOLOGY ADAPTABILITY AND REPLICABILITY
+
+10. Should this tech be adaptable to other social and geographical contexts?  How?
+the 6 pillar EdTech framework is country-agnostic; so should be adaptable as long as the local context is considered when developing the survey
+
+
+11. Scalability / transferability / replicability: are they expected? How?
+replicable for other countries (as long as relevant data is available/accessible), since script is reusable
+
+
+
+
+ETHICS
+
+12. What are the main ethical aspects concerning the development and use of the technology?
+
+Extrapolating from a limited number of data points; spurious correlations
+Privacy/data anonymization 
+Digital extractivism
+Transposition fallacy (?)
+
+
+13. Are there relevant regulatory obligations to be considered, concerning the development and use of this technology?
+
+data sovereignty of survey respondents (as per their national data protection laws)
+ 
+
+

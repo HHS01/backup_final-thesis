@@ -1,0 +1,105 @@
+q_id,instrument,question_condensed,pillar_primary,pillar_secondary,indicator_type,notes,gap_flag
+T-A1,Teacher,Country of teaching,,,Categorical,Geo-stratification only,
+T-A2,Teacher,School type,1,3,Categorical,Policy context; funding stream proxy,
+T-A3,Teacher,Education level taught,,,Categorical,Segment variable,
+T-A4,Teacher,Language(s) of instruction,5,,Categorical,Key: Pillar 5 language coverage,GAP_FLAG: cross-ref with P-D1
+T-A5,Teacher,Student understanding of instruction language,5,,Ordinal,Linguistic inclusion gap indicator,GAP_FLAG: no AI-readiness cross-ref
+T-A6,Teacher,Subject area,,,Categorical,Segment variable,
+T-A7,Teacher,Years teaching experience,4,,Ordinal,Teacher capacity proxy,
+T-A8,Teacher,Teacher training received,4,,Multi-select,CPD baseline,
+T-A9,Teacher,School location (urban/rural),2,3,Categorical,Infrastructure & cost access proxy,
+T-A10,Teacher,Class size,4,,Ordinal,Teaching conditions / workload,
+T-B1,Teacher,Uses digital tools at all? + barriers,2,,Binary+Multi,Core infrastructure barrier item,GAP_FLAG: key non-use barrier decomposition
+T-B2,Teacher,Types of tools used,5,6,Multi-select,Content + assessment tool coverage,
+T-B3,Teacher,Frequency of tool use (5 domains),4,,Ordinal matrix,Digital pedagogy integration depth,
+T-B4,Teacher,Who decides which tools to use,1,,Multi-select,Governance / autonomy signal,
+T-B5,Teacher,Student device access,2,3,Multi-select,Device access = Pillar 2 ground truth,GAP_FLAG: key infrastructure item
+T-B6,Teacher,School electricity reliability,2,,Ordinal,Critical Pillar 2 item — electricity,GAP_FLAG: HIGH — triangulate with E-F1
+T-B7,Teacher,Internet reliability,2,,Ordinal,Critical Pillar 2 item — connectivity,GAP_FLAG: HIGH — triangulate with P-C2 E-F1
+T-B8,Teacher,Ministry/school tool recommendations,1,5,Ordinal,Policy coherence / content governance,
+T-C1,Teacher,Tool fit matrix (language/curriculum/assessment/devices),5,"2,6",Ordinal matrix,Multi-pillar validity block,GAP_FLAG: HIGH — triangulate P-D1 P-D2
+T-C2,Teacher,Biggest reason tool doesn't fit,5,2,Multi-select,Barrier disaggregation,
+T-C3,Teacher,Trust signals for new tools,6,1,Multi-select,Evidence & governance norms,
+T-D1,Teacher,Most difficult classroom pressures,4,,Multi-select,Teaching environment context,
+T-D2,Teacher,Private tutoring prevalence,3,,Ordinal,Shadow education / equity signal,
+T-D3,Teacher,Tools reduce or add to workload,4,,Ordinal,Teacher capacity friction,
+T-D4,Teacher,Parts of workload affected by digital tools,4,,Multi-select,CPD & admin load,
+T-E1,Teacher,AI tool use (ChatGPT/Gemini/Meta AI),6,4,Ordinal,AI uptake baseline,
+T-E2,Teacher,Education-specific AI seen as safer,6,,Ordinal,AI governance attitudes,
+T-E3,Teacher,Student AI tool use for schoolwork,6,,Ordinal,Learner AI access,
+T-E4,Teacher,AI performance in local/national languages,5,6,Ordinal,Linguistic AI gap — key thesis item,GAP_FLAG: HIGH — triangulate E-C3 P-D1
+T-E5,Teacher,Teacher digital/AI confidence,4,,Ordinal,Self-efficacy / CPD need,
+T-E6,Teacher,Training on digital/AI tools + source,4,1,Multi-select,CPD provision & source,
+T-E7,Teacher,School/ministry AI governance rules,1,6,Ordinal,AI governance — Pillar 1 & 6,
+T-F1,Teacher,Student wellbeing observations (matrix),,,Ordinal matrix,Wellbeing / safeguarding context,
+T-F2,Teacher,Student out-of-school device use,2,,Ordinal,Device access beyond school,
+T-F3,Teacher,Net effect of devices on student wellbeing,,,Ordinal,Wellbeing signal,
+T-F4,Teacher,School phone rules,1,,Categorical,Policy / governance signal,
+T-F5,Teacher,Effect of phone restrictions,,,Ordinal,Policy implementation,
+T-F6,Teacher,Wellbeing considered when choosing tools,1,6,Ordinal,Responsible procurement signal,
+T-F7,Teacher,Know how to report harm from digital tool,6,,Ordinal,Safeguarding / data protection capacity,
+T-G1,Teacher,Open text: anything review should understand,ALL,,Qualitative,Catch-all; triangulation enrichment,
+P-A2,Provider,HQ country,,,Categorical,Ownership geography,
+P-A3,Provider,Operating countries in SSA,,,Multi-select,Market reach,
+P-A4,Provider,Organisation type,3,1,Categorical,Revenue model context,
+P-A5,Provider,Ownership (local vs. foreign),1,3,Categorical,Governance + capital origin,
+P-A6,Provider,Year founded,,,Categorical,Ecosystem maturity,
+P-A7,Provider,Organisation size,,,Ordinal,Scale context,
+P-B1,Provider,Main product type,5,6,Multi-select,Content vs. infrastructure vs. data tools,
+P-B4,Provider,Active users in SSA (past 12 months),,,Ordinal,Reach/scale proxy,
+P-C1,Provider,Delivery channels,2,5,Multi-select,Infrastructure dependency of solutions,GAP_FLAG: HIGH — triangulate T-B7
+P-C2,Provider,Offline capability,2,,Ordinal,Offline-first vs. broadband-dependent,GAP_FLAG: HIGH — core Connectivity Assumption Gap
+P-C3,Provider,Minimum device required,2,3,Categorical,Hardware access threshold,
+P-C4,Provider,Who pays for mobile data,3,2,Categorical,Cost burden — Pillar 3 ground truth,GAP_FLAG: HIGH — Cost Absorption Gap
+P-C5,Provider,MNO partnerships,2,3,Multi-select,Connectivity infrastructure links,
+P-D1,Provider,Languages product available in,5,,Multi-select,Language coverage — Pillar 5 key item,GAP_FLAG: HIGH — triangulate T-A4 T-E4
+P-D2,Provider,National curriculum alignment,5,1,Ordinal,Policy fit / government adoption signal,
+P-D3,Provider,Who adapts content for new country/language,5,1,Categorical,Localisation model,
+P-E1,Provider,Revenue/funding sources,3,,Multi-select,B2G vs B2C vs donor dependency,GAP_FLAG: HIGH — Cost Absorption Gap
+P-E2,Provider,Route to learners,1,3,Categorical,Distribution + procurement channel,
+P-E3,Provider,Product continuity if main funding ends,3,,Ordinal,Sustainability fragility — critical Pillar 3,GAP_FLAG: HIGH — triangulate E-B3
+P-E4,Provider,Data portability if school/ministry exits,6,,Ordinal,Data governance / interoperability,
+P-E5,Provider,Teacher training / support provided,4,,Ordinal,CPD provision by provider,
+P-F1,Provider,Collects children's personal data,6,,Binary,Data protection baseline,
+P-F2,Provider,Data storage location,6,,Categorical,Data sovereignty,
+P-F3,Provider,Children's data consent mechanism,6,,Multi-select,Safeguarding process,
+P-F4,Provider,Harmful content/contact reporting mechanism,6,,Ordinal,Safeguarding infrastructure,
+P-F5,Provider,AI use in product,6,5,Multi-select,AI transparency — Pillar 6 key item,GAP_FLAG: HIGH — triangulate E-D5
+P-G1,Provider,Evidence of product effectiveness,6,,Multi-select,Evidence base quality — Pillar 6,GAP_FLAG: triangulate E-D4
+P-G2,Provider,Government engagement (pilot/contract/endorsement),1,,Ordinal,Policy adoption track record,
+P-G3,Provider,Disability testing,,,Ordinal,Equity / inclusion signal,
+P-G4,Provider,External certification / DPG recognition,1,6,Ordinal,Governance quality standard,
+P-H1,Provider,Familiarity with UNICEF EdTech for Good / Learning Cabinet,1,6,Ordinal matrix,Standards awareness,
+P-H2,Provider,Hardest compliance areas if required,6,4,Multi-select,Capability gap for responsible EdTech,
+P-H3a,Provider,Main reasons for compliance difficulty,3,,Multi-select,Capacity & cost barrier,
+P-H3b,Provider,International standards favour large providers,1,3,Ordinal,Market power / equity of standards,
+P-I1,Provider,Biggest barriers to reaching more learners (rank 3),2,3,Rank,Infrastructure + cost barrier composite,
+P-J1,Provider,Open text: anything review should understand,ALL,,Qualitative,Catch-all,
+E-A1,Expert,Country/system answered for,,,Categorical,Expert stratification,
+E-A3,Expert,Expert location (in-country vs. diaspora),,,Categorical,Positionality signal,
+E-A4,Expert,Vantage point (policy/provider/research/NGO…),,,Multi-select,Expert stratification,
+E-A5,Expert,Years working in this system,,,Ordinal,Experience weighting,
+E-B1,Expert,What counts as EdTech in this system,,,Multi-select,Definitional framing item,
+E-B2,Expert,Who drives EdTech decisions (rank 3) + who pays,1,3,Rank+Multi,Governance power mapping — Pillar 1,GAP_FLAG: HIGH — triangulate P-E2 T-B4
+E-B3,Expert,What happens when donor pilots end,3,1,Ordinal+Free text,Sustainability / continuity — Pillar 3,GAP_FLAG: HIGH — triangulate P-E3
+E-B4,Expert,Where public procurement breaks down (select 3),1,,Multi-select,Procurement failure points — Pillar 1,
+E-C1,Expert,Sharpest misfit between tools and classrooms,5,2,Multi-select,Content + infrastructure gap,GAP_FLAG: triangulate T-C1 P-D2
+E-C2,Expert,How much genuine local adaptation is happening,5,,Ordinal+Free text,Localisation quality signal,
+E-C3,Expert,AI readiness for: official lang / early-grade L1 / home langs / classrooms (matrix),5,6,Ordinal matrix,AI language gap — expert validation,GAP_FLAG: HIGH — triangulate T-E4 P-D1
+E-C4,Expert,EdTech role re: teacher shortage,4,,Multi-select,Teacher capacity / substitution debate,
+E-D1,Expert,Can responsible EdTech criteria be checked today? (a–i matrix),6,1,Ordinal matrix,Regulatory/accountability gap audit — Pillar 6,GAP_FLAG: HIGH
+E-D2,Expert,Who would realistically do the checking (a–i × actor matrix),1,6,Multi matrix,Governance actor mapping,
+E-D3,Expert,Main constraints where checking is absent,1,6,Multi-select,Accountability gap drivers,
+E-D4,Expert,Realistic evidence threshold before government adoption,6,1,Ordinal,Evidence standards debate,
+E-D5,Expert,AI oversight in schools now,6,1,Ordinal,AI governance posture — Pillar 6,
+E-D6,Expert,Familiarity with UNICEF EdTech for Good + own approval list,1,6,Ordinal,Standards uptake + national governance,
+E-E1,Expert,Providers meaningfully design for learner wellbeing,6,,Ordinal,Safeguarding / ethics signal,
+E-E2,Expert,Prominence of screen-time / online-harm debates,6,1,Ordinal,Policy salience,
+E-F1,Expert,Biggest constraints on EdTech reaching public schools (rank 3),2,"3,4,5",Rank,Expert-rated infrastructure + capacity barrier,GAP_FLAG: HIGH — triangulate T-B6 T-B7 P-C2
+E-F2,Expert,Structured lesson-guide tools: 4-item agreement matrix,4,"1,3",Ordinal matrix,Teacher autonomy vs. standardisation debate,
+E-F3,Expert,Family-direct EdTech significance + equity effect,3,,Ordinal+Binary,Shadow EdTech / equity — Pillar 3,
+E-F4,Expert,What evidence carries most weight in decisions (rank 3),6,1,Rank,Evidence hierarchy in practice,
+E-F5,Expert,MNO role in EdTech + influence,2,"1,3",Multi+Ordinal,Infrastructure / market power,
+E-F6,Expert,Biggest constraints for refugee/displaced learners (rank 3),2,"3,4,5",Rank,Crisis context — Pillar 2 priority,
+E-G1,Expert,Most consequential equity dimension (rank 3),,ALL,Rank,Cross-cutting equity audit,
+E-G2,Expert,Open text: missed question in consultation,ALL,,Qualitative,Catch-all + enrichment,

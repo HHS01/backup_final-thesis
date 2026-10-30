@@ -29,7 +29,7 @@ Traditional comparative education frameworks often evaluate these regions using 
 
 ### 2. Theoretical and Analytical Framework
 
-The inquiry anchors its analysis in three theoretical models:
+The inquiry anchors its analysis in two core structural frameworks:
 
 #### 2.1 UNESCO’s Six Pillars for Digital Transformation
 Derived from the Digital Transformation Collaborative (DTC, 2024), this framework posits that sustainable educational transformation requires balanced progress across six interdependent domains:
@@ -57,14 +57,6 @@ Following Pouye (2024), the supply side of African EdTech is categorized by inte
 * **Technical and Vocational Education and Training (TVET) & Upskilling** (employment-linked digital competencies).
 * **Learning Management Systems (LMS) & School ERPs** (institutional digitisation).
 * **Inclusion & Low-Connectivity Adaptations** (zero-rated SMS, radio, and offline caching).
-
-#### 2.3 Master Analytical Framework 1 (CommonsHood Adaptation)
-The investigation critically evaluates digital interventions against five ICT4D criteria:
-* **Technology Focus:** Social utility over techno-solutionism.
-* **Research Approach:** Participatory methods and community agency.
-* **Development Constraints:** Power intermittency, bandwidth costs, and device fragility.
-* **Adaptability & Scalability:** Contextual transferability across language and rural divides.
-* **Ethics & Regulations:** Child data protection, sovereignty, and algorithmic bias.
 
 ---
 
