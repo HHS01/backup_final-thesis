@@ -49,6 +49,35 @@
     .tooltip-box:hover {
       display: block;
     }
+    /* Print: cleanly format only the EdTech Readiness Check */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #audit-subtab, #audit-subtab * {
+        visibility: visible;
+      }
+      #audit-subtab {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.25in !important;
+        background: white !important;
+        color: black !important;
+        display: block !important;
+      }
+      .no-print, .no-print * {
+        display: none !important;
+        visibility: hidden !important;
+      }
+      #verdict-card {
+        border: 2px solid #333 !important;
+        page-break-inside: avoid;
+        margin-top: 1.5rem !important;
+      }
+    }
   </style>
 </head>
 <body id="body-canvas" class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900 transition-colors duration-300">
@@ -90,11 +119,11 @@
       <div class="flex items-center p-1 rounded-xl bg-slate-100 border border-slate-200 shadow-inner">
         <button onclick="switchLens('systemic')" id="lens-btn-systemic" class="px-3.5 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-white text-slate-900 border border-slate-200/80 flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-blue-600"></span>
-          Systemic &amp; Policy Lens
+          For Policymakers
         </button>
         <button onclick="switchLens('classroom')" id="lens-btn-classroom" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 flex items-center gap-1.5">
           <span class="w-2 h-2 rounded-full bg-slate-300"></span>
-          Classroom &amp; School Leader Lens
+          For Schools &amp; Teachers
         </button>
       </div>
 
@@ -580,11 +609,11 @@
   <div id="canvas-classroom" class="hidden">
 
     <!-- Classroom Sub-Navigation Tabs -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-2">
       <div class="bg-stone-50 rounded-xl shadow-lg border border-stone-300 p-2 flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1" id="tab-nav-classroom">
           <button onclick="switchClassroomTab('audit-subtab')" id="btn-audit-subtab" class="tab-btn-cls px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-emerald-700 text-white shadow-sm">
-            7-Item Feasibility Pre-Flight Audit
+            EdTech Readiness Check
           </button>
           <button onclick="switchClassroomTab('planner-subtab')" id="btn-planner-subtab" class="tab-btn-cls px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-stone-700 hover:text-stone-900 transition hover:bg-stone-200/60">
             Class Crowding &amp; 3-Station Scheduler
@@ -604,271 +633,369 @@
 
       <!-- SUBTAB 1: 7-ITEM FEASIBILITY PRE-FLIGHT AUDIT -->
       <div id="audit-subtab" class="classroom-content block">
-        <div class="mb-8">
-          <span class="badge-pill bg-emerald-100 text-emerald-800 mb-2">School &amp; Teacher Gatekeeping Tool</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">Classroom Feasibility Pre-Flight Audit</h2>
-          <p class="text-stone-600 mt-1 max-w-3xl text-sm sm:text-base">
-            A 2-minute diagnostic for classroom teachers, department heads, and school management committees before adopting any incoming digital app or donor intervention.
-          </p>
+        <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <span class="badge-pill bg-emerald-100 text-emerald-800 mb-2">Pre-Deployment Practicality Check</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">EdTech Readiness Check</h2>
+            <p class="text-stone-600 mt-1 max-w-3xl text-sm sm:text-base">
+              A 2-minute diagnostic for classroom teachers, school heads, and community committees before adopting incoming digital tools or donor hardware.
+            </p>
+          </div>
+          <div class="flex items-center gap-2 no-print shrink-0">
+            <button onclick="window.print()" class="py-2 px-3.5 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+              Print / Save PDF
+            </button>
+            <button onclick="resetAuditForm()" class="py-2 px-3.5 rounded-lg border border-stone-300 bg-white hover:bg-stone-50 text-stone-700 text-xs font-medium transition shadow-sm">
+              Reset Diagnostics
+            </button>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Diagnostic Questions Container (Full Width with Horizontal Card Layout) -->
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-6 mb-8">
           
-          <!-- Left: 7 Diagnostic Questions Card -->
-          <div class="lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border border-stone-200 shadow-sm space-y-6">
-            
-            <!-- Question 1: Pillar 1 -->
-            <div class="pb-5 border-b border-stone-100">
-              <div class="flex items-center justify-between mb-2">
-                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
-                  <span>1. Institutional Accreditation &amp; Syllabus Fit (Pillar 1)</span>
-                </label>
-                <div class="relative inline-block">
-                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
-                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
-                    Survey Item T-B8: When tools lack official ministry curriculum accreditation, inspectors can penalize teachers for diverting instructional time.
-                  </div>
+          <!-- Question 1 -->
+          <div class="pb-5 border-b border-stone-100">
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm sm:text-base font-bold text-stone-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold inline-flex items-center justify-center">1</span>
+                <span>Curriculum &amp; Syllabus Alignment</span>
+              </label>
+              <div class="relative inline-block">
+                <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                  When tools lack official ministry curriculum accreditation, inspectors can penalize teachers for diverting instructional time away from the approved syllabus.
                 </div>
               </div>
-              <div class="space-y-2 text-xs sm:text-sm">
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q1" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Accredited:</strong> Officially vetted by National Curriculum Body (e.g. KICD / REB) (+3 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q1" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Aligned:</strong> Matches syllabus topics, but lacks formal ministry sign-off (+1 pt)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q1" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Unaccredited:</strong> Independent third-party tool; risks conflict during inspections (-3 pts)</span>
-                </label>
-              </div>
             </div>
-
-            <!-- Question 2: Pillar 2 -->
-            <div class="pb-5 border-b border-stone-100">
-              <div class="flex items-center justify-between mb-2">
-                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
-                  <span>2. Energy &amp; Device Recharging Reality (Pillar 2)</span>
-                </label>
-                <div class="relative inline-block">
-                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
-                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
-                    Survey Item T-B6: 70% of rural SSA schools lack grid electricity. Tools requiring daily recharging fail without community solar backups.
-                  </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q1" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Accredited (+3 pts)</span>
+                  <span class="text-stone-600 text-xs">Officially vetted by National Curriculum Body (e.g. KICD / REB).</span>
                 </div>
-              </div>
-              <div class="space-y-2 text-xs sm:text-sm">
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q2" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Reliable:</strong> Daily dependable grid or solar power available in school (+3 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q2" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Intermittent:</strong> Power cuts 1–2 days per week; no generator backup (+1 pt)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q2" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>No School Power:</strong> Devices must be transported off-site to charge (-3 pts) [RED FLAG]</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Question 3: Pillar 3 -->
-            <div class="pb-5 border-b border-stone-100">
-              <div class="flex items-center justify-between mb-2">
-                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
-                  <span>3. The Personal Data / Airtime Burden (Pillar 3)</span>
-                </label>
-                <div class="relative inline-block">
-                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
-                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
-                    The Informal Salary Tax: In our survey, rural teachers spend between 4.3% (Kenya) and 7.6% (Rwanda) of monthly income buying mobile data out of pocket.
-                  </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q1" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Aligned (+1 pt)</span>
+                  <span class="text-stone-600 text-xs">Matches syllabus topics, but lacks formal ministry sign-off.</span>
                 </div>
-              </div>
-              <div class="space-y-2 text-xs sm:text-sm">
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q3" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Zero-Cost:</strong> 100% offline local Wi-Fi cache or school-funded connection (+3 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q3" value="2" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Zero-Rated:</strong> Free access via government telecom whitelisted portal (+2 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q3" value="-5" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Salary Tax:</strong> Teachers or students must buy personal airtime bundles (-5 pts) [CRITICAL]</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Question 4: Pillar 4 -->
-            <div class="pb-5 border-b border-stone-100">
-              <div class="flex items-center justify-between mb-2">
-                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
-                  <span>4. Class Crowding &amp; Device Ratio (Pillar 4)</span>
-                </label>
-                <div class="relative inline-block">
-                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
-                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
-                    Average primary PTR is 59.5 in Rwanda and 42 in Zambia. Assuming 1:1 hardware in large classes triggers device fighting.
-                  </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-rose-400 hover:bg-rose-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q1" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-rose-900 block">Unaccredited (-3 pts)</span>
+                  <span class="text-stone-600 text-xs">Independent third-party tool; risks conflict during inspections.</span>
                 </div>
-              </div>
-              <div class="space-y-2 text-xs sm:text-sm">
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q4" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Adequate:</strong> 1:1 or 2:1 pair-learning ratio in classroom (+3 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q4" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Crowded:</strong> 3:1 to 6:1 (Manageable with 3-station rotational pedagogy) (+1 pt)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q4" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Severe Scarcity:</strong> Over 10 students per screen with no rotation support (-3 pts)</span>
-                </label>
-              </div>
+              </label>
             </div>
-
-            <!-- Question 5: Pillar 5 -->
-            <div class="pb-5 border-b border-stone-100">
-              <div class="flex items-center justify-between mb-2">
-                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
-                  <span>5. Cultural &amp; Linguistic Authenticity (Pillar 5)</span>
-                </label>
-                <div class="relative inline-block">
-                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
-                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
-                    AI Accuracy Benchmark: LLM comprehension drops to 38% in Kinyarwanda and 18% in Bemba. Automated AI grading fails for mother-tongue learners.
-                  </div>
-                </div>
-              </div>
-              <div class="space-y-2 text-xs sm:text-sm">
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q5" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Contextualized:</strong> Full mother-tongue alignment with local cultural scenarios (+3 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q5" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Bilingual:</strong> English text paired with oral local-language audio prompts (+1 pt)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q5" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Foreign / AI-Only:</strong> Monolingual English/French; AI degrades in local dialect (-3 pts)</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Question 6: Pillar 6 -->
-            <div class="pb-5 border-b border-stone-100">
-              <div class="flex items-center justify-between mb-2">
-                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
-                  <span>6. Administrative Burden &amp; Double-Entry Load (Pillar 6)</span>
-                </label>
-                <div class="relative inline-block">
-                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
-                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
-                    Survey Item T-D3: Digital tools that do not export directly into government term sheets add 30–60 minutes of daily double bookkeeping.
-                  </div>
-                </div>
-              </div>
-              <div class="space-y-2 text-xs sm:text-sm">
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q6" value="2" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Integrated:</strong> Automatically exports to official school/government term sheets (+2 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q6" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Neutral:</strong> Self-contained practice; does not require grading export (+1 pt)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q6" value="-2" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Double Entry:</strong> Teacher must manually copy app marks into physical paper ledgers (-2 pts)</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Question 7: Biesta Pedagogical Balance -->
-            <div>
-              <div class="flex items-center justify-between mb-2">
-                <label class="text-sm font-bold text-stone-900 flex items-center gap-1.5">
-                  <span>7. Pedagogical Purpose: Gert Biesta Threefold Balance</span>
-                </label>
-                <div class="relative inline-block">
-                  <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
-                  <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
-                    Biesta (2010): Does this tool cultivate the child as an active citizen and thinker (Socialization & Subjectification), or merely drill them as a passive test-taker (Qualification only)?
-                  </div>
-                </div>
-              </div>
-              <div class="space-y-2 text-xs sm:text-sm">
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q7" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Holistic:</strong> Fosters collaborative peer dialogue, group problem-solving &amp; agency (+3 pts)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q7" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Balanced:</strong> Independent digital drill paired with offline teacher-led discussion (+1 pt)</span>
-                </label>
-                <label class="flex items-center gap-2.5 p-2 rounded-lg hover:bg-stone-50 cursor-pointer">
-                  <input type="radio" name="audit_q7" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500">
-                  <span><strong>Isolated Drill:</strong> Students in silent screen-staring with algorithmic tracking (-3 pts)</span>
-                </label>
-              </div>
-            </div>
-
           </div>
 
-          <!-- Right: Diagnostic Output & Scorecard -->
-          <div class="lg:col-span-4 sticky top-24 space-y-5">
-            <div id="verdict-card" class="bg-white rounded-2xl p-6 border-2 border-emerald-600 shadow-sm transition-all">
-              <span class="text-xs font-bold uppercase tracking-wider text-stone-400">Classroom Feasibility Index</span>
-              
-              <div class="flex items-baseline justify-between mt-2">
-                <div id="audit-score-num" class="text-4xl font-extrabold text-emerald-700 font-mono">+19</div>
-                <div class="text-xs text-stone-500">Scale: -18 to +19</div>
+          <!-- Question 2 -->
+          <div class="pb-5 border-b border-stone-100">
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm sm:text-base font-bold text-stone-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold inline-flex items-center justify-center">2</span>
+                <span>Energy &amp; Device Recharging Reality</span>
+              </label>
+              <div class="relative inline-block">
+                <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                  Around 70% of rural SSA schools lack reliable grid electricity. Tools requiring daily recharging fail without community solar backups or generator support.
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q2" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Reliable (+3 pts)</span>
+                  <span class="text-stone-600 text-xs">Daily dependable grid or solar power available in school.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q2" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Intermittent (+1 pt)</span>
+                  <span class="text-stone-600 text-xs">Power cuts 1–2 days per week; no generator backup.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-rose-400 hover:bg-rose-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q2" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-rose-900 block">No School Power (-3 pts)</span>
+                  <span class="text-rose-700 text-xs font-medium">[RED FLAG] Devices must be hauled off-site to charge.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="pb-5 border-b border-stone-100">
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm sm:text-base font-bold text-stone-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold inline-flex items-center justify-center">3</span>
+                <span>Data &amp; Connectivity Cost Burden</span>
+              </label>
+              <div class="relative inline-block">
+                <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                  Field evidence across our survey cohort shows rural teachers spending 4–8% of monthly income buying mobile data out of pocket to use school-mandated digital tools.
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q3" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Zero-Cost (+3 pts)</span>
+                  <span class="text-stone-600 text-xs">100% offline local Wi-Fi cache or school-funded connection.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q3" value="2" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Zero-Rated (+2 pts)</span>
+                  <span class="text-stone-600 text-xs">Free access via government telecom whitelisted portal.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-rose-400 hover:bg-rose-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q3" value="-5" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-rose-900 block">Salary Tax (-5 pts)</span>
+                  <span class="text-rose-700 text-xs font-medium">[CRITICAL] Teachers or pupils must buy personal airtime bundles.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="pb-5 border-b border-stone-100">
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm sm:text-base font-bold text-stone-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold inline-flex items-center justify-center">4</span>
+                <span>Class Size &amp; Device-to-Student Ratio</span>
+              </label>
+              <div class="relative inline-block">
+                <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                  Primary pupil-to-teacher ratios average 59:1 in Rwanda and 42:1 in Zambia. Assuming 1:1 hardware availability in large classes is unrealistic and triggers conflict over devices.
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q4" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Adequate (+3 pts)</span>
+                  <span class="text-stone-600 text-xs">1:1 or 2:1 pair-learning ratio in classroom.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q4" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Crowded (+1 pt)</span>
+                  <span class="text-stone-600 text-xs">3:1 to 6:1 (Manageable with 3-station rotational pedagogy).</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-rose-400 hover:bg-rose-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q4" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-rose-900 block">Severe Scarcity (-3 pts)</span>
+                  <span class="text-stone-600 text-xs">Over 10 students per screen with no rotation support.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 5 -->
+          <div class="pb-5 border-b border-stone-100">
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm sm:text-base font-bold text-stone-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold inline-flex items-center justify-center">5</span>
+                <span>Cultural &amp; Linguistic Fit</span>
+              </label>
+              <div class="relative inline-block">
+                <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                  Empirical LLM comprehension benchmarks drop significantly in low-resource African languages — down to ~38% in Kinyarwanda and ~18% in Bemba (source: AfroBench &amp; IrokoBench NLP benchmarks) — making unadapted AI tools and grading unreliable for mother-tongue learners.
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q5" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Contextualized (+3 pts)</span>
+                  <span class="text-stone-600 text-xs">Full mother-tongue alignment with local cultural scenarios.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q5" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Bilingual (+1 pt)</span>
+                  <span class="text-stone-600 text-xs">English text paired with oral local-language audio prompts.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-rose-400 hover:bg-rose-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q5" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-rose-900 block">Foreign / AI-Only (-3 pts)</span>
+                  <span class="text-stone-600 text-xs">Monolingual English/French; AI degrades in local dialect.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 6 -->
+          <div class="pb-5 border-b border-stone-100">
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm sm:text-base font-bold text-stone-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold inline-flex items-center justify-center">6</span>
+                <span>Administrative Burden &amp; Reporting Compatibility</span>
+              </label>
+              <div class="relative inline-block">
+                <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                  Digital tools that do not export directly into government term sheets add 30–60 minutes of daily double bookkeeping for teachers who must also maintain physical paper ledgers.
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q6" value="2" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Integrated (+2 pts)</span>
+                  <span class="text-stone-600 text-xs">Automatically exports to official school/government term sheets.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q6" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Neutral (+1 pt)</span>
+                  <span class="text-stone-600 text-xs">Self-contained practice; does not require grading export.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-rose-400 hover:bg-rose-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q6" value="-2" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-rose-900 block">Double Entry (-2 pts)</span>
+                  <span class="text-stone-600 text-xs">Teacher must manually copy app marks into physical paper ledgers.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Question 7 -->
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <label class="text-sm sm:text-base font-bold text-stone-900 flex items-center gap-2">
+                <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold inline-flex items-center justify-center">7</span>
+                <span>Pedagogical Purpose: Gert Biesta Threefold Balance</span>
+              </label>
+              <div class="relative inline-block">
+                <span class="tooltip-trigger cursor-pointer text-xs font-bold text-stone-400 hover:text-stone-700 bg-stone-100 w-5 h-5 rounded-full inline-flex items-center justify-center">?</span>
+                <div class="tooltip-box absolute right-0 z-30 w-72 p-2.5 text-xs bg-stone-900 text-stone-200 rounded-lg shadow-xl -mt-1 font-normal leading-relaxed">
+                  Biesta (2010): Does this tool cultivate the child as an active citizen and thinker (Socialization &amp; Subjectification), or merely drill them as a passive test-taker (Qualification only)?
+                </div>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q7" value="3" checked onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Holistic (+3 pts)</span>
+                  <span class="text-stone-600 text-xs">Fosters collaborative peer dialogue, group problem-solving &amp; agency.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-emerald-500 hover:bg-emerald-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q7" value="1" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-stone-900 block">Balanced (+1 pt)</span>
+                  <span class="text-stone-600 text-xs">Independent digital drill paired with offline teacher-led discussion.</span>
+                </div>
+              </label>
+              <label class="flex items-start gap-2.5 p-3 rounded-xl border border-stone-200 hover:border-rose-400 hover:bg-rose-50/20 cursor-pointer transition text-xs sm:text-sm">
+                <input type="radio" name="audit_q7" value="-3" onchange="calculateAudit()" class="text-emerald-600 focus:ring-emerald-500 mt-0.5">
+                <div>
+                  <span class="font-bold text-rose-900 block">Isolated Drill (-3 pts)</span>
+                  <span class="text-stone-600 text-xs">Students in silent screen-staring with algorithmic tracking.</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Diagnostic Scorecard & Next-Step Guidance (Moved to Bottom) -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+          
+          <!-- Verdict Card (8 cols) -->
+          <div id="verdict-card" class="lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-emerald-600 shadow-sm transition-all flex flex-col justify-between">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-3 border-b border-stone-100 pb-4 mb-4">
+                <div>
+                  <span class="text-xs font-bold uppercase tracking-wider text-stone-400 block">Classroom Readiness Result</span>
+                  <div id="verdict-badge" class="badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 mt-1 inline-block">
+                    GREEN LIGHT: Classroom Ready
+                  </div>
+                </div>
+                <div class="text-right">
+                  <div id="audit-score-num" class="text-3xl sm:text-4xl font-extrabold text-emerald-700 font-mono">+20</div>
+                  <div class="text-[11px] text-stone-400">Index Scale: -22 to +20</div>
+                </div>
               </div>
 
-              <div class="w-full bg-stone-100 rounded-full h-3 my-4 overflow-hidden">
+              <!-- Score Bar -->
+              <div class="w-full bg-stone-100 rounded-full h-3 mb-4 overflow-hidden">
                 <div id="audit-score-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-300" style="width: 100%;"></div>
               </div>
 
-              <div id="verdict-badge" class="badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 mb-3">
-                GREEN LIGHT: Classroom Ready
-              </div>
-
-              <p id="verdict-text" class="text-xs text-stone-600 leading-relaxed">
-                This intervention clears essential infrastructure, cost, and pedagogical thresholds. Low risk of pilot abandonment.
+              <p id="verdict-text" class="text-sm text-stone-700 leading-relaxed font-medium mb-3">
+                This intervention clears essential infrastructure, cost, and pedagogical thresholds. High likelihood of classroom sustainability.
               </p>
 
-              <div id="red-flag-warning" class="hidden mt-4 p-3 rounded-lg bg-rose-50 border border-rose-200 text-xs text-rose-800">
-                <strong>Critical Friction Flagged:</strong> Un-reimbursed data costs will cause teacher pushback and low adoption.
+              <!-- Dynamic Constraint / Friction Flags Box -->
+              <div id="audit-flags-box" class="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-xs space-y-1.5 mt-3">
+                <div class="text-emerald-800 font-medium flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                  <span>All 7 operational and pedagogical dimensions satisfy core classroom requirements.</span>
+                </div>
               </div>
+            </div>
 
-              <div class="mt-6 pt-4 border-t border-stone-100 flex flex-col gap-2">
-                <button onclick="window.print()" class="w-full py-2 px-3 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold transition text-center flex items-center justify-center gap-1.5">
+            <!-- Print & Reset buttons in Scorecard -->
+            <div class="mt-6 pt-4 border-t border-stone-100 flex flex-wrap items-center justify-between gap-3 no-print">
+              <div class="flex items-center gap-2">
+                <button onclick="window.print()" class="py-2 px-4 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold transition flex items-center gap-1.5">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-                  Print / Save Audit Memorandum
+                  Print Memorandum
                 </button>
-                <button onclick="resetAuditForm()" class="w-full py-2 px-3 rounded-lg border border-stone-200 text-stone-600 hover:bg-stone-50 text-xs font-medium transition text-center">
-                  Reset Diagnostic
+                <button onclick="resetAuditForm()" class="py-2 px-4 rounded-lg border border-stone-300 hover:bg-stone-50 text-stone-700 text-xs font-medium transition">
+                  Reset Diagnostics
                 </button>
               </div>
+              <span class="text-[11px] text-stone-400 italic">Self-assessment diagnostic for school decision-making</span>
             </div>
+          </div>
 
-            <!-- Alternative Action Card -->
-            <div class="bg-stone-100 rounded-xl p-5 border border-stone-200 text-xs text-stone-700 space-y-2">
-              <span class="font-bold text-stone-900 block">Failed on Data or Power?</span>
-              <p class="leading-relaxed">
-                If the intervention failed the airtime tax or power checks, do not deploy it online. Switch directly to our <strong>Vetted Resilient Solutions Directory</strong> for 100% offline-first alternatives like Kolibri.
+          <!-- Alternative Action Card (4 cols) -->
+          <div class="lg:col-span-4 bg-stone-100 rounded-2xl p-6 sm:p-7 border border-stone-200 flex flex-col justify-between text-xs text-stone-700 no-print">
+            <div>
+              <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 font-bold flex items-center justify-center text-sm mb-3">
+                ⚡
+              </div>
+              <h3 class="font-bold text-stone-900 text-sm mb-2">Severe Infrastructure or Data Limits?</h3>
+              <p class="leading-relaxed text-stone-600 mb-4">
+                If an incoming app fails on connectivity, recurring airtime fees, or power demands, avoid forced deployment. Switch directly to our <strong>Vetted Resilient Solutions Directory</strong> for 100% offline-first platforms (such as Kolibri and localized OERs).
               </p>
-              <button onclick="switchClassroomTab('dpg-subtab')" class="font-bold text-emerald-800 hover:underline pt-1 inline-block">
-                View Vetted Digital Public Goods →
-              </button>
             </div>
+            <button onclick="switchClassroomTab('dpg-subtab')" class="w-full py-2.5 px-3 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold transition text-center shadow-sm">
+              Browse Vetted Offline Tools →
+            </button>
           </div>
 
         </div>
@@ -1189,6 +1316,7 @@
       const canvasCls = document.getElementById('canvas-classroom');
       const heroBanner = document.getElementById('hero-banner');
       const bodyCanvas = document.getElementById('body-canvas');
+      const stakeholders = document.getElementById('stakeholders');
 
       const heroBadge = document.getElementById('hero-badge');
       const heroHeading = document.getElementById('hero-heading');
@@ -1208,6 +1336,12 @@
         canvasSys.classList.add('block');
         canvasCls.classList.remove('block');
         canvasCls.classList.add('hidden');
+
+        // Hero banner: show in systemic view
+        if (heroBanner) heroBanner.classList.remove('hidden');
+
+        // Stakeholders section: show in systemic view
+        if (stakeholders) stakeholders.classList.remove('hidden');
 
         // Theme / Colors
         heroBanner.className = 'hero-mesh text-white pt-14 pb-18 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-all duration-500';
@@ -1234,18 +1368,18 @@
         canvasCls.classList.remove('hidden');
         canvasCls.classList.add('block');
 
+        // Hero banner: collapse / hide in classroom view per user request
+        if (heroBanner) heroBanner.classList.add('hidden');
+
+        // Stakeholders section: hide in classroom view per user request
+        if (stakeholders) stakeholders.classList.add('hidden');
+
         // Theme / Colors (Warm Field-Ready Tone)
-        heroBanner.className = 'hero-mesh-classroom text-white pt-14 pb-18 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-all duration-500';
         bodyCanvas.className = 'bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 transition-colors duration-300';
 
         // Content
         navTitle.textContent = 'Classroom Feasibility & Solutions Toolkit';
-        navSubtitle.textContent = 'UNESCO 6-Pillars Ground-Truth Action Layer';
-        heroBadge.innerHTML = '<span>School & Teacher Gatekeeping Toolkit</span><span>•</span><span>Grassroots Decision Support</span>';
-        heroHeading.innerHTML = 'Stress-Testing Digital EdTech Against <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-amber-200 font-sans">Classroom Realities</span>';
-        heroDesc.textContent = 'Empowering classroom teachers, school leaders, and community committees to audit incoming digital interventions, schedule multi-student device rotations, and deploy zero-data Digital Public Goods.';
-
-        renderHeroMetrics('classroom');
+        navSubtitle.textContent = 'Practical Implementation Layer for Schools';
       }
     }
 
@@ -1372,47 +1506,122 @@
       const badge = document.getElementById('verdict-badge');
       const text = document.getElementById('verdict-text');
       const card = document.getElementById('verdict-card');
-      const warning = document.getElementById('red-flag-warning');
+      const flagsBox = document.getElementById('audit-flags-box');
 
-      scoreNum.textContent = (totalScore > 0 ? '+' : '') + totalScore;
+      if (scoreNum) scoreNum.textContent = (totalScore > 0 ? '+' : '') + totalScore;
 
-      // Normalize scale -18 to +19 (37 pt range)
-      const pct = Math.max(5, Math.min(100, Math.round(((totalScore + 18) / 37) * 100)));
-      scoreBar.style.width = pct + '%';
+      // Scale: -22 to +20 (42 pt spread)
+      const pct = Math.max(5, Math.min(100, Math.round(((totalScore + 22) / 42) * 100)));
+      if (scoreBar) scoreBar.style.width = pct + '%';
 
       const isDataRedFlag = (q3 === -5);
       const isPowerRedFlag = (q2 === -3);
 
-      if (isDataRedFlag) {
-        warning.classList.remove('hidden');
-      } else {
-        warning.classList.add('hidden');
+      // Collect specific itemized constraints / friction flags based on user selections
+      const flags = [];
+
+      // Q1: Curriculum
+      if (q1 === 1) {
+        flags.push({ level: 'amber', text: 'Curriculum: Aligned with syllabus topics, but lacks official ministry sign-off.' });
+      } else if (q1 === -3) {
+        flags.push({ level: 'rose', text: 'Curriculum Risk: Unaccredited tool risks inspectorate sanctions during school audits.' });
       }
 
-      if (totalScore >= 11 && !isDataRedFlag && !isPowerRedFlag) {
-        card.className = 'bg-white rounded-2xl p-6 border-2 border-emerald-600 shadow-sm transition-all';
-        badge.className = 'badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 mb-3';
-        badge.textContent = 'GREEN LIGHT: Classroom Ready';
-        scoreBar.className = 'bg-emerald-600 h-3 rounded-full transition-all duration-300';
-        text.textContent = 'This intervention clears essential infrastructure, cost, and pedagogical thresholds. High likelihood of classroom sustainability.';
-      } else if (totalScore >= 4 && !isDataRedFlag) {
-        card.className = 'bg-white rounded-2xl p-6 border-2 border-amber-500 shadow-sm transition-all';
-        badge.className = 'badge-pill bg-amber-100 text-amber-800 text-xs py-1 px-3 mb-3';
-        badge.textContent = 'AMBER LIGHT: Feasible with Adaptation';
-        scoreBar.className = 'bg-amber-500 h-3 rounded-full transition-all duration-300';
-        text.textContent = 'The tool will fail unless adapted. Implement small-group rotations, preload modules via local Wi-Fi, or secure community solar charging.';
-      } else {
-        card.className = 'bg-white rounded-2xl p-6 border-2 border-rose-600 shadow-sm transition-all';
-        badge.className = 'badge-pill bg-rose-100 text-rose-800 text-xs py-1 px-3 mb-3';
-        badge.textContent = 'RED LIGHT: High Risk of Abandonment';
-        scoreBar.className = 'bg-rose-600 h-3 rounded-full transition-all duration-300';
-        text.textContent = 'Critical structural clash detected. Personal data taxes or lack of power will cause pilot failure. Reject or mandate 100% offline rebuild.';
+      // Q2: Power
+      if (q2 === 1) {
+        flags.push({ level: 'amber', text: 'Power: Intermittent school electricity — requires weekly scheduled charging routines.' });
+      } else if (q2 === -3) {
+        flags.push({ level: 'rose', text: 'Critical Power Block: No school electricity — requires off-site battery hauling or solar backup.' });
+      }
+
+      // Q3: Data
+      if (q3 === 2) {
+        flags.push({ level: 'amber', text: 'Connectivity: Dependent on telecom zero-rating — verify active whitelist coverage.' });
+      } else if (q3 === -5) {
+        flags.push({ level: 'rose', text: 'Critical Airtime Tax: Teachers/students must buy personal data bundles (high resistance risk).' });
+      }
+
+      // Q4: Class crowding
+      if (q4 === 1) {
+        flags.push({ level: 'amber', text: 'Class Crowding: High ratio (3:1 to 6:1) — pair with the 3-Station Scheduler below.' });
+      } else if (q4 === -3) {
+        flags.push({ level: 'rose', text: 'Device Bottleneck: Over 10:1 ratio without structured rotation will cause chaotic lessons.' });
+      }
+
+      // Q5: Language
+      if (q5 === 1) {
+        flags.push({ level: 'amber', text: 'Language: Bilingual scaffolding present, but early learners will need oral translation.' });
+      } else if (q5 === -3) {
+        flags.push({ level: 'rose', text: 'Language Barrier: Monolingual tool with poor AI comprehension in regional mother tongues.' });
+      }
+
+      // Q6: Admin double entry
+      if (q6 === 1) {
+        flags.push({ level: 'amber', text: 'Reporting: Self-contained tool; does not integrate into government grade ledgers.' });
+      } else if (q6 === -2) {
+        flags.push({ level: 'rose', text: 'Double Bookkeeping: Adds 30–60 mins daily manual transcription into paper registers.' });
+      }
+
+      // Q7: Pedagogical purpose
+      if (q7 === 1) {
+        flags.push({ level: 'amber', text: 'Pedagogy: Drill software requires teacher-led offline reflection to ensure active learning.' });
+      } else if (q7 === -3) {
+        flags.push({ level: 'rose', text: 'Pedagogy Risk: Passive screen-staring lacking collaborative discussion or learner agency.' });
+      }
+
+      // Render Dynamic Flags
+      if (flagsBox) {
+        if (flags.length === 0) {
+          flagsBox.innerHTML = `
+            <div class="text-emerald-800 font-medium flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span>All 7 operational and pedagogical dimensions satisfy core classroom requirements.</span>
+            </div>`;
+        } else {
+          flagsBox.innerHTML = `
+            <div class="font-bold text-stone-900 text-xs mb-1.5">Identified Friction Points &amp; Constraints (${flags.length}):</div>
+            <ul class="space-y-1.5 text-xs">
+              ${flags.map(f => `
+                <li class="flex items-start gap-1.5 ${f.level === 'rose' ? 'text-rose-800 font-semibold' : 'text-stone-700'}">
+                  <span class="${f.level === 'rose' ? 'text-rose-600' : 'text-amber-600'} font-bold shrink-0">${f.level === 'rose' ? '⛔' : '⚠️'}</span>
+                  <span>${f.text}</span>
+                </li>
+              `).join('')}
+            </ul>`;
+        }
+      }
+
+      // Update Card Styling & Verdict Text
+      if (card && badge && scoreBar && text) {
+        if (totalScore >= 11 && !isDataRedFlag && !isPowerRedFlag) {
+          card.className = 'lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-emerald-600 shadow-sm transition-all flex flex-col justify-between';
+          badge.className = 'badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 mt-1 inline-block';
+          badge.textContent = 'GREEN LIGHT: Classroom Ready';
+          scoreBar.className = 'bg-emerald-600 h-3 rounded-full transition-all duration-300';
+          text.textContent = 'This intervention clears essential infrastructure, cost, and pedagogical thresholds. High likelihood of classroom sustainability.';
+        } else if (totalScore >= 4 && !isDataRedFlag) {
+          card.className = 'lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-amber-500 shadow-sm transition-all flex flex-col justify-between';
+          badge.className = 'badge-pill bg-amber-100 text-amber-800 text-xs py-1 px-3 mt-1 inline-block';
+          badge.textContent = 'AMBER LIGHT: Feasible with Adaptation';
+          scoreBar.className = 'bg-amber-500 h-3 rounded-full transition-all duration-300';
+          text.textContent = 'One or more constraints may limit deployment success. Review the flagged areas below before proceeding.';
+        } else {
+          card.className = 'lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-rose-600 shadow-sm transition-all flex flex-col justify-between';
+          badge.className = 'badge-pill bg-rose-100 text-rose-800 text-xs py-1 px-3 mt-1 inline-block';
+          badge.textContent = 'RED LIGHT: High Risk of Abandonment';
+          scoreBar.className = 'bg-rose-600 h-3 rounded-full transition-all duration-300';
+          text.textContent = 'Critical structural friction detected. Un-reimbursed data costs, lack of school power, or severe resource scarcity create high risk of abandonment without offline adaptation or institutional subsidies.';
+        }
       }
     }
 
     function resetAuditForm() {
-      document.querySelectorAll('#audit-subtab input[type="radio"]').forEach(r => {
-        if (r.value === '3' || r.value === '2') r.checked = true;
+      const qNames = ['audit_q1','audit_q2','audit_q3','audit_q4','audit_q5','audit_q6','audit_q7'];
+      qNames.forEach(name => {
+        const radios = document.querySelectorAll(`input[name="${name}"]`);
+        radios.forEach((r, idx) => {
+          r.checked = (idx === 0);
+        });
       });
       calculateAudit();
     }
