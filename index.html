@@ -49,33 +49,38 @@
     .tooltip-box:hover {
       display: block;
     }
-    /* Print: cleanly format only the EdTech Readiness Check */
+    /* Print: cleanly format only the Dedicated Results Memorandum */
     @media print {
       body * {
-        visibility: hidden;
+        visibility: hidden !important;
       }
-      #audit-subtab, #audit-subtab * {
-        visibility: visible;
+      #verdict-card, #verdict-card * {
+        visibility: visible !important;
       }
-      #audit-subtab {
-        position: absolute;
-        left: 0;
-        top: 0;
+      #verdict-card {
+        position: absolute !important;
+        left: 0 !important;
+        top: 0 !important;
         width: 100% !important;
         margin: 0 !important;
-        padding: 0.25in !important;
+        padding: 0.35in !important;
         background: white !important;
-        color: black !important;
+        color: #1c1917 !important;
+        border: 2px solid #1c1917 !important;
+        border-radius: 12px !important;
+        box-shadow: none !important;
         display: block !important;
+        page-break-inside: avoid;
       }
       .no-print, .no-print * {
         display: none !important;
         visibility: hidden !important;
       }
-      #verdict-card {
-        border: 2px solid #333 !important;
-        page-break-inside: avoid;
-        margin-top: 1.5rem !important;
+      .print-header {
+        display: block !important;
+      }
+      .print-footer {
+        display: block !important;
       }
     }
   </style>
@@ -644,7 +649,7 @@
           <div class="flex items-center gap-2 no-print shrink-0">
             <button onclick="window.print()" class="py-2 px-3.5 rounded-lg bg-stone-900 hover:bg-stone-800 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-              Print / Save PDF
+              Print Results Memo
             </button>
             <button onclick="resetAuditForm()" class="py-2 px-3.5 rounded-lg border border-stone-300 bg-white hover:bg-stone-50 text-stone-700 text-xs font-medium transition shadow-sm">
               Reset Diagnostics
@@ -936,6 +941,20 @@
           <!-- Verdict Card (8 cols) -->
           <div id="verdict-card" class="lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-emerald-600 shadow-sm transition-all flex flex-col justify-between">
             <div>
+              <!-- Print-Only Memorandum Header -->
+              <div class="print-header hidden pb-3 mb-4 border-b border-stone-200">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2 class="text-xl font-bold text-stone-900">EdTech Feasibility &amp; Practicality Memorandum</h2>
+                    <p class="text-xs text-stone-500">School Pre-Deployment Diagnostic Assessment • Classroom Decision Record</p>
+                  </div>
+                  <div class="text-right text-xs text-stone-400">
+                    <div id="memo-date" class="font-medium text-stone-600"></div>
+                    <div>Observatory Practicality Toolkit</div>
+                  </div>
+                </div>
+              </div>
+
               <div class="flex flex-wrap items-center justify-between gap-3 border-b border-stone-100 pb-4 mb-4">
                 <div>
                   <span class="text-xs font-bold uppercase tracking-wider text-stone-400 block">Classroom Readiness Result</span>
@@ -954,16 +973,22 @@
                 <div id="audit-score-bar" class="bg-emerald-600 h-3 rounded-full transition-all duration-300" style="width: 100%;"></div>
               </div>
 
-              <p id="verdict-text" class="text-sm text-stone-700 leading-relaxed font-medium mb-3">
-                This intervention clears essential infrastructure, cost, and pedagogical thresholds. High likelihood of classroom sustainability.
-              </p>
+              <!-- Verified Strengths & Working Conditions Box -->
+              <div id="audit-strengths-box" class="p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200 text-xs space-y-1.5 mb-3">
+                <!-- Populated dynamically by calculateAudit() -->
+              </div>
 
               <!-- Dynamic Constraint / Friction Flags Box -->
-              <div id="audit-flags-box" class="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-xs space-y-1.5 mt-3">
-                <div class="text-emerald-800 font-medium flex items-center gap-1.5">
-                  <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-                  <span>All 7 operational and pedagogical dimensions satisfy core classroom requirements.</span>
-                </div>
+              <div id="audit-flags-box" class="p-3.5 rounded-xl bg-stone-50 border border-stone-200 text-xs space-y-1.5">
+                <!-- Populated dynamically by calculateAudit() -->
+              </div>
+            </div>
+
+            <!-- Print Memorandum Sign-off (Visible only in Print) -->
+            <div class="print-footer hidden pt-4 mt-6 border-t border-stone-200 text-xs text-stone-500">
+              <div class="flex justify-between items-center">
+                <span>EdTech Co-Design Observatory — Pre-Deployment Practicality Diagnostic</span>
+                <span class="italic">School Decision Record</span>
               </div>
             </div>
 
@@ -1504,9 +1529,14 @@
       const scoreNum = document.getElementById('audit-score-num');
       const scoreBar = document.getElementById('audit-score-bar');
       const badge = document.getElementById('verdict-badge');
-      const text = document.getElementById('verdict-text');
       const card = document.getElementById('verdict-card');
+      const strengthsBox = document.getElementById('audit-strengths-box');
       const flagsBox = document.getElementById('audit-flags-box');
+      const memoDateEl = document.getElementById('memo-date');
+
+      if (memoDateEl) {
+        memoDateEl.textContent = new Date().toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      }
 
       if (scoreNum) scoreNum.textContent = (totalScore > 0 ? '+' : '') + totalScore;
 
@@ -1517,69 +1547,111 @@
       const isDataRedFlag = (q3 === -5);
       const isPowerRedFlag = (q2 === -3);
 
-      // Collect specific itemized constraints / friction flags based on user selections
+      // Collect specific itemized strengths (what's good/working) and friction flags based on user selections
+      const strengths = [];
       const flags = [];
 
       // Q1: Curriculum
-      if (q1 === 1) {
+      if (q1 === 3) {
+        strengths.push({ title: 'Curriculum Alignment', text: 'Officially vetted and accredited by National Curriculum Body (e.g. KICD / REB).' });
+      } else if (q1 === 1) {
         flags.push({ level: 'amber', text: 'Curriculum: Aligned with syllabus topics, but lacks official ministry sign-off.' });
       } else if (q1 === -3) {
         flags.push({ level: 'rose', text: 'Curriculum Risk: Unaccredited tool risks inspectorate sanctions during school audits.' });
       }
 
       // Q2: Power
-      if (q2 === 1) {
+      if (q2 === 3) {
+        strengths.push({ title: 'Energy & Power', text: 'Daily dependable grid electricity or solar micro-grid available on-site.' });
+      } else if (q2 === 1) {
         flags.push({ level: 'amber', text: 'Power: Intermittent school electricity — requires weekly scheduled charging routines.' });
       } else if (q2 === -3) {
         flags.push({ level: 'rose', text: 'Critical Power Block: No school electricity — requires off-site battery hauling or solar backup.' });
       }
 
       // Q3: Data
-      if (q3 === 2) {
+      if (q3 === 3) {
+        strengths.push({ title: 'Data & Connectivity', text: '100% offline local Wi-Fi cache or school-funded connection (zero teacher out-of-pocket cost).' });
+      } else if (q3 === 2) {
         flags.push({ level: 'amber', text: 'Connectivity: Dependent on telecom zero-rating — verify active whitelist coverage.' });
       } else if (q3 === -5) {
         flags.push({ level: 'rose', text: 'Critical Airtime Tax: Teachers/students must buy personal data bundles (high resistance risk).' });
       }
 
       // Q4: Class crowding
-      if (q4 === 1) {
+      if (q4 === 3) {
+        strengths.push({ title: 'Classroom Density', text: 'Adequate 1:1 or 2:1 pair-learning ratio in classroom.' });
+      } else if (q4 === 1) {
         flags.push({ level: 'amber', text: 'Class Crowding: High ratio (3:1 to 6:1) — pair with the 3-Station Scheduler below.' });
       } else if (q4 === -3) {
         flags.push({ level: 'rose', text: 'Device Bottleneck: Over 10:1 ratio without structured rotation will cause chaotic lessons.' });
       }
 
       // Q5: Language
-      if (q5 === 1) {
+      if (q5 === 3) {
+        strengths.push({ title: 'Linguistic & Cultural Fit', text: 'Full mother-tongue alignment with localized cultural scenarios.' });
+      } else if (q5 === 1) {
         flags.push({ level: 'amber', text: 'Language: Bilingual scaffolding present, but early learners will need oral translation.' });
       } else if (q5 === -3) {
         flags.push({ level: 'rose', text: 'Language Barrier: Monolingual tool with poor AI comprehension in regional mother tongues.' });
       }
 
       // Q6: Admin double entry
-      if (q6 === 1) {
+      if (q6 === 2) {
+        strengths.push({ title: 'Administrative Workflow', text: 'Automatically exports to official school/government term sheets (zero double entry).' });
+      } else if (q6 === 1) {
         flags.push({ level: 'amber', text: 'Reporting: Self-contained tool; does not integrate into government grade ledgers.' });
       } else if (q6 === -2) {
         flags.push({ level: 'rose', text: 'Double Bookkeeping: Adds 30–60 mins daily manual transcription into paper registers.' });
       }
 
       // Q7: Pedagogical purpose
-      if (q7 === 1) {
+      if (q7 === 3) {
+        strengths.push({ title: 'Pedagogical Purpose', text: 'Fosters collaborative peer dialogue, group problem-solving & learner agency (Biesta holistic balance).' });
+      } else if (q7 === 1) {
         flags.push({ level: 'amber', text: 'Pedagogy: Drill software requires teacher-led offline reflection to ensure active learning.' });
       } else if (q7 === -3) {
         flags.push({ level: 'rose', text: 'Pedagogy Risk: Passive screen-staring lacking collaborative discussion or learner agency.' });
       }
 
-      // Render Dynamic Flags
+      // Render Dynamic Strengths Box (What's good / working)
+      if (strengthsBox) {
+        if (strengths.length === 0) {
+          strengthsBox.innerHTML = `
+            <div class="text-stone-500 italic text-xs flex items-center gap-1.5">
+              <span>No baseline operational enablers verified — incoming tool requires external adaptation across all dimensions.</span>
+            </div>`;
+        } else {
+          strengthsBox.innerHTML = `
+            <div class="font-bold text-emerald-950 text-xs mb-1.5 flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+              <span>Verified Strengths &amp; Working Conditions (${strengths.length} of 7):</span>
+            </div>
+            <ul class="space-y-1.5 text-xs">
+              ${strengths.map(s => `
+                <li class="flex items-start gap-1.5 text-emerald-950">
+                  <span class="text-emerald-600 font-bold shrink-0">✓</span>
+                  <span><strong class="font-semibold text-emerald-900">${s.title}:</strong> ${s.text}</span>
+                </li>
+              `).join('')}
+            </ul>`;
+        }
+      }
+
+      // Render Dynamic Flags (Friction points & constraints)
       if (flagsBox) {
         if (flags.length === 0) {
           flagsBox.innerHTML = `
-            <div class="text-emerald-800 font-medium flex items-center gap-1.5">
+            <div class="text-emerald-800 font-medium flex items-center gap-1.5 text-xs">
               <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
-              <span>All 7 operational and pedagogical dimensions satisfy core classroom requirements.</span>
+              <span>No Friction Points Detected: All 7 operational and pedagogical dimensions satisfy core classroom requirements.</span>
             </div>`;
         } else {
           flagsBox.innerHTML = `
-            <div class="font-bold text-stone-900 text-xs mb-1.5">Identified Friction Points &amp; Constraints (${flags.length}):</div>
+            <div class="font-bold text-stone-900 text-xs mb-1.5 flex items-center gap-1.5">
+              <span class="text-amber-600 font-bold shrink-0">⚠️</span>
+              <span>Identified Friction Points &amp; Constraints (${flags.length}):</span>
+            </div>
             <ul class="space-y-1.5 text-xs">
               ${flags.map(f => `
                 <li class="flex items-start gap-1.5 ${f.level === 'rose' ? 'text-rose-800 font-semibold' : 'text-stone-700'}">
@@ -1591,26 +1663,23 @@
         }
       }
 
-      // Update Card Styling & Verdict Text
-      if (card && badge && scoreBar && text) {
+      // Update Card Styling & Readiness Badge
+      if (card && badge && scoreBar) {
         if (totalScore >= 11 && !isDataRedFlag && !isPowerRedFlag) {
           card.className = 'lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-emerald-600 shadow-sm transition-all flex flex-col justify-between';
           badge.className = 'badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 mt-1 inline-block';
           badge.textContent = 'GREEN LIGHT: Classroom Ready';
           scoreBar.className = 'bg-emerald-600 h-3 rounded-full transition-all duration-300';
-          text.textContent = 'This intervention clears essential infrastructure, cost, and pedagogical thresholds. High likelihood of classroom sustainability.';
         } else if (totalScore >= 4 && !isDataRedFlag) {
           card.className = 'lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-amber-500 shadow-sm transition-all flex flex-col justify-between';
           badge.className = 'badge-pill bg-amber-100 text-amber-800 text-xs py-1 px-3 mt-1 inline-block';
           badge.textContent = 'AMBER LIGHT: Feasible with Adaptation';
           scoreBar.className = 'bg-amber-500 h-3 rounded-full transition-all duration-300';
-          text.textContent = 'One or more constraints may limit deployment success. Review the flagged areas below before proceeding.';
         } else {
           card.className = 'lg:col-span-8 bg-white rounded-2xl p-6 sm:p-8 border-2 border-rose-600 shadow-sm transition-all flex flex-col justify-between';
           badge.className = 'badge-pill bg-rose-100 text-rose-800 text-xs py-1 px-3 mt-1 inline-block';
           badge.textContent = 'RED LIGHT: High Risk of Abandonment';
           scoreBar.className = 'bg-rose-600 h-3 rounded-full transition-all duration-300';
-          text.textContent = 'Critical structural friction detected. Un-reimbursed data costs, lack of school power, or severe resource scarcity create high risk of abandonment without offline adaptation or institutional subsidies.';
         }
       }
     }
