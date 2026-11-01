@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classroom Rotation Planner — Printable Reference Card</title>
+  <style>
+    /* =====================================================================
+       Classroom Rotation Planner — Offline Printable Reference
+       UNESCO ICT4D Master's Thesis · Sub-Saharan Africa Focus
+       No JavaScript required for the reference tables.
+       Interactive calculator section works in any browser.
+       Print-ready: A4 / Letter.
+       ===================================================================== */
+
+    :root {
+      --emerald-dark: #065f46;
+      --emerald:      #059669;
+      --emerald-light:#d1fae5;
+      --blue-dark:    #1e40af;
+      --blue-light:   #dbeafe;
+      --amber-dark:   #92400e;
+      --amber-light:  #fef3c7;
+      --stone-dark:   #292524;
+      --stone-mid:    #78716c;
+      --stone-light:  #f5f5f4;
+      --border:       #d6d3d1;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 11pt;
+      color: var(--stone-dark);
+      background: #fff;
+      line-height: 1.5;
+    }
+
+    /* ── Screen wrapper ── */
+    .page-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* ── Header ── */
+    .doc-header {
+      border-bottom: 3px solid var(--emerald-dark);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .observatory-label {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--stone-mid);
+      margin-bottom: 4px;
+    }
+    .doc-title {
+      font-size: 20pt;
+      font-weight: 900;
+      color: var(--stone-dark);
+      line-height: 1.15;
+    }
+    .doc-subtitle {
+      font-size: 10pt;
+      color: var(--stone-mid);
+      margin-top: 4px;
+    }
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 8.5pt;
+      color: var(--stone-mid);
+    }
+    .header-meta span {
+      background: var(--stone-light);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* ── Section titles ── */
+    .section-title {
+      font-size: 10pt;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--emerald-dark);
+      border-bottom: 1.5px solid var(--emerald-light);
+      padding-bottom: 4px;
+      margin: 22px 0 10px;
+    }
+
+    /* ── Info box ── */
+    .info-box {
+      background: var(--stone-light);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--emerald);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 10pt;
+      margin-bottom: 14px;
+    }
+    .info-box p + p { margin-top: 6px; }
+    .info-box ol, .info-box ul {
+      margin: 6px 0 0 18px;
+    }
+    .info-box li { margin-bottom: 3px; }
+
+    /* ── Concept boxes: 3 stations ── */
+    .stations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .station-card {
+      border-radius: 8px;
+      padding: 10px 12px;
+      border: 1px solid;
+    }
+    .station-card.digital {
+      background: var(--blue-light);
+      border-color: #bfdbfe;
+    }
+    .station-card.collab {
+      background: var(--amber-light);
+      border-color: #fde68a;
+    }
+    .station-card.teacher {
+      background: var(--emerald-light);
+      border-color: #a7f3d0;
+    }
+    .station-card .station-name {
+      font-weight: 800;
+      font-size: 10pt;
+      margin-bottom: 4px;
+    }
+    .station-card.digital .station-name  { color: var(--blue-dark); }
+    .station-card.collab .station-name   { color: var(--amber-dark); }
+    .station-card.teacher .station-name  { color: var(--emerald-dark); }
+    .station-card p { font-size: 9pt; color: var(--stone-dark); }
+
+    /* ── Reference tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9.5pt;
+      margin-bottom: 16px;
+    }
+    thead tr {
+      background: var(--stone-dark);
+      color: #fff;
+    }
+    thead th {
+      padding: 7px 10px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 9pt;
+    }
+    tbody tr:nth-child(even) { background: var(--stone-light); }
+    tbody td {
+      padding: 6px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 4px;
+      padding: 1px 7px;
+      font-size: 8pt;
+      font-weight: 700;
+    }
+    .badge-green  { background: var(--emerald-light); color: var(--emerald-dark); }
+    .badge-amber  { background: var(--amber-light);   color: var(--amber-dark); }
+    .badge-blue   { background: var(--blue-light);    color: var(--blue-dark); }
+
+    /* ── Fill-in planner ── */
+    .planner-form {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .planner-form h3 {
+      font-size: 11pt;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: var(--stone-dark);
+    }
+    .form-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 10pt;
+    }
+    .form-row label { min-width: 200px; font-weight: 600; }
+    .fill-line {
+      flex: 1;
+      border: none;
+      border-bottom: 1.5px solid var(--stone-dark);
+      background: transparent;
+      font-size: 10pt;
+      padding: 2px 4px;
+      min-width: 60px;
+    }
+    .form-row .unit { font-size: 9pt; color: var(--stone-mid); }
+
+    /* ── Timetable grid ── */
+    .timetable {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .timetable-header {
+      background: var(--emerald-dark);
+      color: #fff;
+      padding: 8px 14px;
+      font-weight: 800;
+      font-size: 10pt;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .timetable-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+      font-size: 9pt;
+    }
+    .timetable-row:last-child { border-bottom: none; }
+    .timetable-row.header-row {
+      background: var(--stone-light);
+      font-weight: 800;
+      font-size: 8.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .timetable-row.priming-row,
+    .timetable-row.synthesis-row {
+      background: #f9f9f9;
+      font-style: italic;
+    }
+    .timetable-row.rotation-row:nth-child(even) { background: #fffbf5; }
+    .timetable-cell {
+      padding: 6px 10px;
+      border-right: 1px solid var(--border);
+    }
+    .timetable-cell:last-child { border-right: none; }
+    .time-cell { font-family: monospace; font-weight: 700; color: var(--emerald-dark); }
+    .station1-cell { background: rgba(219,234,254,0.4); }
+    .station2-cell { background: rgba(254,243,199,0.4); }
+    .station3-cell { background: rgba(209,250,229,0.4); }
+    .fill-cell {
+      border: none;
+      border-bottom: 1px solid var(--stone-mid);
+      background: transparent;
+      width: 100%;
+      font-size: 9pt;
+      padding: 1px 3px;
+    }
+
+    /* ── Scenario examples table ── */
+    .scenario-key {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .scenario-key span {
+      font-size: 8.5pt;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+    .dot-green  { background: #059669; }
+    .dot-amber  { background: #d97706; }
+
+    /* ── Notes / footer ── */
+    .notes-box {
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      min-height: 80px;
+    }
+    .notes-box .notes-label {
+      font-size: 8.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--stone-mid);
+      margin-bottom: 6px;
+    }
+    .doc-footer {
+      border-top: 1.5px solid var(--border);
+      margin-top: 24px;
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8pt;
+      color: var(--stone-mid);
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    /* ── Research basis box ── */
+    .research-box {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 9pt;
+      margin-bottom: 14px;
+    }
+    .research-box strong { color: var(--emerald-dark); }
+
+    /* ── Divider ── */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 18px 0; }
+
+    /* ── Mobile screen styles ── */
+    @media (max-width: 600px) {
+      .stations-grid { grid-template-columns: 1fr; }
+      .timetable-row { grid-template-columns: 60px 1fr; flex-wrap: wrap; }
+      .timetable-cell { min-width: 0; }
+      .station1-cell, .station2-cell, .station3-cell {
+        grid-column: 1 / -1;
+      }
+      .form-row { flex-wrap: wrap; }
+      .form-row label { min-width: 100%; }
+    }
+
+    /* ── Print styles ── */
+    @media print {
+      body { font-size: 10pt; }
+      .page-wrapper { padding: 0; max-width: 100%; }
+      .no-print { display: none !important; }
+      .stations-grid { grid-template-columns: repeat(3, 1fr); }
+
+      /* Page break rules */
+      .section-title { page-break-after: avoid; }
+      .timetable { page-break-inside: avoid; }
+      .planner-form { page-break-inside: avoid; }
+      .station-card { page-break-inside: avoid; }
+      table { page-break-inside: auto; }
+      tr { page-break-inside: avoid; }
+
+      @page {
+        size: A4;
+        margin: 15mm 15mm 18mm 15mm;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+  <!-- ── Document Header ── -->
+  <header class="doc-header">
+    <div class="observatory-label">EdTech Policy Observatory · UNESCO ICT4D Master's Thesis · SSA Focus</div>
+    <h1 class="doc-title">Classroom Rotation Planner</h1>
+    <p class="doc-subtitle">Offline Reference Card &amp; Fill-In Timetable — Pedagogical Scheduling Engine for Device-Scarce Classrooms</p>
+    <div class="header-meta">
+      <span>Pedagogical Scheduling Engine</span>
+      <span>3-Station Rotational Model</span>
+      <span>No Internet Required</span>
+      <span>Printed: <span id="print-date"></span><noscript>November 2026</noscript></span>
+    </div>
+    <script>document.getElementById('print-date').textContent = new Date().toLocaleDateString('en-GB', {day:'numeric',month:'long',year:'numeric'});</script>
+  </header>
+
+  <!-- ── What Is This? ── -->
+  <div class="section-title">What Is This &amp; How to Use It</div>
+  <div class="info-box">
+    <p>This reference card helps any teacher plan a <strong>3-station rotational lesson</strong> when the classroom has <em>fewer devices than students</em> — the most common situation in Sub-Saharan African schools (median ratio: 1 device per 13–18 pupils).</p>
+    <p>The 3-station model guarantees <strong>every student reaches the digital station</strong> within a single lesson, without chaos or idle time. Use this card to:</p>
+    <ol>
+      <li>Understand the station roles (below)</li>
+      <li>Look up pre-calculated cohort splits for your class size (Reference Tables)</li>
+      <li>Fill in your own lesson timetable (Fill-In Planner section)</li>
+    </ol>
+  </div>
+
+  <!-- ── 3 Stations Overview ── -->
+  <div class="section-title">The Three Stations</div>
+  <div class="stations-grid">
+    <div class="station-card digital">
+      <div class="station-name">💻 Station 1: Digital Lab</div>
+      <p>Students use the available tablets/computers. With Paired Learning (2 per screen), more students are covered per device. Cohort rotates every cycle.</p>
+    </div>
+    <div class="station-card collab">
+      <div class="station-name">📖 Station 2: Collaborative</div>
+      <p>Students solve syllabus workbook problems or structured peer activities in small groups. Teacher-independent — self-guided tasks.</p>
+    </div>
+    <div class="station-card teacher">
+      <div class="station-name">🎓 Station 3: Teacher Focus</div>
+      <p>Direct teacher instruction, literacy remediation, phonics drilling, or targeted support for the cohort that needs it most in this cycle.</p>
+    </div>
+  </div>
+
+  <!-- ── Device Sharing Protocol ── -->
+  <div class="section-title">Screen Sharing Protocol</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Mode</th>
+        <th>Students per Device</th>
+        <th>When to Use</th>
+        <th>Coverage Formula</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Paired Learning</strong> <span class="badge badge-green">Recommended</span></td>
+        <td>2 per screen</td>
+        <td>Standard classroom. One reads, one navigates. Doubles effective capacity. Promotes peer learning.</td>
+        <td>Seats = Devices × 2</td>
+      </tr>
+      <tr>
+        <td><strong>Solo Use</strong></td>
+        <td>1 per screen</td>
+        <td>Assessment sessions, or when content requires individual input (typing, drawing).</td>
+        <td>Seats = Devices × 1</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── Cohort Split Reference Tables ── -->
+  <div class="section-title">Quick-Reference: Cohort Splits by Class Size</div>
+  <p style="font-size:9pt; color:var(--stone-mid); margin-bottom:8px;">
+    Cohorts are balanced using: Cohort A = ⌈N÷3⌉, Cohort B = round((N−A)÷2), Cohort C = N−A−B.
+    The largest cohort always gets the Teacher Focus station first (highest need).
+  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Class Size (N)</th>
+        <th>Cohort A</th>
+        <th>Cohort B</th>
+        <th>Cohort C</th>
+        <th>Typical SSA Context</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>15</td><td>5</td><td>5</td><td>5</td><td>Small/rural primary class</td></tr>
+      <tr><td>20</td><td>7</td><td>7</td><td>6</td><td>Urban private school</td></tr>
+      <tr><td>30</td><td>10</td><td>10</td><td>10</td><td>Standard public class</td></tr>
+      <tr><td>40</td><td>14</td><td>13</td><td>13</td><td>Common SSA average</td></tr>
+      <tr><td>50</td><td>17</td><td>17</td><td>16</td><td><strong>SSA median class size</strong></td></tr>
+      <tr><td>60</td><td>20</td><td>20</td><td>20</td><td>Common crowded urban school</td></tr>
+      <tr><td>70</td><td>24</td><td>23</td><td>23</td><td>High-density public secondary</td></tr>
+      <tr><td>80</td><td>27</td><td>27</td><td>26</td><td>Severely overcrowded</td></tr>
+      <tr><td>90</td><td>30</td><td>30</td><td>30</td><td>Crisis-level crowding (use 4-station variant)</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ── Device Coverage Reference ── -->
+  <div class="section-title">Device Coverage &amp; Deficit Detection</div>
+  <div class="scenario-key">
+    <span><span class="dot dot-green"></span> Fully Covered — all cohort seats filled</span>
+    <span><span class="dot dot-amber"></span> Deficit — some students act as peer scribes in 3-student trios</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Devices (D)</th>
+        <th>Paired Seats (D×2)</th>
+        <th>Max Cohort Covered (50-pupil class)</th>
+        <th>Status</th>
+        <th>Practical Tip</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td><td>2</td><td>2 of 17</td>
+        <td><span class="badge badge-amber">Severe Deficit</span></td>
+        <td>Use demonstration-only mode. Teacher projects to whole station.</td>
+      </tr>
+      <tr>
+        <td>3</td><td>6</td><td>6 of 17</td>
+        <td><span class="badge badge-amber">High Deficit</span></td>
+        <td>3-student trios: 1 operator + 2 scribes. Rotate roles each cycle.</td>
+      </tr>
+      <tr>
+        <td>5</td><td>10</td><td>10 of 17</td>
+        <td><span class="badge badge-amber">Moderate Deficit</span></td>
+        <td>7 peer scribes record results; reassign in next rotation.</td>
+      </tr>
+      <tr>
+        <td>9</td><td>18</td><td>17 of 17 ✓</td>
+        <td><span class="badge badge-green">Fully Covered</span></td>
+        <td>Paired learning covers entire cohort A (17) with 1 spare seat.</td>
+      </tr>
+      <tr>
+        <td>15</td><td>30</td><td>17 of 17 ✓</td>
+        <td><span class="badge badge-green">Surplus</span></td>
+        <td>Solo use viable. 13 spare seats — can merge cohorts A+B for digital.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── Timing Reference ── -->
+  <div class="section-title">Rotation Timing Guide</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Lesson Duration</th>
+        <th>Usable Time (−10 min)</th>
+        <th>Per-Rotation Block</th>
+        <th>Priming</th>
+        <th>Synthesis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>30 min</td><td>20 min</td><td>~6 min each</td><td>5 min</td><td>5 min</td></tr>
+      <tr><td>35 min</td><td>25 min</td><td>~8 min each</td><td>5 min</td><td>5 min</td></tr>
+      <tr><td>40 min</td><td>30 min</td><td>10 min each</td><td>5 min</td><td>5 min</td></tr>
+      <tr><td><strong>45 min</strong></td><td><strong>35 min</strong></td><td><strong>~11 min each</strong></td><td>5 min</td><td>5 min</td></tr>
+      <tr><td>50 min</td><td>40 min</td><td>~13 min each</td><td>5 min</td><td>5 min</td></tr>
+      <tr><td>60 min</td><td>50 min</td><td>~16 min each</td><td>5 min</td><td>5 min</td></tr>
+      <tr><td>75 min</td><td>65 min</td><td>~21 min each</td><td>5 min</td><td>5 min</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+
+  <!-- ── Fill-In Planner ── -->
+  <div class="section-title">Fill-In Lesson Planner</div>
+  <p style="font-size:9pt; color:var(--stone-mid); margin-bottom:10px;">Fill in your class details below, then use the timetable to plan your lesson. Write cohort numbers in the table.</p>
+
+  <div class="planner-form">
+    <h3>My Classroom Parameters</h3>
+    <div class="form-row">
+      <label>Subject / Topic:</label>
+      <input class="fill-line" type="text" placeholder="e.g. Mathematics — Fractions">
+    </div>
+    <div class="form-row">
+      <label>Total Students (N):</label>
+      <input class="fill-line" type="text" placeholder="e.g. 50" style="max-width:70px">
+      <span class="unit">pupils</span>
+    </div>
+    <div class="form-row">
+      <label>Functional Devices (D):</label>
+      <input class="fill-line" type="text" placeholder="e.g. 5" style="max-width:70px">
+      <span class="unit">tablets / computers</span>
+    </div>
+    <div class="form-row">
+      <label>Lesson Duration (T):</label>
+      <input class="fill-line" type="text" placeholder="e.g. 45" style="max-width:70px">
+      <span class="unit">minutes</span>
+    </div>
+    <div class="form-row">
+      <label>Screen Sharing:</label>
+      <span style="font-size:9.5pt;">☐ Paired (2/screen) &nbsp;&nbsp; ☐ Solo (1/screen)</span>
+    </div>
+    <div class="form-row">
+      <label>Device:Pupil Ratio (D÷N):</label>
+      <input class="fill-line" type="text" placeholder="calculate: 1 device per __ pupils" style="max-width:160px">
+    </div>
+    <div class="form-row">
+      <label>Cohort A (⌈N÷3⌉):</label>
+      <input class="fill-line" type="text" placeholder="" style="max-width:70px">
+      <span class="unit">pupils → starts at Digital Lab</span>
+    </div>
+    <div class="form-row">
+      <label>Cohort B (round((N−A)÷2)):</label>
+      <input class="fill-line" type="text" placeholder="" style="max-width:70px">
+      <span class="unit">pupils → starts at Collaborative</span>
+    </div>
+    <div class="form-row">
+      <label>Cohort C (N−A−B):</label>
+      <input class="fill-line" type="text" placeholder="" style="max-width:70px">
+      <span class="unit">pupils → starts at Teacher Focus</span>
+    </div>
+    <div class="form-row">
+      <label>Digital Station Seats (D×2 or D×1):</label>
+      <input class="fill-line" type="text" placeholder="" style="max-width:70px">
+      <span class="unit">seats</span>
+    </div>
+    <div class="form-row">
+      <label>Deficit / Surplus:</label>
+      <input class="fill-line" type="text" placeholder="Seats minus Cohort A size" style="max-width:160px">
+    </div>
+  </div>
+
+  <!-- ── Timetable Grid ── -->
+  <div class="section-title">My Lesson Timetable</div>
+  <div class="timetable">
+    <div class="timetable-header">
+      <span>3-Station Rotational Lesson Plan</span>
+      <span style="font-size:8.5pt; font-weight:400;">Fill in cohort sizes and activities</span>
+    </div>
+
+    <div class="timetable-row header-row">
+      <div class="timetable-cell">Time</div>
+      <div class="timetable-cell">Phase</div>
+      <div class="timetable-cell station1-cell">💻 Digital Lab</div>
+      <div class="timetable-cell station2-cell">📖 Collaborative</div>
+      <div class="timetable-cell station3-cell">🎓 Teacher Focus</div>
+    </div>
+
+    <div class="timetable-row priming-row">
+      <div class="timetable-cell time-cell">00–05m</div>
+      <div class="timetable-cell"><strong>Whole-Class Priming</strong><br><span style="font-size:8.5pt;">Teacher introduces topic, assigns cohorts</span></div>
+      <div class="timetable-cell station1-cell" colspan="3" style="font-size:8.5pt; font-style:italic; color:var(--stone-mid);">All students together · Cohort assignments announced</div>
+    </div>
+
+    <div class="timetable-row rotation-row">
+      <div class="timetable-cell time-cell">05–___m</div>
+      <div class="timetable-cell"><strong>Rotation 1</strong></div>
+      <div class="timetable-cell station1-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+      <div class="timetable-cell station2-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+      <div class="timetable-cell station3-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+    </div>
+
+    <div class="timetable-row rotation-row">
+      <div class="timetable-cell time-cell">___–___m</div>
+      <div class="timetable-cell"><strong>Rotation 2</strong></div>
+      <div class="timetable-cell station1-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+      <div class="timetable-cell station2-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+      <div class="timetable-cell station3-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+    </div>
+
+    <div class="timetable-row rotation-row">
+      <div class="timetable-cell time-cell">___–___m</div>
+      <div class="timetable-cell"><strong>Rotation 3</strong></div>
+      <div class="timetable-cell station1-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+      <div class="timetable-cell station2-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+      <div class="timetable-cell station3-cell"><input class="fill-cell" placeholder="Cohort ___ (__ pupils)"></div>
+    </div>
+
+    <div class="timetable-row synthesis-row">
+      <div class="timetable-cell time-cell">___–___m</div>
+      <div class="timetable-cell"><strong>Whole-Class Synthesis</strong><br><span style="font-size:8.5pt;">Oral reflection · Peer exit tickets · Homework</span></div>
+      <div class="timetable-cell station1-cell" colspan="3" style="font-size:8.5pt; font-style:italic; color:var(--stone-mid);">All students together · 5-minute debrief</div>
+    </div>
+  </div>
+
+  <!-- ── Activity Notes ── -->
+  <div class="section-title">Station Activity Notes</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:16px;">
+    <div>
+      <p style="font-size:9pt; font-weight:700; color:var(--blue-dark); margin-bottom:4px;">💻 Digital Station Tasks:</p>
+      <div class="notes-box" style="min-height:60px;">
+        <div class="notes-label">Write activities here</div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:9pt; font-weight:700; color:var(--amber-dark); margin-bottom:4px;">📖 Collaborative Tasks:</p>
+      <div class="notes-box" style="min-height:60px;">
+        <div class="notes-label">Write activities here</div>
+      </div>
+    </div>
+    <div>
+      <p style="font-size:9pt; font-weight:700; color:var(--emerald-dark); margin-bottom:4px;">🎓 Teacher Focus:</p>
+      <div class="notes-box" style="min-height:60px;">
+        <div class="notes-label">Write activities here</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Research Basis ── -->
+  <div class="section-title">Research Basis</div>
+  <div class="research-box">
+    <p><strong>3-Station Rotation Model</strong> — Pedagogical literature on blended learning in device-scarce environments (Graham &amp; Halverson, 2012; Raman, 2025) confirms that structured cohort rotation is the single most effective strategy for maximising digital access equity when hardware-to-pupil ratios exceed 1:5.</p>
+    <p style="margin-top:6px;"><strong>SSA Class Size Context</strong> — UIS/UNESCO (2024) data shows median lower-secondary class sizes of 42–58 pupils in Kenya, Rwanda, and Zambia, with device:pupil ratios ranging from 1:8 (Rwanda national average) to 1:28 (rural Sub-Saharan Africa). The 3-station model operates effectively across the full 15–90 pupil range covered by this planner.</p>
+    <p style="margin-top:6px;"><strong>Zero Idle Time Principle</strong> — The 5-minute whole-class priming and synthesis buffer prevents cohort transition dead-time. Research shows unstructured transition periods account for 12–18% of lost instructional time in rotation models without explicit protocols (Pouye, 2024).</p>
+  </div>
+
+  <!-- ── Practical Tips ── -->
+  <div class="section-title">Practical Tips for SSA Classrooms</div>
+  <table>
+    <thead>
+      <tr>
+        <th>Challenge</th>
+        <th>Strategy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Power cuts mid-lesson</td>
+        <td>Use Kolibri or Kiwix (see DPG Directory) — fully offline on a single charged laptop. Pre-download content the day before.</td>
+      </tr>
+      <tr>
+        <td>Students unfamiliar with devices</td>
+        <td>Assign the most tech-confident pupils as "Digital Station Leads" for the first 2 weeks. Rotate the leadership role.</td>
+      </tr>
+      <tr>
+        <td>No clock / watch in classroom</td>
+        <td>Use door-knock signals or a student timekeeper with a watch to signal rotation transitions at pre-set intervals.</td>
+      </tr>
+      <tr>
+        <td>High deficit (fewer than 5 seats for 17 pupils)</td>
+        <td>Form 3-student trios: one operates the device, one records results on paper, one asks questions. All switch roles in the next lesson.</td>
+      </tr>
+      <tr>
+        <td>Mixed-ability class</td>
+        <td>Assign higher-ability pupils to Collaborative station first (self-guided tasks) so Teacher Focus station can target lower-ability cohort in Rotation 1 while you have energy and focus.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ── General Notes ── -->
+  <div class="section-title">Lesson Notes &amp; Observations</div>
+  <div class="notes-box" style="min-height:100px;">
+    <div class="notes-label">Write your observations here after the lesson</div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="doc-footer">
+    <span><strong>EdTech Policy &amp; Feasibility Observatory</strong> · Digital Public Good · Master in ICT for Development, UniTO / COREP / Impactskills · 2025–2026</span>
+    <span>For the interactive online version with auto-calculated timetables, visit the Observatory website.</span>
+  </footer>
+
+</div>
+</body>
+</html>

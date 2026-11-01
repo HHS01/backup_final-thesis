@@ -1,0 +1,58 @@
+name: Monthly Educational DPG Link Health-Check
+
+on:
+  schedule:
+    # Runs at 00:00 UTC on the 1st of every month
+    - cron: '0 0 1 * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  verify-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run Automated URL & Domain Verification
+        id: run_verify
+        run: |
+          python scripts/verify_dpg_urls.py
+
+      - name: Commit & Update Verification Timestamps (if all passed)
+        if: success()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Observatory Link Monitor"
+          git add data/resources_registry.json data/last_link_verification_report.md
+          if git diff --staged --quiet; then
+            echo "No changes in verification status."
+          else
+            git commit -m "chore(dpg): update automated monthly URL verification timestamps [skip ci]"
+            git push
+          fi
+
+      - name: Create Issue on Unreachable URL
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let report = "Automated Link Check detected one or more unreachable or degraded resources.";
+            if (fs.existsSync('data/last_link_verification_report.md')) {
+              report = fs.readFileSync('data/last_link_verification_report.md', 'utf8');
+            }
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 [Action Required] Educational DPG Link Failure Detected',
+              body: `### Monthly Link Verification Failure\n\nThe monthly crawler detected an issue with one or more vetted educational tools.\n\n${report}\n\nPlease inspect \`data/resources_registry.json\` and update or replace the failing URL with its verified mirror.`
+            });

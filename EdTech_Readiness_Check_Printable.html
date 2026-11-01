@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EdTech Readiness Check — Printable Questionnaire</title>
+  <style>
+    /* =====================================================================
+       EdTech Readiness Check — Offline Printable Questionnaire
+       UNESCO ICT4D Master's Thesis · Sub-Saharan Africa Focus
+       No JavaScript required. Print-ready: A4 / Letter.
+       ===================================================================== */
+
+    :root {
+      --emerald: #065f46;
+      --emerald-light: #d1fae5;
+      --rose: #9f1239;
+      --rose-light: #fff1f2;
+      --stone: #292524;
+      --stone-mid: #78716c;
+      --stone-light: #f5f5f4;
+      --stone-border: #d6d3d1;
+      --amber: #92400e;
+      --amber-light: #fffbeb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 11pt;
+      color: var(--stone);
+      background: #fff;
+      line-height: 1.55;
+      padding: 1.2cm 1.5cm;
+      max-width: 21cm;
+      margin: 0 auto;
+    }
+
+    /* ---- HEADER ---- */
+    .doc-header {
+      border-bottom: 2.5px solid var(--emerald);
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .doc-header .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .brand-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 900; font-size: 18px; font-family: sans-serif;
+    }
+    .brand-text h1 {
+      font-family: sans-serif;
+      font-size: 14pt;
+      font-weight: 900;
+      color: var(--stone);
+      letter-spacing: -0.3px;
+    }
+    .brand-text p {
+      font-family: sans-serif;
+      font-size: 8pt;
+      color: var(--stone-mid);
+      font-weight: 500;
+    }
+    .doc-meta {
+      text-align: right;
+      font-family: sans-serif;
+      font-size: 8pt;
+      color: var(--stone-mid);
+    }
+    .doc-meta .badge {
+      display: inline-block;
+      background: var(--emerald-light);
+      color: var(--emerald);
+      font-weight: 700;
+      font-size: 7.5pt;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #a7f3d0;
+      margin-bottom: 4px;
+    }
+
+    /* ---- INSTRUCTIONS PANEL ---- */
+    .instructions-panel {
+      background: var(--stone-light);
+      border: 1px solid var(--stone-border);
+      border-left: 4px solid var(--emerald);
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      font-family: sans-serif;
+    }
+    .instructions-panel h2 {
+      font-size: 9.5pt;
+      font-weight: 800;
+      color: var(--emerald);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .instructions-panel ol {
+      padding-left: 18px;
+      font-size: 9pt;
+      color: #44403c;
+      line-height: 1.6;
+    }
+    .instructions-panel li { margin-bottom: 3px; }
+    .instructions-panel li strong { color: var(--stone); }
+
+    /* ---- SCORING KEY ---- */
+    .scoring-key {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      font-family: sans-serif;
+    }
+    .score-band {
+      flex: 1;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 8.5pt;
+      border: 1px solid;
+    }
+    .score-band.green  { background: var(--emerald-light); border-color: #6ee7b7; color: var(--emerald); }
+    .score-band.amber  { background: var(--amber-light); border-color: #fcd34d; color: var(--amber); }
+    .score-band.red    { background: var(--rose-light); border-color: #fca5a5; color: var(--rose); }
+    .score-band .band-label { font-weight: 800; font-size: 9pt; display: block; margin-bottom: 2px; }
+    .score-band .band-range { font-weight: 700; font-size: 8pt; display: block; margin-bottom: 3px; opacity: 0.8; }
+    .score-band .band-desc  { line-height: 1.4; }
+
+    /* ---- SECTION TITLE ---- */
+    .section-title {
+      font-family: sans-serif;
+      font-size: 9pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--stone-mid);
+      border-bottom: 1px solid var(--stone-border);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* ---- QUESTION BLOCK ---- */
+    .question-block {
+      margin-bottom: 12px;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 7px;
+    }
+    .q-num {
+      width: 22px; height: 22px;
+      background: var(--emerald-light);
+      color: var(--emerald);
+      border-radius: 50%;
+      font-family: sans-serif;
+      font-size: 9pt;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .q-title {
+      font-family: sans-serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: var(--stone);
+      flex: 1;
+    }
+    .q-note {
+      font-family: sans-serif;
+      font-size: 7.5pt;
+      color: var(--stone-mid);
+      font-style: italic;
+      margin-top: 2px;
+    }
+    .q-score-line {
+      font-family: sans-serif;
+      font-size: 8pt;
+      color: var(--stone-mid);
+      margin-left: 30px;
+      margin-bottom: 6px;
+    }
+
+    /* ---- OPTIONS TABLE ---- */
+    .options-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-left: 30px;
+      width: calc(100% - 30px);
+      font-family: sans-serif;
+      font-size: 8.5pt;
+    }
+    .options-table td {
+      vertical-align: top;
+      border: 1px solid var(--stone-border);
+      padding: 5px 7px;
+    }
+    .options-table tr:first-child td { border-radius: 4px 4px 0 0; }
+    .options-table .opt-check { width: 18px; padding: 5px 4px; text-align: center; color: var(--stone-border); }
+    .opt-check-box {
+      width: 14px; height: 14px;
+      border: 1.5px solid var(--stone-mid);
+      border-radius: 3px;
+      display: inline-block;
+    }
+    .opt-score { width: 72px; font-weight: 700; white-space: nowrap; }
+    .opt-score.positive { color: var(--emerald); }
+    .opt-score.neutral  { color: #ca8a04; }
+    .opt-score.negative { color: var(--rose); }
+    .opt-label { font-weight: 700; color: var(--stone); display: block; margin-bottom: 1px; }
+    .opt-desc  { color: #57534e; font-weight: 400; }
+    .opt-flag  { color: var(--rose); font-weight: 600; }
+
+    /* ---- ROW COLOURING ---- */
+    .row-green td { background: #f0fdf4; }
+    .row-amber td { background: #fffbeb; }
+    .row-red   td { background: #fff1f2; }
+
+    /* ---- SCORE SUMMARY FOOTER ---- */
+    .score-summary {
+      margin-top: 16px;
+      border: 2px solid var(--stone);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: sans-serif;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .score-summary h3 {
+      font-size: 9pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--stone-mid);
+      margin-bottom: 8px;
+    }
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 1.5fr;
+      gap: 6px;
+      align-items: end;
+    }
+    .score-cell {
+      text-align: center;
+      font-size: 8pt;
+    }
+    .score-cell .sc-label { display: block; color: var(--stone-mid); margin-bottom: 3px; font-size: 7.5pt; }
+    .score-box {
+      border: 1.5px solid var(--stone-border);
+      border-radius: 5px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .total-box {
+      border: 2px solid var(--stone);
+      border-radius: 5px;
+      height: 34px;
+      font-weight: 800;
+      font-size: 10pt;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .meta-fields {
+      margin-top: 10px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      font-size: 8.5pt;
+    }
+    .meta-field label { display: block; color: var(--stone-mid); margin-bottom: 2px; font-size: 7.5pt; font-weight: 600; }
+    .meta-field .field-line {
+      border-bottom: 1px solid var(--stone);
+      height: 20px;
+    }
+
+    /* ---- CITATIONS ---- */
+    .citations {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--stone-border);
+      font-family: sans-serif;
+      font-size: 7.5pt;
+      color: var(--stone-mid);
+      line-height: 1.5;
+    }
+    .citations h4 {
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 5px;
+      color: var(--stone);
+    }
+    .citations p { margin-bottom: 2px; }
+
+    /* ---- PRINT STYLES ---- */
+    @page {
+      size: A4;
+      margin: 1.5cm 1.8cm 1.5cm 1.8cm;
+    }
+    @media print {
+      body { padding: 0; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; }
+      a { text-decoration: none; color: inherit; }
+    }
+
+    /* ---- SCREEN-ONLY EXTRAS ---- */
+    @media screen {
+      body { padding: 1.5cm 2cm; box-shadow: 0 0 30px rgba(0,0,0,0.1); }
+      .print-bar {
+        position: fixed;
+        top: 0; left: 0; right: 0;
+        background: #1c1917;
+        color: #e7e5e4;
+        font-family: sans-serif;
+        font-size: 11px;
+        padding: 8px 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        z-index: 999;
+      }
+      .print-bar button {
+        background: #16a34a;
+        color: #fff;
+        border: none;
+        padding: 5px 14px;
+        border-radius: 5px;
+        font-size: 11px;
+        font-weight: 700;
+        cursor: pointer;
+        font-family: sans-serif;
+      }
+      .print-bar button:hover { background: #15803d; }
+      body { margin-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen-only print bar -->
+  <div class="print-bar no-print">
+    <span>📄 EdTech Readiness Check — Offline Questionnaire &nbsp;·&nbsp; Print or save as PDF for offline use</span>
+    <button onclick="window.print()">🖨 Print / Save as PDF</button>
+  </div>
+
+  <!-- ============================================================
+       DOCUMENT HEADER
+       ============================================================ -->
+  <div class="doc-header">
+    <div class="brand">
+      <div class="brand-icon">Ω</div>
+      <div class="brand-text">
+        <h1>EdTech Policy Observatory</h1>
+        <p>Sub-Saharan Africa — UNESCO 6-Pillars ICT4D Framework &nbsp;·&nbsp; Master in ICT for Development</p>
+      </div>
+    </div>
+    <div class="doc-meta">
+      <span class="badge">Classroom Practitioner Tool</span><br>
+      Pre-Deployment Practicality Check<br>
+      <em>Scale: −22 to +20 &nbsp;|&nbsp; 7 Questions</em>
+    </div>
+  </div>
+
+  <!-- Title -->
+  <h2 style="font-family:sans-serif; font-size:15pt; font-weight:900; color:#1c1917; margin-bottom:4px;">
+    EdTech Readiness Check
+  </h2>
+  <p style="font-family:sans-serif; font-size:9pt; color:#78716c; margin-bottom:12px;">
+    A 2-minute diagnostic for classroom teachers, school heads, and community committees before adopting incoming digital tools or donor hardware.
+  </p>
+
+  <!-- ============================================================
+       HOW TO USE THIS TOOL
+       ============================================================ -->
+  <div class="instructions-panel">
+    <h2>How to Use This Questionnaire</h2>
+    <ol>
+      <li>Think about a <strong>specific EdTech tool or device</strong> your school is considering deploying (e.g., a tablet app, a laptop programme, a donor device).</li>
+      <li>Read each of the <strong>7 questions</strong> carefully. For each question, <strong>tick one box</strong> that best matches your school's current situation.</li>
+      <li>Write the <strong>point value</strong> for your chosen option in the "Score" column at the right of each row.</li>
+      <li>At the end, <strong>add up all 7 scores</strong> and write the total in the Summary box on the last section.</li>
+      <li>Use the <strong>Scoring Key</strong> below to interpret the total and decide whether to proceed, adapt, or halt deployment.</li>
+      <li>Completed sheets can be filed as a <strong>school decision record</strong> or shared with the community committee.</li>
+    </ol>
+  </div>
+
+  <!-- ============================================================
+       SCORING KEY
+       ============================================================ -->
+  <div class="section-title">Scoring Key — Total Score Interpretation</div>
+  <div class="scoring-key">
+    <div class="score-band green">
+      <span class="band-label">🟢 GREEN — Classroom Ready</span>
+      <span class="band-range">+8 to +20 points</span>
+      <span class="band-desc">Infrastructure and pedagogical conditions broadly support deployment. Proceed with structured classroom integration and ongoing monitoring.</span>
+    </div>
+    <div class="score-band amber">
+      <span class="band-label">🟡 AMBER — Conditional Readiness</span>
+      <span class="band-range">0 to +7 points</span>
+      <span class="band-desc">Significant constraints present. Address critical friction points (power, cost, ratio) before full deployment. Pilot with one class first.</span>
+    </div>
+    <div class="score-band red">
+      <span class="band-label">🔴 RED — Not Recommended</span>
+      <span class="band-range">−22 to −1 points</span>
+      <span class="band-desc">Foundational barriers make deployment high-risk. Redirect to 100% offline-first platforms (e.g., Kolibri, Storybooks Africa, Kiwix) instead.</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       QUESTIONS
+       ============================================================ -->
+  <div class="section-title" style="margin-top:10px;">Diagnostic Questions — Tick One Option Per Question</div>
+
+  <!-- ---- Q1 ---- -->
+  <div class="question-block">
+    <div class="q-header">
+      <span class="q-num">1</span>
+      <div>
+        <div class="q-title">Curriculum &amp; Syllabus Alignment <sup style="font-size:7pt; color:#065f46;">[1]</sup></div>
+        <div class="q-note">Is this tool formally approved by your national curriculum authority?</div>
+      </div>
+    </div>
+    <table class="options-table">
+      <tr class="row-green">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+3 pts</td>
+        <td><span class="opt-label">Accredited</span><span class="opt-desc">Officially vetted by the National Curriculum Body (e.g. KICD / REB).</span></td>
+        <td style="width:52px; text-align:center; border-left: 1px solid #d6d3d1; font-size:8pt; color:#78716c;">Score:<br><span style="border-bottom:1px solid #1c1917; display:inline-block; width:30px;">&nbsp;</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score neutral">+1 pt</td>
+        <td><span class="opt-label">Aligned</span><span class="opt-desc">Matches syllabus topics, but lacks formal ministry sign-off.</span></td>
+        <td></td>
+      </tr>
+      <tr class="row-red">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score negative">−3 pts</td>
+        <td><span class="opt-label">Unaccredited</span><span class="opt-desc">Independent third-party tool; risks conflict during inspections.</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ---- Q2 ---- -->
+  <div class="question-block">
+    <div class="q-header">
+      <span class="q-num">2</span>
+      <div>
+        <div class="q-title">Energy &amp; Device Recharging Reality <sup style="font-size:7pt; color:#065f46;">[2]</sup></div>
+        <div class="q-note">Does the school have reliable power to charge devices daily?</div>
+      </div>
+    </div>
+    <table class="options-table">
+      <tr class="row-green">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+3 pts</td>
+        <td><span class="opt-label">Reliable</span><span class="opt-desc">Daily dependable grid or solar power available in school.</span></td>
+        <td style="width:52px; text-align:center; border-left: 1px solid #d6d3d1; font-size:8pt; color:#78716c;">Score:<br><span style="border-bottom:1px solid #1c1917; display:inline-block; width:30px;">&nbsp;</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score neutral">+1 pt</td>
+        <td><span class="opt-label">Intermittent</span><span class="opt-desc">Power cuts 1–2 days per week; no generator backup.</span></td>
+        <td></td>
+      </tr>
+      <tr class="row-red">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score negative">−3 pts</td>
+        <td><span class="opt-label">No School Power</span><span class="opt-desc"><span class="opt-flag">[RED FLAG]</span> Devices must be hauled off-site to charge.</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ---- Q3 ---- -->
+  <div class="question-block">
+    <div class="q-header">
+      <span class="q-num">3</span>
+      <div>
+        <div class="q-title">Data &amp; Connectivity Cost Burden <sup style="font-size:7pt; color:#065f46;">[3]</sup></div>
+        <div class="q-note">Who bears the internet cost for this tool to function?</div>
+      </div>
+    </div>
+    <table class="options-table">
+      <tr class="row-green">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+3 pts</td>
+        <td><span class="opt-label">Zero-Cost</span><span class="opt-desc">100% offline local Wi-Fi cache or school-funded connection.</span></td>
+        <td style="width:52px; text-align:center; border-left: 1px solid #d6d3d1; font-size:8pt; color:#78716c;">Score:<br><span style="border-bottom:1px solid #1c1917; display:inline-block; width:30px;">&nbsp;</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+2 pts</td>
+        <td><span class="opt-label">Zero-Rated</span><span class="opt-desc">Free access via government telecom whitelisted portal.</span></td>
+        <td></td>
+      </tr>
+      <tr class="row-red">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score negative">−5 pts</td>
+        <td><span class="opt-label">Salary Tax</span><span class="opt-desc"><span class="opt-flag">[CRITICAL]</span> Teachers or pupils must buy personal airtime bundles.</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ---- Q4 ---- -->
+  <div class="question-block">
+    <div class="q-header">
+      <span class="q-num">4</span>
+      <div>
+        <div class="q-title">Class Size &amp; Device-to-Student Ratio <sup style="font-size:7pt; color:#065f46;">[4]</sup></div>
+        <div class="q-note">How many students share each device in your classroom?</div>
+      </div>
+    </div>
+    <table class="options-table">
+      <tr class="row-green">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+3 pts</td>
+        <td><span class="opt-label">Adequate</span><span class="opt-desc">1:1 or 2:1 pair-learning ratio in classroom.</span></td>
+        <td style="width:52px; text-align:center; border-left: 1px solid #d6d3d1; font-size:8pt; color:#78716c;">Score:<br><span style="border-bottom:1px solid #1c1917; display:inline-block; width:30px;">&nbsp;</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score neutral">+1 pt</td>
+        <td><span class="opt-label">Crowded</span><span class="opt-desc">3:1 to 6:1 — manageable with 3-station rotational pedagogy.</span></td>
+        <td></td>
+      </tr>
+      <tr class="row-red">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score negative">−3 pts</td>
+        <td><span class="opt-label">Severe Scarcity</span><span class="opt-desc">Over 10 students per screen with no rotation support.</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ---- Q5 ---- -->
+  <div class="question-block">
+    <div class="q-header">
+      <span class="q-num">5</span>
+      <div>
+        <div class="q-title">Cultural &amp; Linguistic Fit <sup style="font-size:7pt; color:#065f46;">[5]</sup></div>
+        <div class="q-note">Does the tool support learners' mother tongue and local context?</div>
+      </div>
+    </div>
+    <table class="options-table">
+      <tr class="row-green">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+3 pts</td>
+        <td><span class="opt-label">Contextualized</span><span class="opt-desc">Full mother-tongue alignment with local cultural scenarios.</span></td>
+        <td style="width:52px; text-align:center; border-left: 1px solid #d6d3d1; font-size:8pt; color:#78716c;">Score:<br><span style="border-bottom:1px solid #1c1917; display:inline-block; width:30px;">&nbsp;</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score neutral">+1 pt</td>
+        <td><span class="opt-label">Bilingual</span><span class="opt-desc">English text paired with oral local-language audio prompts.</span></td>
+        <td></td>
+      </tr>
+      <tr class="row-red">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score negative">−3 pts</td>
+        <td><span class="opt-label">Foreign / AI-Only</span><span class="opt-desc">Monolingual English/French; AI degrades in local dialect.</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ---- Q6 ---- -->
+  <div class="question-block">
+    <div class="q-header">
+      <span class="q-num">6</span>
+      <div>
+        <div class="q-title">Administrative Burden &amp; Reporting Compatibility <sup style="font-size:7pt; color:#065f46;">[6]</sup></div>
+        <div class="q-note">Does this tool add extra paperwork for the teacher?</div>
+      </div>
+    </div>
+    <table class="options-table">
+      <tr class="row-green">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+2 pts</td>
+        <td><span class="opt-label">Integrated</span><span class="opt-desc">Automatically exports to official school/government term sheets.</span></td>
+        <td style="width:52px; text-align:center; border-left: 1px solid #d6d3d1; font-size:8pt; color:#78716c;">Score:<br><span style="border-bottom:1px solid #1c1917; display:inline-block; width:30px;">&nbsp;</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score neutral">+1 pt</td>
+        <td><span class="opt-label">Neutral</span><span class="opt-desc">Self-contained practice; does not require grading export.</span></td>
+        <td></td>
+      </tr>
+      <tr class="row-red">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score negative">−2 pts</td>
+        <td><span class="opt-label">Double Entry</span><span class="opt-desc">Teacher must manually copy app marks into physical paper ledgers.</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ---- Q7 ---- -->
+  <div class="question-block">
+    <div class="q-header">
+      <span class="q-num">7</span>
+      <div>
+        <div class="q-title">Pedagogical Purpose: Biesta Threefold Balance <sup style="font-size:7pt; color:#065f46;">[7]</sup></div>
+        <div class="q-note">Does this tool develop the whole child, or reduce them to a passive test-taker?</div>
+      </div>
+    </div>
+    <table class="options-table">
+      <tr class="row-green">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score positive">+3 pts</td>
+        <td><span class="opt-label">Holistic</span><span class="opt-desc">Fosters collaborative peer dialogue, group problem-solving &amp; agency.</span></td>
+        <td style="width:52px; text-align:center; border-left: 1px solid #d6d3d1; font-size:8pt; color:#78716c;">Score:<br><span style="border-bottom:1px solid #1c1917; display:inline-block; width:30px;">&nbsp;</span></td>
+      </tr>
+      <tr class="row-amber">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score neutral">+1 pt</td>
+        <td><span class="opt-label">Balanced</span><span class="opt-desc">Independent digital drill paired with offline teacher-led discussion.</span></td>
+        <td></td>
+      </tr>
+      <tr class="row-red">
+        <td class="opt-check"><span class="opt-check-box"></span></td>
+        <td class="opt-score negative">−3 pts</td>
+        <td><span class="opt-label">Isolated Drill</span><span class="opt-desc">Students in silent screen-staring with algorithmic tracking only.</span></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- ============================================================
+       SCORE SUMMARY
+       ============================================================ -->
+  <div class="score-summary">
+    <h3>Score Summary &amp; Decision Record</h3>
+    <div class="score-grid">
+      <div class="score-cell">
+        <span class="sc-label">Q1 Score</span>
+        <div class="score-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label">Q2 Score</span>
+        <div class="score-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label">Q3 Score</span>
+        <div class="score-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label">Q4 Score</span>
+        <div class="score-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label" style="font-weight:700; color:#1c1917;">TOTAL (Q1–Q4)</span>
+        <div class="total-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label">Q5 Score</span>
+        <div class="score-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label">Q6 Score</span>
+        <div class="score-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label">Q7 Score</span>
+        <div class="score-box"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label">—</span>
+        <div class="score-box" style="background:#f5f5f4; border-style:dashed;"></div>
+      </div>
+      <div class="score-cell">
+        <span class="sc-label" style="font-weight:800; color:#065f46; font-size:8.5pt;">FINAL TOTAL (–22 to +20)</span>
+        <div class="total-box" style="border-color:#065f46; color:#065f46; font-size:13pt;"></div>
+      </div>
+    </div>
+
+    <div style="margin-top: 10px; font-family:sans-serif; font-size:8.5pt; color:#57534e;">
+      <strong style="color:#1c1917;">Verdict (circle one):</strong>&nbsp;&nbsp;
+      <span style="background:#d1fae5; color:#065f46; font-weight:700; padding:2px 8px; border-radius:4px; border:1px solid #6ee7b7;">🟢 GREEN — Proceed</span>
+      &nbsp;&nbsp;
+      <span style="background:#fffbeb; color:#92400e; font-weight:700; padding:2px 8px; border-radius:4px; border:1px solid #fcd34d;">🟡 AMBER — Adapt / Pilot</span>
+      &nbsp;&nbsp;
+      <span style="background:#fff1f2; color:#9f1239; font-weight:700; padding:2px 8px; border-radius:4px; border:1px solid #fca5a5;">🔴 RED — Do Not Deploy</span>
+    </div>
+
+    <div class="meta-fields">
+      <div class="meta-field">
+        <label>School / Institution</label>
+        <div class="field-line"></div>
+      </div>
+      <div class="meta-field">
+        <label>Tool / Programme Being Assessed</label>
+        <div class="field-line"></div>
+      </div>
+      <div class="meta-field">
+        <label>Completed By (Name &amp; Role)</label>
+        <div class="field-line"></div>
+      </div>
+      <div class="meta-field">
+        <label>Date</label>
+        <div class="field-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       CITATIONS
+       ============================================================ -->
+  <div class="citations">
+    <h4>Evidence &amp; Citations</h4>
+    <p><strong>[1] Curriculum Accreditation:</strong> Kenya Institute of Curriculum Development (KICD Act No. 4, 2013); Rwanda Basic Education Board (REB) National Inspectorate Framework for Teaching Materials.</p>
+    <p><strong>[2] Power &amp; Rural Electrification:</strong> UNESCO Institute for Statistics (UIS, 2023) <em>Global Education Monitoring Report: Technology in Education</em>; World Bank Sustainable Energy for All (SE4ALL) Database.</p>
+    <p><strong>[3] Teacher Informal Data Tax (4–8% of wages):</strong> UNESCO Global Education Coalition &amp; Alliance of Alliances (AoA) SSA Field Survey (2024); GSMA <em>The Mobile Economy Sub-Saharan Africa 2023</em>.</p>
+    <p><strong>[4] Pupil-Teacher / Pupil-Device Ratios:</strong> UNESCO UIS / World Bank World Development Indicators (WDI, 2024) — Rwanda primary pupil-teacher ratio: 59:1; Zambia: 42:1.</p>
+    <p><strong>[5] NLP Dialect Degradation:</strong> AfroBench (Dossou et al., 2024) <em>A Benchmark for African Languages</em>; IrokoBench (Adelani et al., 2024); Masakhane NLP Consortium.</p>
+    <p><strong>[6] Administrative Double Entry:</strong> World Bank SABER-ICT Policy Analysis; Piper, B. et al. (2018) <em>Teacher Time on Task and Instructional Practice in Sub-Saharan Africa</em> (RTI International).</p>
+    <p><strong>[7] Pedagogical Purpose:</strong> Biesta, Gert (2010). <em>Good Education in an Age of Measurement: Ethics, Politics, Democracy</em>. Paradigm Publishers / Routledge.</p>
+    <p style="margin-top:6px; font-style:italic;">Full interactive version with auto-scoring: EdTech Policy Observatory web application — available at the project GitHub repository.</p>
+  </div>
+
+</body>
+</html>

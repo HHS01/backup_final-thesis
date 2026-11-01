@@ -2,91 +2,297 @@
   {
     "id": "kolibri-ecosystem",
     "title": "Kolibri Learning Platform",
-    "category": "DPG Platform",
-    "countries": ["KEN", "RWA", "ZMB", "ALL"],
+    "category": "Offline DPG Platform",
+    "scope": "Global / Pan-African",
+    "countries": [
+      "KEN",
+      "RWA",
+      "ZMB",
+      "ALL"
+    ],
     "url": "https://learningequality.org/kolibri/",
+    "fallback_url": "https://github.com/learningequality/kolibri",
     "offline_mode": "100% Offline (Local Wi-Fi / SD Card)",
-    "target_audience": ["Teachers", "Students"],
+    "target_audience": [
+      "Teachers",
+      "Students"
+    ],
     "curator_body": "Learning Equality / UNICEF DPGA",
-    "last_verified_date": "2026-10-25",
+    "signature_keywords": [
+      "Kolibri",
+      "Learning Equality",
+      "offline"
+    ],
+    "last_verified_date": "2026-11-01",
     "verification_cadence_days": 30,
     "status": "active",
     "community_flags_count": 0,
-    "description": "Open-source educational platform designed for off-grid schools. Syncs curriculum content, books, and exercises over local micro-Wi-Fi without consuming cellular data."
+    "description": "Open-source educational platform engineered for off-grid classrooms. Syncs curriculum units, books, and exercises over local micro-Wi-Fi without consuming cellular airtime.",
+    "http_status": 200,
+    "latency_ms": 828,
+    "verification_note": "Notice: Permanent redirect to https://learningequality.org/kolibri/about-kolibri/",
+    "suggested_canonical_url": "https://learningequality.org/kolibri/about-kolibri/"
   },
   {
-    "id": "kicd-edutv-kenya",
-    "title": "KICD Kenya National Curriculum Broadcasts",
-    "category": "National Curriculum",
-    "countries": ["KEN"],
-    "url": "https://kicd.ac.ke/",
-    "offline_mode": "Broadcast (Radio / TV / Cached MP3)",
-    "target_audience": ["Students", "Parents"],
-    "curator_body": "Kenya Institute of Curriculum Development",
-    "last_verified_date": "2026-10-28",
+    "id": "kiwix-offline-knowledge",
+    "title": "Kiwix Offline Open Knowledge",
+    "category": "Offline DPG Platform",
+    "scope": "Global / Pan-African",
+    "countries": [
+      "KEN",
+      "RWA",
+      "ZMB",
+      "ALL"
+    ],
+    "url": "https://www.kiwix.org/",
+    "fallback_url": "https://github.com/kiwix",
+    "offline_mode": "100% Offline (Micro-SD / Hotspot ZIM Files)",
+    "target_audience": [
+      "Teachers",
+      "Students",
+      "Researchers"
+    ],
+    "curator_body": "Kiwix Association / Wikimedia DPG",
+    "signature_keywords": [
+      "Kiwix",
+      "offline",
+      "Wikipedia"
+    ],
+    "last_verified_date": "2026-11-01",
     "verification_cadence_days": 30,
     "status": "active",
     "community_flags_count": 0,
-    "description": "Official competency-based curriculum lessons broadcast via free-to-air radio and scheduled television channels, bypasses smartphone and airtime requirements."
+    "description": "The gold standard for zero-connectivity schools. Stores complete Wikipedia editions, medical encyclopedias, Wiktionary, and Project Gutenberg books on micro-SD cards without any cellular data.",
+    "http_status": 200,
+    "latency_ms": 3585,
+    "verification_note": "Notice: Permanent redirect to https://kiwix.org/en/",
+    "suggested_canonical_url": "https://kiwix.org/en/"
   },
   {
-    "id": "reb-elearning-rwanda",
-    "title": "Rwanda Basic Education Board (REB) E-Learning",
-    "category": "National Curriculum",
-    "countries": ["RWA"],
-    "url": "https://elearning.reb.rw/",
-    "offline_mode": "Zero-Rated Web (MTN / Airtel Rwanda)",
-    "target_audience": ["Teachers", "Students"],
-    "curator_body": "Ministry of Education Rwanda",
-    "last_verified_date": "2026-10-20",
+    "id": "phet-stem-simulations",
+    "title": "PhET Interactive STEM Simulations",
+    "category": "STEM & Simulations",
+    "scope": "Global / Pan-African",
+    "countries": [
+      "KEN",
+      "RWA",
+      "ZMB",
+      "ALL"
+    ],
+    "url": "https://phet.colorado.edu/",
+    "fallback_url": "https://github.com/phetsims",
+    "offline_mode": "Offline HTML5 Packages / Android App",
+    "target_audience": [
+      "Teachers",
+      "Students"
+    ],
+    "curator_body": "University of Colorado Boulder / UNESCO DPG",
+    "signature_keywords": [
+      "PhET",
+      "simulations",
+      "physics",
+      "chemistry"
+    ],
+    "last_verified_date": "2026-11-01",
     "verification_cadence_days": 30,
     "status": "active",
     "community_flags_count": 0,
-    "description": "Official digital textbook repository. Zero-rated on designated local mobile networks, allowing syllabus downloads without deducting airtime balance."
+    "description": "Over 100 interactive physics, chemistry, and math simulations. Downloadable as standalone offline HTML5 packages that run on basic tablets and laptops in off-grid classrooms.",
+    "http_status": 200,
+    "latency_ms": 31,
+    "verification_note": "Fully verified active."
+  },
+  {
+    "id": "ubongo-kids-edutainment",
+    "title": "Ubongo Kids & Akili and Me",
+    "category": "Language & Literacy",
+    "scope": "Global / Pan-African",
+    "countries": [
+      "KEN",
+      "RWA",
+      "ZMB",
+      "ALL"
+    ],
+    "url": "https://www.ubongo.org/",
+    "fallback_url": "https://digitalpublicgoods.net/registry/ubongo.html",
+    "offline_mode": "Broadcast (Radio / Free TV) & Low-Data Audio",
+    "target_audience": [
+      "Students",
+      "Parents",
+      "Early Learners"
+    ],
+    "curator_body": "Ubongo Learning / UNICEF DPGA",
+    "signature_keywords": [
+      "Ubongo",
+      "Akili",
+      "edutainment",
+      "Africa"
+    ],
+    "last_verified_date": "2026-11-01",
+    "verification_cadence_days": 30,
+    "status": "active",
+    "community_flags_count": 0,
+    "description": "Africa’s largest localized edutainment DPG. Delivers foundational numeracy and literacy in Kiswahili, Kinyarwanda, Hausa, Yoruba, English, and French via free-to-air broadcast and cached media.",
+    "http_status": 200,
+    "latency_ms": 702,
+    "verification_note": "Fully verified active."
   },
   {
     "id": "african-storybook-project",
     "title": "African Storybook Project",
     "category": "Language & Literacy",
-    "countries": ["KEN", "RWA", "ZMB", "ALL"],
+    "scope": "Global / Pan-African",
+    "countries": [
+      "KEN",
+      "RWA",
+      "ZMB",
+      "ALL"
+    ],
     "url": "https://www.africanstorybook.org/",
+    "fallback_url": "https://www.saide.org.za/",
     "offline_mode": "Printable PDF / Offline Reader App",
-    "target_audience": ["Teachers", "Students", "Parents"],
+    "target_audience": [
+      "Teachers",
+      "Students",
+      "Parents"
+    ],
     "curator_body": "Saide / UNESCO Literacy DPG",
-    "last_verified_date": "2026-10-29",
+    "signature_keywords": [
+      "African Storybook",
+      "Saide",
+      "stories"
+    ],
+    "last_verified_date": "2026-11-01",
     "verification_cadence_days": 30,
     "status": "active",
     "community_flags_count": 0,
-    "description": "Open-access illustrated storybooks published in over 200 African languages (including Kiswahili, Kinyarwanda, and Bemba), downloadable as lightweight printable PDFs."
+    "description": "Open-access illustrated children's storybooks published in over 200 African languages (including Kiswahili, Kinyarwanda, and Bemba), downloadable as lightweight printable PDFs.",
+    "http_status": 200,
+    "latency_ms": 1082,
+    "verification_note": "Fully verified active."
+  },
+  {
+    "id": "siyavula-stem-oer",
+    "title": "Siyavula Open STEM Practice",
+    "category": "STEM & Simulations",
+    "scope": "Global / Pan-African",
+    "countries": [
+      "KEN",
+      "RWA",
+      "ZMB",
+      "ALL"
+    ],
+    "url": "https://www.siyavula.com/",
+    "fallback_url": "https://digitalpublicgoods.net/registry/siyavula.html",
+    "offline_mode": "Low-Data Web / Zero-Rated Partner",
+    "target_audience": [
+      "Teachers",
+      "Students"
+    ],
+    "curator_body": "Siyavula Education / DPGA",
+    "signature_keywords": [
+      "Siyavula",
+      "practice",
+      "maths",
+      "science"
+    ],
+    "last_verified_date": "2026-11-01",
+    "verification_cadence_days": 30,
+    "status": "active",
+    "community_flags_count": 0,
+    "description": "Curriculum-aligned mathematics and physical sciences adaptive practice modules, optimized for low-bandwidth mobile browsers with open CC-BY licenses and telecom zero-rating.",
+    "http_status": 200,
+    "latency_ms": 1153,
+    "verification_note": "Fully verified active."
+  },
+  {
+    "id": "kicd-edutv-kenya",
+    "title": "KICD National Curriculum Broadcasts",
+    "category": "National Curriculum",
+    "scope": "National (Kenya)",
+    "countries": [
+      "KEN"
+    ],
+    "url": "https://kicd.ac.ke/",
+    "fallback_url": "https://education.go.ke/",
+    "offline_mode": "Broadcast (Radio / TV / Cached MP3)",
+    "target_audience": [
+      "Students",
+      "Parents"
+    ],
+    "curator_body": "Kenya Institute of Curriculum Development",
+    "signature_keywords": [
+      "KICD",
+      "Curriculum",
+      "Kenya"
+    ],
+    "last_verified_date": "2026-11-01",
+    "verification_cadence_days": 30,
+    "status": "active",
+    "community_flags_count": 0,
+    "description": "Official competency-based curriculum lessons broadcast via free-to-air radio and television channels, bypassing smartphone and cellular airtime requirements.",
+    "http_status": 200,
+    "latency_ms": 1144,
+    "verification_note": "Fully verified active."
+  },
+  {
+    "id": "reb-elearning-rwanda",
+    "title": "Rwanda Basic Education Board (REB) E-Learning",
+    "category": "National Curriculum",
+    "scope": "National (Rwanda)",
+    "countries": [
+      "RWA"
+    ],
+    "url": "https://elearning.reb.rw/",
+    "fallback_url": "https://www.reb.gov.rw/",
+    "offline_mode": "Zero-Rated Web (MTN / Airtel Rwanda)",
+    "target_audience": [
+      "Teachers",
+      "Students"
+    ],
+    "curator_body": "Ministry of Education Rwanda",
+    "signature_keywords": [
+      "Rwanda",
+      "REB",
+      "e-learning",
+      "curriculum"
+    ],
+    "last_verified_date": "2026-11-01",
+    "verification_cadence_days": 30,
+    "status": "active",
+    "community_flags_count": 0,
+    "description": "Official digital textbook repository. Zero-rated on designated local mobile networks, allowing syllabus downloads without deducting airtime balances.",
+    "http_status": 200,
+    "latency_ms": 2818,
+    "verification_note": "Fully verified active."
   },
   {
     "id": "zambia-oer-portal",
     "title": "Zambia MoE Open Educational Resources",
     "category": "National Curriculum",
-    "countries": ["ZMB"],
+    "scope": "National (Zambia)",
+    "countries": [
+      "ZMB"
+    ],
     "url": "https://www.moe.gov.zm/",
+    "fallback_url": "https://www.zambianeducation.gov.zm/",
     "offline_mode": "Downloadable PDF Syllabus / Radio",
-    "target_audience": ["Teachers", "Students"],
+    "target_audience": [
+      "Teachers",
+      "Students"
+    ],
     "curator_body": "Ministry of Education Zambia",
-    "last_verified_date": "2026-10-22",
+    "signature_keywords": [
+      "Ministry of Education",
+      "Zambia"
+    ],
+    "last_verified_date": "2026-11-01",
     "verification_cadence_days": 30,
     "status": "active",
     "community_flags_count": 0,
-    "description": "National primary and secondary syllabus units and curriculum teacher guides, formatted for low-bandwidth mobile viewing and print distribution."
-  },
-  {
-    "id": "siyavula-stem-oer",
-    "title": "Siyavula Open STEM Practice",
-    "category": "DPG Platform",
-    "countries": ["KEN", "RWA", "ZMB", "ALL"],
-    "url": "https://www.siyavula.com/",
-    "offline_mode": "Low-Data Web / Zero-Rated Partner",
-    "target_audience": ["Teachers", "Students"],
-    "curator_body": "Siyavula Education / DPGA",
-    "last_verified_date": "2026-10-26",
-    "verification_cadence_days": 30,
-    "status": "active",
-    "community_flags_count": 0,
-    "description": "Curriculum-aligned mathematics and physical sciences adaptive practice modules, optimized for low-bandwidth mobile browsers with open CC-BY licenses."
+    "description": "National primary and secondary syllabus units and curriculum teacher guides, formatted for low-bandwidth mobile viewing and physical print distribution.",
+    "http_status": 200,
+    "latency_ms": 1265,
+    "verification_note": "Fully verified active."
   }
 ]
