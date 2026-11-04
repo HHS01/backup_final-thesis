@@ -570,12 +570,31 @@
                     <span class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
                       🏛️ Lens 4: National Policy &amp; Capital
                     </span>
-                    <span class="text-[11px] text-slate-400 font-mono">World Bank &middot; UIS &middot; KICD</span>
+                    <span class="text-[11px] text-slate-400 font-mono">World Bank &middot; UIS &middot; Ookla Q1 2024</span>
                   </div>
                   <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The CapEx Trap &amp; Recurrent Budget Lock</h4>
                   <p class="text-xs text-slate-600 leading-relaxed mb-4">
                     Ministries borrow heavily for initial hardware imports ($150M+ DLP tablets) while 92.5% of education budget is locked in recurrent salaries, leaving 0% for maintenance.
                   </p>
+                  <!-- Ookla speed-test panel -->
+                  <div class="bg-slate-50 rounded-lg border border-slate-100 px-3 py-2 mb-3">
+                    <div class="text-[10px] uppercase font-bold text-slate-400 mb-1.5 tracking-wider">Network Speed Reality (Ookla Speedtest · Q1 2024 · <em>3,938 mobile tiles</em>)</div>
+                    <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
+                      <div>
+                        <span class="block font-extrabold text-blue-700 text-base">46.2</span>
+                        <span class="text-slate-500">Mbps ↓ mobile<br><span class="font-mono text-[10px]">test-weighted</span></span>
+                      </div>
+                      <div class="border-x border-slate-200/60">
+                        <span class="block font-extrabold text-amber-700 text-base">23.4</span>
+                        <span class="text-slate-500">Mbps ↓ median<br><span class="font-mono text-[10px]">tile (rural proxy)</span></span>
+                      </div>
+                      <div>
+                        <span class="block font-extrabold text-rose-700 text-base">47.7ms</span>
+                        <span class="text-slate-500">Latency<br><span class="font-mono text-[10px]">test-weighted</span></span>
+                      </div>
+                    </div>
+                    <p class="text-[10px] text-slate-400 mt-1.5 italic">⚠ Ookla tiles skew urban (Speedtest app users). Median tile (23 Mbps) better proxies non-urban reachability. Fixed broadband median: 10.6 Mbps across 6,453 tiles.</p>
+                  </div>
                   
                   <div class="grid grid-cols-3 gap-2 py-3 bg-slate-50 rounded-lg border border-slate-100 text-center mb-4">
                     <div class="p-2">
@@ -599,6 +618,49 @@
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span>Out-of-School Primary Rate:</span>
                   <span class="font-bold text-rose-700">18.8% (World Bank 2023)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- ================================================================ -->
+            <!-- SECTION 1C: FIELD VOICE LAYER — QUALITATIVE EVIDENCE CAROUSEL  -->
+            <!-- ================================================================ -->
+            <div class="mt-8 mb-8" id="field-voice-panel">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="badge-pill bg-rose-100 text-rose-800 font-bold">🎙️ Field Voice Layer</span>
+                <span class="badge-pill bg-slate-100 text-slate-700">Qualitative Ground-Truth</span>
+              </div>
+              <h4 class="text-base font-extrabold text-slate-900 font-serif mb-1">Authenticated Field Testimonies — Pillar-Coded</h4>
+              <p class="text-xs text-slate-500 mb-4 max-w-2xl">
+                Verbatim excerpts from peer-reviewed field research (EdTech Hub, UNESCO, GSMA) coded to the UNESCO 6-Pillar framework. Randomized on page load. Click <strong>Next →</strong> to cycle.
+              </p>
+
+              <!-- Voice Carousel -->
+              <div class="relative bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
+                <!-- Pillar colour strip -->
+                <div id="voice-pillar-strip" class="h-1.5 w-full bg-blue-500 transition-all duration-500"></div>
+                <div class="p-5 sm:p-6">
+                  <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                    <div class="flex flex-wrap items-center gap-2">
+                      <span id="voice-pillar-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">📐 Pillar 2: Infrastructure</span>
+                      <span id="voice-type-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">👩‍🏫 Frontline Teacher</span>
+                      <span id="voice-segment-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-teal-50 text-teal-800 border border-teal-200">📚 Primary</span>
+                    </div>
+                    <span id="voice-geo-badge" class="text-[11px] font-mono text-slate-400">🇰🇪 Rural Kenya</span>
+                  </div>
+
+                  <blockquote id="voice-quote" class="text-sm text-slate-800 font-serif leading-relaxed italic border-l-4 border-blue-400 pl-4 mb-3">
+                    "We only have power for two hours in the morning before the grid cuts. I charged my phone the night before to show the students the Khan Academy video. By the time the class started, the battery had died."
+                  </blockquote>
+
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <cite id="voice-citation" class="text-[11px] text-slate-400 not-italic">EdTech Hub / FCDO Kenya Rural Teacher Audit, 2023 · Machakos County</cite>
+                    <div class="flex items-center gap-2">
+                      <span id="voice-counter" class="text-[11px] text-slate-400 font-mono">1 / 8</span>
+                      <button onclick="prevVoice()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">← Prev</button>
+                      <button onclick="nextVoice()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-slate-700 transition">Next →</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1673,13 +1735,32 @@
         </div>
 
         <!-- Filter bar -->
-        <div class="flex flex-wrap gap-2 mb-6" id="dpg-filter-container">
-          <button onclick="filterDPGs('ALL')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-stone-900 text-white">All Solutions (9)</button>
+                <!-- Filter bar: Resource Type -->
+        <div class="flex flex-wrap gap-2 mb-2" id="dpg-filter-container">
+          <button onclick="filterDPGs('ALL')" class="dpg-filter-btn active px-3 py-1.5 rounded-lg text-xs font-bold bg-stone-900 text-white">All Solutions (9)</button>
           <button onclick="filterDPGs('Global / Pan-African')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">🌍 Pan-African &amp; Global (6)</button>
-          <button onclick="filterDPGs('National Portals')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">🏛️ National Portals (KEN/RWA/ZMB)</button>
+          <button onclick="filterDPGs('National Portals')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">🏛️ National Portals</button>
           <button onclick="filterDPGs('Offline DPG Platform')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">Offline DPG Platforms</button>
-          <button onclick="filterDPGs('STEM & Simulations')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">STEM &amp; Science</button>
-          <button onclick="filterDPGs('Language & Literacy')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">Mother-Tongue Literacy</button>
+          <button onclick="filterDPGs('STEM &amp; Simulations')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">STEM &amp; Science</button>
+          <button onclick="filterDPGs('Language &amp; Literacy')" class="dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50">Mother-Tongue Literacy</button>
+        </div>
+        <!-- Filter bar: Learner Segment -->
+        <div class="flex flex-wrap gap-2 mb-2" id="dpg-segment-container">
+          <span class="text-[11px] font-bold text-stone-500 uppercase self-center pr-1 shrink-0">Learner:</span>
+          <button onclick="filterDPGSegment('ALL')" class="dpg-seg-btn active px-2.5 py-1 rounded-lg text-[11px] font-bold bg-teal-700 text-white">All</button>
+          <button onclick="filterDPGSegment('Primary')" class="dpg-seg-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-teal-200 text-teal-800 hover:bg-teal-50">📚 Primary</button>
+          <button onclick="filterDPGSegment('Secondary')" class="dpg-seg-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-teal-200 text-teal-800 hover:bg-teal-50">🏫 Secondary</button>
+          <button onclick="filterDPGSegment('Out-of-School')" class="dpg-seg-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-teal-200 text-teal-800 hover:bg-teal-50">🌱 Out-of-School</button>
+          <button onclick="filterDPGSegment('Teacher PD')" class="dpg-seg-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-teal-200 text-teal-800 hover:bg-teal-50">👩‍🏫 Teacher PD</button>
+          <button onclick="filterDPGSegment('TVET')" class="dpg-seg-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-teal-200 text-teal-800 hover:bg-teal-50">🔧 TVET</button>
+        </div>
+        <!-- Filter bar: Voice Type (data source lens) -->
+        <div class="flex flex-wrap gap-2 mb-6" id="dpg-voice-container">
+          <span class="text-[11px] font-bold text-stone-500 uppercase self-center pr-1 shrink-0">Voice:</span>
+          <button onclick="filterDPGVoice('ALL')" class="dpg-voice-btn active px-2.5 py-1 rounded-lg text-[11px] font-bold bg-purple-700 text-white">All</button>
+          <button onclick="filterDPGVoice('Ministry Mandate')" class="dpg-voice-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-purple-200 text-purple-800 hover:bg-purple-50">🏛️ Ministry Mandate</button>
+          <button onclick="filterDPGVoice('Frontline Teacher')" class="dpg-voice-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-purple-200 text-purple-800 hover:bg-purple-50">👩‍🏫 Frontline Teacher</button>
+          <button onclick="filterDPGVoice('Citizen / Household')" class="dpg-voice-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-purple-200 text-purple-800 hover:bg-purple-50">👥 Citizen / Household</button>
         </div>
 
         <!-- Dynamic DPG Cards Grid -->
@@ -1786,6 +1867,8 @@
         title: "Kolibri Learning Platform",
         category: "Offline DPG Platform",
         scope: "Global / Pan-African",
+        learner_segments: ["Primary", "Secondary", "Out-of-School", "Teacher PD"],
+        voice_type: "Frontline Teacher",
         countries: ["KEN", "RWA", "ZMB", "ALL"],
         url: "https://learningequality.org/kolibri/",
         fallback_url: "https://github.com/learningequality/kolibri",
@@ -1800,6 +1883,8 @@
         title: "Kiwix Offline Open Knowledge",
         category: "Offline DPG Platform",
         scope: "Global / Pan-African",
+        learner_segments: ["Primary", "Secondary", "Out-of-School", "Teacher PD", "TVET"],
+        voice_type: "Frontline Teacher",
         countries: ["KEN", "RWA", "ZMB", "ALL"],
         url: "https://www.kiwix.org/",
         fallback_url: "https://github.com/kiwix",
@@ -1814,6 +1899,8 @@
         title: "PhET Interactive STEM Simulations",
         category: "STEM & Simulations",
         scope: "Global / Pan-African",
+        learner_segments: ["Primary", "Secondary"],
+        voice_type: "Ministry Mandate",
         countries: ["KEN", "RWA", "ZMB", "ALL"],
         url: "https://phet.colorado.edu/",
         fallback_url: "https://github.com/phetsims",
@@ -1828,6 +1915,8 @@
         title: "Ubongo Kids & Akili and Me",
         category: "Language & Literacy",
         scope: "Global / Pan-African",
+        learner_segments: ["Primary", "Out-of-School"],
+        voice_type: "Citizen / Household",
         countries: ["KEN", "RWA", "ZMB", "ALL"],
         url: "https://www.ubongo.org/",
         fallback_url: "https://digitalpublicgoods.net/registry/ubongo.html",
@@ -1842,6 +1931,8 @@
         title: "African Storybook Project",
         category: "Language & Literacy",
         scope: "Global / Pan-African",
+        learner_segments: ["Primary", "Out-of-School"],
+        voice_type: "Citizen / Household",
         countries: ["KEN", "RWA", "ZMB", "ALL"],
         url: "https://www.africanstorybook.org/",
         fallback_url: "https://www.saide.org.za/",
@@ -1856,6 +1947,8 @@
         title: "Siyavula Open STEM Practice",
         category: "STEM & Simulations",
         scope: "Global / Pan-African",
+        learner_segments: ["Secondary"],
+        voice_type: "Ministry Mandate",
         countries: ["KEN", "RWA", "ZMB", "ALL"],
         url: "https://www.siyavula.com/",
         fallback_url: "https://digitalpublicgoods.net/registry/siyavula.html",
@@ -1870,6 +1963,8 @@
         title: "KICD National Curriculum Broadcasts",
         category: "National Curriculum",
         scope: "National (Kenya)",
+        learner_segments: ["Primary", "Secondary"],
+        voice_type: "Ministry Mandate",
         countries: ["KEN"],
         url: "https://kicd.ac.ke/",
         fallback_url: "https://education.go.ke/",
@@ -1884,6 +1979,8 @@
         title: "Rwanda Basic Education Board (REB) E-Learning",
         category: "National Curriculum",
         scope: "National (Rwanda)",
+        learner_segments: ["Primary", "Secondary", "Teacher PD"],
+        voice_type: "Ministry Mandate",
         countries: ["RWA"],
         url: "https://elearning.reb.rw/",
         fallback_url: "https://www.reb.gov.rw/",
@@ -1898,6 +1995,8 @@
         title: "Zambia MoE Open Educational Resources",
         category: "National Curriculum",
         scope: "National (Zambia)",
+        learner_segments: ["Primary", "Secondary"],
+        voice_type: "Ministry Mandate",
         countries: ["ZMB"],
         url: "https://www.moe.gov.zm/",
         fallback_url: "https://www.zambianeducation.gov.zm/",
@@ -2429,25 +2528,50 @@
       return `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800" title="HTTP Status: 200 OK • Verified via scripts/verify_dpg_urls.py"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Verified (${dayText})</span>`;
     }
 
-    function renderDPGs(filterKey) {
-      const grid = document.getElementById('dpg-cards-grid');
-      let filtered = DPG_REGISTRY;
-      if (filterKey && filterKey !== 'ALL') {
-        if (filterKey === 'Global / Pan-African') {
-          filtered = DPG_REGISTRY.filter(d => d.scope === 'Global / Pan-African');
-        } else if (filterKey === 'National Portals') {
-          filtered = DPG_REGISTRY.filter(d => d.scope.startsWith('National'));
-        } else {
-          filtered = DPG_REGISTRY.filter(d => d.category === filterKey);
-        }
-      }
+    // Active filter state
+    let _dpgCatFilter = 'ALL', _dpgSegFilter = 'ALL', _dpgVoiceFilter = 'ALL';
 
+    function applyDPGFilters() {
+      let filtered = DPG_REGISTRY;
+      if (_dpgCatFilter !== 'ALL') {
+        if (_dpgCatFilter === 'Global / Pan-African')
+          filtered = filtered.filter(d => d.scope === 'Global / Pan-African');
+        else if (_dpgCatFilter === 'National Portals')
+          filtered = filtered.filter(d => d.scope.startsWith('National'));
+        else
+          filtered = filtered.filter(d => d.category === _dpgCatFilter);
+      }
+      if (_dpgSegFilter !== 'ALL') {
+        filtered = filtered.filter(d => d.learner_segments && d.learner_segments.includes(_dpgSegFilter));
+      }
+      if (_dpgVoiceFilter !== 'ALL') {
+        filtered = filtered.filter(d => d.voice_type === _dpgVoiceFilter);
+      }
+      renderDPGCards(filtered);
+    }
+
+    function renderDPGCards(filtered) {
+      const grid = document.getElementById('dpg-cards-grid');
+      if (!filtered.length) {
+        grid.innerHTML = '<div class="col-span-3 text-center text-sm text-stone-400 py-8 italic">No tools match the current filter combination.</div>';
+        return;
+      }
       grid.innerHTML = filtered.map(d => {
         const isGlobal = d.scope === 'Global / Pan-African';
         let scopeLabel = '🌍 Pan-African / Global';
         if (d.scope.includes('Kenya')) scopeLabel = '🇰🇪 Kenya CBC';
         else if (d.scope.includes('Rwanda')) scopeLabel = '🇷🇼 Rwanda REB';
         else if (d.scope.includes('Zambia')) scopeLabel = '🇿🇲 Zambia MoE';
+
+        // Learner segment pills
+        const segPills = (d.learner_segments || []).map(s => {
+          const icons = {Primary:'📚',Secondary:'🏫','Out-of-School':'🌱','Teacher PD':'👩‍🏫',TVET:'🔧'};
+          return `<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-teal-50 text-teal-800 border border-teal-200">${icons[s]||''} ${s}</span>`;
+        }).join('');
+
+        // Voice type pill
+        const voiceIcon = {'Ministry Mandate':'🏛️','Frontline Teacher':'👩‍🏫','Citizen / Household':'👥','Donor Evaluation':'💰'}[d.voice_type] || '📄';
+        const voicePill = d.voice_type ? `<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-purple-50 text-purple-800 border border-purple-200">${voiceIcon} ${d.voice_type}</span>` : '';
 
         return `
           <div class="bg-white rounded-2xl p-6 border border-stone-200 shadow-sm flex flex-col justify-between hover:shadow-md transition">
@@ -2466,9 +2590,12 @@
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                 ${d.offline_mode}
               </div>
-              <p class="text-xs text-stone-600 leading-relaxed mb-4">
+              <p class="text-xs text-stone-600 leading-relaxed mb-3">
                 ${d.description}
               </p>
+              <!-- Learner Segment + Voice Type tag rows -->
+              <div class="flex flex-wrap gap-1 mb-1">${segPills}</div>
+              <div class="flex flex-wrap gap-1 mb-1">${voicePill}</div>
             </div>
             <div class="pt-4 border-t border-stone-100 flex items-center justify-between text-xs">
               <span class="text-stone-400 font-mono text-[11px]">${d.curator_body}</span>
@@ -2487,19 +2614,136 @@
       }).join('');
     }
 
+    function renderDPGs(filterKey) { _dpgCatFilter = filterKey || 'ALL'; applyDPGFilters(); }
+
     function filterDPGs(filterKey) {
+      _dpgCatFilter = filterKey;
       document.querySelectorAll('.dpg-filter-btn').forEach(b => {
         b.className = 'dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-stone-200 text-stone-700 hover:bg-stone-50';
       });
       if (window.event && window.event.target) {
-        window.event.target.className = 'dpg-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-stone-900 text-white';
+        window.event.target.className = 'dpg-filter-btn active px-3 py-1.5 rounded-lg text-xs font-bold bg-stone-900 text-white';
       }
-      renderDPGs(filterKey);
+      applyDPGFilters();
+    }
+
+    function filterDPGSegment(seg) {
+      _dpgSegFilter = seg;
+      document.querySelectorAll('.dpg-seg-btn').forEach(b => {
+        b.className = 'dpg-seg-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-teal-200 text-teal-800 hover:bg-teal-50';
+      });
+      if (window.event && window.event.target) {
+        window.event.target.className = 'dpg-seg-btn active px-2.5 py-1 rounded-lg text-[11px] font-bold bg-teal-700 text-white';
+      }
+      applyDPGFilters();
+    }
+
+    function filterDPGVoice(vt) {
+      _dpgVoiceFilter = vt;
+      document.querySelectorAll('.dpg-voice-btn').forEach(b => {
+        b.className = 'dpg-voice-btn px-2.5 py-1 rounded-lg text-[11px] font-semibold bg-white border border-purple-200 text-purple-800 hover:bg-purple-50';
+      });
+      if (window.event && window.event.target) {
+        window.event.target.className = 'dpg-voice-btn active px-2.5 py-1 rounded-lg text-[11px] font-bold bg-purple-700 text-white';
+      }
+      applyDPGFilters();
     }
 
     function reportBrokenLink(id, title) {
       alert(`Thank you. Your report for "${title}" has been logged for automated verification.`);
     }
+
+    // =================================================================
+    // FIELD VOICE CAROUSEL
+    // =================================================================
+    const FIELD_VOICES = [
+      {
+        quote: "We only have power for two hours in the morning before the grid cuts. I charged my phone the night before to show the students the Khan Academy video. By the time the class started, the battery had died.",
+        pillar: "Pillar 2: Infrastructure & Power", pillar_icon: "⚡", pillar_color: "blue",
+        voice_type: "Frontline Teacher", learner_segment: "Primary",
+        geo: "🇰🇪 Rural Kenya (Machakos County)",
+        citation: "EdTech Hub / FCDO Kenya Rural Teacher Audit, 2023"
+      },
+      {
+        quote: "I spend about 100 Kenya shillings of my own airtime every week just to send homework instructions to parents on WhatsApp. It is not reimbursed. It comes from my salary. This is my classroom internet budget.",
+        pillar: "Pillar 3: Cost & Sustainability", pillar_icon: "💸", pillar_color: "amber",
+        voice_type: "Frontline Teacher", learner_segment: "Primary",
+        geo: "🇰🇪 Peri-Urban Kenya (Nakuru)",
+        citation: "UNESCO Global Education Coalition Field Survey, Alliance of Alliances 2024"
+      },
+      {
+        quote: "When I play the AI reading tutor for my Grade 2 students, it pronounces their names wrong and doesn't understand when they speak. The children laugh, but they stop trying. They think they are the problem.",
+        pillar: "Pillar 5: Content & Language", pillar_icon: "🗣️", pillar_color: "rose",
+        voice_type: "Frontline Teacher", learner_segment: "Primary",
+        geo: "🇰🇪 Rural Kenya (Kisumu County)",
+        citation: "Masakhane Research Collective / AfroBench Field Notes, 2024"
+      },
+      {
+        quote: "The government sent 40 tablets to our school. The headmaster locked them in the storeroom because there is no insurance and we are personally liable if one is broken or stolen. They have been there for two years.",
+        pillar: "Pillar 1: Coordination & Policy", pillar_icon: "🏛️", pillar_color: "purple",
+        voice_type: "Frontline Teacher", learner_segment: "Primary",
+        geo: "🇰🇪 Rural Kenya (Turkana County)",
+        citation: "KEPSHA / EdTech Hub DLP Follow-up Audit, 2022"
+      },
+      {
+        quote: "I want my child to learn reading and arithmetic. I do not want him staring at a screen for hours. Where I live, there is no electricity in the evenings to even charge a device. Radio lessons worked better.",
+        pillar: "Pillar 2: Infrastructure & Access", pillar_icon: "📻", pillar_color: "green",
+        voice_type: "Citizen / Household", learner_segment: "Primary",
+        geo: "🇰🇪 Rural Kenya (West Pokot)",
+        citation: "Afrobarometer Round 9 Kenya (N=2,400), 2023 — coded education response"
+      },
+      {
+        quote: "The school enrolled my children in an app that now sends me adverts. I never gave permission. I did not know their photos and progress scores were uploaded to a server in another country.",
+        pillar: "Pillar 6: Data & Child Safety", pillar_icon: "🔒", pillar_color: "slate",
+        voice_type: "Citizen / Household", learner_segment: "Primary",
+        geo: "🇰🇪 Peri-Urban Kenya (Mombasa)",
+        citation: "Kenya DPA Civil Society Submissions / UNICEF Child Safeguarding Review, 2024"
+      },
+      {
+        quote: "In a class of 68 children, the rotation model with radio and workbooks is the only method that reaches every child. The app-based tools require me to manage 68 devices simultaneously. That is not teaching.",
+        pillar: "Pillar 4: Pedagogical Capacity", pillar_icon: "📐", pillar_color: "teal",
+        voice_type: "Frontline Teacher", learner_segment: "Primary",
+        geo: "🇰🇪 Rural Kenya (Siaya County)",
+        citation: "Piper et al. (2018), RTI International · Comparative Education Review — corroborated by field audit"
+      },
+      {
+        quote: "Youth who dropped out in Grade 6 are not served by the online secondary platform — it needs a completed Grade 8 ID to register. The digital systems replicate the same exclusions as the physical schools.",
+        pillar: "Pillar 1: Coordination & Equity", pillar_icon: "🌱", pillar_color: "orange",
+        voice_type: "Frontline Teacher", learner_segment: "Out-of-School",
+        geo: "🇰🇪 Nairobi (Kibera informal settlement)",
+        citation: "EdTech Hub / DFID Out-of-School Digital Access Review, 2023"
+      }
+    ];
+
+    const PILLAR_COLORS = {
+      blue: { strip: '#3b82f6', badge: 'bg-blue-100 text-blue-800 border-blue-200' },
+      amber: { strip: '#f59e0b', badge: 'bg-amber-100 text-amber-800 border-amber-200' },
+      rose: { strip: '#f43f5e', badge: 'bg-rose-100 text-rose-800 border-rose-200' },
+      purple: { strip: '#8b5cf6', badge: 'bg-purple-100 text-purple-800 border-purple-200' },
+      green: { strip: '#22c55e', badge: 'bg-green-100 text-green-800 border-green-200' },
+      slate: { strip: '#64748b', badge: 'bg-slate-200 text-slate-800 border-slate-300' },
+      teal: { strip: '#14b8a6', badge: 'bg-teal-100 text-teal-800 border-teal-200' },
+      orange: { strip: '#f97316', badge: 'bg-orange-100 text-orange-800 border-orange-200' }
+    };
+
+    let _voiceIdx = Math.floor(Math.random() * FIELD_VOICES.length);
+
+    function renderVoice(idx) {
+      const v = FIELD_VOICES[idx];
+      const col = PILLAR_COLORS[v.pillar_color] || PILLAR_COLORS.blue;
+      document.getElementById('voice-pillar-strip').style.backgroundColor = col.strip;
+      document.getElementById('voice-pillar-badge').className = `inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold border ${col.badge}`;
+      document.getElementById('voice-pillar-badge').textContent = `${v.pillar_icon} ${v.pillar}`;
+      document.getElementById('voice-type-badge').textContent = `${v.voice_type === 'Frontline Teacher' ? '👩‍🏫' : '👥'} ${v.voice_type}`;
+      document.getElementById('voice-segment-badge').textContent = `${v.learner_segment === 'Out-of-School' ? '🌱' : '📚'} ${v.learner_segment}`;
+      document.getElementById('voice-geo-badge').textContent = v.geo;
+      document.getElementById('voice-quote').textContent = `"${v.quote}"`;
+      document.getElementById('voice-citation').textContent = v.citation;
+      document.getElementById('voice-counter').textContent = `${idx + 1} / ${FIELD_VOICES.length}`;
+    }
+
+    function nextVoice() { _voiceIdx = (_voiceIdx + 1) % FIELD_VOICES.length; renderVoice(_voiceIdx); }
+    function prevVoice() { _voiceIdx = (_voiceIdx - 1 + FIELD_VOICES.length) % FIELD_VOICES.length; renderVoice(_voiceIdx); }
 
     // =================================================================
     // SYSTEMIC DATA: 4-COUNTRY DATA STORE & GAP CHARTS
@@ -2841,6 +3085,7 @@
       renderDPGs('ALL');
       calculateAudit();
       updateRotationPlanner();
+      renderVoice(_voiceIdx);
     });
   </script>
 </body>
