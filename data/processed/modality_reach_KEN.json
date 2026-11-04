@@ -1,0 +1,456 @@
+{
+  "metadata": {
+    "country_iso3": "KEN",
+    "compilation_timestamp_utc": "2026-11-03T23:39:33+00:00",
+    "script_version": "1.0.0",
+    "schema_version": "1.0",
+    "custom_input_file": null,
+    "replaced_baseline_estimates": [],
+    "policy_discrepancy_status": "no_budget_data"
+  },
+  "context_indicators": {
+    "electricity": {
+      "value": 77.0,
+      "stress": 0.23,
+      "status": "world_bank_wdi",
+      "source": "World Bank SE4ALL Database 2024 (Kenya national electrification)",
+      "caveat": "National aggregate; rural electrification is lower (67.1%)."
+    },
+    "hardware": {
+      "value": 87.0,
+      "stress": 0.87,
+      "status": "regional_proxy",
+      "source": "GSMA State of Mobile Internet Connectivity 2025 (Sub-Saharan Africa, entry-level handset, poorest 20% of users)",
+      "caveat": "Regional, poorest-quintile figure; overstates stress for the average household."
+    },
+    "data": {
+      "value": 3.8,
+      "stress": 0.38,
+      "status": "itu_a4ai",
+      "source": "ITU / A4AI 2023 Price Basket (Kenya, 1GB data as % of monthly income)",
+      "caveat": "National average; can consume 8-15% of lower-quintile rural monthly income."
+    }
+  },
+  "any_platform_summary": {
+    "reach_pct": 67.0,
+    "n_estimates": 1,
+    "estimates": [
+      {
+        "country": "KEN",
+        "modality": "any",
+        "metric": "any_pct",
+        "value": 67.0,
+        "study": "Busia County remote learning study",
+        "year": 2020,
+        "scope": "Busia County (sub-national)",
+        "denominator": "all_students",
+        "confidence": "medium",
+        "n": null,
+        "source": "https://medium.com/center-for-effective-global-action/how-well-are-remote-learning-tools-reaching-students-in-kenya-d8c8461c7f88",
+        "note": "Used at least one EdTech platform in the previous week.",
+        "verify": true,
+        "origin": "default_baseline"
+      }
+    ]
+  },
+  "modalities": {
+    "radio": {
+      "label": "Broadcast Radio (Interactive Radio Instruction)",
+      "examples": [
+        "Interactive Radio Instruction",
+        "ministry radio lessons"
+      ],
+      "reach": {
+        "central_pct": 31.5,
+        "low_pct": 19.0,
+        "high_pct": 44.0,
+        "n_estimates": 2,
+        "status": "multi_study",
+        "estimates": [
+          {
+            "value": 44.0,
+            "study": "Busia County remote learning study",
+            "year": 2020,
+            "scope": "Busia County (sub-national)",
+            "denominator": "all_students",
+            "confidence": "medium",
+            "n": null,
+            "source": "https://medium.com/center-for-effective-global-action/how-well-are-remote-learning-tools-reaching-students-in-kenya-d8c8461c7f88",
+            "note": "Used in the previous week.",
+            "origin": "default_baseline"
+          },
+          {
+            "value": 19.0,
+            "study": "Uwezo Kenya household survey",
+            "year": 2021,
+            "scope": "Kenya (national household survey)",
+            "denominator": "all_students",
+            "confidence": "low",
+            "n": null,
+            "source": "https://docs.edtechhub.org/lib/LHJ3UUUE/download/UTJVFEWG",
+            "note": "Listened to radio lessons. Denominator and year to be verified.",
+            "origin": "default_baseline"
+          }
+        ],
+        "excluded_estimates": [],
+        "flags": [
+          "estimates diverge by 25.0 pp (different populations, periods or denominators); treat the central value as indicative",
+          "mixes sub-national and national scopes",
+          "includes a low-confidence estimate",
+          "built-in value(s) not yet checked against the primary source"
+        ]
+      },
+      "access": {
+        "central_pct": 62.0,
+        "status": "single_study",
+        "estimates": [
+          {
+            "value": 62.0,
+            "study": "Uwezo Kenya household survey",
+            "year": 2021,
+            "scope": "Kenya (national household survey)",
+            "denominator": "all_households",
+            "source": "https://docs.edtechhub.org/lib/LHJ3UUUE/download/UTJVFEWG",
+            "origin": "default_baseline"
+          }
+        ]
+      },
+      "friction": {
+        "dimensions": {
+          "hardware": {
+            "score": 1.7,
+            "dependency": 0.2,
+            "stress": 0.87,
+            "status": "computed"
+          },
+          "data": {
+            "score": 1.0,
+            "dependency": 0.0,
+            "stress": 0.38,
+            "status": "computed"
+          },
+          "electricity": {
+            "score": 1.3,
+            "dependency": 0.3,
+            "stress": 0.23,
+            "status": "computed"
+          }
+        },
+        "composite_friction": 1.3,
+        "rationale": "Cheap, often already owned; free-to-air; battery/solar sets work off-grid."
+      },
+      "policy_alignment": {
+        "budget_share_pct": null,
+        "share_of_summed_reach_pct": 41.7,
+        "discrepancy_pp": null,
+        "alignment": "no_budget_data"
+      }
+    },
+    "tv": {
+      "label": "Educational Television",
+      "examples": [
+        "Ubongo",
+        "ministry TV lessons"
+      ],
+      "reach": {
+        "central_pct": 26.0,
+        "low_pct": 26.0,
+        "high_pct": 26.0,
+        "n_estimates": 1,
+        "status": "single_study",
+        "estimates": [
+          {
+            "value": 26.0,
+            "study": "Busia County remote learning study",
+            "year": 2020,
+            "scope": "Busia County (sub-national)",
+            "denominator": "all_students",
+            "confidence": "medium",
+            "n": null,
+            "source": "https://medium.com/center-for-effective-global-action/how-well-are-remote-learning-tools-reaching-students-in-kenya-d8c8461c7f88",
+            "note": "Used in the previous week.",
+            "origin": "default_baseline"
+          }
+        ],
+        "excluded_estimates": [
+          {
+            "value": 42.0,
+            "study": "Uwezo Kenya household survey",
+            "reason": "denominator is 'conditional_students_with_learning_continuity_access', not 'all_students'"
+          }
+        ],
+        "flags": [
+          "built-in value(s) not yet checked against the primary source"
+        ]
+      },
+      "access": {
+        "central_pct": 45.0,
+        "status": "single_study",
+        "estimates": [
+          {
+            "value": 45.0,
+            "study": "Uwezo Kenya household survey",
+            "year": 2021,
+            "scope": "Kenya (national household survey)",
+            "denominator": "all_households",
+            "source": "https://docs.edtechhub.org/lib/LHJ3UUUE/download/UTJVFEWG",
+            "origin": "default_baseline"
+          }
+        ]
+      },
+      "friction": {
+        "dimensions": {
+          "hardware": {
+            "score": 3.1,
+            "dependency": 0.6,
+            "stress": 0.87,
+            "status": "computed"
+          },
+          "data": {
+            "score": 1.0,
+            "dependency": 0.0,
+            "stress": 0.38,
+            "status": "computed"
+          },
+          "electricity": {
+            "score": 1.8,
+            "dependency": 0.9,
+            "stress": 0.23,
+            "status": "computed"
+          }
+        },
+        "composite_friction": 2.0,
+        "rationale": "Needs a TV set and mains power; free-to-air reception assumed."
+      },
+      "policy_alignment": {
+        "budget_share_pct": null,
+        "share_of_summed_reach_pct": 34.4,
+        "discrepancy_pp": null,
+        "alignment": "no_budget_data"
+      }
+    },
+    "sms_ussd": {
+      "label": "Basic SMS / USSD",
+      "examples": [
+        "Eneza Shupavu291"
+      ],
+      "reach": {
+        "central_pct": 18.0,
+        "low_pct": 18.0,
+        "high_pct": 18.0,
+        "n_estimates": 1,
+        "status": "single_study",
+        "estimates": [
+          {
+            "value": 18.0,
+            "study": "Busia County remote learning study",
+            "year": 2020,
+            "scope": "Busia County (sub-national)",
+            "denominator": "all_students",
+            "confidence": "medium",
+            "n": null,
+            "source": "https://medium.com/center-for-effective-global-action/how-well-are-remote-learning-tools-reaching-students-in-kenya-d8c8461c7f88",
+            "note": "Used in the previous week.",
+            "origin": "default_baseline"
+          }
+        ],
+        "excluded_estimates": [],
+        "flags": [
+          "built-in value(s) not yet checked against the primary source"
+        ]
+      },
+      "access": {
+        "central_pct": null,
+        "status": "no_empirical_data",
+        "estimates": []
+      },
+      "friction": {
+        "dimensions": {
+          "hardware": {
+            "score": 1.3,
+            "dependency": 0.1,
+            "stress": 0.87,
+            "status": "computed"
+          },
+          "data": {
+            "score": 1.8,
+            "dependency": 0.5,
+            "stress": 0.38,
+            "status": "computed"
+          },
+          "electricity": {
+            "score": 1.3,
+            "dependency": 0.3,
+            "stress": 0.23,
+            "status": "computed"
+          }
+        },
+        "composite_friction": 1.5,
+        "rationale": "Works on any basic phone; airtime/SMS fees; only phone charging needed."
+      },
+      "policy_alignment": {
+        "budget_share_pct": null,
+        "share_of_summed_reach_pct": 23.8,
+        "discrepancy_pp": null,
+        "alignment": "no_budget_data"
+      }
+    },
+    "offline_sneakernet": {
+      "label": "Asynchronous Offline / Sneakernet",
+      "examples": [
+        "SD cards",
+        "Kolibri",
+        "local microservers"
+      ],
+      "reach": {
+        "central_pct": null,
+        "low_pct": null,
+        "high_pct": null,
+        "n_estimates": 0,
+        "status": "no_empirical_data",
+        "estimates": [],
+        "excluded_estimates": [],
+        "flags": []
+      },
+      "access": {
+        "central_pct": null,
+        "status": "no_empirical_data",
+        "estimates": []
+      },
+      "friction": {
+        "dimensions": {
+          "hardware": {
+            "score": 3.4,
+            "dependency": 0.7,
+            "stress": 0.87,
+            "status": "computed"
+          },
+          "data": {
+            "score": 1.1,
+            "dependency": 0.05,
+            "stress": 0.38,
+            "status": "computed"
+          },
+          "electricity": {
+            "score": 1.5,
+            "dependency": 0.5,
+            "stress": 0.23,
+            "status": "computed"
+          }
+        },
+        "composite_friction": 2.0,
+        "rationale": "Devices/servers are a capital cost; little recurring data; needs charging."
+      },
+      "policy_alignment": {
+        "budget_share_pct": null,
+        "share_of_summed_reach_pct": null,
+        "discrepancy_pp": null,
+        "alignment": "no_budget_data"
+      }
+    },
+    "app_lms": {
+      "label": "Mobile App / Web LMS (cloud-native)",
+      "examples": [
+        "curriculum apps",
+        "web learning platforms"
+      ],
+      "reach": {
+        "central_pct": null,
+        "low_pct": null,
+        "high_pct": null,
+        "n_estimates": 0,
+        "status": "no_empirical_data",
+        "estimates": [],
+        "excluded_estimates": [],
+        "flags": []
+      },
+      "access": {
+        "central_pct": null,
+        "status": "no_empirical_data",
+        "estimates": []
+      },
+      "friction": {
+        "dimensions": {
+          "hardware": {
+            "score": 3.8,
+            "dependency": 0.8,
+            "stress": 0.87,
+            "status": "computed"
+          },
+          "data": {
+            "score": 2.5,
+            "dependency": 1.0,
+            "stress": 0.38,
+            "status": "computed"
+          },
+          "electricity": {
+            "score": 1.6,
+            "dependency": 0.6,
+            "stress": 0.23,
+            "status": "computed"
+          }
+        },
+        "composite_friction": 2.6,
+        "rationale": "Smartphone or computer plus continuous data; regular charging."
+      },
+      "policy_alignment": {
+        "budget_share_pct": null,
+        "share_of_summed_reach_pct": null,
+        "discrepancy_pp": null,
+        "alignment": "no_budget_data"
+      }
+    },
+    "genai": {
+      "label": "Generative AI / Cloud AI tools",
+      "examples": [
+        "general-purpose chatbots",
+        "AI tutors"
+      ],
+      "reach": {
+        "central_pct": null,
+        "low_pct": null,
+        "high_pct": null,
+        "n_estimates": 0,
+        "status": "no_empirical_data",
+        "estimates": [],
+        "excluded_estimates": [],
+        "flags": []
+      },
+      "access": {
+        "central_pct": null,
+        "status": "no_empirical_data",
+        "estimates": []
+      },
+      "friction": {
+        "dimensions": {
+          "hardware": {
+            "score": 3.8,
+            "dependency": 0.8,
+            "stress": 0.87,
+            "status": "computed"
+          },
+          "data": {
+            "score": 2.5,
+            "dependency": 1.0,
+            "stress": 0.38,
+            "status": "computed"
+          },
+          "electricity": {
+            "score": 1.6,
+            "dependency": 0.7,
+            "stress": 0.23,
+            "status": "computed"
+          }
+        },
+        "composite_friction": 2.6,
+        "rationale": "Smartphone/computer, heavy data use and reliable connectivity."
+      },
+      "policy_alignment": {
+        "budget_share_pct": null,
+        "share_of_summed_reach_pct": null,
+        "discrepancy_pp": null,
+        "alignment": "no_budget_data"
+      }
+    }
+  }
+}

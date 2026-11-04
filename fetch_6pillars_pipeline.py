@@ -67,6 +67,7 @@ PILLAR_INDICATORS = {
         "indicators": {
             "SE.XPD.TOTL.GD.ZS": "Gov expenditure on education (% of GDP)",
             "SE.XPD.TOTL.GB.ZS": "Gov expenditure on education (% of total gov budget)",
+            "SE.XPD.CTOT.ZS": "Current education expenditure (% of total education expenditure)",
             "IQ.SPI.OVRL": "Statistical performance & governance index (SPI 0-100)",
         }
     },
@@ -76,6 +77,7 @@ PILLAR_INDICATORS = {
             "EG.ELC.ACCS.ZS": "Access to electricity (% of population)",
             "EG.ELC.ACCS.RU.ZS": "Access to electricity, rural (% of rural population)",
             "EG.ELC.ACCS.UR.ZS": "Access to electricity, urban (% of urban population)",
+            "UIS.SCHBSP.1.WELEC": "Primary schools with electricity access (%)",
             "IT.NET.USER.ZS": "Individuals using the Internet (% of population)",
             "IT.CEL.SETS.P2": "Mobile cellular subscriptions (per 100 people)",
             "IT.NET.BBND.P2": "Fixed broadband subscriptions (per 100 people)",
@@ -98,6 +100,8 @@ PILLAR_INDICATORS = {
             "SE.PRM.ENRL.TC.ZS": "Pupil-teacher ratio, primary",
             "SE.SEC.ENRL.TC.ZS": "Pupil-teacher ratio, secondary",
             "SE.ADT.LITR.ZS": "Adult literacy rate (% 15+)",
+            "SE.LPV.PRIM": "Learning poverty: below min reading proficiency (%)",
+            "SE.LPV.PRIM.SD": "Primary school age children out-of-school (%)",
         }
     },
     5: {

@@ -25,6 +25,10 @@ SSA,NY.GDP.PCAP.PP.CD,"GDP per capita, PPP (current international $)",47,48,97.9
 MENA,NY.GDP.PCAP.PP.CD,"GDP per capita, PPP (current international $)",20,21,95.2,35963.4,18384.1,4770.65,126712.58
 SSA,SE.ADT.LITR.ZS,Adult literacy rate (% 15+),39,48,81.2,66.94,70.41,30.63,94.29
 MENA,SE.ADT.LITR.ZS,Adult literacy rate (% 15+),13,21,61.9,92.76,94.44,79.45,98.81
+SSA,SE.LPV.PRIM,Learning poverty: below min reading proficiency (%),19,48,39.6,80.77,82.02,30.68,98.5
+MENA,SE.LPV.PRIM,Learning poverty: below min reading proficiency (%),12,21,57.1,37.12,36.51,10.16,62.25
+SSA,SE.LPV.PRIM.SD,Primary school age children out-of-school (%),13,48,27.1,16.9,10.71,2.79,63.2
+MENA,SE.LPV.PRIM.SD,Primary school age children out-of-school (%),12,21,57.1,3.54,1.85,0.23,19.05
 SSA,SE.PRM.ENRL.TC.ZS,"Pupil-teacher ratio, primary",40,48,83.3,37.86,37.08,14.49,83.41
 MENA,SE.PRM.ENRL.TC.ZS,"Pupil-teacher ratio, primary",18,21,85.7,18.78,17.7,8.88,29.37
 SSA,SE.PRM.TCAQ.ZS,Trained teachers in primary education (% of total),41,48,85.4,77.31,82.44,5.8,100.0
@@ -33,6 +37,8 @@ SSA,SE.SEC.ENRL.TC.ZS,"Pupil-teacher ratio, secondary",31,48,64.6,23.65,23.12,8.
 MENA,SE.SEC.ENRL.TC.ZS,"Pupil-teacher ratio, secondary",14,21,66.7,13.21,11.29,7.11,26.83
 SSA,SE.SEC.TCAQ.ZS,Trained teachers in secondary education (% of total),31,48,64.6,69.3,72.14,20.33,100.0
 MENA,SE.SEC.TCAQ.ZS,Trained teachers in secondary education (% of total),17,21,81.0,87.17,100.0,34.52,100.0
+SSA,SE.XPD.CTOT.ZS,Current education expenditure (% of total education expenditure),18,48,37.5,92.61,94.92,75.55,100.0
+MENA,SE.XPD.CTOT.ZS,Current education expenditure (% of total education expenditure),9,21,42.9,88.62,89.92,79.46,97.75
 SSA,SE.XPD.PRIM.PC.ZS,Gov expenditure per primary student (% of GDP per capita),23,48,47.9,12.11,12.37,4.26,20.71
 MENA,SE.XPD.PRIM.PC.ZS,Gov expenditure per primary student (% of GDP per capita),8,21,38.1,19.86,17.42,9.85,37.32
 SSA,SE.XPD.SECO.PC.ZS,Gov expenditure per secondary student (% of GDP per capita),18,48,37.5,19.02,18.29,11.35,31.32
@@ -43,5 +49,7 @@ SSA,SE.XPD.TOTL.GD.ZS,Gov expenditure on education (% of GDP),44,48,91.7,3.76,3.
 MENA,SE.XPD.TOTL.GD.ZS,Gov expenditure on education (% of GDP),16,21,76.2,4.57,4.43,1.22,8.98
 SSA,TM.VAL.ICTG.ZS.UN,ICT goods imports (% of total goods imports) - Tech hardware inflows,43,48,89.6,2.44,2.1,0.6,6.85
 MENA,TM.VAL.ICTG.ZS.UN,ICT goods imports (% of total goods imports) - Tech hardware inflows,19,21,90.5,5.3,4.83,0.92,13.62
+SSA,UIS.SCHBSP.1.WELEC,Primary schools with electricity access (%),34,48,70.8,38.74,29.88,2.9,100.0
+MENA,UIS.SCHBSP.1.WELEC,Primary schools with electricity access (%),14,21,66.7,94.79,100.0,35.75,100.0
 SSA,con30e.s,Accessed online info to learn/educate (% internet users 15+),29,48,60.4,55.94,55.54,29.55,71.12
 MENA,con30e.s,Accessed online info to learn/educate (% internet users 15+),7,21,33.3,59.52,63.41,43.94,72.53

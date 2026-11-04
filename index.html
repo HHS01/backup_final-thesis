@@ -394,6 +394,321 @@
               </p>
             </div>
           </div>
+
+          <!-- SECTION 1B: ANCHOR COUNTRY MULTI-PERSPECTIVE ECOSYSTEM (KENYA DEEP-DIVE) -->
+          <div id="kenya-ecosystem-deepdive" class="mt-10 pt-8 border-t border-slate-200">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="badge-pill bg-emerald-100 text-emerald-800 font-bold">Anchor Ecosystem Deep-Dive</span>
+                  <span class="badge-pill bg-purple-100 text-purple-800 font-bold">Multi-Perspective Quad-Lens</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif mt-2">
+                  Kenya Collaborative Ecosystem: Ground-Truth Triangulation
+                </h3>
+                <p class="text-slate-600 text-xs sm:text-sm mt-1 max-w-3xl">
+                  Triangulating citizen demand, frontline teacher constraints, verified delivery modalities, and macro policy allocations to eliminate the statistical "data desert."
+                </p>
+              </div>
+
+              <!-- Live Urban vs Rural Demographic Toggle -->
+              <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200">
+                <span class="text-[11px] font-bold text-slate-500 uppercase px-2.5">Demographic Filter:</span>
+                <button onclick="setDemographicSegment('national')" id="btn-seg-national" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition">
+                  National
+                </button>
+                <button onclick="setDemographicSegment('urban')" id="btn-seg-urban" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                  Urban (30%)
+                </button>
+                <button onclick="setDemographicSegment('rural')" id="btn-seg-rural" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                  Rural (70%)
+                </button>
+              </div>
+            </div>
+
+            <!-- The 4-Perspective Quad Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              
+              <!-- Lens 1: Citizen & Community Demand -->
+              <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
+                      👥 Lens 1: Citizen &amp; Community Demand
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono">Afrobarometer R9 &middot; Uwezo</span>
+                  </div>
+                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">Basic School Quality vs. Hardware Hype</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                    Citizens consistently prioritize physical textbooks, basic roofs, and teacher presence over digital tablets. Dissatisfaction spikes sharply in rural wards.
+                  </p>
+                  
+                  <div class="grid grid-cols-3 gap-2 py-3 bg-slate-50 rounded-lg border border-slate-100 text-center mb-4">
+                    <div class="p-2">
+                      <span class="text-[10px] text-slate-500 block uppercase">Ed Priority #1-3</span>
+                      <span id="quad-cit-priority" class="text-base font-extrabold text-blue-700">18.6%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">Afrobarometer</span>
+                    </div>
+                    <div class="p-2 border-x border-slate-200/60">
+                      <span class="text-[10px] text-slate-500 block uppercase">State Dissatisfaction</span>
+                      <span id="quad-cit-dissat" class="text-base font-extrabold text-rose-600">36.2%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">Handled Badly</span>
+                    </div>
+                    <div class="p-2">
+                      <span class="text-[10px] text-slate-500 block uppercase">Foundational Literacy</span>
+                      <span id="quad-cit-lit" class="text-base font-extrabold text-amber-700">41.6%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">Uwezo Grade 3-5</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100">
+                  <div class="text-[11px] text-slate-500 italic bg-amber-50/70 p-2.5 rounded border border-amber-200/60">
+                    <span class="font-bold text-amber-900 not-italic">Field Voice (Usawa Community Survey):</span> 
+                    &ldquo;Our school roof leaks and children share one textbook among five pupils; what will a tablet do when there is no power to charge it?&rdquo;
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lens 2: Frontline Teacher & Classroom Reality -->
+              <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                      👩‍🏫 Lens 2: Frontline Teacher Reality
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono">AoA Survey (N=800) &middot; RTI</span>
+                  </div>
+                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Informal Salary Tax &amp; Crowding</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                    Teachers bear the private financial burden of state digitalization. Without zero-rated educational domains, mobile data is purchased from personal wages.
+                  </p>
+                  
+                  <div class="grid grid-cols-3 gap-2 py-3 bg-slate-50 rounded-lg border border-slate-100 text-center mb-4">
+                    <div class="p-2">
+                      <span class="text-[10px] text-slate-500 block uppercase">Airtime Wage Tax</span>
+                      <span class="text-base font-extrabold text-emerald-700">4% &ndash; 8%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">Personal Wages</span>
+                    </div>
+                    <div class="p-2 border-x border-slate-200/60">
+                      <span class="text-[10px] text-slate-500 block uppercase">Pupil-Teacher Ratio</span>
+                      <span id="quad-tch-ptr" class="text-base font-extrabold text-slate-800">50:1</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">Rural Crowding</span>
+                    </div>
+                    <div class="p-2">
+                      <span class="text-[10px] text-slate-500 block uppercase">Device Decay</span>
+                      <span class="text-base font-extrabold text-rose-600">&gt;60%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">Broken in 14 Mos</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100">
+                  <div class="text-[11px] text-slate-500 italic bg-emerald-50/70 p-2.5 rounded border border-emerald-200/60">
+                    <span class="font-bold text-emerald-900 not-italic">Field Voice (AoA Kenyan Teacher):</span> 
+                    &ldquo;I spend 600 KES of my own salary every month on Safaricom bundles just to upload student attendance and download curriculum schemes of work.&rdquo;
+                  </div>
+                </div>
+              </div>
+
+              <!-- Lens 3: Grassroots Delivery Modalities & Reach -->
+              <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
+                      📻 Lens 3: Grassroots Modality Reach
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono">Busia Study &middot; Synthesizer</span>
+                  </div>
+                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">Low-Tech Reach vs. High-Tech Invisibility</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                    Empirical reach is dominated by broadcast and SMS. High-tech cloud platforms register 0% verified reach in public low-income schools.
+                  </p>
+                  
+                  <div class="space-y-2 mb-4">
+                    <div class="flex items-center justify-between text-xs bg-slate-50 p-2 rounded border border-slate-100">
+                      <span class="font-semibold text-slate-700">Broadcast Radio (IRI / KBC)</span>
+                      <div class="flex items-center gap-3">
+                        <span class="text-[11px] text-emerald-700 font-bold">Reach: 31.5%</span>
+                        <span class="text-[10px] text-slate-500 bg-slate-200/70 px-1.5 py-0.5 rounded">Friction: 1.3 / 5</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between text-xs bg-slate-50 p-2 rounded border border-slate-100">
+                      <span class="font-semibold text-slate-700">Educational TV (Ubongo Kids)</span>
+                      <div class="flex items-center gap-3">
+                        <span class="text-[11px] text-blue-700 font-bold">Reach: 26.0%</span>
+                        <span class="text-[10px] text-slate-500 bg-slate-200/70 px-1.5 py-0.5 rounded">Friction: 2.0 / 5</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between text-xs bg-slate-50 p-2 rounded border border-slate-100">
+                      <span class="font-semibold text-slate-700">SMS / USSD (Eneza Shupavu291)</span>
+                      <div class="flex items-center gap-3">
+                        <span class="text-[11px] text-purple-700 font-bold">Reach: 18.0%</span>
+                        <span class="text-[10px] text-slate-500 bg-slate-200/70 px-1.5 py-0.5 rounded">Friction: 1.5 / 5</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center justify-between text-xs bg-rose-50/50 p-2 rounded border border-rose-100">
+                      <span class="font-semibold text-slate-700">Cloud Web / Mobile LMS</span>
+                      <div class="flex items-center gap-3">
+                        <span class="text-[11px] text-rose-700 font-bold">Reach: 0.0% (Unverified)</span>
+                        <span class="text-[10px] text-rose-600 bg-rose-100 px-1.5 py-0.5 rounded">Friction: 2.6 / 5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <span>Household Device Access:</span>
+                  <span id="quad-mod-access" class="font-bold text-slate-800">Phone: 91% &middot; Radio: 62% &middot; TV: 45%</span>
+                </div>
+              </div>
+
+              <!-- Lens 4: National Policy & Capital Allocation -->
+              <div class="bg-white rounded-xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
+                <div>
+                  <div class="flex items-center justify-between mb-3">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                      🏛️ Lens 4: National Policy &amp; Capital
+                    </span>
+                    <span class="text-[11px] text-slate-400 font-mono">World Bank &middot; UIS &middot; KICD</span>
+                  </div>
+                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The CapEx Trap &amp; Recurrent Budget Lock</h4>
+                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                    Ministries borrow heavily for initial hardware imports ($150M+ DLP tablets) while 92.5% of education budget is locked in recurrent salaries, leaving 0% for maintenance.
+                  </p>
+                  
+                  <div class="grid grid-cols-3 gap-2 py-3 bg-slate-50 rounded-lg border border-slate-100 text-center mb-4">
+                    <div class="p-2">
+                      <span class="text-[10px] text-slate-500 block uppercase">Learning Poverty</span>
+                      <span class="text-base font-extrabold text-rose-700">79.3%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">World Bank 2023</span>
+                    </div>
+                    <div class="p-2 border-x border-slate-200/60">
+                      <span class="text-[10px] text-slate-500 block uppercase">School Power</span>
+                      <span id="quad-pol-elec" class="text-base font-extrabold text-blue-700">82.6%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">Primary Schools</span>
+                    </div>
+                    <div class="p-2">
+                      <span class="text-[10px] text-slate-500 block uppercase">Recurrent Lock</span>
+                      <span class="text-base font-extrabold text-amber-700">92.5%</span>
+                      <span class="text-[9px] text-slate-400 block mt-0.5">OpEx vs CapEx</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                  <span>Out-of-School Primary Rate:</span>
+                  <span class="font-bold text-rose-700">18.8% (World Bank 2023)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- INTERACTIVE DECISION SIMULATOR: GEEAP & EDTECH HUB LIFECYCLE MODEL -->
+            <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-slate-700">
+              <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/10">
+                <div>
+                  <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-400/30 mb-2">
+                    Peer-Reviewed Policy Simulator
+                  </div>
+                  <h3 class="text-xl sm:text-2xl font-extrabold text-white font-serif">
+                    GEEAP Cost-Effectiveness &amp; Lifecycle Sustainability Simulator
+                  </h3>
+                  <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-3xl">
+                    Evaluates EdTech interventions against the Nobel-led GEEAP &ldquo;Smart Buys&rdquo; metric and EdTech Hub Total Cost of Ownership (TCO) lifecycle constraints.
+                  </p>
+                </div>
+
+                <!-- Strategy Dropdown Selector -->
+                <div class="w-full sm:w-auto">
+                  <label class="block text-[11px] font-bold uppercase text-slate-400 mb-1">Select Proposed Policy Strategy:</label>
+                  <select onchange="runSimStrategy(this.value)" id="sim-strategy-select" class="w-full sm:w-80 bg-slate-800 text-white text-xs font-semibold rounded-xl border border-slate-600 px-3.5 py-2.5 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+                    <option value="strat-tablets" selected>Strategy A: 1:1 Cloud Tablets (Kenya DLP Model)</option>
+                    <option value="strat-sms">Strategy B: SMS / USSD Micro-Curriculum (Eneza Model)</option>
+                    <option value="strat-broadcast">Strategy C: Free-to-Air Educational Broadcast (Ubongo)</option>
+                    <option value="strat-rotation">Strategy D: 3-Station Rotation + Solar DPG Microservers</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Simulation Metrics Display -->
+              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
+                
+                <!-- Card 1: GEEAP Cost-Effectiveness -->
+                <div class="bg-white/5 rounded-xl p-5 border border-white/10 flex flex-col justify-between">
+                  <div>
+                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-bold block mb-1">GEEAP Cost-Effectiveness</span>
+                    <div class="flex items-baseline gap-2 mb-2">
+                      <span id="sim-geeap-score" class="text-3xl font-extrabold text-rose-400 font-serif">0.015 &sigma;</span>
+                      <span class="text-xs text-slate-400">per $100 spent</span>
+                    </div>
+                    <div class="mb-3">
+                      <span id="sim-geeap-badge" class="badge-pill bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold">
+                        GEEAP Rating: Bad Buy
+                      </span>
+                    </div>
+                    <p id="sim-geeap-desc" class="text-xs text-slate-300 leading-relaxed">
+                      High capital cost ($200/pupil) yielding near-zero learning gains (+0.03&sigma;). Fails cost-effectiveness threshold.
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-white/10 text-[10px] text-slate-400">
+                    Source: Rodriguez-Segura (2022); Angrist et al. (2020)
+                  </div>
+                </div>
+
+                <!-- Card 2: Lifecycle Sustainability & Failure Risk -->
+                <div class="bg-white/5 rounded-xl p-5 border border-white/10 flex flex-col justify-between">
+                  <div>
+                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-bold block mb-1">EdTech Hub Lifecycle Risk</span>
+                    <div class="flex items-baseline gap-2 mb-2">
+                      <span id="sim-fail-risk" class="text-3xl font-extrabold text-rose-400 font-serif">95.6%</span>
+                      <span class="text-xs text-slate-400">Probability of Collapse</span>
+                    </div>
+                    <div class="mb-3">
+                      <span id="sim-fail-badge" class="badge-pill bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold">
+                        CapEx: 90% &middot; OpEx: 10%
+                      </span>
+                    </div>
+                    <p id="sim-fail-desc" class="text-xs text-slate-300 leading-relaxed">
+                      3-year OpEx requirement ($2.5x CapEx) is unfunded. Hardware degrades rapidly without replacement or repair budgets.
+                    </p>
+                  </div>
+                  <div class="mt-4 pt-3 border-t border-white/10 text-[10px] text-slate-400">
+                    Source: Haßler et al. (2020); Trucano (2021)
+                  </div>
+                </div>
+
+                <!-- Card 3: Empirical Gating Audit & Recommendation -->
+                <div class="bg-white/5 rounded-xl p-5 border border-white/10 flex flex-col justify-between">
+                  <div>
+                    <span class="text-[11px] uppercase tracking-wider text-slate-400 font-bold block mb-3">Empirical Gating Matrix</span>
+                    
+                    <div class="space-y-2 mb-4">
+                      <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-300">⚡ Energy Grid Gate:</span>
+                        <span id="gate-power" class="font-bold text-rose-400">🔴 Failed (33% off-grid)</span>
+                      </div>
+                      <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-300">📶 Airtime Tax Gate:</span>
+                        <span id="gate-data" class="font-bold text-rose-400">🔴 Failed (4-8% Wage Tax)</span>
+                      </div>
+                      <div class="flex items-center justify-between text-xs">
+                        <span class="text-slate-300">📖 Foundational Literacy:</span>
+                        <span id="gate-lit" class="font-bold text-amber-400">🟡 Severe Deficit (79%)</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="pt-3 border-t border-white/10">
+                    <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Actionable Policy Directive:</span>
+                    <p id="sim-directive" class="text-xs font-semibold text-emerald-300 leading-snug">
+                      Cease 1:1 hardware procurement. Reallocate digital capital into teacher coaching and solar rotational kits.
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -2318,6 +2633,11 @@
       document.getElementById('gap1-desc').textContent = d.desc1;
       document.getElementById('gap2-desc').textContent = d.desc2;
       document.getElementById('gap3-desc').textContent = d.desc3;
+
+      const deepDive = document.getElementById('kenya-ecosystem-deepdive');
+      if (deepDive) {
+        deepDive.style.display = (iso === 'KEN') ? 'block' : 'none';
+      }
     }
 
     function showGapChart(gapKey) {
@@ -2372,6 +2692,147 @@
         }
       });
       document.getElementById('codebook-count-badge').textContent = `Showing ${visible} Mappings`;
+    }
+
+    // Demographic Filter for Kenya Deep-Dive
+    function setDemographicSegment(segment) {
+      const btnNat = document.getElementById('btn-seg-national');
+      const btnUrb = document.getElementById('btn-seg-urban');
+      const btnRur = document.getElementById('btn-seg-rural');
+
+      [btnNat, btnUrb, btnRur].forEach(b => {
+        if (b) b.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
+      });
+
+      if (segment === 'national' && btnNat) {
+        btnNat.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
+        document.getElementById('quad-cit-priority').textContent = '18.6%';
+        document.getElementById('quad-cit-dissat').textContent = '36.2%';
+        document.getElementById('quad-cit-lit').textContent = '41.6%';
+        document.getElementById('quad-tch-ptr').textContent = '30.7:1';
+        document.getElementById('quad-mod-access').textContent = 'Phone: 91% · Radio: 62% · TV: 45%';
+        document.getElementById('quad-pol-elec').textContent = '82.6%';
+      } else if (segment === 'urban' && btnUrb) {
+        btnUrb.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
+        document.getElementById('quad-cit-priority').textContent = '16.0%';
+        document.getElementById('quad-cit-dissat').textContent = '30.9%';
+        document.getElementById('quad-cit-lit').textContent = '54.2%';
+        document.getElementById('quad-tch-ptr').textContent = '28.0:1';
+        document.getElementById('quad-mod-access').textContent = 'Phone: 96% · Radio: 68% · TV: 72%';
+        document.getElementById('quad-pol-elec').textContent = '95.0%';
+      } else if (segment === 'rural' && btnRur) {
+        btnRur.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
+        document.getElementById('quad-cit-priority').textContent = '20.0%';
+        document.getElementById('quad-cit-dissat').textContent = '39.0%';
+        document.getElementById('quad-cit-lit').textContent = '36.8%';
+        document.getElementById('quad-tch-ptr').textContent = '50.0:1';
+        document.getElementById('quad-mod-access').textContent = 'Phone: 88% · Radio: 59% · TV: 32%';
+        document.getElementById('quad-pol-elec').textContent = '67.1%';
+      }
+    }
+
+    // GEEAP and EdTech Hub Lifecycle Simulator
+    function runSimStrategy(stratId) {
+      const scoreEl = document.getElementById('sim-geeap-score');
+      const badgeEl = document.getElementById('sim-geeap-badge');
+      const descEl = document.getElementById('sim-geeap-desc');
+      const failRiskEl = document.getElementById('sim-fail-risk');
+      const failBadgeEl = document.getElementById('sim-fail-badge');
+      const failDescEl = document.getElementById('sim-fail-desc');
+      const gatePowerEl = document.getElementById('gate-power');
+      const gateDataEl = document.getElementById('gate-data');
+      const gateLitEl = document.getElementById('gate-lit');
+      const directiveEl = document.getElementById('sim-directive');
+
+      if (stratId === 'strat-tablets') {
+        scoreEl.textContent = '0.015 σ';
+        scoreEl.className = 'text-3xl font-extrabold text-rose-400 font-serif';
+        badgeEl.textContent = 'GEEAP Rating: Bad Buy';
+        badgeEl.className = 'badge-pill bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold';
+        descEl.textContent = 'High capital cost ($200/pupil) yielding near-zero learning gains (+0.03σ). Fails cost-effectiveness threshold.';
+        
+        failRiskEl.textContent = '95.6%';
+        failRiskEl.className = 'text-3xl font-extrabold text-rose-400 font-serif';
+        failBadgeEl.textContent = 'CapEx: 90% · OpEx: 10%';
+        failBadgeEl.className = 'badge-pill bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-bold';
+        failDescEl.textContent = '3-year OpEx requirement ($2.5x CapEx) is unfunded. Hardware degrades rapidly without replacement or repair budgets.';
+
+        gatePowerEl.textContent = '🔴 Failed (33% off-grid)';
+        gatePowerEl.className = 'font-bold text-rose-400';
+        gateDataEl.textContent = '🔴 Failed (4-8% Wage Tax)';
+        gateDataEl.className = 'font-bold text-rose-400';
+        gateLitEl.textContent = '🟡 Severe Deficit (79%)';
+        gateLitEl.className = 'font-bold text-amber-400';
+
+        directiveEl.textContent = 'Cease 1:1 hardware procurement. Reallocate digital capital into teacher coaching and solar rotational kits.';
+        directiveEl.className = 'text-xs font-semibold text-rose-300 leading-snug';
+      } else if (stratId === 'strat-sms') {
+        scoreEl.textContent = '2.330 σ';
+        scoreEl.className = 'text-3xl font-extrabold text-emerald-400 font-serif';
+        badgeEl.textContent = 'GEEAP Rating: Great Buy';
+        badgeEl.className = 'badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold';
+        descEl.textContent = 'Low marginal cost ($12/pupil) yielding significant foundational gains (+0.28σ). Leverages 91% household phone ownership.';
+        
+        failRiskEl.textContent = '12.4%';
+        failRiskEl.className = 'text-3xl font-extrabold text-emerald-400 font-serif';
+        failBadgeEl.textContent = 'Zero Device Maintenance';
+        failBadgeEl.className = 'badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold';
+        failDescEl.textContent = 'Zero hardware capital replacement needed. Carrier telecom partnership required for sustainable zero-rating.';
+
+        gatePowerEl.textContent = '🟢 Passed (Basic feature phones)';
+        gatePowerEl.className = 'font-bold text-emerald-400';
+        gateDataEl.textContent = '🟢 Passed (Zero-rated SMS/USSD)';
+        gateDataEl.className = 'font-bold text-emerald-400';
+        gateLitEl.textContent = '🟢 Passed (Bite-sized numeracy/phonics)';
+        gateLitEl.className = 'font-bold text-emerald-400';
+
+        directiveEl.textContent = 'Mandate national zero-rating for USSD revision channels (e.g., Eneza/Shupavu) across all telecom operators.';
+        directiveEl.className = 'text-xs font-semibold text-emerald-300 leading-snug';
+      } else if (stratId === 'strat-broadcast') {
+        scoreEl.textContent = '5.140 σ';
+        scoreEl.className = 'text-3xl font-extrabold text-emerald-400 font-serif';
+        badgeEl.textContent = 'GEEAP Rating: High-Yield Buy';
+        badgeEl.className = 'badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold';
+        descEl.textContent = 'Exceptional economies of scale ($3.50/pupil) reaching 62% of households via radio and 45% via TV broadcast.';
+        
+        failRiskEl.textContent = '18.2%';
+        failRiskEl.className = 'text-3xl font-extrabold text-emerald-400 font-serif';
+        failBadgeEl.textContent = 'Shared Broadcast Channel';
+        failBadgeEl.className = 'badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold';
+        failDescEl.textContent = 'Production CapEx is frontloaded; distribution OpEx is effectively zero marginal cost over national airwaves.';
+
+        gatePowerEl.textContent = '🟢 Passed (Battery/Solar radio sets)';
+        gatePowerEl.className = 'font-bold text-emerald-400';
+        gateDataEl.textContent = '🟢 Passed (Zero data/airtime charge)';
+        gateDataEl.className = 'font-bold text-emerald-400';
+        gateLitEl.textContent = '🟢 Passed (Mother-tongue storytelling)';
+        gateLitEl.className = 'font-bold text-emerald-400';
+
+        directiveEl.textContent = 'Ring-fence national curriculum broadcast hours on KBC and community radio stations for foundational grades.';
+        directiveEl.className = 'text-xs font-semibold text-emerald-300 leading-snug';
+      } else if (stratId === 'strat-rotation') {
+        scoreEl.textContent = '3.120 σ';
+        scoreEl.className = 'text-3xl font-extrabold text-emerald-400 font-serif';
+        badgeEl.textContent = 'GEEAP Rating: Great Buy';
+        badgeEl.className = 'badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold';
+        descEl.textContent = 'Reduces device CapEx by 75% (10 tablets per 50 pupils). Delivers structured offline OERs with high pedagogical engagement (+0.25σ).';
+        
+        failRiskEl.textContent = '22.5%';
+        failRiskEl.className = 'text-3xl font-extrabold text-emerald-400 font-serif';
+        failBadgeEl.textContent = 'CapEx: 40% · OpEx: 60%';
+        failBadgeEl.className = 'badge-pill bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-bold';
+        failDescEl.textContent = 'Solar charging kit and local offline server (Kolibri/RACHEL) insulate against grid cuts and recurring telecom fees.';
+
+        gatePowerEl.textContent = '🟢 Passed (Solar microserver kit)';
+        gatePowerEl.className = 'font-bold text-emerald-400';
+        gateDataEl.textContent = '🟢 Passed (100% Offline-first DPGs)';
+        gateDataEl.className = 'font-bold text-emerald-400';
+        gateLitEl.textContent = '🟢 Passed (Open mother-tongue storybooks)';
+        gateLitEl.className = 'font-bold text-emerald-400';
+
+        directiveEl.textContent = 'Adopt the 3-Station Rotational Model as national public standard: 1 solar charging microserver per school.';
+        directiveEl.className = 'text-xs font-semibold text-emerald-300 leading-snug';
+      }
     }
 
     // Initialize on DOM load
