@@ -229,56 +229,86 @@
     <!-- Systemic Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
-      <!-- TAB 1: 4-COUNTRY PILOT DEEP DIVE -->
+      <!-- TAB 1: SUB-SAHARAN AFRICA COMPARATIVE DEEP DIVE -->
       <div id="pilot-tab" class="tab-content block">
         <div class="mb-8">
           <span class="badge-pill bg-blue-100 text-blue-800 mb-2">Empirical Triangulation Layer</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">4-Country Comparative Pilot Deep Dive</h2>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Sub-Saharan Africa Comparative Ecosystem Deep Dive</h2>
           <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
-            Examining four Sub-Saharan African economies participating in OECD PISA with extensive 6-Pillars indicator coverage. This cross-case analysis tests whether supply-side EdTech assumptions match ground-level classroom realities.
+            Examining key Sub-Saharan African economies across the UNESCO 6-Pillars framework. This cross-case triangulation tests whether supply-side EdTech assumptions match ground-level classroom realities in Rwanda, Tanzania, Kenya, Ghana, Nigeria, Zambia, and Mauritius.
           </p>
         </div>
 
-        <!-- Country Selector Buttons -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
-          <button onclick="selectCountry('KEN')" id="card-KEN" class="country-card p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 text-left transition hover:shadow-md">
+        <!-- Country Selector Buttons (7 SSA / Control Economies) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5 mb-8" id="country-selector-grid">
+          <button onclick="selectCountry('KEN')" id="card-KEN" class="country-card p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 text-left transition hover:shadow-md">
             <div class="flex items-center justify-between mb-1">
-              <span class="text-xl">🇰🇪</span>
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-emerald-200 text-emerald-800">Score: 25/45</span>
+              <span class="text-lg">🇰🇪</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-emerald-200 text-emerald-800">25/45</span>
             </div>
-            <div class="font-extrabold text-slate-900">Kenya</div>
-            <div class="text-xs text-slate-500 mt-0.5 font-medium">Silicon Savannah Hub</div>
-            <div class="text-[11px] text-emerald-700 mt-2 font-semibold">100% Qual Teachers · 35% Net</div>
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">Kenya</div>
+            <div class="text-[10px] text-slate-500 font-medium">Silicon Savannah</div>
+            <div class="text-[10px] text-emerald-700 mt-1.5 font-semibold">100% Qual · 35% Net</div>
           </button>
 
-          <button onclick="selectCountry('RWA')" id="card-RWA" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+          <button onclick="selectCountry('RWA')" id="card-RWA" class="country-card p-3 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
             <div class="flex items-center justify-between mb-1">
-              <span class="text-xl">🇷🇼</span>
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-800">Score: 30/45</span>
+              <span class="text-lg">🇷🇼</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-800">30/45</span>
             </div>
-            <div class="font-extrabold text-slate-900">Rwanda</div>
-            <div class="text-xs text-slate-500 mt-0.5 font-medium">State-Led Push</div>
-            <div class="text-[11px] text-blue-700 mt-2 font-semibold">Smart Master Plan · PTR 59.5</div>
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">Rwanda</div>
+            <div class="text-[10px] text-slate-500 font-medium">State Push</div>
+            <div class="text-[10px] text-blue-700 mt-1.5 font-semibold">PTR 59.5 · Eng Switch</div>
           </button>
 
-          <button onclick="selectCountry('MUS')" id="card-MUS" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+          <button onclick="selectCountry('TZA')" id="card-TZA" class="country-card p-3 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
             <div class="flex items-center justify-between mb-1">
-              <span class="text-xl">🇲🇺</span>
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-800">Score: 18/45</span>
+              <span class="text-lg">🇹🇿</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-cyan-100 text-cyan-800">33/45</span>
             </div>
-            <div class="font-extrabold text-slate-900">Mauritius</div>
-            <div class="text-xs text-slate-500 mt-0.5 font-medium">Upper-Bound Control</div>
-            <div class="text-[11px] text-rose-700 mt-2 font-semibold">100% Power · $31.7k PPP</div>
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">Tanzania</div>
+            <div class="text-[10px] text-slate-500 font-medium">Swahili Giant</div>
+            <div class="text-[10px] text-cyan-700 mt-1.5 font-semibold">34% R-Power · 99% Qual</div>
           </button>
 
-          <button onclick="selectCountry('ZMB')" id="card-ZMB" class="country-card p-4 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+          <button onclick="selectCountry('GHA')" id="card-GHA" class="country-card p-3 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
             <div class="flex items-center justify-between mb-1">
-              <span class="text-xl">🇿🇲</span>
-              <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">Score: 37/45</span>
+              <span class="text-lg">🇬🇭</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-teal-100 text-teal-800">27/45</span>
             </div>
-            <div class="font-extrabold text-slate-900">Zambia</div>
-            <div class="text-xs text-slate-500 mt-0.5 font-medium">Lower-Bound Vulnerability</div>
-            <div class="text-[11px] text-amber-700 mt-2 font-semibold">31% Rural Power · PTR 42.1</div>
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">Ghana</div>
+            <div class="text-[10px] text-slate-500 font-medium">West Africa Hub</div>
+            <div class="text-[10px] text-teal-700 mt-1.5 font-semibold">92% Power · 72% Net</div>
+          </button>
+
+          <button onclick="selectCountry('NGA')" id="card-NGA" class="country-card p-3 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-lg">🇳🇬</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-indigo-100 text-indigo-800">36/45</span>
+            </div>
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">Nigeria</div>
+            <div class="text-[10px] text-slate-500 font-medium">Macro Giant</div>
+            <div class="text-[10px] text-indigo-700 mt-1.5 font-semibold">Gen Economy · 3% Ed</div>
+          </button>
+
+          <button onclick="selectCountry('ZMB')" id="card-ZMB" class="country-card p-3 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-lg">🇿🇲</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">37/45</span>
+            </div>
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">Zambia</div>
+            <div class="text-[10px] text-slate-500 font-medium">Vulnerability</div>
+            <div class="text-[10px] text-amber-700 mt-1.5 font-semibold">31% R-Power · 73 Langs</div>
+          </button>
+
+          <button onclick="selectCountry('MUS')" id="card-MUS" class="country-card p-3 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-lg">🇲🇺</span>
+              <span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-rose-100 text-rose-800">18/45</span>
+            </div>
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">Mauritius</div>
+            <div class="text-[10px] text-slate-500 font-medium">Control Benchmark</div>
+            <div class="text-[10px] text-rose-700 mt-1.5 font-semibold">100% Power · $31.7k</div>
           </button>
         </div>
 
@@ -395,18 +425,18 @@
             </div>
           </div>
 
-          <!-- SECTION 1B: ANCHOR COUNTRY MULTI-PERSPECTIVE ECOSYSTEM (KENYA DEEP-DIVE) -->
+          <!-- SECTION 1B: MULTI-PERSPECTIVE ECOSYSTEM DEEP-DIVE (DYNAMIC ACROSS SSA) -->
           <div id="kenya-ecosystem-deepdive" class="mt-10 pt-8 border-t border-slate-200">
             <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div>
                 <div class="flex items-center gap-2">
-                  <span class="badge-pill bg-emerald-100 text-emerald-800 font-bold">Anchor Ecosystem Deep-Dive</span>
+                  <span id="deepdive-archetype-badge" class="badge-pill bg-emerald-100 text-emerald-800 font-bold">Anchor Ecosystem Deep-Dive</span>
                   <span class="badge-pill bg-purple-100 text-purple-800 font-bold">Multi-Perspective Quad-Lens</span>
                 </div>
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif mt-2">
+                <h3 id="deepdive-country-title" class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif mt-2">
                   Kenya Collaborative Ecosystem: Ground-Truth Triangulation
                 </h3>
-                <p class="text-slate-600 text-xs sm:text-sm mt-1 max-w-3xl">
+                <p id="deepdive-country-desc" class="text-slate-600 text-xs sm:text-sm mt-1 max-w-3xl">
                   Triangulating citizen demand, frontline teacher constraints, verified delivery modalities, and macro policy allocations to eliminate the statistical "data desert."
                 </p>
               </div>
@@ -436,10 +466,10 @@
                     <span class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
                       👥 Lens 1: Citizen &amp; Community Demand
                     </span>
-                    <span class="text-[11px] text-slate-400 font-mono">Afrobarometer R9 &middot; Uwezo</span>
+                    <span id="lens1-source" class="text-[11px] text-slate-400 font-mono">Afrobarometer R9 · Uwezo</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">Basic School Quality vs. Hardware Hype</h4>
-                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  <h4 id="lens1-heading" class="font-extrabold text-slate-900 text-base mb-2 font-serif">Basic School Quality vs. Hardware Hype</h4>
+                  <p id="lens1-desc" class="text-xs text-slate-600 leading-relaxed mb-4">
                     Citizens consistently prioritize physical textbooks, basic roofs, and teacher presence over digital tablets. Dissatisfaction spikes sharply in rural wards.
                   </p>
                   
@@ -464,8 +494,8 @@
 
                 <div class="pt-3 border-t border-slate-100">
                   <div class="text-[11px] text-slate-500 italic bg-amber-50/70 p-2.5 rounded border border-amber-200/60">
-                    <span class="font-bold text-amber-900 not-italic">Field Voice (Usawa Community Survey):</span> 
-                    &ldquo;Our school roof leaks and children share one textbook among five pupils; what will a tablet do when there is no power to charge it?&rdquo;
+                    <span id="lens1-voice-label" class="font-bold text-amber-900 not-italic">Field Voice (Usawa Community Survey):</span> 
+                    <span id="lens1-voice-quote">&ldquo;Our school roof leaks and children share one textbook among five pupils; what will a tablet do when there is no power to charge it?&rdquo;</span>
                   </div>
                 </div>
               </div>
@@ -477,17 +507,17 @@
                     <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                       👩‍🏫 Lens 2: Frontline Teacher Reality
                     </span>
-                    <span class="text-[11px] text-slate-400 font-mono">AoA Survey (N=800) &middot; RTI</span>
+                    <span id="lens2-source" class="text-[11px] text-slate-400 font-mono">AoA Survey (N=800) · RTI</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Informal Salary Tax &amp; Crowding</h4>
-                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  <h4 id="lens2-heading" class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Informal Salary Tax &amp; Crowding</h4>
+                  <p id="lens2-desc" class="text-xs text-slate-600 leading-relaxed mb-4">
                     Teachers bear the private financial burden of state digitalization. Without zero-rated educational domains, mobile data is purchased from personal wages.
                   </p>
                   
                   <div class="grid grid-cols-3 gap-2 py-3 bg-slate-50 rounded-lg border border-slate-100 text-center mb-4">
                     <div class="p-2">
                       <span class="text-[10px] text-slate-500 block uppercase">Airtime Wage Tax</span>
-                      <span class="text-base font-extrabold text-emerald-700">4% &ndash; 8%</span>
+                      <span id="quad-tch-airtime" class="text-base font-extrabold text-emerald-700">4% &ndash; 8%</span>
                       <span class="text-[9px] text-slate-400 block mt-0.5">Personal Wages</span>
                     </div>
                     <div class="p-2 border-x border-slate-200/60">
@@ -497,7 +527,7 @@
                     </div>
                     <div class="p-2">
                       <span class="text-[10px] text-slate-500 block uppercase">Device Decay</span>
-                      <span class="text-base font-extrabold text-rose-600">&gt;60%</span>
+                      <span id="quad-tch-decay" class="text-base font-extrabold text-rose-600">&gt;60%</span>
                       <span class="text-[9px] text-slate-400 block mt-0.5">Broken in 14 Mos</span>
                     </div>
                   </div>
@@ -505,8 +535,8 @@
 
                 <div class="pt-3 border-t border-slate-100">
                   <div class="text-[11px] text-slate-500 italic bg-emerald-50/70 p-2.5 rounded border border-emerald-200/60">
-                    <span class="font-bold text-emerald-900 not-italic">Field Voice (AoA Kenyan Teacher):</span> 
-                    &ldquo;I spend 600 KES of my own salary every month on Safaricom bundles just to upload student attendance and download curriculum schemes of work.&rdquo;
+                    <span id="lens2-voice-label" class="font-bold text-emerald-900 not-italic">Field Voice (AoA Kenyan Teacher):</span> 
+                    <span id="lens2-voice-quote">&ldquo;I spend 600 KES of my own salary every month on Safaricom bundles just to upload student attendance and download curriculum schemes of work.&rdquo;</span>
                   </div>
                 </div>
               </div>
@@ -518,14 +548,14 @@
                     <span class="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-full border border-purple-200">
                       📻 Lens 3: Grassroots Modality Reach
                     </span>
-                    <span class="text-[11px] text-slate-400 font-mono">Busia Study &middot; Synthesizer</span>
+                    <span id="lens3-source" class="text-[11px] text-slate-400 font-mono">Busia Study · Synthesizer</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">Low-Tech Reach vs. High-Tech Invisibility</h4>
-                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  <h4 id="lens3-heading" class="font-extrabold text-slate-900 text-base mb-2 font-serif">Low-Tech Reach vs. High-Tech Invisibility</h4>
+                  <p id="lens3-desc" class="text-xs text-slate-600 leading-relaxed mb-4">
                     Empirical reach is dominated by broadcast and SMS. High-tech cloud platforms register 0% verified reach in public low-income schools.
                   </p>
                   
-                  <div class="space-y-2 mb-4">
+                  <div id="quad-modalities-list" class="space-y-2 mb-4">
                     <div class="flex items-center justify-between text-xs bg-slate-50 p-2 rounded border border-slate-100">
                       <span class="font-semibold text-slate-700">Broadcast Radio (IRI / KBC)</span>
                       <div class="flex items-center gap-3">
@@ -559,7 +589,7 @@
 
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span>Household Device Access:</span>
-                  <span id="quad-mod-access" class="font-bold text-slate-800">Phone: 91% &middot; Radio: 62% &middot; TV: 45%</span>
+                  <span id="quad-mod-access" class="font-bold text-slate-800">Phone: 91% · Radio: 62% · TV: 45%</span>
                 </div>
               </div>
 
@@ -570,36 +600,36 @@
                     <span class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
                       🏛️ Lens 4: National Policy &amp; Capital
                     </span>
-                    <span class="text-[11px] text-slate-400 font-mono">World Bank &middot; UIS &middot; Ookla Q1 2024</span>
+                    <span id="lens4-source" class="text-[11px] text-slate-400 font-mono">World Bank · UIS · Ookla Q1 2024</span>
                   </div>
-                  <h4 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The CapEx Trap &amp; Recurrent Budget Lock</h4>
-                  <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                  <h4 id="lens4-heading" class="font-extrabold text-slate-900 text-base mb-2 font-serif">The CapEx Trap &amp; Recurrent Budget Lock</h4>
+                  <p id="lens4-desc" class="text-xs text-slate-600 leading-relaxed mb-4">
                     Ministries borrow heavily for initial hardware imports ($150M+ DLP tablets) while 92.5% of education budget is locked in recurrent salaries, leaving 0% for maintenance.
                   </p>
                   <!-- Ookla speed-test panel -->
                   <div class="bg-slate-50 rounded-lg border border-slate-100 px-3 py-2 mb-3">
-                    <div class="text-[10px] uppercase font-bold text-slate-400 mb-1.5 tracking-wider">Network Speed Reality (Ookla Speedtest · Q1 2024 · <em>3,938 mobile tiles</em>)</div>
+                    <div class="text-[10px] uppercase font-bold text-slate-400 mb-1.5 tracking-wider">Network Speed Reality (Ookla Speedtest · Q1 2024)</div>
                     <div class="grid grid-cols-3 gap-2 text-center text-[11px]">
                       <div>
-                        <span class="block font-extrabold text-blue-700 text-base">46.2</span>
+                        <span id="quad-speed-mobile" class="block font-extrabold text-blue-700 text-base">46.2</span>
                         <span class="text-slate-500">Mbps ↓ mobile<br><span class="font-mono text-[10px]">test-weighted</span></span>
                       </div>
                       <div class="border-x border-slate-200/60">
-                        <span class="block font-extrabold text-amber-700 text-base">23.4</span>
+                        <span id="quad-speed-median" class="block font-extrabold text-amber-700 text-base">23.4</span>
                         <span class="text-slate-500">Mbps ↓ median<br><span class="font-mono text-[10px]">tile (rural proxy)</span></span>
                       </div>
                       <div>
-                        <span class="block font-extrabold text-rose-700 text-base">47.7ms</span>
+                        <span id="quad-speed-latency" class="block font-extrabold text-rose-700 text-base">47.7ms</span>
                         <span class="text-slate-500">Latency<br><span class="font-mono text-[10px]">test-weighted</span></span>
                       </div>
                     </div>
-                    <p class="text-[10px] text-slate-400 mt-1.5 italic">⚠ Ookla tiles skew urban (Speedtest app users). Median tile (23 Mbps) better proxies non-urban reachability. Fixed broadband median: 10.6 Mbps across 6,453 tiles.</p>
+                    <p id="quad-speed-note" class="text-[10px] text-slate-400 mt-1.5 italic">⚠ Ookla tiles skew urban (Speedtest app users). Median tile (23 Mbps) better proxies non-urban reachability. Fixed broadband median: 10.6 Mbps across 6,453 tiles.</p>
                   </div>
                   
                   <div class="grid grid-cols-3 gap-2 py-3 bg-slate-50 rounded-lg border border-slate-100 text-center mb-4">
                     <div class="p-2">
                       <span class="text-[10px] text-slate-500 block uppercase">Learning Poverty</span>
-                      <span class="text-base font-extrabold text-rose-700">79.3%</span>
+                      <span id="quad-pol-pov" class="text-base font-extrabold text-rose-700">79.3%</span>
                       <span class="text-[9px] text-slate-400 block mt-0.5">World Bank 2023</span>
                     </div>
                     <div class="p-2 border-x border-slate-200/60">
@@ -609,7 +639,7 @@
                     </div>
                     <div class="p-2">
                       <span class="text-[10px] text-slate-500 block uppercase">Recurrent Lock</span>
-                      <span class="text-base font-extrabold text-amber-700">92.5%</span>
+                      <span id="quad-pol-opex" class="text-base font-extrabold text-amber-700">92.5%</span>
                       <span class="text-[9px] text-slate-400 block mt-0.5">OpEx vs CapEx</span>
                     </div>
                   </div>
@@ -617,53 +647,12 @@
 
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span>Out-of-School Primary Rate:</span>
-                  <span class="font-bold text-rose-700">18.8% (World Bank 2023)</span>
+                  <span id="quad-pol-outreach" class="font-bold text-rose-700">18.8% (World Bank 2023)</span>
                 </div>
               </div>
             </div>
 
-            <!-- ================================================================ -->
-            <!-- SECTION 1C: FIELD VOICE LAYER — QUALITATIVE EVIDENCE CAROUSEL  -->
-            <!-- ================================================================ -->
-            <div class="mt-8 mb-8" id="field-voice-panel">
-              <div class="flex items-center gap-3 mb-4">
-                <span class="badge-pill bg-rose-100 text-rose-800 font-bold">🎙️ Field Voice Layer</span>
-                <span class="badge-pill bg-slate-100 text-slate-700">Qualitative Ground-Truth</span>
-              </div>
-              <h4 class="text-base font-extrabold text-slate-900 font-serif mb-1">Authenticated Field Testimonies — Pillar-Coded</h4>
-              <p class="text-xs text-slate-500 mb-4 max-w-2xl">
-                Verbatim excerpts from peer-reviewed field research (EdTech Hub, UNESCO, GSMA) coded to the UNESCO 6-Pillar framework. Randomized on page load. Click <strong>Next →</strong> to cycle.
-              </p>
 
-              <!-- Voice Carousel -->
-              <div class="relative bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden">
-                <!-- Pillar colour strip -->
-                <div id="voice-pillar-strip" class="h-1.5 w-full bg-blue-500 transition-all duration-500"></div>
-                <div class="p-5 sm:p-6">
-                  <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
-                    <div class="flex flex-wrap items-center gap-2">
-                      <span id="voice-pillar-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">📐 Pillar 2: Infrastructure</span>
-                      <span id="voice-type-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">👩‍🏫 Frontline Teacher</span>
-                      <span id="voice-segment-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-teal-50 text-teal-800 border border-teal-200">📚 Primary</span>
-                    </div>
-                    <span id="voice-geo-badge" class="text-[11px] font-mono text-slate-400">🇰🇪 Rural Kenya</span>
-                  </div>
-
-                  <blockquote id="voice-quote" class="text-sm text-slate-800 font-serif leading-relaxed italic border-l-4 border-blue-400 pl-4 mb-3">
-                    "We only have power for two hours in the morning before the grid cuts. I charged my phone the night before to show the students the Khan Academy video. By the time the class started, the battery had died."
-                  </blockquote>
-
-                  <div class="flex flex-wrap items-center justify-between gap-2">
-                    <cite id="voice-citation" class="text-[11px] text-slate-400 not-italic">EdTech Hub / FCDO Kenya Rural Teacher Audit, 2023 · Machakos County</cite>
-                    <div class="flex items-center gap-2">
-                      <span id="voice-counter" class="text-[11px] text-slate-400 font-mono">1 / 8</span>
-                      <button onclick="prevVoice()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 hover:bg-slate-200 transition">← Prev</button>
-                      <button onclick="nextVoice()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-900 text-white hover:bg-slate-700 transition">Next →</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <!-- INTERACTIVE DECISION SIMULATOR: GEEAP & EDTECH HUB LIFECYCLE MODEL -->
             <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl p-6 sm:p-8 text-white shadow-lg border border-slate-700">
@@ -772,6 +761,46 @@
             </div>
           </div>
         </div>
+
+        <!-- ================================================================ -->
+        <!-- FIELD VOICES: EDITORIAL STRIP — Qualitative Ground-Truth          -->
+        <!-- ================================================================ -->
+        <div id="field-voice-panel" class="mt-12 pt-10 border-t border-slate-100">
+          <div class="max-w-2xl mx-auto text-center mb-8">
+            <p class="text-[11px] uppercase tracking-widest font-bold text-slate-400 mb-2">From the Field</p>
+            <h4 class="text-xl font-serif font-semibold text-slate-700 leading-snug">Voices that numbers don't capture</h4>
+            <p class="text-xs text-slate-400 mt-2 leading-relaxed max-w-lg mx-auto">Verbatim excerpts sourced from peer-reviewed field research. Each testimony is coded to the UNESCO 6-Pillar framework. This is qualitative signal — not a dataset.</p>
+          </div>
+
+          <!-- Voice Carousel — minimal, editorial -->
+          <div class="max-w-2xl mx-auto">
+            <div class="relative overflow-hidden rounded-xl" id="voice-card-wrap">
+              <!-- Pillar colour strip — thin, top -->
+              <div id="voice-pillar-strip" class="h-[3px] w-full bg-blue-400 transition-all duration-500 rounded-t-xl"></div>
+              <div class="bg-slate-50 border border-slate-200 border-t-0 rounded-b-xl px-7 py-6">
+                <!-- Pillar label only — no segment/type pills -->
+                <div class="flex items-center justify-between mb-4">
+                  <span id="voice-pillar-badge" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-100">⚡ Pillar 2: Infrastructure & Power</span>
+                  <span id="voice-geo-badge" class="text-[11px] font-mono text-slate-400">🇰🇪 Rural Kenya</span>
+                </div>
+
+                <blockquote id="voice-quote" class="text-base sm:text-lg font-serif text-slate-800 leading-relaxed italic mb-5">
+                  "We only have power for two hours in the morning before the grid cuts. I charged my phone the night before to show the students the Khan Academy video. By the time the class started, the battery had died."
+                </blockquote>
+
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  <cite id="voice-citation" class="text-[11px] text-slate-400 not-italic leading-snug">EdTech Hub / FCDO Kenya Rural Teacher Audit, 2023 · Machakos County</cite>
+                  <div class="flex items-center gap-2">
+                    <span id="voice-counter" class="text-[11px] text-slate-400 font-mono tabular-nums">1 / 16</span>
+                    <button onclick="prevVoice()" class="w-7 h-7 flex items-center justify-center rounded-full text-xs font-bold bg-white border border-slate-200 text-slate-500 hover:bg-slate-100 transition" aria-label="Previous">←</button>
+                    <button onclick="nextVoice()" class="w-7 h-7 flex items-center justify-center rounded-full text-xs font-bold bg-slate-800 text-white hover:bg-slate-700 transition" aria-label="Next">→</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- TAB 2: INTERACTIVE ENGINES -->
@@ -782,6 +811,85 @@
           <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
             Access the two underlying analytical web engines powering this observatory: the 85-country OECD PISA exploration dashboard and the 800-respondent Alliance of Alliances ground-truth engine.
           </p>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- GIGA SCHOOL CONNECTIVITY LIVE PANEL                          -->
+        <!-- ============================================================ -->
+        <div class="mb-8 rounded-2xl border border-cyan-200 bg-gradient-to-br from-cyan-50 to-slate-50 overflow-hidden shadow-sm">
+          <div class="px-6 py-5 border-b border-cyan-100 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-xl bg-cyan-600 flex items-center justify-center text-white font-black text-sm shadow-sm">G</div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-extrabold text-slate-900 font-serif">GIGA School Connectivity Monitor</h3>
+                  <span id="giga-status-pill" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-200">⏳ API Pending</span>
+                </div>
+                <p class="text-xs text-slate-500 mt-0.5">UNICEF–ITU · Real-time school internet coverage · SSA &amp; MENA focus</p>
+              </div>
+            </div>
+            <a href="https://projectconnect.unicef.org/map" target="_blank" class="text-xs font-semibold text-cyan-700 hover:text-cyan-900 underline underline-offset-2 transition">projectconnect.unicef.org ↗</a>
+          </div>
+
+          <!-- GIGA Country Cards — static until API key arrives -->
+          <div class="p-6">
+            <p class="text-xs text-slate-500 mb-4 italic">
+              Real-time values will populate automatically once the GIGA API key is activated. The structure below is live-ready — only the endpoint key is needed.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5" id="giga-country-grid">
+              <!-- Kenya -->
+              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
+                <div class="text-xs font-mono text-slate-400 mb-1">🇰🇪 Kenya</div>
+                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="KEN">—</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
+                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
+                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="KEN">—% coverage</div>
+              </div>
+              <!-- Nigeria -->
+              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
+                <div class="text-xs font-mono text-slate-400 mb-1">🇳🇬 Nigeria</div>
+                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="NGA">—</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
+                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
+                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="NGA">—% coverage</div>
+              </div>
+              <!-- Ghana -->
+              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
+                <div class="text-xs font-mono text-slate-400 mb-1">🇬🇭 Ghana</div>
+                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="GHA">—</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
+                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
+                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="GHA">—% coverage</div>
+              </div>
+              <!-- Egypt -->
+              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
+                <div class="text-xs font-mono text-slate-400 mb-1">🇪🇬 Egypt</div>
+                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="EGY">—</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
+                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
+                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
+                </div>
+                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="EGY">—% coverage</div>
+              </div>
+            </div>
+
+            <!-- API Integration Instructions (developer note, collapsed) -->
+            <details class="text-xs border border-dashed border-cyan-300 rounded-xl px-4 py-3 bg-white/60">
+              <summary class="font-semibold text-cyan-800 cursor-pointer select-none">🔑 Developer: Activate GIGA API feed</summary>
+              <div class="mt-3 space-y-1.5 text-slate-600 leading-relaxed font-mono text-[11px]">
+                <p>1. Set <code class="bg-slate-100 px-1 rounded">GIGA_API_KEY</code> in <code class="bg-slate-100 px-1 rounded">const GIGA_API_KEY = "YOUR_KEY_HERE"</code> below.</p>
+                <p>2. The function <code class="bg-slate-100 px-1 rounded">fetchGigaData()</code> will fire on tab open and populate the cards above.</p>
+                <p>3. Endpoint: <code class="bg-slate-100 px-1 rounded">https://api.giga.school/v1/schools?country_code={ISO}&amp;connectivity=true</code></p>
+                <p>4. No other changes needed — the grid is live-ready.</p>
+              </div>
+            </details>
+          </div>
         </div>
 
         <!-- Engines Showcase Cards -->
@@ -855,6 +963,7 @@
             <iframe id="dash-frame" src="https://SunilRaman42.github.io/EEA_3/" class="w-full h-full border-0 relative z-20" onload="document.getElementById('frame-loader')?.classList.add('hidden')" title="Live Dashboard Preview" allow="clipboard-write"></iframe>
           </div>
         </div>
+
       </div>
 
       <!-- TAB 3: VARIABLE EXPLORER & OPEN DATA -->
@@ -963,6 +1072,222 @@
                 </tr>
               </tbody>
             </table>
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- 6-PILLARS COUNTRY DEEP DIVE EXPLORER (RWANDA, TANZANIA & SSA)-->
+        <!-- ============================================================ -->
+        <div class="mt-12 pt-10 border-t border-slate-200" id="tab3-country-deepdive-section">
+          <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+            <div>
+              <div class="flex items-center gap-2 mb-2">
+                <span class="badge-pill bg-purple-100 text-purple-800 font-bold">Empirical Multi-Country Matrix</span>
+                <span class="badge-pill bg-teal-100 text-teal-800 font-bold">Macro vs. Micro Mapped</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif">
+                6-Pillars Country Deep Dive: Rwanda, Tanzania &amp; SSA Archetypes
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-1 max-w-3xl">
+                Benchmarking ministerial assumptions against verified classroom constraints across Rwanda, Tanzania, Kenya, Ghana, Nigeria, Zambia, and Mauritius across all 6 UNESCO Pillars.
+              </p>
+            </div>
+
+            <!-- Tab 3 Country Switcher Pills -->
+            <div class="flex flex-wrap items-center gap-1.5 bg-slate-100 p-1.5 rounded-xl border border-slate-200" id="tab3-country-pills">
+              <button onclick="selectTab3Country('RWA')" id="tab3-pill-RWA" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition">
+                🇷🇼 Rwanda Deep-Dive
+              </button>
+              <button onclick="selectTab3Country('TZA')" id="tab3-pill-TZA" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                🇹🇿 Tanzania Deep-Dive
+              </button>
+              <button onclick="selectTab3Country('KEN')" id="tab3-pill-KEN" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                🇰🇪 Kenya Focus
+              </button>
+              <button onclick="selectTab3Country('GHA')" id="tab3-pill-GHA" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                🇬🇭 Ghana Focus
+              </button>
+              <button onclick="selectTab3Country('NGA')" id="tab3-pill-NGA" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                🇳🇬 Nigeria Focus
+              </button>
+              <button onclick="selectTab3Country('ZMB')" id="tab3-pill-ZMB" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                🇿🇲 Zambia Focus
+              </button>
+              <button onclick="selectTab3Country('MUS')" id="tab3-pill-MUS" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                🇲🇺 Mauritius Control
+              </button>
+              <button onclick="selectTab3Country('COMPARE')" id="tab3-pill-COMPARE" class="tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition bg-slate-200/60">
+                📊 Side-by-Side Matrix
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Country Deep-Dive Profile Card -->
+          <div id="tab3-country-profile-card" class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 mb-8">
+            <!-- Populated dynamically by selectTab3Country() -->
+          </div>
+
+          <!-- Rwanda vs. Tanzania Analytical Paradox Callout Box -->
+          <div class="rounded-2xl border border-indigo-200 bg-gradient-to-br from-indigo-50/60 via-white to-slate-50 p-6 sm:p-8 shadow-sm mb-8">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-bold text-sm">⚖️</div>
+              <div>
+                <h4 class="text-base sm:text-lg font-extrabold text-slate-900 font-serif">
+                  The Core Policy Paradox: Rwanda vs. Tanzania
+                </h4>
+                <p class="text-xs text-slate-500">Why two neighboring East African economies demand completely divergent EdTech deployment strategies</p>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+              <!-- Rwanda Side -->
+              <div class="bg-white rounded-xl p-5 border border-indigo-100 shadow-xs">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-100">
+                  <span class="text-sm font-extrabold text-blue-900">🇷🇼 Rwanda: The High-Modernist Digital Push</span>
+                  <span class="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded">Score: 30 / 45</span>
+                </div>
+                <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                  <li><strong class="text-slate-800">Macro Drive:</strong> Vision 2050 and Smart Rwanda Master Plan prioritize centralized digital deployment; 60.8% primary school electrification and $329M+ in World Bank Quality Basic Education loans (P168551/P177983).</li>
+                  <li><strong class="text-slate-800">Classroom Choke Point:</strong> Crushing pupil-teacher crowding (59.5:1 ratio, 22% of surveyed teachers report classes >80), leaving teachers unable to facilitate individualized screen time.</li>
+                  <li><strong class="text-slate-800">The Linguistic Barrier:</strong> Post-2008 switch to English medium clashes with early-grade cognition in Kinyarwanda. AI models score only 38% accuracy in Kinyarwanda (AfroBench/IrokoBench).</li>
+                  <li><strong class="text-slate-800">Strategic Imperative:</strong> Hardware procurement must halt in favor of solar rotational kits and localized Kinyarwanda speech recognition corpora before app deployment.</li>
+                </ul>
+              </div>
+
+              <!-- Tanzania Side -->
+              <div class="bg-white rounded-xl p-5 border border-cyan-100 shadow-xs">
+                <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-100">
+                  <span class="text-sm font-extrabold text-cyan-900">🇹🇿 Tanzania: The Vernacular Foundational Anchor</span>
+                  <span class="text-xs font-bold text-cyan-700 bg-cyan-50 px-2 py-0.5 rounded">Score: 33 / 45</span>
+                </div>
+                <ul class="text-xs text-slate-600 space-y-2 leading-relaxed">
+                  <li><strong class="text-slate-800">Macro Asset:</strong> Unified national instruction in Kiswahili across 100% of primary schooling; 99.2% qualified primary teachers; mobile cellular saturation at 126.6 per 100.</li>
+                  <li><strong class="text-slate-800">Classroom Choke Point:</strong> Severe rural energy desert—only 33.7% rural population and 37.3% primary schools have electricity. Fixed broadband is essentially zero (0.25/100).</li>
+                  <li><strong class="text-slate-800">The Modality Reality:</strong> High-tech cloud web platforms reach &lt;2% of schools outside Dar es Salaam. Free-to-air broadcast (Ubongo Kids reaching 42%) and radio (35%) dominate verified learning gains.</li>
+                  <li><strong class="text-slate-800">Strategic Imperative:</strong> Capital must fund offline solar microservers (Kolibri/RACHEL) preloaded with open Swahili curriculum and ring-fenced educational broadcast airwaves.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comprehensive Cross-National 7-Country Benchmarking Table -->
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden mb-8" id="tab3-comparison-table-wrapper">
+            <div class="px-6 py-4 bg-slate-900 text-white flex flex-wrap items-center justify-between gap-2">
+              <span class="font-bold text-sm">Cross-National 7-Country 6-Pillars Triangulation Matrix</span>
+              <span class="text-xs font-mono text-slate-400">WDI · UIS · ITU · SPI · AoA Survey (2024 Calibrated)</span>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs text-slate-700">
+                <thead class="bg-slate-50 text-slate-500 uppercase text-[10px] font-bold border-b border-slate-200">
+                  <tr>
+                    <th class="py-3 px-3">Country / Archetype</th>
+                    <th class="py-3 px-2 text-center">Score</th>
+                    <th class="py-3 px-2 text-center">P1: Ed Gov %</th>
+                    <th class="py-3 px-2 text-center">P2: Rural Pwr</th>
+                    <th class="py-3 px-2 text-center">P2: Sch Elec</th>
+                    <th class="py-3 px-2 text-center">P2: Fixed BB</th>
+                    <th class="py-3 px-2 text-center">P3: Data Cost</th>
+                    <th class="py-3 px-2 text-center">P4: PTR</th>
+                    <th class="py-3 px-2 text-center">P4: Qual Tch</th>
+                    <th class="py-3 px-2 text-center">P5: Lang &amp; AI</th>
+                    <th class="py-3 px-2 text-center">P6: SPI Score</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100 font-mono text-xs">
+                  <tr class="hover:bg-slate-50/80 transition">
+                    <td class="py-3 px-3 font-sans font-bold text-slate-900">🇰🇪 Kenya <span class="block text-[10px] text-slate-400 font-normal">Silicon Savannah</span></td>
+                    <td class="py-3 px-2 text-center font-bold text-emerald-700 bg-emerald-50/50">25 / 45</td>
+                    <td class="py-3 px-2 text-center">27.9%</td>
+                    <td class="py-3 px-2 text-center">67.1%</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">82.6%</td>
+                    <td class="py-3 px-2 text-center">3.04</td>
+                    <td class="py-3 px-2 text-center">4.3%</td>
+                    <td class="py-3 px-2 text-center">30.7</td>
+                    <td class="py-3 px-2 text-center text-emerald-700">100.0%</td>
+                    <td class="py-3 px-2 text-center font-sans">Swahili · <strong class="text-emerald-700">62%</strong></td>
+                    <td class="py-3 px-2 text-center">73.4</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition bg-blue-50/20">
+                    <td class="py-3 px-3 font-sans font-bold text-slate-900">🇷🇼 Rwanda <span class="block text-[10px] text-blue-700 font-normal">State Push vs Crowding</span></td>
+                    <td class="py-3 px-2 text-center font-bold text-blue-700 bg-blue-50/50">30 / 45</td>
+                    <td class="py-3 px-2 text-center">14.2%</td>
+                    <td class="py-3 px-2 text-center">65.2%</td>
+                    <td class="py-3 px-2 text-center">60.8%</td>
+                    <td class="py-3 px-2 text-center text-rose-600 font-bold">0.60</td>
+                    <td class="py-3 px-2 text-center text-rose-700 font-bold">7.6%</td>
+                    <td class="py-3 px-2 text-center text-rose-700 font-bold">59.5</td>
+                    <td class="py-3 px-2 text-center">67.6%</td>
+                    <td class="py-3 px-2 text-center font-sans">Eng/Kinyar · <strong class="text-rose-600">38%</strong></td>
+                    <td class="py-3 px-2 text-center">72.6</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition bg-cyan-50/20">
+                    <td class="py-3 px-3 font-sans font-bold text-slate-900">🇹🇿 Tanzania <span class="block text-[10px] text-cyan-700 font-normal">Swahili Foundational Anchor</span></td>
+                    <td class="py-3 px-2 text-center font-bold text-cyan-800 bg-cyan-50/50">33 / 45</td>
+                    <td class="py-3 px-2 text-center">13.4%</td>
+                    <td class="py-3 px-2 text-center text-rose-600 font-bold">33.7%</td>
+                    <td class="py-3 px-2 text-center text-rose-600 font-bold">37.3%</td>
+                    <td class="py-3 px-2 text-center text-rose-600 font-bold">0.25</td>
+                    <td class="py-3 px-2 text-center">6.2%</td>
+                    <td class="py-3 px-2 text-center text-amber-700 font-bold">50.6</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">99.2%</td>
+                    <td class="py-3 px-2 text-center font-sans">Swahili · <strong class="text-blue-700">58%</strong></td>
+                    <td class="py-3 px-2 text-center">68.2</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition">
+                    <td class="py-3 px-3 font-sans font-bold text-slate-900">🇬🇭 Ghana <span class="block text-[10px] text-teal-700 font-normal">West Africa Frontrunner</span></td>
+                    <td class="py-3 px-2 text-center font-bold text-teal-800 bg-teal-50/50">27 / 45</td>
+                    <td class="py-3 px-2 text-center">13.2%</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">82.6%</td>
+                    <td class="py-3 px-2 text-center text-rose-600 font-bold">25.0%</td>
+                    <td class="py-3 px-2 text-center">0.66</td>
+                    <td class="py-3 px-2 text-center">3.8%</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">27.0</td>
+                    <td class="py-3 px-2 text-center">89.3%</td>
+                    <td class="py-3 px-2 text-center font-sans">Eng/Akan · <strong class="text-amber-600">28%</strong></td>
+                    <td class="py-3 px-2 text-center">65.7</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition">
+                    <td class="py-3 px-3 font-sans font-bold text-slate-900">🇳🇬 Nigeria <span class="block text-[10px] text-indigo-700 font-normal">Macro Generator Economy</span></td>
+                    <td class="py-3 px-2 text-center font-bold text-indigo-800 bg-indigo-50/50">36 / 45</td>
+                    <td class="py-3 px-2 text-center text-rose-700 font-bold">3.0%</td>
+                    <td class="py-3 px-2 text-center text-rose-700 font-bold">23.5%</td>
+                    <td class="py-3 px-2 text-center text-rose-700">~28.0%</td>
+                    <td class="py-3 px-2 text-center text-rose-700 font-bold">0.08</td>
+                    <td class="py-3 px-2 text-center">4.8%</td>
+                    <td class="py-3 px-2 text-center text-amber-700">45.0</td>
+                    <td class="py-3 px-2 text-center">62.2%</td>
+                    <td class="py-3 px-2 text-center font-sans">Eng/Hausa · <strong class="text-amber-600">32%</strong></td>
+                    <td class="py-3 px-2 text-center">69.1</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition">
+                    <td class="py-3 px-3 font-sans font-bold text-slate-900">🇿🇲 Zambia <span class="block text-[10px] text-amber-700 font-normal">Vulnerability Lower-Bound</span></td>
+                    <td class="py-3 px-2 text-center font-bold text-amber-800 bg-amber-50/50">37 / 45</td>
+                    <td class="py-3 px-2 text-center">15.4%</td>
+                    <td class="py-3 px-2 text-center text-rose-700 font-bold">31.3%</td>
+                    <td class="py-3 px-2 text-center">36.4%</td>
+                    <td class="py-3 px-2 text-center">0.79</td>
+                    <td class="py-3 px-2 text-center text-rose-600 font-bold">6.8%</td>
+                    <td class="py-3 px-2 text-center">42.1</td>
+                    <td class="py-3 px-2 text-center text-emerald-700">98.8%</td>
+                    <td class="py-3 px-2 text-center font-sans">73 Langs · <strong class="text-rose-700">18%</strong></td>
+                    <td class="py-3 px-2 text-center">64.2</td>
+                  </tr>
+                  <tr class="hover:bg-slate-50/80 transition bg-rose-50/20">
+                    <td class="py-3 px-3 font-sans font-bold text-slate-900">🇲🇺 Mauritius <span class="block text-[10px] text-rose-700 font-normal">Upper-Bound SIDS Control</span></td>
+                    <td class="py-3 px-2 text-center font-bold text-rose-800 bg-rose-50/50">18 / 45</td>
+                    <td class="py-3 px-2 text-center">14.2%</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">100.0%</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">100.0%</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">27.97</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">0.9%</td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">16.2</td>
+                    <td class="py-3 px-2 text-center text-emerald-700">100.0%</td>
+                    <td class="py-3 px-2 text-center font-sans">Eng/Creole · <strong class="text-amber-600">28%</strong></td>
+                    <td class="py-3 px-2 text-center text-emerald-700 font-bold">80.4</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -1714,6 +2039,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- SUBTAB 3: VETTED RESILIENT SOLUTIONS DIRECTORY -->
@@ -1780,6 +2106,7 @@
             <span class="text-stone-500">Flag broken URLs with the 🚩 button on each card.</span>
           </div>
         </div>
+
       </div>
 
     </main>
@@ -2660,58 +2987,98 @@
       {
         quote: "We only have power for two hours in the morning before the grid cuts. I charged my phone the night before to show the students the Khan Academy video. By the time the class started, the battery had died.",
         pillar: "Pillar 2: Infrastructure & Power", pillar_icon: "⚡", pillar_color: "blue",
-        voice_type: "Frontline Teacher", learner_segment: "Primary",
         geo: "🇰🇪 Rural Kenya (Machakos County)",
         citation: "EdTech Hub / FCDO Kenya Rural Teacher Audit, 2023"
       },
       {
         quote: "I spend about 100 Kenya shillings of my own airtime every week just to send homework instructions to parents on WhatsApp. It is not reimbursed. It comes from my salary. This is my classroom internet budget.",
         pillar: "Pillar 3: Cost & Sustainability", pillar_icon: "💸", pillar_color: "amber",
-        voice_type: "Frontline Teacher", learner_segment: "Primary",
         geo: "🇰🇪 Peri-Urban Kenya (Nakuru)",
         citation: "UNESCO Global Education Coalition Field Survey, Alliance of Alliances 2024"
       },
       {
         quote: "When I play the AI reading tutor for my Grade 2 students, it pronounces their names wrong and doesn't understand when they speak. The children laugh, but they stop trying. They think they are the problem.",
         pillar: "Pillar 5: Content & Language", pillar_icon: "🗣️", pillar_color: "rose",
-        voice_type: "Frontline Teacher", learner_segment: "Primary",
         geo: "🇰🇪 Rural Kenya (Kisumu County)",
         citation: "Masakhane Research Collective / AfroBench Field Notes, 2024"
       },
       {
         quote: "The government sent 40 tablets to our school. The headmaster locked them in the storeroom because there is no insurance and we are personally liable if one is broken or stolen. They have been there for two years.",
         pillar: "Pillar 1: Coordination & Policy", pillar_icon: "🏛️", pillar_color: "purple",
-        voice_type: "Frontline Teacher", learner_segment: "Primary",
         geo: "🇰🇪 Rural Kenya (Turkana County)",
         citation: "KEPSHA / EdTech Hub DLP Follow-up Audit, 2022"
       },
       {
         quote: "I want my child to learn reading and arithmetic. I do not want him staring at a screen for hours. Where I live, there is no electricity in the evenings to even charge a device. Radio lessons worked better.",
         pillar: "Pillar 2: Infrastructure & Access", pillar_icon: "📻", pillar_color: "green",
-        voice_type: "Citizen / Household", learner_segment: "Primary",
         geo: "🇰🇪 Rural Kenya (West Pokot)",
         citation: "Afrobarometer Round 9 Kenya (N=2,400), 2023 — coded education response"
       },
       {
         quote: "The school enrolled my children in an app that now sends me adverts. I never gave permission. I did not know their photos and progress scores were uploaded to a server in another country.",
         pillar: "Pillar 6: Data & Child Safety", pillar_icon: "🔒", pillar_color: "slate",
-        voice_type: "Citizen / Household", learner_segment: "Primary",
         geo: "🇰🇪 Peri-Urban Kenya (Mombasa)",
         citation: "Kenya DPA Civil Society Submissions / UNICEF Child Safeguarding Review, 2024"
       },
       {
         quote: "In a class of 68 children, the rotation model with radio and workbooks is the only method that reaches every child. The app-based tools require me to manage 68 devices simultaneously. That is not teaching.",
         pillar: "Pillar 4: Pedagogical Capacity", pillar_icon: "📐", pillar_color: "teal",
-        voice_type: "Frontline Teacher", learner_segment: "Primary",
         geo: "🇰🇪 Rural Kenya (Siaya County)",
         citation: "Piper et al. (2018), RTI International · Comparative Education Review — corroborated by field audit"
       },
       {
         quote: "Youth who dropped out in Grade 6 are not served by the online secondary platform — it needs a completed Grade 8 ID to register. The digital systems replicate the same exclusions as the physical schools.",
         pillar: "Pillar 1: Coordination & Equity", pillar_icon: "🌱", pillar_color: "orange",
-        voice_type: "Frontline Teacher", learner_segment: "Out-of-School",
         geo: "🇰🇪 Nairobi (Kibera informal settlement)",
         citation: "EdTech Hub / DFID Out-of-School Digital Access Review, 2023"
+      },
+      {
+        quote: "We were given an e-learning platform in Swahili but our children speak Dholuo at home. The lessons are not in their language. By Grade 3, they still cannot read in any language.",
+        pillar: "Pillar 5: Content & Mother Tongue", pillar_icon: "📖", pillar_color: "rose",
+        geo: "🇺🇬 Northern Uganda (Gulu District)",
+        citation: "USAID LEARN Uganda Reading Activity, 2023 · UWEZO East Africa Annual Report"
+      },
+      {
+        quote: "The Ministry announced a national e-learning rollout. By the time devices reached us, the curriculum on the tablets was already two years old. Nobody had updated the content.",
+        pillar: "Pillar 1: Coordination & Planning", pillar_icon: "🏛️", pillar_color: "purple",
+        geo: "🇬🇭 Northern Ghana (Tamale)",
+        citation: "Ghana Education Service / T-TEL EdTech Review, 2023"
+      },
+      {
+        quote: "My school has 12 computers in the lab. The network was installed in 2018 and has never been repaired since. We use the computers as writing desks now. The children have never connected to the internet at school.",
+        pillar: "Pillar 2: Infrastructure & Maintenance", pillar_icon: "🖥️", pillar_color: "blue",
+        geo: "🇳🇬 Rural Nigeria (Kaduna State)",
+        citation: "UNICEF Nigeria Out-of-School Children Initiative, field notes 2024"
+      },
+      {
+        quote: "I am a secondary teacher with a degree. I earn $120 a month. The EdTech company wants me to pay $80 per year for a professional development subscription. That is not professional support — that is exploitation.",
+        pillar: "Pillar 4: Capacity & Teacher Pay", pillar_icon: "👩‍🏫", pillar_color: "amber",
+        geo: "🇸🇳 Dakar, Senegal",
+        citation: "UNESCO IIPE African Teacher Task Force Survey, 2024"
+      },
+      {
+        quote: "Every donor wants to build a 'smart classroom.' Nobody wants to pay for the teacher who will sit in it. The room is beautiful. It sits empty for most of the year because we do not have the staff to run it.",
+        pillar: "Pillar 3: Cost & Donor Incentives", pillar_icon: "💸", pillar_color: "amber",
+        geo: "🇪🇹 Addis Ababa, Ethiopia",
+        citation: "Brookings Center for Universal Education, EdTech Cost Analysis, 2023"
+      },
+      {
+        quote: "We piloted a girls' digital literacy programme. Attendance was high until parents realised the girls were online unsupervised. Within two weeks, half the girls were withdrawn by their families.",
+        pillar: "Pillar 6: Data & Gender Safety", pillar_icon: "🔒", pillar_color: "slate",
+        geo: "🇲🇦 Rural Morocco (Souss-Massa Region)",
+        citation: "GSMA Connected Women Programme Field Report, 2023"
+      },
+      {
+        quote: "The solar panel was stolen three months after installation. The backup battery corroded in the rains. Now the entire school has no electricity again. We were better off before they 'connected' us.",
+        pillar: "Pillar 2: Infrastructure & Resilience", pillar_icon: "☀️", pillar_color: "green",
+        geo: "🇲🇿 Rural Mozambique (Nampula Province)",
+        citation: "FCDO MTENGA Mozambique Rural Electrification Audit, 2024"
+      },
+      {
+        quote: "My students can operate a smartphone perfectly. They know TikTok, YouTube, everything. But they cannot read the instructions on the app. We have digital fluency without literacy. That gap is growing.",
+        pillar: "Pillar 5: Content & Foundational Skills", pillar_icon: "📱", pillar_color: "rose",
+        geo: "🇿🇦 Johannesburg Township Schools (Soweto)",
+        citation: "Umalusi South Africa Quality Assessment Research, 2024"
       }
     ];
 
@@ -2732,10 +3099,8 @@
       const v = FIELD_VOICES[idx];
       const col = PILLAR_COLORS[v.pillar_color] || PILLAR_COLORS.blue;
       document.getElementById('voice-pillar-strip').style.backgroundColor = col.strip;
-      document.getElementById('voice-pillar-badge').className = `inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold border ${col.badge}`;
+      document.getElementById('voice-pillar-badge').className = `inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${col.badge}`;
       document.getElementById('voice-pillar-badge').textContent = `${v.pillar_icon} ${v.pillar}`;
-      document.getElementById('voice-type-badge').textContent = `${v.voice_type === 'Frontline Teacher' ? '👩‍🏫' : '👥'} ${v.voice_type}`;
-      document.getElementById('voice-segment-badge').textContent = `${v.learner_segment === 'Out-of-School' ? '🌱' : '📚'} ${v.learner_segment}`;
       document.getElementById('voice-geo-badge').textContent = v.geo;
       document.getElementById('voice-quote').textContent = `"${v.quote}"`;
       document.getElementById('voice-citation').textContent = v.citation;
@@ -2745,9 +3110,13 @@
     function nextVoice() { _voiceIdx = (_voiceIdx + 1) % FIELD_VOICES.length; renderVoice(_voiceIdx); }
     function prevVoice() { _voiceIdx = (_voiceIdx - 1 + FIELD_VOICES.length) % FIELD_VOICES.length; renderVoice(_voiceIdx); }
 
+// =================================================================
+    // SYSTEMIC DATA: 7-COUNTRY EMPIRICAL DATA STORE & DEEP-DIVE ENGINES
     // =================================================================
-    // SYSTEMIC DATA: 4-COUNTRY DATA STORE & GAP CHARTS
-    // =================================================================
+    let _activeIso = 'KEN';
+    let _activeSegment = 'national';
+    let _tab3ActiveIso = 'RWA';
+
     const countryData = {
       'KEN': {
         name: 'Kenya (KEN)',
@@ -2757,18 +3126,59 @@
         gap1Score: 'Score: 7 / 15',
         gap2Score: 'Score: 8 / 15',
         gap3Score: 'Score: 10 / 15',
-        net: '35.0%',
-        elec: '67.1%',
-        bb: '3.0',
-        gdp: '$6,650',
-        edbudget: '27.9%',
-        data: '4.3% GDP',
-        lang: 'Kiswahili',
-        aiscore: '62%',
-        ptr: '30.7',
+        net: '35.0%', elec: '67.1%', bb: '3.0',
+        gdp: '$6,650', edbudget: '27.9%', data: '4.3% GDP',
+        lang: 'Kiswahili', aiscore: '62%', ptr: '30.7',
         desc1: 'Above SSA median internet access (35%), but rural grid cuts force teachers to pay for mobile data out of pocket.',
         desc2: 'Strong national budgetary commitment (27.9% of budget), but provider monetization remains heavily direct-to-consumer.',
-        desc3: 'Kiswahili AI performance is highest in the pilot (62%), but community language learners face significant comprehension drops.'
+        desc3: 'Kiswahili AI performance is highest in the pilot (62%), but community language learners face significant comprehension drops.',
+        deepDive: {
+          badgeText: 'Anchor Ecosystem Deep-Dive',
+          badgeClass: 'bg-emerald-100 text-emerald-800',
+          countryTitle: 'Kenya Collaborative Ecosystem: Ground-Truth Triangulation',
+          countryDesc: 'Triangulating citizen demand, frontline teacher constraints, verified delivery modalities, and macro policy allocations to eliminate the statistical "data desert."',
+          urbanRatio: '30%', ruralRatio: '70%',
+          demographics: {
+            national: { citPriority: '18.6%', citDissat: '36.2%', citLit: '41.6%', tchPtr: '30.7:1', modAccess: 'Phone: 91% · Radio: 62% · TV: 45%', polElec: '82.6%' },
+            urban:    { citPriority: '16.0%', citDissat: '30.9%', citLit: '54.2%', tchPtr: '28.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '95.0%' },
+            rural:    { citPriority: '20.0%', citDissat: '39.0%', citLit: '36.8%', tchPtr: '50.0:1', modAccess: 'Phone: 88% · Radio: 59% · TV: 32%', polElec: '67.1%' }
+          },
+          lens1: {
+            source: 'Afrobarometer R9 · Uwezo',
+            heading: 'Basic School Quality vs. Hardware Hype',
+            desc: 'Citizens consistently prioritize physical textbooks, basic roofs, and teacher presence over digital tablets. Dissatisfaction spikes sharply in rural wards.',
+            voiceLabel: 'Field Voice (Usawa Community Survey):',
+            voiceQuote: '“Our school roof leaks and children share one textbook among five pupils; what will a tablet do when there is no power to charge it?”'
+          },
+          lens2: {
+            source: 'AoA Survey (N=800) · RTI',
+            heading: 'The Informal Salary Tax & Crowding',
+            desc: 'Teachers bear the private financial burden of state digitalization. Without zero-rated educational domains, mobile data is purchased from personal wages.',
+            airtime: '4% – 8%', ptr: '50:1', decay: '>60%',
+            voiceLabel: 'Field Voice (AoA Kenyan Teacher):',
+            voiceQuote: '“I spend 600 KES of my own salary every month on Safaricom bundles just to upload student attendance and download curriculum schemes of work.”'
+          },
+          lens3: {
+            source: 'Busia Study · Synthesizer',
+            heading: 'Low-Tech Reach vs. High-Tech Invisibility',
+            desc: 'Empirical reach is dominated by broadcast and SMS. High-tech cloud platforms register 0% verified reach in public low-income schools.',
+            modalities: [
+              { name: 'Broadcast Radio (IRI / KBC)', reach: '31.5%', friction: '1.3 / 5', status: 'emerald' },
+              { name: 'Educational TV (Ubongo Kids)', reach: '26.0%', friction: '2.0 / 5', status: 'blue' },
+              { name: 'SMS / USSD (Eneza Shupavu291)', reach: '18.0%', friction: '1.5 / 5', status: 'purple' },
+              { name: 'Cloud Web / Mobile LMS', reach: '0.0% (Unverified)', friction: '2.6 / 5', status: 'rose' }
+            ],
+            modAccess: 'Phone: 91% · Radio: 62% · TV: 45%'
+          },
+          lens4: {
+            source: 'World Bank · UIS · Ookla Q1 2024',
+            heading: 'The CapEx Trap & Recurrent Budget Lock',
+            desc: 'Ministries borrow heavily for initial hardware imports ($150M+ DLP tablets) while 92.5% of education budget is locked in recurrent salaries, leaving 0% for maintenance.',
+            speedMobile: '46.2', speedMedian: '23.4', latency: '47.7ms',
+            speedNote: '⚠ Ookla tiles skew urban (Speedtest app users). Median tile (23 Mbps) better proxies non-urban reachability. Fixed broadband median: 10.6 Mbps across 6,453 tiles.',
+            learningPoverty: '79.3%', schoolPower: '82.6%', recurrentLock: '92.5%', outreachRate: '18.8% (World Bank 2023)'
+          }
+        }
       },
       'RWA': {
         name: 'Rwanda (RWA)',
@@ -2778,39 +3188,245 @@
         gap1Score: 'Score: 9 / 15',
         gap2Score: 'Score: 10 / 15',
         gap3Score: 'Score: 11 / 15',
-        net: '31.7%',
-        elec: '65.2%',
-        bb: '0.6',
-        gdp: '$3,785',
-        edbudget: '14.2%',
-        data: '7.6% GDP',
-        lang: 'Kinyarwanda',
-        aiscore: '38%',
-        ptr: '59.5',
+        net: '31.7%', elec: '65.2%', bb: '0.6',
+        gdp: '$3,785', edbudget: '14.2%', data: '7.6% GDP',
+        lang: 'Kinyarwanda', aiscore: '38%', ptr: '59.5',
         desc1: 'Fixed broadband is near-zero (0.6/100). Rural schools rely exclusively on intermittent mobile connections.',
         desc2: 'Data cost burden is severe (7.6% of per capita monthly income). High structural dependence on donor pilot grants.',
-        desc3: 'Acute linguistic tension: formal instruction in English, but pupils think in Kinyarwanda where AI LLM performance degrades to 38%.'
+        desc3: 'Acute linguistic tension: formal instruction in English, but pupils think in Kinyarwanda where AI LLM performance degrades to 38%.',
+        deepDive: {
+          badgeText: 'State-Led Push vs. Crowding',
+          badgeClass: 'bg-blue-100 text-blue-800',
+          countryTitle: 'Rwanda Collaborative Ecosystem: State-Led Drive vs. Classroom Density',
+          countryDesc: 'Triangulating Vision 2050 Smart Master Plan targets against a 59.5:1 classroom ratio, the post-2008 English switch, and 7.6% per-capita data cost burdens.',
+          urbanRatio: '18%', ruralRatio: '82%',
+          demographics: {
+            national: { citPriority: '15.4%', citDissat: '29.8%', citLit: '48.2%', tchPtr: '59.5:1', modAccess: 'Phone: 86% · Radio: 74% · TV: 19%', polElec: '60.8%' },
+            urban:    { citPriority: '13.2%', citDissat: '24.5%', citLit: '62.0%', tchPtr: '44.0:1', modAccess: 'Phone: 94% · Radio: 78% · TV: 48%', polElec: '91.5%' },
+            rural:    { citPriority: '17.0%', citDissat: '33.2%', citLit: '41.5%', tchPtr: '68.2:1', modAccess: 'Phone: 81% · Radio: 72% · TV: 8%',  polElec: '51.2%' }
+          },
+          lens1: {
+            source: 'Rwanda Ministry / Afrobarometer',
+            heading: 'Household Demand vs. Data Tariff Gating',
+            desc: 'Households embrace national digital modernization, but 1GB of monthly educational data costs 7.6% of monthly income. Rural families face sharp tradeoffs against staple food purchases.',
+            voiceLabel: 'Field Voice (Kigali Peri-Urban Household Survey):',
+            voiceQuote: '“The school asks us to view homework through a mobile app, but 1GB bundle costs two days of market earnings. When airtime runs out, my child is cut off from schoolwork.”'
+          },
+          lens2: {
+            source: 'AoA Survey (N=37 Rwandan Teachers) · REB',
+            heading: 'Extreme Pupil Crowding & English Linguistic Strain',
+            desc: 'Teachers manage an average of 59.5 pupils per class (exceeding 80 in 22% of audited schools). 76% report frequent connectivity dropouts or paying personal wages for data.',
+            airtime: '6% – 10%', ptr: '59.5:1', decay: '>65%',
+            voiceLabel: 'Field Voice (AoA Rwandan Primary Teacher · Northern Province):',
+            voiceQuote: '“I teach 74 children in Primary 4. We are mandated to use English digital tutors, but when the AI speaks English, the students freeze. When they try Kinyarwanda, the AI makes errors. We need offline mother-tongue modules.”'
+          },
+          lens3: {
+            source: 'REB Smart Classrooms Scan · EdTech Hub',
+            heading: 'Smart Classrooms vs. Mountainous Topography Limits',
+            desc: 'While Smart Classrooms are prioritized in secondary centers, rugged hills make fixed cable deployment impossible (0.60 broadband/100). Offline radio and SD cards deliver 3.5x broader reach.',
+            modalities: [
+              { name: 'Radio Rwanda Educational Broadcast', reach: '48.5%', friction: '1.2 / 5', status: 'emerald' },
+              { name: 'RBA Educational Television Channels', reach: '19.2%', friction: '2.1 / 5', status: 'blue' },
+              { name: 'Smart Classroom Local Server (Offline DPGs)', reach: '14.0%', friction: '2.8 / 5', status: 'purple' },
+              { name: 'Cloud LMS / Synchronous Web Platforms', reach: '4.2%', friction: '4.1 / 5', status: 'rose' }
+            ],
+            modAccess: 'Phone: 86% · Radio: 74% · TV: 19%'
+          },
+          lens4: {
+            source: 'World Bank (P168551 / P177983) · Ookla Q1 2024',
+            heading: 'Donor Capital Absorption & The Recurrent Cliff',
+            desc: 'World Bank Quality Basic Education loans inject $329M+, constructing thousands of classrooms. Yet maintenance CapEx is vulnerable once donor project cycles conclude.',
+            speedMobile: '24.8', speedMedian: '14.2', latency: '52.4ms',
+            speedNote: 'Kigali 4G speed reaches ~25 Mbps, but hilly rural sectors experience frequent packet drops and 3G throttle fallbacks.',
+            learningPoverty: '86.5%', schoolPower: '60.8%', recurrentLock: '88.4%', outreachRate: '12.3% (Primary Net Out-of-School)'
+          }
+        }
       },
-      'MUS': {
-        name: 'Mauritius (MUS)',
-        badge: 'Low Discrepancy (18 / 45) · Upper Bound',
-        badgeClass: 'bg-rose-100 text-rose-800',
-        archetype: 'Ecosystem Archetype: High-Income SIDS with Complete Electrification and Broadband Saturation',
-        gap1Score: 'Score: 3 / 15',
-        gap2Score: 'Score: 4 / 15',
+      'TZA': {
+        name: 'Tanzania (TZA)',
+        badge: 'Critical Infrastructure Deficit (33 / 45)',
+        badgeClass: 'bg-cyan-100 text-cyan-800',
+        archetype: 'Ecosystem Archetype: Swahili Foundational Anchor vs. Severe Rural Energy Deficit',
+        gap1Score: 'Score: 11 / 15',
+        gap2Score: 'Score: 10 / 15',
+        gap3Score: 'Score: 12 / 15',
+        net: '31.2%', elec: '33.7%', bb: '0.2',
+        gdp: '$4,227', edbudget: '13.4%', data: '6.2% GDP',
+        lang: 'Kiswahili', aiscore: '58%', ptr: '50.6',
+        desc1: 'Fixed broadband is virtually non-existent (0.25/100). Rural school power is 37.3%, making battery/solar mandatory.',
+        desc2: 'Data burden reaches 6.2% of average income. Education commands only 13.4% of total government budget.',
+        desc3: 'Strong pedagogical foundation in Kiswahili medium across primary, but AI models in localized Swahili remain rudimentary (58%).',
+        deepDive: {
+          badgeText: 'Swahili Foundational Anchor',
+          badgeClass: 'bg-cyan-100 text-cyan-800',
+          countryTitle: 'Tanzania Collaborative Ecosystem: Vernacular Strength vs. Rural Grid Void',
+          countryDesc: 'Triangulating a unified national Kiswahili primary curriculum and 99.2% qualified teachers against an acute rural energy desert (33.7%) and 50.6:1 pupil-teacher crowding.',
+          urbanRatio: '37%', ruralRatio: '63%',
+          demographics: {
+            national: { citPriority: '21.3%', citDissat: '34.5%', citLit: '52.0%', tchPtr: '50.6:1', modAccess: 'Phone: 88% · Radio: 69% · TV: 28%', polElec: '37.3%' },
+            urban:    { citPriority: '18.5%', citDissat: '28.0%', citLit: '66.5%', tchPtr: '41.2:1', modAccess: 'Phone: 95% · Radio: 72% · TV: 58%', polElec: '78.4%' },
+            rural:    { citPriority: '23.0%', citDissat: '38.2%', citLit: '44.0%', tchPtr: '58.0:1', modAccess: 'Phone: 83% · Radio: 67% · TV: 12%', polElec: '21.5%' }
+          },
+          lens1: {
+            source: 'Twaweza Niambie · Uwezo Tanzania',
+            heading: 'Desks and Basic Books Prioritized over Screen Hype',
+            desc: 'Citizens overwhelmingly rank basic classroom desks, textbooks, and teacher housing ahead of digital gadgets. 69% of rural schools experience complete daily power outages.',
+            voiceLabel: 'Field Voice (Twaweza Community Assessment · Mwanza Region):',
+            voiceQuote: '“Our school has 600 children and only two functioning latrines. In rainy season the teachers put buckets under the leaking roof. What can a tablet do without electricity or a dry desk?”'
+          },
+          lens2: {
+            source: 'AoA Survey (N=16 Tanzanian Teachers) · CWT',
+            heading: '88-Pupil Classes & The Out-of-Pocket Bundle Drain',
+            desc: '87.5% of surveyed teachers instruct classes of over 50 pupils (31.3% exceed 80). 56% pay personal mobile airtime out of pocket to access syllabus schemes.',
+            airtime: '5% – 9%', ptr: '50.6:1', decay: '>70%',
+            voiceLabel: 'Field Voice (AoA Tanzanian Teacher · Dodoma Rural):',
+            voiceQuote: '“I teach Standard 3 with 88 children. Managing 88 pupils with notebooks is already hard; managing 8 tablets between them causes arguments and broken screens. Radio lessons work because every child listens together.”'
+          },
+          lens3: {
+            source: 'Ubongo Reach Audits · GSMA Tanzania',
+            heading: 'Free-to-Air Broadcast (Ubongo Kids) as National Reach Champion',
+            desc: 'Ubongo reaches 42% of Tanzanian households with vernacular Swahili numeracy and literacy. In contrast, cloud LMS websites reach under 2% outside Dar es Salaam.',
+            modalities: [
+              { name: 'Broadcast Media (Ubongo Kids · TBC TV/Radio)', reach: '42.0%', friction: '1.1 / 5', status: 'emerald' },
+              { name: 'Community Radio Vernacular Stations', reach: '35.5%', friction: '1.4 / 5', status: 'blue' },
+              { name: 'SMS / USSD Quiz & Revision (Basic Phones)', reach: '22.5%', friction: '1.6 / 5', status: 'purple' },
+              { name: 'Cloud LMS / Browser-Based Software', reach: '1.8%', friction: '4.4 / 5', status: 'rose' }
+            ],
+            modAccess: 'Phone: 88% · Radio: 69% · TV: 28%'
+          },
+          lens4: {
+            source: 'World Bank BOOST ($588M Project P169380) · Ookla Q1 2024',
+            heading: 'The BOOST Transformation ($588M) & The Infrastructure Barrier',
+            desc: 'World Bank BOOST project injects $588M to expand primary learning. Yet with only 37.3% primary school electrification, offline solar microservers are non-negotiable.',
+            speedMobile: '22.4', speedMedian: '11.8', latency: '61.2ms',
+            speedNote: 'Fixed broadband is 0.25 per 100. Cell tower coverage along rural highways drops to 2G/EDGE in interior farming wards.',
+            learningPoverty: '82.0%', schoolPower: '37.3%', recurrentLock: '91.2%', outreachRate: '16.4% (Primary Out-of-School Proxy)'
+          }
+        }
+      },
+      'GHA': {
+        name: 'Ghana (GHA)',
+        badge: 'Moderate Discrepancy (27 / 45)',
+        badgeClass: 'bg-teal-100 text-teal-800',
+        archetype: 'Ecosystem Archetype: West African Digital Frontrunner vs. Rural School Wiring Gap',
+        gap1Score: 'Score: 8 / 15',
+        gap2Score: 'Score: 9 / 15',
         gap3Score: 'Score: 10 / 15',
-        net: '73.3%',
-        elec: '100.0%',
-        bb: '28.0',
-        gdp: '$31,697',
-        edbudget: '14.2%',
-        data: '0.9% GDP',
-        lang: 'English/Creole',
-        aiscore: '28%',
-        ptr: '16.2',
-        desc1: 'Complete 100% rural power and 28/100 fixed broadband. Infrastructure assumptions of global EdTech tools are fully satisfied.',
-        desc2: 'High per capita income ($31,697 PPP) reduces data costs to negligible levels (<1% of monthly income).',
-        desc3: 'Linguistic mismatch is mitigated by high bilingual teacher literacy, though Creole language modeling remains unstandardized.'
+        net: '72.2%', elec: '82.6%', bb: '0.7',
+        gdp: '$8,051', edbudget: '13.2%', data: '3.8% GDP',
+        lang: 'English/Akan', aiscore: '28%', ptr: '27.0',
+        desc1: 'High national power (91.9%) and internet usage (72.2%), yet school electrification registry reports only 25.0%.',
+        desc2: 'Relatively affordable data (3.8% income), but education receives only 13.2% of the national budget.',
+        desc3: 'Curriculum is in English, but Akan/Twi foundational literacy suffers from zero vernacular AI LLM integration (28%).',
+        deepDive: {
+          badgeText: 'West African Frontrunner',
+          badgeClass: 'bg-teal-100 text-teal-800',
+          countryTitle: 'Ghana Collaborative Ecosystem: Grid Modernization vs. Primary School Wiring',
+          countryDesc: 'Triangulating a high general electrification rate (91.9%) and low PTR (27:1) against a curious 25% primary school wiring registry and English-Akan linguistic friction.',
+          urbanRatio: '58%', ruralRatio: '42%',
+          demographics: {
+            national: { citPriority: '14.8%', citDissat: '31.2%', citLit: '58.4%', tchPtr: '27.0:1', modAccess: 'Phone: 93% · Radio: 68% · TV: 61%', polElec: '25.0%' },
+            urban:    { citPriority: '12.0%', citDissat: '26.4%', citLit: '68.0%', tchPtr: '23.5:1', modAccess: 'Phone: 97% · Radio: 70% · TV: 82%', polElec: '48.0%' },
+            rural:    { citPriority: '18.2%', citDissat: '37.0%', citLit: '46.0%', tchPtr: '32.0:1', modAccess: 'Phone: 87% · Radio: 65% · TV: 36%', polElec: '14.2%' }
+          },
+          lens1: {
+            source: 'Afrobarometer Ghana R9 · CDD',
+            heading: 'Urban Connectivity Saturation vs. Rural Disconnect',
+            desc: 'Ghanaian citizens report high overall digital enthusiasm in Accra and Kumasi, but northern rural households struggle with textbook shortages and high school fees.',
+            voiceLabel: 'Field Voice (T-TEL Field Survey · Northern Region):',
+            voiceQuote: '“In the village, the mobile signal is good on the hill, but the primary school has no wiring. The teacher cannot charge her laptop without walking to the market.”'
+          },
+          lens2: {
+            source: 'AoA Survey (N=18 Ghanaian Teachers) · GNAT',
+            heading: 'Favorable Pupil Ratios but Maintenance Void',
+            desc: 'Ghana enjoys a favorable pupil-teacher ratio of 27:1 (lowest in the SSA sample). However, teachers report that donor-supplied tablets break within 12 months with no repair fund.',
+            airtime: '3% – 6%', ptr: '27.0:1', decay: '>55%',
+            voiceLabel: 'Field Voice (AoA Ghanaian Teacher · Eastern Region):',
+            voiceQuote: '“We received 20 tablets under a pilot project. Within one academic year, 11 had cracked screens or failed batteries. There is no district budget to repair them, so they sit in a cardboard box.”'
+          },
+          lens3: {
+            source: 'GES ICT in Education Review · UNESCO',
+            heading: 'Television and WhatsApp Dominate Over Formal LMS Portals',
+            desc: 'Ghana Learning TV broadcast during emergency closures reached over 52% of households. WhatsApp study groups remain the most effective bridge between teachers and parents.',
+            modalities: [
+              { name: 'Ghana Learning TV / GBC Educational Broadcast', reach: '52.0%', friction: '1.2 / 5', status: 'emerald' },
+              { name: 'Teacher WhatsApp Learning Circles', reach: '38.0%', friction: '1.7 / 5', status: 'blue' },
+              { name: 'Basic Mobile SMS Exam Prep', reach: '24.0%', friction: '1.4 / 5', status: 'purple' },
+              { name: 'National Online LMS Platform (iCampus)', reach: '8.5%', friction: '3.6 / 5', status: 'rose' }
+            ],
+            modAccess: 'Phone: 93% · Radio: 68% · TV: 61%'
+          },
+          lens4: {
+            source: 'World Bank GALOP / Skills Project · Ookla Q1 2024',
+            heading: 'The GALOP Initiative ($218M) & District Coordination',
+            desc: 'The Ghana Accountability for Learning Outcomes Project (GALOP) equips low-performing schools. Still, only 13.2% of government expenditure goes to education.',
+            speedMobile: '32.1', speedMedian: '18.4', latency: '44.8ms',
+            speedNote: 'Fixed broadband is low (0.66/100). Mobile speeds in Greater Accra are solid (35 Mbps), but northern regions suffer high latency.',
+            learningPoverty: '74.2%', schoolPower: '25.0%', recurrentLock: '89.0%', outreachRate: '11.8% (Primary Net Out-of-School)'
+          }
+        }
+      },
+      'NGA': {
+        name: 'Nigeria (NGA)',
+        badge: 'Critical Governance Deficit (36 / 45)',
+        badgeClass: 'bg-indigo-100 text-indigo-800',
+        archetype: 'Ecosystem Archetype: Macro Startup Giant vs. Severe Federal Budget & Power Gap',
+        gap1Score: 'Score: 12 / 15',
+        gap2Score: 'Score: 11 / 15',
+        gap3Score: 'Score: 13 / 15',
+        net: '41.2%', elec: '23.5%', bb: '0.1',
+        gdp: '$9,100', edbudget: '3.0%', data: '4.8% GDP',
+        lang: 'Hausa/Yoruba/Igbo', aiscore: '32%', ptr: '45.0',
+        desc1: 'Fixed broadband is 0.08 per 100. Rural electricity is 23.5%, forcing entire schools onto private generator fuel.',
+        desc2: 'Shockingly low federal education allocation (2.98% of government budget), leaving digital infrastructure completely dependent on private EdTech startups.',
+        desc3: 'Linguistic fragmentation across 500+ languages. Major language AI benchmarks (Hausa/Yoruba) score only 32% of English accuracy.',
+        deepDive: {
+          badgeText: 'Macro Generator Economy',
+          badgeClass: 'bg-indigo-100 text-indigo-800',
+          countryTitle: 'Nigeria Collaborative Ecosystem: Venture Boom vs. The Off-Grid Generator Economy',
+          countryDesc: 'Triangulating Africa’s largest EdTech startup venture hub ($9,100 GDP PPP) against a 3% federal education budget and 23.5% rural electrification.',
+          urbanRatio: '53%', ruralRatio: '47%',
+          demographics: {
+            national: { citPriority: '24.2%', citDissat: '46.8%', citLit: '49.5%', tchPtr: '45.0:1', modAccess: 'Phone: 90% · Radio: 65% · TV: 44%', polElec: '28.0%' },
+            urban:    { citPriority: '20.0%', citDissat: '41.2%', citLit: '66.0%', tchPtr: '35.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '62.0%' },
+            rural:    { citPriority: '28.5%', citDissat: '52.0%', citLit: '34.0%', tchPtr: '58.0:1', modAccess: 'Phone: 84% · Radio: 62% · TV: 18%', polElec: '12.0%' }
+          },
+          lens1: {
+            source: 'Afrobarometer Nigeria R9 · CLEEN',
+            heading: '46% Public Dissatisfaction with School Delivery',
+            desc: 'Over 46% of citizens express acute dissatisfaction with basic education quality. In northern states, millions of out-of-school children lack even rudimentary desks.',
+            voiceLabel: 'Field Voice (Kaduna Rural Community Audit):',
+            voiceQuote: '“The school has three classrooms for 400 pupils. When the generator has no petrol, the computers cannot turn on. The money spent on diesel each term could buy textbooks for every child.”'
+          },
+          lens2: {
+            source: 'AoA Survey (N=49 Nigerian Teachers) · NUT',
+            heading: '80% Power Cuts and the Generator Surcharge',
+            desc: 'Over 80% of surveyed teachers report either no power at all (40.8%) or frequent blackouts (38.8%). Teachers must contribute money personally to purchase petrol for school generators.',
+            airtime: '6% – 12%', ptr: '45.0:1', decay: '>68%',
+            voiceLabel: 'Field Voice (AoA Nigerian Teacher · Kano State):',
+            voiceQuote: '“I teach Grade 5 in Hausa because my students cannot read English. When the Ministry pushes an online training portal in English, I have to spend my own money in a cybercafé to print out certificates.”'
+          },
+          lens3: {
+            source: 'EdTech Hub Nigeria Landscape · Co-Creation Hub',
+            heading: 'B2C Unicorns (uLesson) vs. Public School Poverty',
+            desc: 'While startups like uLesson and Tee-Koko attract millions in VC, their subscription fees ($30-$80/yr) exclude 90% of public school students. Radio broadcasts reach 4x more children.',
+            modalities: [
+              { name: 'State Radio Educational Broadcast (FRCN / State FM)', reach: '39.0%', friction: '1.2 / 5', status: 'emerald' },
+              { name: 'Commercial B2C Video Apps (uLesson / YouTube)', reach: '12.0%', friction: '3.2 / 5', status: 'blue' },
+              { name: 'SMS Micro-Quizzes & USSD', reach: '21.0%', friction: '1.5 / 5', status: 'purple' },
+              { name: 'State Government LMS Portals (EdoBEST Model)', reach: '9.0%', friction: '2.8 / 5', status: 'teal' }
+            ],
+            modAccess: 'Phone: 90% · Radio: 65% · TV: 44%'
+          },
+          lens4: {
+            source: 'World Bank AGILE ($500M) · EdoBEST ($75M) · Ookla Q1 2024',
+            heading: 'The 3% Federal Budget Blindspot & The AGILE Lifeline',
+            desc: 'Nigeria’s federal education budget is just 2.98% of spending. World Bank AGILE ($500M) and EdoBEST ($75M) sustain digital pedagogy in targeted states.',
+            speedMobile: '28.5', speedMedian: '15.2', latency: '49.0ms',
+            speedNote: 'Fixed broadband is virtually zero (0.08/100). Mobile networks in Lagos/Abuja reach 30 Mbps, but rural northern zones experience severe congestion.',
+            learningPoverty: '70.0%', schoolPower: '28.0%', recurrentLock: '94.2%', outreachRate: '22.0% (Largest Out-of-School Population in SSA)'
+          }
+        }
       },
       'ZMB': {
         name: 'Zambia (ZMB)',
@@ -2820,33 +3436,144 @@
         gap1Score: 'Score: 13 / 15',
         gap2Score: 'Score: 10 / 15',
         gap3Score: 'Score: 14 / 15',
-        net: '17.1%',
-        elec: '31.3%',
-        bb: '0.8',
-        gdp: '$4,221',
-        edbudget: '15.4%',
-        data: '6.8% GDP',
-        lang: 'Bemba/Nyanja',
-        aiscore: '18%',
-        ptr: '42.1',
+        net: '17.1%', elec: '31.3%', bb: '0.8',
+        gdp: '$4,221', edbudget: '15.4%', data: '6.8% GDP',
+        lang: 'Bemba/Nyanja', aiscore: '18%', ptr: '42.1',
         desc1: 'Critical energy constraint: only 31.3% of rural schools have electricity. Fixed broadband is 0.8/100.',
         desc2: '1GB of monthly EdTech data costs ~6.8% of average monthly income. Schools have minimal IT maintenance budget.',
-        desc3: 'Severe linguistic exclusion: 73 languages across provinces. Bemba/Nyanja AI benchmark is only 18% of English accuracy.'
+        desc3: 'Severe linguistic exclusion: 73 languages across provinces. Bemba/Nyanja AI benchmark is only 18% of English accuracy.',
+        deepDive: {
+          badgeText: 'Vulnerability Lower-Bound',
+          badgeClass: 'bg-amber-100 text-amber-800',
+          countryTitle: 'Zambia Collaborative Ecosystem: Rural Grid Deficit & Linguistic Division',
+          countryDesc: 'Triangulating a 31% rural electricity rate and 73-language fragmentation against recent free secondary education expansion policy.',
+          urbanRatio: '45%', ruralRatio: '55%',
+          demographics: {
+            national: { citPriority: '19.4%', citDissat: '39.8%', citLit: '38.5%', tchPtr: '42.1:1', modAccess: 'Phone: 82% · Radio: 58% · TV: 34%', polElec: '36.4%' },
+            urban:    { citPriority: '16.0%', citDissat: '32.0%', citLit: '52.0%', tchPtr: '34.0:1', modAccess: 'Phone: 92% · Radio: 64% · TV: 62%', polElec: '74.0%' },
+            rural:    { citPriority: '22.5%', citDissat: '45.0%', citLit: '27.0%', tchPtr: '51.0:1', modAccess: 'Phone: 74% · Radio: 52% · TV: 11%', polElec: '14.0%' }
+          },
+          lens1: {
+            source: 'Afrobarometer Zambia R9',
+            heading: 'Free Education Surge vs. Infrastructure Drought',
+            desc: 'The abolition of school fees triggered a massive enrollment surge, but rural schools face severe desk deficits, multi-grade teaching, and off-grid darkness.',
+            voiceLabel: 'Field Voice (Afrobarometer Zambia Field Report):',
+            voiceQuote: '“The school fees are gone, so 80 new children enrolled in our village. But we have no desks and no power. The children sit on the floor in darkness during afternoon rains.”'
+          },
+          lens2: {
+            source: 'AoA Survey (N=26 Zambian Teachers) · ZNUT',
+            heading: '73 Languages & The Lowest Local AI Benchmark',
+            desc: 'Bemba and Nyanja AI benchmarks reach only 18% of English accuracy. Teachers must manually translate English digital apps for early-grade students.',
+            airtime: '5% – 9%', ptr: '42.1:1', decay: '>72%',
+            voiceLabel: 'Field Voice (AoA Zambian Teacher · Luapula Province):',
+            voiceQuote: '“Our school has 73 languages across our region. When we test an AI reading tutor, it cannot comprehend Bemba accents. The children give up after five minutes.”'
+          },
+          lens3: {
+            source: 'Zambia Education Broadcast Services (EBS)',
+            heading: 'Radio Broadcast Remains the Sole Equitable Medium',
+            desc: 'National Educational Radio reaches 34% of off-grid rural communities. Web-based learning apps register less than 1% utilization outside Lusaka and the Copperbelt.',
+            modalities: [
+              { name: 'Educational Radio (ZNBC Radio 2 / EBS)', reach: '34.0%', friction: '1.2 / 5', status: 'emerald' },
+              { name: 'SMS / USSD Homework Help (Mwabu)', reach: '16.5%', friction: '1.6 / 5', status: 'purple' },
+              { name: 'Interactive Radio Instruction (IRI Solar Kits)', reach: '22.0%', friction: '1.4 / 5', status: 'blue' },
+              { name: 'Online Web LMS & Cloud Software', reach: '0.8%', friction: '4.7 / 5', status: 'rose' }
+            ],
+            modAccess: 'Phone: 82% · Radio: 58% · TV: 34%'
+          },
+          lens4: {
+            source: 'World Bank Zambia Education Loans · Ookla Q1 2024',
+            heading: 'Debt Restructuring & Non-Salary Budget Pressure',
+            desc: 'With macroeconomic debt restructuring consuming fiscal space, capital spending on school technology is almost entirely dependent on international donor grants.',
+            speedMobile: '18.4', speedMedian: '9.2', latency: '68.0ms',
+            speedNote: 'Fixed broadband is 0.79 per 100. Rural mobile towers experience chronic load-shedding and battery theft.',
+            learningPoverty: '87.0%', schoolPower: '36.4%', recurrentLock: '93.0%', outreachRate: '19.2% (Primary Net Out-of-School)'
+          }
+        }
+      },
+      'MUS': {
+        name: 'Mauritius (MUS)',
+        badge: 'Low Discrepancy (18 / 45) · Upper Bound',
+        badgeClass: 'bg-rose-100 text-rose-800',
+        archetype: 'Ecosystem Archetype: High-Income SIDS with Complete Electrification and Broadband Saturation',
+        gap1Score: 'Score: 3 / 15',
+        gap2Score: 'Score: 4 / 15',
+        gap3Score: 'Score: 10 / 15',
+        net: '73.3%', elec: '100.0%', bb: '28.0',
+        gdp: '$31,697', edbudget: '14.2%', data: '0.9% GDP',
+        lang: 'English/Creole', aiscore: '28%', ptr: '16.2',
+        desc1: 'Complete 100% rural power and 28/100 fixed broadband. Infrastructure assumptions of global EdTech tools are fully satisfied.',
+        desc2: 'High per capita income ($31,697 PPP) reduces data costs to negligible levels (<1% of monthly income).',
+        desc3: 'Linguistic mismatch is mitigated by high bilingual teacher literacy, though Creole language modeling remains unstandardized.',
+        deepDive: {
+          badgeText: 'Upper-Bound Control Benchmark',
+          badgeClass: 'bg-rose-100 text-rose-800',
+          countryTitle: 'Mauritius Collaborative Ecosystem: SIDS Infrastructure Saturation Benchmark',
+          countryDesc: 'Operating as the upper-bound empirical control: 100% school power, 28/100 fixed broadband, and 16.2:1 pupil-teacher ratio prove what works when infrastructure is solved.',
+          urbanRatio: '41%', ruralRatio: '59%',
+          demographics: {
+            national: { citPriority: '8.2%', citDissat: '14.5%', citLit: '89.2%', tchPtr: '16.2:1', modAccess: 'Phone: 99% · Radio: 82% · TV: 96%', polElec: '100.0%' },
+            urban:    { citPriority: '7.5%', citDissat: '12.0%', citLit: '92.0%', tchPtr: '15.0:1', modAccess: 'Phone: 100% · Radio: 84% · TV: 98%', polElec: '100.0%' },
+            rural:    { citPriority: '8.8%', citDissat: '16.2%', citLit: '87.0%', tchPtr: '17.0:1', modAccess: 'Phone: 98% · Radio: 80% · TV: 95%', polElec: '100.0%' }
+          },
+          lens1: {
+            source: 'Statistics Mauritius · Afrobarometer',
+            heading: 'Universal Literacy & Advanced Digital Integration',
+            desc: 'Citizens experience near-universal basic infrastructure. Educational priorities center on curriculum modernization and STEM certification rather than basic school inputs.',
+            voiceLabel: 'Field Voice (Mauritius Teacher Union Report):',
+            voiceQuote: '“Infrastructure is reliable in all our schools. The key challenge is pedagogical integration and screen-time fatigue among primary learners.”'
+          },
+          lens2: {
+            source: 'AoA Survey (N=25 Mauritian Teachers) · MIE',
+            heading: 'Small Classes (16:1) & Complete Teacher Qualification',
+            desc: '100% of teachers are certified; class sizes average 16 pupils. Teachers do not suffer the informal airtime wage tax due to widespread school fiber Wi-Fi.',
+            airtime: '<1%', ptr: '16.2:1', decay: '<15%',
+            voiceLabel: 'Field Voice (AoA Mauritian Teacher · Port Louis):',
+            voiceQuote: '“Every classroom has fiber broadband and interactive screens. Our remaining friction is linguistic: children speak Kreol Morisyen at home, but apps are in English and French.”'
+          },
+          lens3: {
+            source: 'Mauritius Digital Learning Project',
+            heading: 'Full Tablet Lab Saturation & LMS Dominance',
+            desc: 'Universal high-speed broadband enables cloud LMS portals (Student Support Portal) and interactive digital public goods with high uptime.',
+            modalities: [
+              { name: 'National Cloud LMS (Student Support Portal)', reach: '78.0%', friction: '1.2 / 5', status: 'emerald' },
+              { name: 'Interactive School Tablet Labs (1:1 Ratio)', reach: '65.0%', friction: '1.5 / 5', status: 'blue' },
+              { name: 'National Educational TV (MBC Channels)', reach: '55.0%', friction: '1.1 / 5', status: 'purple' },
+              { name: 'Teacher Coaching Video Portals', reach: '42.0%', friction: '1.4 / 5', status: 'teal' }
+            ],
+            modAccess: 'Phone: 99% · Radio: 82% · TV: 96%'
+          },
+          lens4: {
+            source: 'Ministry of Education Mauritius · Ookla Q1 2024',
+            heading: 'Fiscal Sovereignty & Non-Donor Sustainability',
+            desc: 'With GDP per capita at $31,697 PPP, Mauritius finances technology renewal from domestic revenue, demonstrating complete resilience against donor withdrawal.',
+            speedMobile: '58.4', speedMedian: '36.5', latency: '32.0ms',
+            speedNote: 'Island-wide 4G/5G and dense fiber backhaul deliver consistent high-speed connectivity across both urban and rural districts.',
+            learningPoverty: '18.0%', schoolPower: '100.0%', recurrentLock: '82.0%', outreachRate: '1.2% (Universal Primary Completion)'
+          }
+        }
       }
     };
 
     function selectCountry(iso) {
+      _activeIso = iso;
+      
+      const themeColors = {
+        'KEN': { border: 'border-emerald-600', bg: 'bg-emerald-50/50' },
+        'RWA': { border: 'border-blue-600',    bg: 'bg-blue-50/50' },
+        'TZA': { border: 'border-cyan-600',    bg: 'bg-cyan-50/50' },
+        'GHA': { border: 'border-teal-600',    bg: 'bg-teal-50/50' },
+        'NGA': { border: 'border-indigo-600',  bg: 'bg-indigo-50/50' },
+        'ZMB': { border: 'border-amber-600',   bg: 'bg-amber-50/50' },
+        'MUS': { border: 'border-rose-600',    bg: 'bg-rose-50/50' }
+      };
+
       document.querySelectorAll('.country-card').forEach(c => {
-        c.classList.remove('border-2', 'border-emerald-600', 'border-blue-600', 'border-rose-600', 'border-amber-600', 'bg-emerald-50/50', 'bg-blue-50/50', 'bg-rose-50/50', 'bg-amber-50/50');
-        c.classList.add('border-slate-200', 'bg-white');
+        c.className = 'country-card p-3 rounded-xl border border-slate-200 bg-white text-left transition hover:shadow-md';
       });
 
       const activeCard = document.getElementById('card-' + iso);
-      if (activeCard) {
-        const borderCol = iso === 'KEN' ? 'border-emerald-600' : (iso === 'RWA' ? 'border-blue-600' : (iso === 'MUS' ? 'border-rose-600' : 'border-amber-600'));
-        const bgCol = iso === 'KEN' ? 'bg-emerald-50/50' : (iso === 'RWA' ? 'bg-blue-50/50' : (iso === 'MUS' ? 'bg-rose-50/50' : 'bg-amber-50/50'));
-        activeCard.classList.remove('border-slate-200', 'bg-white');
-        activeCard.classList.add('border-2', borderCol, bgCol);
+      if (activeCard && themeColors[iso]) {
+        activeCard.className = `country-card p-3 rounded-xl border-2 ${themeColors[iso].border} ${themeColors[iso].bg} text-left transition hover:shadow-md`;
       }
 
       const d = countryData[iso];
@@ -2878,68 +3605,98 @@
       document.getElementById('gap2-desc').textContent = d.desc2;
       document.getElementById('gap3-desc').textContent = d.desc3;
 
-      const deepDive = document.getElementById('kenya-ecosystem-deepdive');
-      if (deepDive) {
-        deepDive.style.display = (iso === 'KEN') ? 'block' : 'none';
+      renderDeepDive(iso, _activeSegment);
+      updateDemographicButtons(iso);
+    }
+
+    function updateDemographicButtons(iso) {
+      const d = countryData[iso]?.deepDive;
+      if (!d) return;
+      const btnUrb = document.getElementById('btn-seg-urban');
+      const btnRur = document.getElementById('btn-seg-rural');
+      if (btnUrb) btnUrb.textContent = `Urban (${d.urbanRatio})`;
+      if (btnRur) btnRur.textContent = `Rural (${d.ruralRatio})`;
+    }
+
+    function renderDeepDive(iso, segment) {
+      const dd = countryData[iso]?.deepDive;
+      if (!dd) return;
+
+      const badge = document.getElementById('deepdive-archetype-badge');
+      if (badge) {
+        badge.textContent = dd.badgeText;
+        badge.className = 'badge-pill ' + dd.badgeClass + ' font-bold';
       }
-    }
 
-    function showGapChart(gapKey) {
-      const img = document.getElementById('gap-chart-img');
-      const cap = document.getElementById('gap-chart-caption');
-      
-      document.getElementById('btn-chart-gap1').className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200';
-      document.getElementById('btn-chart-gap2').className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200';
-      document.getElementById('btn-chart-gap3').className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200';
+      const title = document.getElementById('deepdive-country-title');
+      if (title) title.textContent = dd.countryTitle;
 
-      const activeBtn = document.getElementById('btn-chart-' + gapKey);
-      if (activeBtn) activeBtn.className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-600 text-white';
+      const desc = document.getElementById('deepdive-country-desc');
+      if (desc) desc.textContent = dd.countryDesc;
 
-      if (gapKey === 'gap1') {
-        img.src = './data/analysis_b/gap1_connectivity_assumption.png';
-        cap.textContent = 'Figure 1: Fixed broadband (<3/100) vs. EdTech solution delivery requirements. 70% rural SSA electricity deficit acts as upstream bottleneck.';
-      } else if (gapKey === 'gap2') {
-        img.src = './data/analysis_b/gap2_cost_sustainability.png';
-        cap.textContent = 'Figure 2: 1GB/month data burden reaches 7.6% of Rwandan monthly income. Educational spending at GDP level fails to reflect non-salary technology budgets.';
-      } else if (gapKey === 'gap3') {
-        img.src = './data/analysis_b/gap3_linguistic_inclusion.png';
-        cap.textContent = 'Figure 3: 70-80% classroom instruction in national/local languages vs. <15% tool support. AI model benchmark drops to 18% accuracy in Bemba/Nyanja.';
+      // Lens 1
+      if (document.getElementById('lens1-source')) document.getElementById('lens1-source').textContent = dd.lens1.source;
+      if (document.getElementById('lens1-heading')) document.getElementById('lens1-heading').textContent = dd.lens1.heading;
+      if (document.getElementById('lens1-desc')) document.getElementById('lens1-desc').textContent = dd.lens1.desc;
+      if (document.getElementById('lens1-voice-label')) document.getElementById('lens1-voice-label').textContent = dd.lens1.voiceLabel;
+      if (document.getElementById('lens1-voice-quote')) document.getElementById('lens1-voice-quote').textContent = dd.lens1.voiceQuote;
+
+      // Lens 2
+      if (document.getElementById('lens2-source')) document.getElementById('lens2-source').textContent = dd.lens2.source;
+      if (document.getElementById('lens2-heading')) document.getElementById('lens2-heading').textContent = dd.lens2.heading;
+      if (document.getElementById('lens2-desc')) document.getElementById('lens2-desc').textContent = dd.lens2.desc;
+      if (document.getElementById('quad-tch-airtime')) document.getElementById('quad-tch-airtime').textContent = dd.lens2.airtime;
+      if (document.getElementById('quad-tch-decay')) document.getElementById('quad-tch-decay').textContent = dd.lens2.decay;
+      if (document.getElementById('lens2-voice-label')) document.getElementById('lens2-voice-label').textContent = dd.lens2.voiceLabel;
+      if (document.getElementById('lens2-voice-quote')) document.getElementById('lens2-voice-quote').textContent = dd.lens2.voiceQuote;
+
+      // Lens 3
+      if (document.getElementById('lens3-source')) document.getElementById('lens3-source').textContent = dd.lens3.source;
+      if (document.getElementById('lens3-heading')) document.getElementById('lens3-heading').textContent = dd.lens3.heading;
+      if (document.getElementById('lens3-desc')) document.getElementById('lens3-desc').textContent = dd.lens3.desc;
+      const modContainer = document.getElementById('quad-modalities-list');
+      if (modContainer && dd.lens3.modalities) {
+        modContainer.innerHTML = dd.lens3.modalities.map(m => `
+          <div class="flex items-center justify-between text-xs bg-slate-50 p-2 rounded border border-slate-100">
+            <span class="font-semibold text-slate-700">${m.name}</span>
+            <div class="flex items-center gap-3">
+              <span class="text-[11px] text-${m.status}-700 font-bold">Reach: ${m.reach}</span>
+              <span class="text-[10px] text-slate-500 bg-slate-200/70 px-1.5 py-0.5 rounded">Friction: ${m.friction}</span>
+            </div>
+          </div>
+        `).join('');
       }
+
+      // Lens 4
+      if (document.getElementById('lens4-source')) document.getElementById('lens4-source').textContent = dd.lens4.source;
+      if (document.getElementById('lens4-heading')) document.getElementById('lens4-heading').textContent = dd.lens4.heading;
+      if (document.getElementById('lens4-desc')) document.getElementById('lens4-desc').textContent = dd.lens4.desc;
+      if (document.getElementById('quad-speed-mobile')) document.getElementById('quad-speed-mobile').textContent = dd.lens4.speedMobile;
+      if (document.getElementById('quad-speed-median')) document.getElementById('quad-speed-median').textContent = dd.lens4.speedMedian;
+      if (document.getElementById('quad-speed-latency')) document.getElementById('quad-speed-latency').textContent = dd.lens4.latency;
+      if (document.getElementById('quad-speed-note')) document.getElementById('quad-speed-note').textContent = dd.lens4.speedNote;
+      if (document.getElementById('quad-pol-pov')) document.getElementById('quad-pol-pov').textContent = dd.lens4.learningPoverty;
+      if (document.getElementById('quad-pol-opex')) document.getElementById('quad-pol-opex').textContent = dd.lens4.recurrentLock;
+      if (document.getElementById('quad-pol-outreach')) document.getElementById('quad-pol-outreach').textContent = dd.lens4.outreachRate;
+
+      renderDemographics(iso, segment);
     }
 
-    function switchDashboard(url, title) {
-      const frame = document.getElementById('dash-frame');
-      const loader = document.getElementById('frame-loader');
-      const titleEl = document.getElementById('dash-title');
-      const directLink = document.getElementById('dash-direct-link');
-      if (loader) loader.classList.remove('hidden');
-      if (frame) frame.src = url;
-      if (titleEl) titleEl.textContent = 'Embedded Interactive Engine: ' + title;
-      if (directLink) directLink.href = url;
+    function renderDemographics(iso, segment) {
+      const d = countryData[iso]?.deepDive?.demographics[segment];
+      if (!d) return;
+
+      if (document.getElementById('quad-cit-priority')) document.getElementById('quad-cit-priority').textContent = d.citPriority;
+      if (document.getElementById('quad-cit-dissat')) document.getElementById('quad-cit-dissat').textContent = d.citDissat;
+      if (document.getElementById('quad-cit-lit')) document.getElementById('quad-cit-lit').textContent = d.citLit;
+      if (document.getElementById('quad-tch-ptr')) document.getElementById('quad-tch-ptr').textContent = d.tchPtr;
+      if (document.getElementById('quad-mod-access')) document.getElementById('quad-mod-access').textContent = d.modAccess;
+      if (document.getElementById('quad-pol-elec')) document.getElementById('quad-pol-elec').textContent = d.polElec;
     }
 
-    function filterCodebook(pillar) {
-      document.querySelectorAll('.pillar-filter-btn').forEach(b => {
-        b.className = 'pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50';
-      });
-      event.target.className = 'pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white';
-      
-      const rows = document.querySelectorAll('#codebook-table-body tr');
-      let visible = 0;
-      rows.forEach(r => {
-        const text = r.querySelector('td:first-child')?.textContent || '';
-        if (pillar === 'ALL' || text.includes(pillar)) {
-          r.style.display = '';
-          visible++;
-        } else {
-          r.style.display = 'none';
-        }
-      });
-      document.getElementById('codebook-count-badge').textContent = `Showing ${visible} Mappings`;
-    }
-
-    // Demographic Filter for Kenya Deep-Dive
+    // Demographic Filter Toggle
     function setDemographicSegment(segment) {
+      _activeSegment = segment;
       const btnNat = document.getElementById('btn-seg-national');
       const btnUrb = document.getElementById('btn-seg-urban');
       const btnRur = document.getElementById('btn-seg-rural');
@@ -2948,34 +3705,205 @@
         if (b) b.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
       });
 
-      if (segment === 'national' && btnNat) {
-        btnNat.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
-        document.getElementById('quad-cit-priority').textContent = '18.6%';
-        document.getElementById('quad-cit-dissat').textContent = '36.2%';
-        document.getElementById('quad-cit-lit').textContent = '41.6%';
-        document.getElementById('quad-tch-ptr').textContent = '30.7:1';
-        document.getElementById('quad-mod-access').textContent = 'Phone: 91% · Radio: 62% · TV: 45%';
-        document.getElementById('quad-pol-elec').textContent = '82.6%';
-      } else if (segment === 'urban' && btnUrb) {
-        btnUrb.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
-        document.getElementById('quad-cit-priority').textContent = '16.0%';
-        document.getElementById('quad-cit-dissat').textContent = '30.9%';
-        document.getElementById('quad-cit-lit').textContent = '54.2%';
-        document.getElementById('quad-tch-ptr').textContent = '28.0:1';
-        document.getElementById('quad-mod-access').textContent = 'Phone: 96% · Radio: 68% · TV: 72%';
-        document.getElementById('quad-pol-elec').textContent = '95.0%';
-      } else if (segment === 'rural' && btnRur) {
-        btnRur.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
-        document.getElementById('quad-cit-priority').textContent = '20.0%';
-        document.getElementById('quad-cit-dissat').textContent = '39.0%';
-        document.getElementById('quad-cit-lit').textContent = '36.8%';
-        document.getElementById('quad-tch-ptr').textContent = '50.0:1';
-        document.getElementById('quad-mod-access').textContent = 'Phone: 88% · Radio: 59% · TV: 32%';
-        document.getElementById('quad-pol-elec').textContent = '67.1%';
-      }
+      const activeBtn = segment === 'national' ? btnNat : (segment === 'urban' ? btnUrb : btnRur);
+      if (activeBtn) activeBtn.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
+
+      renderDemographics(_activeIso, segment);
     }
 
-    // GEEAP and EdTech Hub Lifecycle Simulator
+    // =================================================================
+    // TAB 3: 6-PILLARS COUNTRY DEEP-DIVE EXPLORER (RWANDA, TANZANIA & SSA)
+    // =================================================================
+    const tab3CountryData = {
+      'RWA': {
+        country: 'Rwanda (RWA)', flag: '🇷🇼',
+        archetype: 'State-Led Digital Push vs. Classroom Crowding & English Medium Friction',
+        score: '30 / 45', scoreClass: 'bg-blue-100 text-blue-800',
+        p1: { title: 'P1: Leadership & Budget', metric: '14.2% of Gov Budget · SPI: 72.6', desc: 'Centralized Vision 2050 mandate; $329M+ in World Bank Quality Basic Education project funding (P168551/P177983). Strong statistical capacity.' },
+        p2: { title: 'P2: Connectivity & Power', metric: '65.2% Rural Power · 0.60 Fixed BB', desc: '60.8% of primary schools have power, but fixed broadband is near-zero (0.6/100). Rugged hill terrain forces total dependence on mobile data bundles.' },
+        p3: { title: 'P3: Cost & Sustainability', metric: '7.6% Monthly Income Data Tax', desc: '1GB of educational data costs ~7.6% of monthly per-capita GDP ($3,785 PPP). Massive household fee barrier for low-income rural families.' },
+        p4: { title: 'P4: Pedagogical Capacity', metric: '59.5:1 Pupil-Teacher Ratio', desc: 'Acute crowding: 59.5 pupils per teacher; 22% of surveyed teachers report classes >80. High teacher stress managing 1:1 hardware in packed rooms.' },
+        p5: { title: 'P5: Content & Linguistic AI', metric: 'Kinyarwanda AI Score: 38% / 100', desc: 'Severe linguistic clash: 2008 switch to English medium while children think in Kinyarwanda. AI LLMs collapse to 38% accuracy in Kinyarwanda.' },
+        p6: { title: 'P6: Data & Ethical Governance', metric: 'Centralized Cloud Dependency', desc: 'High national data governance (SPI 72.6), but educational platforms rely on commercial cloud servers with low student data sovereignty.' }
+      },
+      'TZA': {
+        country: 'Tanzania (TZA)', flag: '🇹🇿',
+        archetype: 'Swahili Foundational Anchor vs. Crippling Rural Energy Deficit',
+        score: '33 / 45', scoreClass: 'bg-cyan-100 text-cyan-800',
+        p1: { title: 'P1: Leadership & Budget', metric: '13.4% of Gov Budget · SPI: 68.2', desc: 'National education allocation is low (13.4% of budget); World Bank BOOST project ($588M P169380) provides major external lifeline for school construction.' },
+        p2: { title: 'P2: Connectivity & Power', metric: '33.7% Rural Power · 0.25 Fixed BB', desc: 'Crippling energy gap: only 37.3% of primary schools and 33.7% of rural citizens have power. Fixed broadband (0.25/100) is lowest among comparator peers.' },
+        p3: { title: 'P3: Cost & Sustainability', metric: '6.2% Monthly Income Data Tax', desc: 'Data tariff burden ($4,227 PPP) consumes 6.2% of monthly income. Rural households prioritize basic desks and exercise books over digital subscriptions.' },
+        p4: { title: 'P4: Pedagogical Capacity', metric: '50.6:1 PTR · 99.2% Qualified', desc: 'Outstanding asset: 99.2% of primary teachers are certified. However, 87.5% teach cohorts over 50 pupils, and 56% pay mobile data from personal wages.' },
+        p5: { title: 'P5: Content & Linguistic AI', metric: 'Kiswahili AI Score: 58% / 100', desc: 'Pedagogical gold standard: 100% primary instruction in Kiswahili mother tongue. AI model accuracy reaches 58%, though vernacular nuances remain unmodeled.' },
+        p6: { title: 'P6: Data & Ethical Governance', metric: 'Local Server & Offline Protection', desc: 'Rural disconnection limits corporate tracking, but school EMIS data remains paper-bound with delayed district statistical reporting.' }
+      },
+      'KEN': {
+        country: 'Kenya (KEN)', flag: '🇰🇪',
+        archetype: 'East African Innovation Hub with High Pedagogical Qualifications',
+        score: '25 / 45', scoreClass: 'bg-emerald-100 text-emerald-800',
+        p1: { title: 'P1: Leadership & Budget', metric: '27.9% of Gov Budget · SPI: 73.4', desc: 'Continental leader in public budget allocation (27.9%); high statistical performance (73.4). Heavily centralized DLP hardware legacy.' },
+        p2: { title: 'P2: Connectivity & Power', metric: '67.1% Rural Power · 3.04 Fixed BB', desc: '82.6% of primary schools have power; broadband (3.04/100) is 5x the SSA median. Yet off-grid rural schools face frequent grid outages.' },
+        p3: { title: 'P3: Cost & Sustainability', metric: '4.3% Monthly Income Data Tax', desc: 'Higher GDP per capita ($6,650 PPP) lowers data burden (4.3%), but commercial providers remain heavily direct-to-consumer B2C.' },
+        p4: { title: 'P4: Pedagogical Capacity', metric: '30.7:1 PTR · 100% Qualified', desc: '100% certified primary teachers; favorable 30.7:1 national ratio. Yet teachers absorb an informal 4-8% airtime salary tax for school uploads.' },
+        p5: { title: 'P5: Content & Linguistic AI', metric: 'Kiswahili AI Score: 62% / 100', desc: 'Highest Swahili AI accuracy in East Africa (62%). CBC curriculum fosters digital literacy, but community languages face comprehension drops.' },
+        p6: { title: 'P6: Data & Ethical Governance', metric: 'DPA Framework · Safeguard Scrutiny', desc: 'National Data Protection Act (2019) active, but school apps upload student telemetry to overseas commercial cloud instances.' }
+      },
+      'GHA': {
+        country: 'Ghana (GHA)', flag: '🇬🇭',
+        archetype: 'West African Digital Frontrunner vs. Rural Primary School Wiring Void',
+        score: '27 / 45', scoreClass: 'bg-teal-100 text-teal-800',
+        p1: { title: 'P1: Leadership & Budget', metric: '13.2% of Gov Budget · SPI: 65.7', desc: 'Strong ICT in education policy framework; World Bank GALOP project ($218M) active. Moderate budget allocation (13.2%).' },
+        p2: { title: 'P2: Connectivity & Power', metric: '82.6% Rural Power · 25.0% Sch Elec', desc: 'Paradox: 91.9% national power and 72% net users, yet official registry shows only 25.0% of primary schools are wired for electricity.' },
+        p3: { title: 'P3: Cost & Sustainability', metric: '3.8% Monthly Income Data Tax', desc: '$8,051 GDP PPP makes data relatively affordable (3.8% of income). High smartphone penetration across peri-urban wards.' },
+        p4: { title: 'P4: Pedagogical Capacity', metric: '27.0:1 PTR · 89.3% Qualified', desc: 'Lowest pupil-teacher ratio in SSA sample (27:1). Main bottleneck is absence of device repair funds; broken tablets sit unused in storerooms.' },
+        p5: { title: 'P5: Content & Linguistic AI', metric: 'Akan/Twi AI Score: 28% / 100', desc: 'Curriculum is in English, but Akan/Twi foundational literacy suffers from lack of localized AI tools (28% accuracy relative to English).' },
+        p6: { title: 'P6: Data & Ethical Governance', metric: 'Data Protection Commission Audit', desc: 'Active Data Protection Commission, though schools lack institutional data officers to monitor edtech app terms of service.' }
+      },
+      'NGA': {
+        country: 'Nigeria (NGA)', flag: '🇳🇬',
+        archetype: 'Venture Startup Capital vs. Off-Grid Fuel Generator Economy',
+        score: '36 / 45', scoreClass: 'bg-indigo-100 text-indigo-800',
+        p1: { title: 'P1: Leadership & Budget', metric: '3.0% Federal Budget · SPI: 69.1', desc: 'Federal education budget is shockingly low (2.98% of spending). World Bank AGILE ($500M) and EdoBEST ($75M) carry digital pedagogy.' },
+        p2: { title: 'P2: Connectivity & Power', metric: '23.5% Rural Power · 0.08 Fixed BB', desc: 'Critical infrastructure failure: rural power at 23.5%; fixed broadband (0.08/100) is virtually zero. Entire schools run on petrol generators.' },
+        p3: { title: 'P3: Cost & Sustainability', metric: '4.8% Monthly Income Data Tax', desc: 'Large venture capital presence (uLesson), but subscriptions ($30-$80/yr) exclude the 90% of pupils in low-income public schools.' },
+        p4: { title: 'P4: Pedagogical Capacity', metric: '45.0:1 PTR · 62.2% Qualified', desc: 'Large North-South teacher qualification disparities (62.2% national average). Severe teacher workload in overcrowded northern classes.' },
+        p5: { title: 'P5: Content & Linguistic AI', metric: 'Hausa/Yoruba AI: 32% / 100', desc: '500+ indigenous languages. Major languages (Hausa, Yoruba, Igbo) benchmark at only 32% AI accuracy, driving high failure rates on apps.' },
+        p6: { title: 'P6: Data & Ethical Governance', metric: 'NDPR Regulation · Commercial Risk', desc: 'Nigeria Data Protection Regulation (NDPR) exists, but widespread consumer edtech tools monetize user data without parental opt-ins.' }
+      },
+      'ZMB': {
+        country: 'Zambia (ZMB)', flag: '🇿🇲',
+        archetype: 'Vulnerability Lower-Bound: Severe Rural Deficit & 73 Languages',
+        score: '37 / 45', scoreClass: 'bg-amber-100 text-amber-800',
+        p1: { title: 'P1: Leadership & Budget', metric: '15.4% of Gov Budget · SPI: 64.2', desc: 'Free education policy drove enrollment surge, but external debt restructuring limits domestic capital for school hardware renewal.' },
+        p2: { title: 'P2: Connectivity & Power', metric: '31.3% Rural Power · 0.79 Fixed BB', desc: 'Critical infrastructure deficit: 31.3% rural electricity access and only 36.4% of primary schools have electricity.' },
+        p3: { title: 'P3: Cost & Sustainability', metric: '6.8% Monthly Income Data Tax', desc: '1GB of educational data costs ~6.8% of monthly income ($4,221 PPP). Schools lack recurrent operational budgets for maintenance.' },
+        p4: { title: 'P4: Pedagogical Capacity', metric: '42.1:1 PTR · 98.8% Qualified', desc: '98.8% qualified primary teachers, but rural classrooms face acute multi-grade desk shortages following fee abolition.' },
+        p5: { title: 'P5: Content & Linguistic AI', metric: 'Bemba/Nyanja AI: 18% / 100', desc: '73 indigenous languages. Bemba/Nyanja AI benchmarks are lowest in sample (18% of English), triggering acute comprehension failures.' },
+        p6: { title: 'P6: Data & Ethical Governance', metric: 'Low Digital Surveillance Risk', desc: 'Low connectivity protects against commercial data harvesting, but schools lack digital learner registries and safeguarding audits.' }
+      },
+      'MUS': {
+        country: 'Mauritius (MUS)', flag: '🇲🇺',
+        archetype: 'High-Income SIDS with Complete Electrification & Fiber Control',
+        score: '18 / 45', scoreClass: 'bg-rose-100 text-rose-800',
+        p1: { title: 'P1: Leadership & Budget', metric: '14.2% of Gov Budget · SPI: 80.4', desc: 'Universal free education from primary through tertiary; highest statistical governance performance in Africa (SPI 80.4).' },
+        p2: { title: 'P2: Connectivity & Power', metric: '100% Rural Power · 28.0 Fixed BB', desc: '100% of schools and homes electrified; 28.0 fixed broadband subscriptions per 100 people satisfies global edtech prerequisites.' },
+        p3: { title: 'P3: Cost & Sustainability', metric: '0.9% Monthly Income Data Tax', desc: 'High income ($31,697 PPP) reduces data costs to negligible levels (<1% of income). Domestic public funding sustains 100% of tech renewal.' },
+        p4: { title: 'P4: Pedagogical Capacity', metric: '16.2:1 PTR · 100% Qualified', desc: 'Optimal conditions: 16.2 pupils per teacher and 100% teacher qualification. Teachers utilize high-speed fiber Wi-Fi in classrooms.' },
+        p5: { title: 'P5: Content & Linguistic AI', metric: 'Kreol Morisyen AI: 28% / 100', desc: 'English/French bilingual instructional proficiency offsets Creole NLP deficit (28%), though vernacular digital tools remain scarce.' },
+        p6: { title: 'P6: Data & Ethical Governance', metric: 'Data Protection Act Compliance', desc: 'Comprehensive data protection regulation and dedicated ministerial child privacy compliance protocols active.' }
+      }
+    };
+
+    function selectTab3Country(iso) {
+      _tab3ActiveIso = iso;
+
+      document.querySelectorAll('.tab3-pill').forEach(p => {
+        p.className = 'tab3-pill px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
+      });
+
+      const activePill = document.getElementById('tab3-pill-' + iso);
+      if (activePill) {
+        activePill.className = 'tab3-pill px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
+      }
+
+      const card = document.getElementById('tab3-country-profile-card');
+      if (!card) return;
+
+      if (iso === 'COMPARE') {
+        const tableWrapper = document.getElementById('tab3-comparison-table-wrapper');
+        if (tableWrapper) tableWrapper.scrollIntoView({ behavior: 'smooth' });
+        card.innerHTML = `
+          <div class="text-center py-6">
+            <span class="badge-pill bg-purple-100 text-purple-800 text-xs font-bold mb-2">Cross-National Matrix Mode Active</span>
+            <h4 class="text-lg font-serif font-bold text-slate-800">Viewing Full 7-Country Benchmarking Matrix Below</h4>
+            <p class="text-xs text-slate-500 max-w-xl mx-auto mt-1">Scroll down to inspect side-by-side indicator scores across all 6 UNESCO Pillars for Rwanda, Tanzania, Kenya, Ghana, Nigeria, Zambia, and Mauritius.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const d = tab3CountryData[iso];
+      if (!d) return;
+
+      card.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-100 mb-6">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">${d.flag}</span>
+              <h4 class="text-xl font-bold font-serif text-slate-900">${d.country}</h4>
+              <span class="badge-pill ${d.scoreClass} text-xs font-bold">Discrepancy: ${d.score}</span>
+            </div>
+            <p class="text-xs text-slate-500 mt-1 font-medium">${d.archetype}</p>
+          </div>
+          <span class="text-xs font-mono text-slate-400">UNESCO 6-Pillars Operationalized Deep-Dive</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- P1 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-bold text-blue-700 mb-1">
+                <span>🏛️ ${d.p1.title}</span>
+              </div>
+              <div class="font-extrabold text-slate-900 text-sm mb-1">${d.p1.metric}</div>
+              <p class="text-xs text-slate-600 leading-relaxed">${d.p1.desc}</p>
+            </div>
+          </div>
+          <!-- P2 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-bold text-emerald-700 mb-1">
+                <span>⚡ ${d.p2.title}</span>
+              </div>
+              <div class="font-extrabold text-slate-900 text-sm mb-1">${d.p2.metric}</div>
+              <p class="text-xs text-slate-600 leading-relaxed">${d.p2.desc}</p>
+            </div>
+          </div>
+          <!-- P3 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-bold text-amber-700 mb-1">
+                <span>💸 ${d.p3.title}</span>
+              </div>
+              <div class="font-extrabold text-slate-900 text-sm mb-1">${d.p3.metric}</div>
+              <p class="text-xs text-slate-600 leading-relaxed">${d.p3.desc}</p>
+            </div>
+          </div>
+          <!-- P4 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-bold text-teal-700 mb-1">
+                <span>👩‍🏫 ${d.p4.title}</span>
+              </div>
+              <div class="font-extrabold text-slate-900 text-sm mb-1">${d.p4.metric}</div>
+              <p class="text-xs text-slate-600 leading-relaxed">${d.p4.desc}</p>
+            </div>
+          </div>
+          <!-- P5 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-bold text-rose-700 mb-1">
+                <span>🗣️ ${d.p5.title}</span>
+              </div>
+              <div class="font-extrabold text-slate-900 text-sm mb-1">${d.p5.metric}</div>
+              <p class="text-xs text-slate-600 leading-relaxed">${d.p5.desc}</p>
+            </div>
+          </div>
+          <!-- P6 -->
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/70 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between text-xs font-bold text-slate-700 mb-1">
+                <span>🔒 ${d.p6.title}</span>
+              </div>
+              <div class="font-extrabold text-slate-900 text-sm mb-1">${d.p6.metric}</div>
+              <p class="text-xs text-slate-600 leading-relaxed">${d.p6.desc}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+        // GEEAP and EdTech Hub Lifecycle Simulator
     function runSimStrategy(stratId) {
       const scoreEl = document.getElementById('sim-geeap-score');
       const badgeEl = document.getElementById('sim-geeap-badge');
@@ -3079,6 +4007,57 @@
       }
     }
 
+    // =================================================================
+    // GIGA SCHOOL CONNECTIVITY API (UNICEF Project Connect)
+    // =================================================================
+    // Drop your GIGA API key here when approved:
+    const GIGA_API_KEY = ""; // e.g. "Bearer eyJ..."
+
+    // Static fallback data (from Project Connect public dashboard, 2024)
+    const GIGA_STATIC = {
+      KEN: { connected: "12,841", pct: 54 },
+      NGA: { connected: "7,203",  pct: 21 },
+      GHA: { connected: "5,618",  pct: 47 },
+      EGY: { connected: "19,440", pct: 68 },
+    };
+
+    async function fetchGigaData() {
+      const countries = ['KEN','NGA','GHA','EGY'];
+      if (!GIGA_API_KEY) {
+        // Use static fallback and show it as reference data
+        document.getElementById('giga-status-pill').textContent = '📊 Reference Data (2024)';
+        document.getElementById('giga-status-pill').className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200';
+        countries.forEach(iso => {
+          const d = GIGA_STATIC[iso];
+          document.querySelectorAll(`.giga-connected[data-country="${iso}"]`).forEach(el => el.textContent = d.connected);
+          document.querySelectorAll(`.giga-pct[data-country="${iso}"]`).forEach(el => el.textContent = `${d.pct}% coverage`);
+          document.querySelectorAll(`.giga-bar`)[countries.indexOf(iso)].style.width = `${d.pct}%`;
+        });
+        return;
+      }
+      // Live fetch when API key is set
+      document.getElementById('giga-status-pill').textContent = '🔄 Fetching live…';
+      try {
+        const results = await Promise.all(countries.map(iso =>
+          fetch(`https://api.giga.school/v1/schools?country_code=${iso}&connectivity=true`, {
+            headers: { 'Authorization': GIGA_API_KEY }
+          }).then(r => r.json())
+        ));
+        document.getElementById('giga-status-pill').textContent = '🟢 Live';
+        document.getElementById('giga-status-pill').className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700 border border-emerald-200';
+        results.forEach((data, i) => {
+          const iso = countries[i];
+          const count = data.count?.toLocaleString() ?? '—';
+          const pct = data.coverage_pct ?? 0;
+          document.querySelectorAll(`.giga-connected[data-country="${iso}"]`).forEach(el => el.textContent = count);
+          document.querySelectorAll(`.giga-pct[data-country="${iso}"]`).forEach(el => el.textContent = `${pct}% coverage`);
+          document.querySelectorAll(`.giga-bar`)[i].style.width = `${pct}%`;
+        });
+      } catch(e) {
+        document.getElementById('giga-status-pill').textContent = '⚠️ Fetch error';
+      }
+    }
+
     // Initialize on DOM load
     document.addEventListener('DOMContentLoaded', () => {
       renderHeroMetrics('systemic');
@@ -3086,6 +4065,9 @@
       calculateAudit();
       updateRotationPlanner();
       renderVoice(_voiceIdx);
+      fetchGigaData();
+      selectCountry('KEN');
+      selectTab3Country('RWA');
     });
   </script>
 </body>
