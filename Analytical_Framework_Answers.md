@@ -1,153 +1,111 @@
 # Analytical Framework 2: Project Evaluation
 
-**Project:** Mapping the EdTech Landscape in Sub-Saharan Africa and MENA: Bridging Macro-Level Assessment, the 6-Pillars Framework, and Grassroots Realities  
-**Master:** ICT for Development and Social Good (UniTO / COREP / Impactskills)
+**Project:** Mapping EdTech Fit Across Sub-Saharan Africa: A Six-Pillars Observatory for Context-Aware Decisions
+**Programme:** First-Level Master in ICT for Development and Social Good (UniTO / COREP / Impactskills)
+**Status:** Working answers for project-clinic discussion; see `Thesis_First_Draft_Concept.md` for the integrated concept.
+
+> **Evidence status:** The project combines public macro indicators and selected secondary sources. The 800-record AoA-related dataset is calibrated synthetic data, not collected survey responses. The qualitative “field voices” display contains secondary-source excerpts requiring individual source verification. Neither should be presented as primary field evidence.
 
 ---
 
-## TECHNOLOGY FOCUS
+## Technology focus
 
 ### 1. What is the expected technology output?
 
-* **Live Interactive Web Explorer (`EEA_2`):** A lightweight, client-side dashboard hosted on GitHub Pages displaying student AI adoption, screen-time distribution, and digital guidance policies across 85 educational systems drawn from OECD PISA 2025 data.
-* **Automated 6-Pillars Data Pipeline (`fetch_6pillars_pipeline.py`):** An open-source Python engine querying and caching indicators across 69 nations (48 SSA, 21 MENA) aligned with UNESCO's Six Pillars of Digital Transformation, producing three processed datasets: `indicators_timeseries.csv`, `latest_country_profiles_6pillars.csv`, and `wb_digital_education_projects.csv`.
-* **Decision-Support Matrix / Multi-Stakeholder Alignment Rubric:** A practical rubric mapping school-level connectivity constraints to appropriate EdTech delivery modalities, bridging startup product design with verified teacher classroom conditions for ministries and regional incubators.
+The expected output is an open, browser-based **decision-support prototype** and its supporting analytical materials:
 
----
+- A 69-country public-indicator pipeline and selected country profiles, structured around UNESCO's Six Pillars.
+- A seven-country SSA comparison and focused discrepancy analysis.
+- A classroom feasibility audit, classroom rotation planner, and resource directory.
+- A scenario-based modality/lifecycle aid with assumptions disclosed.
 
-### 2. What is the expected contribution of technology in relation to the "social good" goals?
+These are analytical and planning aids, not a validated readiness score, procurement recommendation, or impact-evaluation tool. The GIGA school connectivity panel is not yet a live feed.
 
-* **Enabling new practices — Informed Public Resource Allocation:** Prevents ministries and donors from misallocating capital toward high-bandwidth, cloud-only systems that fail in off-grid settings by surfacing context-specific evidence.
-* **Widening accessibility — Democratizing Strategic Insight:** Equips grassroots startups, local educators, and civil society with free, open development intelligence typically locked behind expensive proprietary consultancy reports.
-* **Enhancing existing practices — Promoting Educational Equity:** Centers low-connectivity, offline-first, and marginalized learners who are ignored by mainstream digital platforms, making them visible within policy and planning processes.
+### 2. What is the expected contribution of technology in relation to social-good goals?
 
----
+The prototype aims to make evidence and its gaps more accessible to educators, school leaders, ministries, civil society, and local providers. It can help users structure questions about electricity, connectivity costs, maintenance, class/device ratios, language, and teacher support before adopting a tool. Its contribution is a transparent decision process and open access to organized evidence—not a demonstrated reduction in inequity or improved learning outcomes.
 
-### 3. What socio-political visions and goals lie behind the introduction or use of technology? Are they the same for all actors involved?
+### 3. What socio-political visions and goals lie behind the technology? Are they the same for all actors?
 
-The technology is underpinned by an **ICT4D equity vision**: the belief that open data and transparent analytical infrastructure can correct structural information asymmetries that disadvantage Global South education systems.
+No. Public agencies and assessment organizations value comparability and national planning; ministries and school authorities set policy and procurement; commercial providers may prioritize market growth and recurring revenue; local organizations may focus on context-specific delivery and sustainability; teachers, learners, and families need tools that are usable, affordable, safe, and relevant. These interests can conflict over cost, data control, language, and whose evidence counts. The project takes a critical ICT4D position: use open evidence to make assumptions and exclusions visible, while avoiding the claim that the researcher can speak for all local actors.
 
-**No — the visions differ substantially across actors:**
-
-* **Multilateral Donors & Assessment Agencies (OECD, World Bank, UNESCO):** Pursue standardization, cross-national comparability, and evidence-based governance. Their metrics implicitly favor high-income institutional models (e.g., PISA sampling only enrolled 15-year-olds), potentially marginalizing the 30–50% of out-of-school SSA youth.
-* **National Ministries of Education & ICT:** Primarily concerned with demonstrating compliance with donor frameworks to unlock funding, often prioritizing visible hardware procurement (CapEx) over sustained teacher training (OpEx).
-* **International Tech Vendors:** Pursue market expansion and commercial lock-in; promote device-heavy, proprietary cloud solutions that generate recurring revenue but risk digital dependency in low-infrastructure contexts.
-* **Grassroots Innovators & Regional Hubs (e.g., Dakar EdTech Hub):** Driven by local problem-solving — offline-first, SMS-based, or mobile-money-integrated solutions addressing real classroom constraints — but lacking procurement access and capital.
-* **Teachers and Students:** Seek practical tools that work reliably given power cuts, device scarcity, and language barriers; their priorities diverge sharply from those of both vendors and policy agencies.
-
-The research project itself takes an **explicitly critical and equity-oriented stance**, using technology (the open pipeline and dashboard) to surface the gaps between institutional visions and grassroots realities, rather than reinforcing existing power hierarchies.
-
----
-
-## RESEARCH APPROACH
+## Research approach
 
 ### 4. How does the project work with the technology?
 
-The project engages technology across **three distinct research modes**:
+The project combines:
+1. **Observation and analysis:** descriptive comparison of public indicators across 69 countries, selected seven-country case profiles, and a bounded PISA-derived contextual comparison whose source and coverage still require documentation.
+2. **Development:** construction of the data pipeline and static web observatory, including interactive country comparisons and planning tools.
+3. **Evaluation / feedback:** intended review of the prototype with relevant users, if access and time permit. No completed user evaluation is documented yet. Synthetic calibration data are used for pipeline/scenario development only and cannot establish actual teacher or provider experience.
 
-1. **Observation and analysis (Tier 1):** The OECD PISA 2025 web dashboard is observed and systematically analyzed across 10 analytical domains — AI tool adoption, screen-time distribution, digital guidance policy — to extract macro behavioral and policy patterns across 85 educational systems.
-2. **Development and automation (Tier 2):** The 6-Pillars pipeline (`fetch_6pillars_pipeline.py`) is actively *developed* as an original tool — querying World Bank, UIS, and ITU APIs, handling rate-limiting with disk-based caching, and producing cleaned cross-regional datasets. This includes iterative code development and testing.
-3. **Evaluation and field evidence triangulation (Tier 3):** Survey instruments (teacher, provider, and expert consultation) are *designed and deployed* under the Alliance of Alliances framework, then analyzed to evaluate how macro data aligns with or diverges from micro classroom realities. The Multi-Stakeholder Alignment Rubric synthesizes findings into a practical decision-support tool.
+### 5. Who is involved, what are their interests and roles, and what power do they hold?
 
----
+| Actor | Interest / role | Power and limitation |
+|---|---|---|
+| World Bank, UIS, ITU, OECD and other data publishers | Define, publish, and maintain indicators or assessments | High influence over what is measurable; coverage, timeliness, and definitions constrain analysis |
+| Ministries and school authorities | Policy, curricula, procurement, and implementation | High formal authority; classroom feedback may not shape decisions consistently |
+| Providers and local EdTech organizations | Develop and deliver products and services | Influence product design and business models; capacity and procurement access vary |
+| Teachers and school leaders | Use, adapt, or reject tools in practice | Essential contextual knowledge; often bear implementation costs with limited formal decision power |
+| Learners and families | Experience effects on learning, access, safety, and language | Directly affected, but often underrepresented in policy and product decisions |
+| Researcher / project developer | Selects data, builds tools, interprets results | Controls framing and interface; must disclose assumptions, limitations, and positionality |
 
-### 5. Consider the people involved. What are their interests and expectations? What are their roles? What power do they hold on that technology?
+### 6. What participatory methodologies are adopted in design, development, testing, use, and evaluation?
 
-| Actor | Interests & Expectations | Role | Power over Technology |
-|---|---|---|---|
-| **OECD / World Bank / UNESCO** | Cross-national benchmarking, evidence-based policy | Agenda-setters, data providers | High — control indicator definitions, API access, and global benchmarks |
-| **National Ministries** | Donor compliance, procurement visibility | Policy implementers, gatekeepers | High — procurement and curricular authority, but limited feedback loops from classrooms |
-| **Tech Vendors** | Market expansion, SaaS subscriptions | Technology suppliers | High commercially — promote proprietary solutions; low civic accountability |
-| **Grassroots EdTech Startups / Hubs** | Solving real classroom constraints | Local innovators, field partners | Low institutionally — no procurement access or donor recognition, but high contextual relevance |
-| **Teachers** | Reliable, low-friction tools; professional support | Frontline actors, survey respondents | Very low — directly bear the burden of power outages, device failure, and absent training |
-| **Students** | Accessible, culturally relevant learning content | Beneficiaries | Lowest — no voice in procurement or curriculum design |
-| **Researcher (project team)** | Producing credible, actionable open evidence | Analyst, pipeline developer, survey designer | Mediated — no institutional power, but authority through methodological rigor and open publication |
+The AoA teacher, provider, and expert instruments provide a possible framework for stakeholder evidence, but the repository does not establish that the current synthetic dataset consists of their responses or that participants co-designed the prototype. Participatory review and user testing are proposed next steps, not completed methods. The classroom audit and open resource directory are designed to invite contextual assessment, but their usability and appropriateness still require feedback from intended users.
 
----
+## Technology development
 
-### 6. What kind of (participatory) methodologies are adopted in the tech design, development, test, use, and evaluation phases?
+### 7. What is the role and position of the technology development team? How do they work with other actors?
 
-* **Participatory Survey Design (AoA framework):** Survey instruments for SSA teachers, EdTech providers, and expert consultants are co-framed within UNESCO's Global Education Coalition — ensuring questions reflect real operational bottlenecks rather than top-down assumptions.
-* **Community Ground-Truthing:** Teacher and provider survey findings directly feed back into the Multi-Stakeholder Alignment Rubric, so the decision-support output is shaped by practitioner input rather than purely macro data.
-* **Open-Access Dissemination:** The pipeline and dashboard are published as free, open tools — a participatory commitment to enable local actors (startups, NGOs, civil servants) to access and interrogate the data without dependency on external intermediaries.
-* **Reflexive Methodological Critique:** The framework explicitly interrogates whose metrics dominate (PISA's high-income school bias) and adopts a researcher positionality that foregrounds marginalized voices — teachers, out-of-school youth, offline learners.
-
----
-
-## TECHNOLOGY DEVELOPMENT
-
-### 7. What's the role and position of the technology development team? How do they work with the other actors?
-
-The **researcher acts as the sole developer** of the custom technology outputs (the 6-Pillars pipeline and the EEA_2 dashboard), occupying a **researcher-developer hybrid role** unusual in ICT4D projects:
-
-* **Relationship with data providers (World Bank, UIS, ITU):** The pipeline consumes open APIs as a downstream user — no co-development, but active engagement with documentation, rate limits, and data quality gaps.
-* **Relationship with field actors (AoA / UNESCO GEC):** Survey instruments are designed in alignment with the Alliance of Alliances network, positioning the researcher as a methodological collaborator rather than a neutral outsider.
-* **Relationship with end users (ministries, NGOs, startups):** The technology outputs are explicitly designed *for* these actors — the dashboard is self-service, publicly hosted, requires no login, and the decision-support rubric is formatted for non-technical policy audiences.
-* **Generative AI use:** AI tools were used strictly for code debugging and syntax structuring (as declared per UniTO Final Project Guidelines §26); all conceptual decisions, analytical interpretations, and framework design remain the researcher's original scholarly contribution.
-
----
+The researcher currently combines analyst and developer roles, producing the pipeline, web interface, and decision-support tools. The pipeline uses externally published datasets rather than co-developing with data agencies. Engagement with AoA participants, practitioners, ministries, and providers should be described only where documented; no co-design or field-testing claim is made in this draft.
 
 ### 8. What are the main technical constraints?
 
-* **Target Context Realities:** Rural electrification rates below 30% in many SSA regions, high mobile data costs relative to household income, device fragility, and shared family phone ownership define the operational environment of the *users* the research serves.
-* **Pipeline Constraints:** API rate-limiting and connection interruptions from World Bank, UIS, and ITU endpoints necessitate disk-based caching and retry logic to ensure reproducibility.
-* **Dashboard Constraints:** The EEA_2 explorer must run purely client-side (static assets on GitHub Pages) with minimal bandwidth overhead — ruling out server-side rendering, databases, or dynamic backends.
-* **Data Lag:** Macro databases carry significant time lags (1–3 years) and missing data points for rural indicators, constraining the recency and completeness of the meso-level analysis.
+- Uneven indicator coverage, different reference years, missing data, and publication lags.
+- API access/rate limits and the need for local caching and reproducible transformations.
+- A static, client-side observatory limits real-time computation and depends on well-documented pre-processed data.
+- The GIGA API panel is a placeholder pending access and populated, verified data.
+- External dashboard data and field-voice quotations require source, coverage, and rights verification.
+- Synthetic data must be visibly distinguished from observed survey data in files, interface labels, and analysis.
+
+### 9. What are the main technological or digital barriers and divides?
+
+The project examines differences in electricity, connectivity, affordability, functional devices, class size, teacher capacity, language/content fit, and data availability. These barriers vary within countries and should not be inferred from national averages alone. Additional methodological divides include the exclusion of some out-of-school learners from school-based assessments and the underrepresentation of locally relevant languages in digital content and AI systems.
+
+## Technology adaptability and replicability
+
+### 10. Should the technology be adaptable to other contexts? How?
+
+Yes, in principle. The indicator pipeline can be configured for new country sets where comparable data exist, while the audit prompts and resource directory can be localized. Transfer requires checking indicator definitions, languages, laws, curricula, infrastructure, and community priorities in each context; changing country codes alone is not sufficient.
+
+### 11. Are scalability, transferability, or replicability expected? How?
+
+The static website and documented data pipeline are technically reusable. Analytical transfer is conditional on data quality and local review. The current prototype has not demonstrated user adoption, scale, or impact, and open licensing must be verified for each dataset, quotation, and resource before broad reuse is claimed.
+
+## Ethics
+
+### 12. What are the main ethical aspects concerning development and use?
+
+Key issues are avoiding deficit framings, making the provenance and uncertainty of evidence visible, preventing synthetic data from being mistaken for testimony, protecting privacy, and avoiding the use of children’s or teachers’ data beyond the stated purpose. Secondary-source quotations require accurate attribution and reuse permission. The researcher’s role in selecting and interpreting Global South evidence should be made explicit. Open publication is conditional on privacy, consent, licensing, and source rights.
+
+### 13. Are there relevant regulatory obligations?
+
+Potential obligations depend on the data subjects, institutions, and jurisdictions involved. Before using primary responses, the project should confirm applicable institutional ethics review, informed consent, data minimization, access, retention, anonymization, and cross-border transfer requirements. If children are directly involved, additional safeguarding and consent requirements apply. The present draft does not claim that a particular national privacy law applies to all project data. The UniTO Final Project Guidelines require disclosure of generative-AI use and recommend an annex of relevant exchanges.
 
 ---
 
-### 9. What are the main (technological / digital) barriers and divides?
+## Final Project Guidelines cross-check
 
-* **Technical:** Intermittent power supply, device scarcity, and low bandwidth in SSA classrooms make standard ed-tech platforms (cloud-dependent, video-heavy) largely inaccessible to the majority of target beneficiaries.
-* **Economic:** High mobile data costs relative to household income; institutional budgetary preference for one-off CapEx hardware purchases over sustainable OpEx (training, maintenance, licensing).
-* **Upstream Data Incompleteness:** Missing data rows, irregular census intervals, and the systematic exclusion of out-of-school populations from global benchmarks (PISA's survivorship bias) create analytical blind spots.
-* **Cultural / Digital Literacy:** Digital curricula predominantly published in English or French, with scarce localized materials in indigenous languages; teacher digital literacy gaps in rural contexts.
-* **Cultural / Digital Acceptancy:** Resistance to AI-mediated tools in communities where trust in technology is conditioned by prior experiences of failed hardware pilots or culturally misaligned software.
+| Guideline expectation | Current response / remaining action |
+|---|---|
+| Connect the project to the Master and social good | Uses an ICT4D equity lens and UNESCO Six Pillars; articulate social-good contribution without claiming unmeasured impact |
+| Connect the project to internship learning | The AoA/EdTech landscape work is relevant context; document the specific research connection and confirm permission to use any internship-derived material |
+| Integrate theoretical and practical components | Conceptual analysis plus pipeline and observatory prototype are documented |
+| Submit a tangible practical product and include its URL | Prototype exists in the repository; confirm public URL and deployment before submission |
+| Prepare a five-minute presentation | A concise idea-check deck is being prepared; use the final defense guidelines for the final presentation |
+| Avoid a descriptive internship report | Focus on the research question, method, evidence, prototype, and critical reflection |
+| Use third-person language and gender-neutral wording | Applied in the concept and these answers |
+| Avoid unsupported claims; cite sources in the requested author/title/year/publisher format | Data dictionary and references are available, but full bibliographic/source verification remains necessary; distinguish estimates, synthetic data, and observed data |
+| Disclose generative-AI use | Update the disclosure to include drafting/editing assistance and retain the relevant interaction annex |
 
----
-
-## TECHNOLOGY ADAPTABILITY AND REPLICABILITY
-
-### 10. Should this tech be adaptable to other social and geographical contexts? How?
-
-**Yes.** The 6-Pillars data pipeline is modular and country-agnostic; new countries or geographic regions (e.g., South Asia, Latin America) can be incorporated simply by adding ISO codes to the indicator query configuration.
-
-**Contextual Adaptation Model — three infrastructure tiers:**
-1. *Off-Grid:* Solar-powered kits, radio/SMS delivery, and paper-digital hybrids.
-2. *Low / Intermittent Connectivity:* Offline local micro-servers (e.g., Kolibri, RACHEL) preloaded with open educational resources.
-3. *Connected Urban:* Hybrid platforms and guided AI pedagogical integration.
-
----
-
-### 11. Scalability / transferability / replicability: are they expected? How?
-
-**Yes — across all three dimensions:**
-
-* **Technical Scalability:** The web explorer is deployed as static assets on GitHub Pages with zero server upkeep and no hosting expenses, supporting high traffic without performance degradation. The pipeline scales from querying a handful of countries to the full 69-nation panel.
-* **Analytical Scalability:** The evaluation model scales from assessing single pilot schools to national education systems and regional economic communities (ECOWAS, SADC).
-* **Replicability:** The entire codebase and datasets are open-source and open-licensed (Creative Commons), enabling other researchers, ministries, or NGOs to reproduce, extend, or localize the analysis without proprietary dependencies.
-
----
-
-## ETHICS
-
-### 12. What are the main ethical aspects concerning the development and use of the technology?
-
-* **Avoiding Digital Extractivism:** Preventing Global South school environments from being treated merely as data sources or testbeds for foreign technology without local benefit — addressed by making all outputs open-access and directly actionable for local actors.
-* **Exacerbating Educational Inequity:** Ensuring digital initiatives do not widen the gap between affluent urban students and marginalized rural or displaced learners; the framework explicitly centers offline and low-connectivity contexts.
-* **Algorithmic Bias in AI:** Mitigating the risks of deploying generative AI tools trained on Western datasets that misrepresent local cultures or languages; the research critiques rather than uncritically promotes AI adoption.
-* **Data Anonymity:** Ensuring all field survey responses from teachers and innovators are fully anonymized, with no personally identifiable information retained.
-* **Reflexive Positionality:** Acknowledging the researcher's position as a Global North actor analyzing Global South contexts, and counteracting this through participatory survey design and integration of local actor perspectives.
-
----
-
-### 13. Are there relevant regulatory obligations concerning the development and use of this technology?
-
-* **Data Protection & Sovereignty:** Aligning with national data protection legislation — Kenya DPA, South Africa POPIA, Nigeria NDPR — to safeguard student and teacher privacy in survey data handling.
-* **Child Online Protection (COP):** Ensuring minors are protected from unmonitored commercial profiling and harmful online material in school environments covered by the research.
-* **Open Licensing (OER):** Adhering to open licensing frameworks (Creative Commons) to prevent vendor lock-in and enable free contextual re-appropriation of learning resources and analytical tools.
-* **Generative AI Disclosure (UniTO §26):** Full compliance with the Master's programme's mandatory disclosure requirements for AI-assisted work, with interaction logs archived in supplementary materials.
-
----
-
-> *Cross-reference: This document responds to all 13 questions of Analytical Framework 2 (final projects). Answers expand on Analytical Framework 1 (case studies & pilots), incorporating the three additional dimensions: socio-political visions (Q3), modalities of engagement with technology (Q4), and the researcher-as-developer positionality (Q7).*
+*Source: “Final Project Guidelines (Full Master Model), A.Y. 2025–2026.” These answers respond to all 13 questions in Analytical Framework 2; they are not a substitute for the final submission template.*

@@ -1,0 +1,85 @@
+{
+  "script_version": "1.0.0",
+  "generated_utc": "2026-11-05T22:47:26+00:00",
+  "schema_note": "Giga API field names are unverified; columns detected heuristically.",
+  "inputs": [
+    "synthetic demo (KEN, n=3000)"
+  ],
+  "columns_detected": {
+    "lat": "latitude",
+    "lon": "longitude",
+    "geo": null,
+    "id": "school_id",
+    "name": "school_name",
+    "status": "connectivity_status",
+    "speed": "download_speed",
+    "latency": "latency",
+    "coverage": null,
+    "admin1": "admin1",
+    "level": "education_level",
+    "area": "environment",
+    "time": null
+  },
+  "alternatives": {
+    "lat": [],
+    "lon": [],
+    "geo": [],
+    "id": [],
+    "name": [],
+    "status": [],
+    "speed": [],
+    "latency": [],
+    "coverage": [],
+    "admin1": [],
+    "level": [],
+    "area": [],
+    "time": []
+  },
+  "coordinate_source": "latitude / longitude",
+  "coordinates": {
+    "rows": 3000,
+    "kept": 3000,
+    "missing": 0,
+    "out_of_range": 0,
+    "zero_zero": 0,
+    "swapped_lat_lon_fixed": 0
+  },
+  "status": {
+    "source_column": "connectivity_status",
+    "method": "value meaning",
+    "unrecognised_values": {},
+    "counts": {
+      "good": 473,
+      "moderate": 660,
+      "connected": 0,
+      "no": 1687,
+      "unknown": 180
+    }
+  },
+  "html": {
+    "points_shown": 3000,
+    "sampled": false,
+    "view_bounds": [
+      [
+        -5.466,
+        33.3567
+      ],
+      [
+        3.5003,
+        41.1539
+      ]
+    ]
+  },
+  "summary_overall": {
+    "schools": 3000.0,
+    "n_good": 473.0,
+    "n_moderate": 660.0,
+    "n_connected": 0.0,
+    "n_no": 1687.0,
+    "n_unknown": 180.0,
+    "n_known_status": 2820.0,
+    "pct_connected_of_known": 40.2,
+    "pct_no_connectivity_of_known": 59.8,
+    "median_download_mbps": 6.2
+  }
+}

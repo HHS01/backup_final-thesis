@@ -1,0 +1,9 @@
+admin1,schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+Nairobi,610,151,164,0,266,29,581,54.2,45.8,9.14
+Mombasa,540,88,141,0,278,33,507,45.2,54.8,5.4
+Kisumu,396,65,77,0,225,29,367,38.7,61.3,8.7
+Nyeri,368,33,75,0,239,21,347,31.1,68.9,4.65
+Nakuru,362,63,86,0,186,27,335,44.5,55.5,6.0
+Eldoret,348,45,65,0,216,22,326,33.7,66.3,5.88
+Garissa,220,19,32,0,157,12,208,24.5,75.5,4.86
+Lodwar,156,9,20,0,120,7,149,19.5,80.5,4.31
