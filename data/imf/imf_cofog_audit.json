@@ -1,0 +1,64 @@
+{
+  "script_version": "1.0.0",
+  "window": "last 10 years (2017-2026)",
+  "generated_utc": "2026-11-06T19:49:23+00:00",
+  "source": "API https://api.imf.org/external/sdmx/3.0",
+  "rows_read": 704640,
+  "columns_detected": {
+    "country": "COUNTRY",
+    "function": "INDICATOR",
+    "time": "TIME_PERIOD",
+    "value": "OBS_VALUE",
+    "unit": "TYPE_OF_TRANSFORMATION",
+    "sector": "SECTOR",
+    "label": null
+  },
+  "countries_requested": [
+    "KEN",
+    "RWA",
+    "TZA",
+    "MUS",
+    "GHA",
+    "NGA",
+    "ZMB"
+  ],
+  "countries_found": [
+    "KEN",
+    "MUS",
+    "TZA",
+    "ZMB"
+  ],
+  "rows_long": 3381,
+  "share_rows": 2038,
+  "distinct_units": [
+    "POGDP_PT",
+    "POTO_PT",
+    "XDC"
+  ],
+  "distinct_sectors": [
+    "S13",
+    "S1311",
+    "S13112",
+    "S1311B",
+    "S1312MIXED",
+    "S1313MIXED",
+    "S1314",
+    "S1321"
+  ],
+  "latest_year_by_country": {
+    "KEN": 2023,
+    "RWA": 1992,
+    "TZA": 2018,
+    "MUS": 2025,
+    "GHA": 2014,
+    "NGA": 2013,
+    "ZMB": 2024
+  },
+  "caveats": [
+    "do not sum across 'level' values: sub-functions sit inside their aggregate",
+    "coverage patchy and lagged for SSA",
+    "central vs general government differs by country",
+    "missing year means no data, not zero",
+    "COFOG is by purpose, not by programme"
+  ]
+}

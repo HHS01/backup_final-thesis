@@ -1,0 +1,27 @@
+{
+  "script_version": "1.0.0",
+  "window": "2017-2024",
+  "query": "recipient_country_code:(KE OR RW OR TZ OR MU OR GH OR NG OR ZM) AND (sector_code:(111* OR 112* OR 113* OR 114* OR 220*) OR title_narrative:*edtech* OR description_narrative:*edtech*) AND transaction_transaction_date_iso_date:[2017-01-01T00:00:00Z TO 2024-12-31T23:59:59Z]",
+  "countries_requested": [
+    "KEN",
+    "RWA",
+    "TZA",
+    "MUS",
+    "GHA",
+    "NGA",
+    "ZMB"
+  ],
+  "countries_iso2": [
+    "KE",
+    "RW",
+    "TZ",
+    "MU",
+    "GH",
+    "NG",
+    "ZM"
+  ],
+  "generated_utc": "2026-11-06T21:23:42+00:00",
+  "source": "cached iati_transactions.csv",
+  "rows_transactions": 29388,
+  "rows_funding_by_year": 1186
+}

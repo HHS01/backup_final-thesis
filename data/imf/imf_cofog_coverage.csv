@@ -1,0 +1,8 @@
+country,years_any,first_year,latest_year,has_education,has_communication,has_transport,has_total
+KEN,33,1991,2023,True,True,True,True
+RWA,3,1990,1992,False,False,False,True
+TZA,10,2009,2018,True,False,False,True
+MUS,36,1990,2025,True,True,True,True
+GHA,16,1990,2014,True,False,True,True
+NGA,11,2003,2013,True,True,True,True
+ZMB,34,1990,2024,True,True,True,True
