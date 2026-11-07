@@ -208,7 +208,7 @@
       <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-2 flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1" id="tab-nav-systemic">
           <button onclick="switchTab('pilot-tab')" id="btn-pilot-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-sm">
-            4-Country Comparative Deep Dive
+            7-Country Comparative Deep Dive
           </button>
           <button onclick="switchTab('dashboards-tab')" id="btn-dashboards-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
             Interactive Triangulation Engines
@@ -12130,6 +12130,85 @@ const SURVEY_CODEBOOK = [
     }
 
     // Initialize on DOM load
+
+    // =================================================================
+    // INTERACTIVE AUXILIARY ENGINES (GAP CHARTS, DASHBOARDS, CODEBOOK)
+    // =================================================================
+    function showGapChart(gapId) {
+      const img = document.getElementById('gap-chart-img');
+      const caption = document.getElementById('gap-chart-caption');
+      const btn1 = document.getElementById('btn-chart-gap1');
+      const btn2 = document.getElementById('btn-chart-gap2');
+      const btn3 = document.getElementById('btn-chart-gap3');
+
+      [btn1, btn2, btn3].forEach(b => {
+        if (b) b.className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+      });
+
+      const chartData = {
+        'gap1': {
+          src: './data/analysis_b/gap1_connectivity_assumption.png',
+          caption: 'Figure 1: Fixed broadband (<3/100) vs. EdTech solution delivery requirements. Rural energy deficit acts as upstream bottleneck.',
+          btn: btn1
+        },
+        'gap2': {
+          src: './data/analysis_b/gap2_cost_sustainability.png',
+          caption: 'Figure 2: Monthly 1GB educational data cost as % of per-capita GDP. Prohibitive household cost barrier across bottom 40% income deciles.',
+          btn: btn2
+        },
+        'gap3': {
+          src: './data/analysis_b/gap3_linguistic_inclusion.png',
+          caption: 'Figure 3: Generative AI and LLM evaluation accuracy across African vernaculars vs. English. Severe performance cliff in mother-tongue decodables.',
+          btn: btn3
+        }
+      };
+
+      const c = chartData[gapId];
+      if (c) {
+        if (img) img.src = c.src;
+        if (caption) caption.textContent = c.caption;
+        if (c.btn) c.btn.className = 'px-3 py-1.5 text-xs font-semibold rounded-md bg-blue-600 text-white transition';
+      }
+    }
+
+    function switchDashboard(url, title) {
+      const frame = document.getElementById('dash-frame');
+      const titleEl = document.getElementById('dash-title');
+      const linkEl = document.getElementById('dash-direct-link');
+      const loader = document.getElementById('frame-loader');
+      if (loader) loader.classList.remove('hidden');
+      if (frame) frame.src = url;
+      if (titleEl) titleEl.textContent = 'Embedded Interactive Engine: ' + title;
+      if (linkEl) linkEl.href = url;
+    }
+
+    function filterCodebook(pillar) {
+      const rows = document.querySelectorAll('#codebook-table-body tr');
+      let count = 0;
+      rows.forEach(r => {
+        const pCell = r.querySelector('td:first-child')?.textContent || '';
+        if (pillar === 'ALL' || pCell.startsWith(pillar)) {
+          r.style.display = '';
+          count++;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+
+      const badge = document.getElementById('codebook-count-badge');
+      if (badge) {
+        badge.textContent = 'Showing ' + count + (pillar === 'ALL' ? ' Core Mappings' : ' Construct Mappings for ' + pillar);
+      }
+
+      document.querySelectorAll('#pillar-filter-bar .pillar-filter-btn').forEach(btn => {
+        btn.className = 'pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition';
+      });
+      const activeBtn = (typeof event !== 'undefined' && event?.currentTarget) || [...document.querySelectorAll('#pillar-filter-bar .pillar-filter-btn')].find(b => b.textContent.includes(pillar));
+      if (activeBtn) {
+        activeBtn.className = 'pillar-filter-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white transition';
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
 
       renderHeroMetrics('systemic');
