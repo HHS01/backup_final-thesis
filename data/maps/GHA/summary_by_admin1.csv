@@ -1,0 +1,6 @@
+admin1,schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+Accra,883,209,255,0,376,43,840,55.2,44.8,7.18
+Kumasi,721,148,161,0,361,51,670,46.1,53.9,10.19
+Takoradi,484,55,92,0,310,27,457,32.2,67.8,5.1
+Tamale,473,56,88,0,297,32,441,32.7,67.3,5.65
+Cape Coast,439,45,87,0,280,27,412,32.0,68.0,5.25

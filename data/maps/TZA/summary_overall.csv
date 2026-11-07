@@ -1,0 +1,2 @@
+schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+3000,465,678,0,1677,180,2820,40.5,59.5,5.86

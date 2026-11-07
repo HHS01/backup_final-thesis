@@ -1,0 +1,8 @@
+admin1,schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+Lagos,623,159,174,0,262,28,595,56.0,44.0,9.07
+Abuja,589,111,168,0,274,36,553,50.5,49.5,5.65
+Kano,480,92,87,0,261,40,440,40.7,59.3,10.94
+Ibadan,453,56,100,0,267,30,423,36.9,63.1,5.62
+Port Harcourt,342,40,61,0,221,20,322,31.4,68.6,5.51
+Enugu,309,38,60,0,196,15,294,33.3,66.7,4.92
+Maiduguri,204,8,37,0,148,11,193,23.3,76.7,3.66

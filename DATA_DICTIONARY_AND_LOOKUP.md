@@ -17,6 +17,8 @@ This registry provides a complete, auditable mapping of every indicator, metric,
 | `data/processed/survey_data_calibrated.json` | Teacher conditions, airtime tax & hardware status | `scripts/process_survey_data_calibrated.py` | 48 SSA nations | N = 800 respondents | 2024 (Alliance of Alliances) |
 | `data/processed/supply_demand_matrix_data.js` | 48 SSA Demand vs 148 Supply Matrix with proxy badges | `scripts/build_matrix_dataset.py` | 48 SSA nations & 148 EdTech players | 48 countries × 148 players | 2024–2026 |
 | `data/processed/survey_evidence_data.js` | Tri-vantage survey baseline (N=800) & 104-item codebook | `scripts/build_survey_dataset.py` | 48 SSA nations | N = 800 respondents + 104 questions | 2024–2026 (Live Ingestion Ready) |
+| `data/processed/connectivity/ookla_tiles_*.csv` | Ground-truth network speed, latency & device tests (mobile + fixed) | `scripts/fetch_connectivity_data.py` | 7 economies (KEN, RWA, TZA, GHA, NGA, ZMB, MUS) | 41,754 spatial tiles (2024 Q1) | 2024 Q1 (Ookla Open Data, CC BY-NC-SA 4.0) |
+| `data/maps/{ISO3}/` | School GIS mapping, connectivity classification & admin summaries | `scripts/map_giga_schools.py` | 7 economies (KEN, RWA, TZA, GHA, NGA, ZMB, MUS) | 3,000 schools per economy (21,000 total) | 2024–2026 (UNICEF-ITU Giga alignment) |
 
 ---
 

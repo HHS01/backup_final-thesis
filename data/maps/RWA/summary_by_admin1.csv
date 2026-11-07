@@ -1,0 +1,5 @@
+admin1,schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+Kigali,1009,260,323,0,375,51,958,60.9,39.1,7.33
+Huye,717,96,131,0,443,47,670,33.9,66.1,6.39
+Musanze,674,82,135,0,409,48,626,34.7,65.3,5.58
+Rubavu,600,66,103,0,397,34,566,29.9,70.1,5.18

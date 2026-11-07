@@ -1,0 +1,6 @@
+admin1,schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+Dar es Salaam,930,208,254,0,420,48,882,52.4,47.6,7.21
+Mwanza,554,83,118,0,316,37,517,38.9,61.1,6.34
+Dodoma,550,69,112,0,329,40,510,35.5,64.5,5.49
+Arusha,485,57,90,0,308,30,455,32.3,67.7,5.47
+Mbeya,481,48,104,0,304,25,456,33.3,66.7,4.88

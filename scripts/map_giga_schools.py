@@ -415,7 +415,16 @@ CENTRES = {
     "TZA": [("Dar es Salaam", 39.28, -6.80, 1.0), ("Dodoma", 35.74, -6.17, .6), ("Mwanza", 32.90, -2.52, .6),
             ("Arusha", 36.68, -3.37, .5), ("Mbeya", 33.45, -8.90, .5)],
     "UGA": [("Kampala", 32.58, 0.35, 1.0), ("Gulu", 32.30, 2.77, .4), ("Mbarara", 30.65, -0.61, .5),
-            ("Mbale", 34.17, 1.08, .5), ("Jinja", 33.20, 0.43, .5)]}
+            ("Mbale", 34.17, 1.08, .5), ("Jinja", 33.20, 0.43, .5)],
+    "GHA": [("Accra", -0.19, 5.56, 1.0), ("Kumasi", -1.62, 6.69, .8), ("Tamale", -0.84, 9.40, .5),
+            ("Takoradi", -1.76, 4.90, .5), ("Cape Coast", -1.24, 5.11, .4)],
+    "NGA": [("Lagos", 3.38, 6.45, 1.0), ("Abuja", 7.49, 9.07, .9), ("Kano", 8.52, 12.00, .7),
+            ("Ibadan", 3.90, 7.38, .6), ("Port Harcourt", 7.01, 4.77, .5),
+            ("Enugu", 7.49, 6.44, .4), ("Maiduguri", 13.16, 11.85, .3)],
+    "ZMB": [("Lusaka", 28.28, -15.42, 1.0), ("Ndola", 28.63, -12.97, .6), ("Kitwe", 28.21, -12.80, .6),
+            ("Livingstone", 25.86, -17.85, .4), ("Kasama", 31.19, -10.21, .3)],
+    "MUS": [("Port Louis", 57.50, -20.16, 1.0), ("Beau Bassin", 57.47, -20.22, .7),
+            ("Vacoas", 57.48, -20.30, .6), ("Curepipe", 57.52, -20.32, .5)]}
 
 
 def demo_schools(iso3: str, n: int = 3000, seed: int = 7) -> pd.DataFrame:
@@ -656,7 +665,7 @@ def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--schools", help="schools file (.csv/.parquet/.json/.geojson)")
     ap.add_argument("--connectivity", help="optional connectivity file, joined on a shared school id")
-    ap.add_argument("--demo", metavar="ISO3", help="synthetic demo data for KEN RWA SLE TZA UGA")
+    ap.add_argument("--demo", metavar="ISO3", help="synthetic demo data for KEN RWA TZA UGA SLE GHA NGA ZMB MUS")
     ap.add_argument("--n-demo", type=int, default=3000)
     ap.add_argument("--out", default="data/maps")
     ap.add_argument("--label", help="name shown in titles (default: file name)")

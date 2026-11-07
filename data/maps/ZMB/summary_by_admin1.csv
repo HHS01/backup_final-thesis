@@ -1,0 +1,6 @@
+admin1,schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+Lusaka,1034,228,289,0,463,54,980,52.8,47.2,6.86
+Kitwe,648,95,137,0,368,48,600,38.7,61.3,6.25
+Ndola,578,94,117,0,331,36,542,38.9,61.1,7.42
+Livingstone,429,44,75,0,287,23,406,29.3,70.7,4.68
+Kasama,311,22,52,0,218,19,292,25.3,74.7,4.81

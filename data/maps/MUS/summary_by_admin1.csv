@@ -1,0 +1,5 @@
+admin1,schools,n_good,n_moderate,n_connected,n_no,n_unknown,n_known_status,pct_connected_of_known,pct_no_connectivity_of_known,median_download_mbps
+Port Louis,1147,263,311,0,503,70,1077,53.3,46.7,7.3
+Curepipe,937,124,198,0,558,57,880,36.6,63.4,5.75
+Vacoas,507,84,122,0,271,30,477,43.2,56.8,6.18
+Beau Bassin,409,95,88,0,204,22,387,47.3,52.7,12.81
