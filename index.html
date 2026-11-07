@@ -441,18 +441,31 @@
                 </p>
               </div>
 
-              <!-- Live Urban vs Rural Demographic Toggle -->
-              <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200">
-                <span class="text-[11px] font-bold text-slate-500 uppercase px-2.5">Demographic Filter:</span>
-                <button onclick="setDemographicSegment('national')" id="btn-seg-national" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition">
-                  National
-                </button>
-                <button onclick="setDemographicSegment('urban')" id="btn-seg-urban" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
-                  Urban (30%)
-                </button>
-                <button onclick="setDemographicSegment('rural')" id="btn-seg-rural" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
-                  Rural (70%)
-                </button>
+              <div class="flex flex-wrap items-center gap-3">
+                <!-- Afrobarometer Round Longitudinal Toggle -->
+                <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200">
+                  <span class="text-[11px] font-bold text-slate-500 uppercase px-2.5">Citizen Voice Round:</span>
+                  <button onclick="setAfrobarometerRound('r9')" id="btn-ab-r9" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition">
+                    Round 9 (2021-23) [Baseline]
+                  </button>
+                  <button onclick="setAfrobarometerRound('r10')" id="btn-ab-r10" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                    Round 10 (2024-25) [Trend]
+                  </button>
+                </div>
+
+                <!-- Live Urban vs Rural Demographic Toggle -->
+                <div class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200">
+                  <span class="text-[11px] font-bold text-slate-500 uppercase px-2.5">Demographic Filter:</span>
+                  <button onclick="setDemographicSegment('national')" id="btn-seg-national" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition">
+                    National
+                  </button>
+                  <button onclick="setDemographicSegment('urban')" id="btn-seg-urban" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                    Urban (30%)
+                  </button>
+                  <button onclick="setDemographicSegment('rural')" id="btn-seg-rural" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
+                    Rural (70%)
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -477,7 +490,7 @@
                     <div class="p-2">
                       <span class="text-[10px] text-slate-500 block uppercase">Ed Priority #1-3</span>
                       <span id="quad-cit-priority" class="text-base font-extrabold text-blue-700">18.6%</span>
-                      <span class="text-[9px] text-slate-400 block mt-0.5">Afrobarometer</span>
+                      <span id="quad-cit-ab-label" class="text-[9px] text-slate-400 block mt-0.5">Afrobarometer R9</span>
                     </div>
                     <div class="p-2 border-x border-slate-200/60">
                       <span class="text-[10px] text-slate-500 block uppercase">State Dissatisfaction</span>
@@ -487,7 +500,7 @@
                     <div class="p-2">
                       <span class="text-[10px] text-slate-500 block uppercase">Foundational Literacy</span>
                       <span id="quad-cit-lit" class="text-base font-extrabold text-amber-700">41.6%</span>
-                      <span class="text-[9px] text-slate-400 block mt-0.5">Uwezo Grade 3-5</span>
+                      <span id="quad-cit-lit-label" class="text-[9px] text-slate-400 block mt-0.5">Uwezo Grade 3-5</span>
                     </div>
                   </div>
                 </div>
@@ -6161,6 +6174,7 @@ const MACRO_FISCAL_DATA = {
     // =================================================================
     let _activeIso = 'KEN';
     let _activeSegment = 'national';
+    let _activeAfrobarometerRound = 'r9';
     let _tab3ActiveIso = 'RWA';
 
     const countryData = {
@@ -6185,9 +6199,16 @@ const MACRO_FISCAL_DATA = {
           countryDesc: 'Triangulating citizen demand, frontline teacher constraints, verified delivery modalities, and macro policy allocations to eliminate the statistical "data desert."',
           urbanRatio: '30%', ruralRatio: '70%',
           demographics: {
-            national: { citPriority: '18.6%', citDissat: '36.2%', citLit: '41.6%', tchPtr: '30.7:1', modAccess: 'Phone: 91% · Radio: 62% · TV: 45%', polElec: '82.6%' },
-            urban:    { citPriority: '16.0%', citDissat: '30.9%', citLit: '54.2%', tchPtr: '28.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '95.0%' },
-            rural:    { citPriority: '20.0%', citDissat: '39.0%', citLit: '36.8%', tchPtr: '50.0:1', modAccess: 'Phone: 88% · Radio: 59% · TV: 32%', polElec: '67.1%' }
+            r9: {
+              national: { citPriority: '18.6%', citDissat: '36.2%', citLit: '41.6%', tchPtr: '30.7:1', modAccess: 'Phone: 91% · Radio: 62% · TV: 45%', polElec: '82.6%' },
+              urban:    { citPriority: '16.0%', citDissat: '30.9%', citLit: '54.2%', tchPtr: '28.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '95.0%' },
+              rural:    { citPriority: '20.0%', citDissat: '39.0%', citLit: '36.8%', tchPtr: '50.0:1', modAccess: 'Phone: 88% · Radio: 59% · TV: 32%', polElec: '67.1%' }
+            },
+            r10: {
+              national: { citPriority: '23.8%', citDissat: '45.1%', citLit: '41.6%', tchPtr: '30.7:1', modAccess: 'Phone: 91% · Radio: 62% · TV: 45%', polElec: '82.6%' },
+              urban:    { citPriority: '22.6%', citDissat: '46.4%', citLit: '54.2%', tchPtr: '28.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '95.0%' },
+              rural:    { citPriority: '24.4%', citDissat: '44.4%', citLit: '36.8%', tchPtr: '50.0:1', modAccess: 'Phone: 88% · Radio: 59% · TV: 32%', polElec: '67.1%' }
+            }
           },
           lens1: {
             source: 'Afrobarometer R9 · Uwezo',
@@ -6247,9 +6268,16 @@ const MACRO_FISCAL_DATA = {
           countryDesc: 'Triangulating Vision 2050 Smart Master Plan targets against a 59.5:1 classroom ratio, the post-2008 English switch, and 7.6% per-capita data cost burdens.',
           urbanRatio: '18%', ruralRatio: '82%',
           demographics: {
-            national: { citPriority: '15.4%', citDissat: '29.8%', citLit: '48.2%', tchPtr: '59.5:1', modAccess: 'Phone: 86% · Radio: 74% · TV: 19%', polElec: '60.8%' },
-            urban:    { citPriority: '13.2%', citDissat: '24.5%', citLit: '62.0%', tchPtr: '44.0:1', modAccess: 'Phone: 94% · Radio: 78% · TV: 48%', polElec: '91.5%' },
-            rural:    { citPriority: '17.0%', citDissat: '33.2%', citLit: '41.5%', tchPtr: '68.2:1', modAccess: 'Phone: 81% · Radio: 72% · TV: 8%',  polElec: '51.2%' }
+            r9: {
+              national: { citPriority: '15.4%', citDissat: '29.8%', citLit: '48.2%', tchPtr: '59.5:1', modAccess: 'Phone: 86% · Radio: 74% · TV: 19%', polElec: '60.8%' },
+              urban:    { citPriority: '13.2%', citDissat: '24.5%', citLit: '62.0%', tchPtr: '44.0:1', modAccess: 'Phone: 94% · Radio: 78% · TV: 48%', polElec: '91.5%' },
+              rural:    { citPriority: '17.0%', citDissat: '33.2%', citLit: '41.5%', tchPtr: '68.2:1', modAccess: 'Phone: 81% · Radio: 72% · TV: 8%',  polElec: '51.2%' }
+            },
+            r10: {
+              national: { citPriority: '15.4%', citDissat: '29.8%', citLit: '48.2%', tchPtr: '59.5:1', modAccess: 'Phone: 86% · Radio: 74% · TV: 19%', polElec: '60.8%' },
+              urban:    { citPriority: '13.2%', citDissat: '24.5%', citLit: '62.0%', tchPtr: '44.0:1', modAccess: 'Phone: 94% · Radio: 78% · TV: 48%', polElec: '91.5%' },
+              rural:    { citPriority: '17.0%', citDissat: '33.2%', citLit: '41.5%', tchPtr: '68.2:1', modAccess: 'Phone: 81% · Radio: 72% · TV: 8%',  polElec: '51.2%' }
+            }
           },
           lens1: {
             source: 'Rwanda Ministry / Afrobarometer',
@@ -6309,9 +6337,16 @@ const MACRO_FISCAL_DATA = {
           countryDesc: 'Triangulating a unified national Kiswahili primary curriculum and 99.2% qualified teachers against an acute rural energy desert (33.7%) and 50.6:1 pupil-teacher crowding.',
           urbanRatio: '37%', ruralRatio: '63%',
           demographics: {
-            national: { citPriority: '21.3%', citDissat: '34.5%', citLit: '52.0%', tchPtr: '50.6:1', modAccess: 'Phone: 88% · Radio: 69% · TV: 28%', polElec: '37.3%' },
-            urban:    { citPriority: '18.5%', citDissat: '28.0%', citLit: '66.5%', tchPtr: '41.2:1', modAccess: 'Phone: 95% · Radio: 72% · TV: 58%', polElec: '78.4%' },
-            rural:    { citPriority: '23.0%', citDissat: '38.2%', citLit: '44.0%', tchPtr: '58.0:1', modAccess: 'Phone: 83% · Radio: 67% · TV: 12%', polElec: '21.5%' }
+            r9: {
+              national: { citPriority: '15.3%', citDissat: '17.7%', citLit: '52.0%', tchPtr: '50.6:1', modAccess: 'Phone: 88% · Radio: 69% · TV: 28%', polElec: '37.3%' },
+              urban:    { citPriority: '14.6%', citDissat: '15.9%', citLit: '66.5%', tchPtr: '41.2:1', modAccess: 'Phone: 95% · Radio: 72% · TV: 58%', polElec: '78.4%' },
+              rural:    { citPriority: '15.7%', citDissat: '18.8%', citLit: '44.0%', tchPtr: '58.0:1', modAccess: 'Phone: 83% · Radio: 67% · TV: 12%', polElec: '21.5%' }
+            },
+            r10: {
+              national: { citPriority: '16.6%', citDissat: '18.0%', citLit: '52.0%', tchPtr: '50.6:1', modAccess: 'Phone: 88% · Radio: 69% · TV: 28%', polElec: '37.3%' },
+              urban:    { citPriority: '15.7%', citDissat: '16.7%', citLit: '66.5%', tchPtr: '41.2:1', modAccess: 'Phone: 95% · Radio: 72% · TV: 58%', polElec: '78.4%' },
+              rural:    { citPriority: '17.1%', citDissat: '18.8%', citLit: '44.0%', tchPtr: '58.0:1', modAccess: 'Phone: 83% · Radio: 67% · TV: 12%', polElec: '21.5%' }
+            }
           },
           lens1: {
             source: 'Twaweza Niambie · Uwezo Tanzania',
@@ -6371,9 +6406,16 @@ const MACRO_FISCAL_DATA = {
           countryDesc: 'Triangulating a high general electrification rate (91.9%) and low PTR (27:1) against a curious 25% primary school wiring registry and English-Akan linguistic friction.',
           urbanRatio: '58%', ruralRatio: '42%',
           demographics: {
-            national: { citPriority: '14.8%', citDissat: '31.2%', citLit: '58.4%', tchPtr: '27.0:1', modAccess: 'Phone: 93% · Radio: 68% · TV: 61%', polElec: '25.0%' },
-            urban:    { citPriority: '12.0%', citDissat: '26.4%', citLit: '68.0%', tchPtr: '23.5:1', modAccess: 'Phone: 97% · Radio: 70% · TV: 82%', polElec: '48.0%' },
-            rural:    { citPriority: '18.2%', citDissat: '37.0%', citLit: '46.0%', tchPtr: '32.0:1', modAccess: 'Phone: 87% · Radio: 65% · TV: 36%', polElec: '14.2%' }
+            r9: {
+              national: { citPriority: '27.1%', citDissat: '60.4%', citLit: '58.4%', tchPtr: '27.0:1', modAccess: 'Phone: 93% · Radio: 68% · TV: 61%', polElec: '25.0%' },
+              urban:    { citPriority: '23.3%', citDissat: '58.1%', citLit: '68.0%', tchPtr: '23.5:1', modAccess: 'Phone: 97% · Radio: 70% · TV: 82%', polElec: '48.0%' },
+              rural:    { citPriority: '32.7%', citDissat: '63.9%', citLit: '46.0%', tchPtr: '32.0:1', modAccess: 'Phone: 87% · Radio: 65% · TV: 36%', polElec: '14.2%' }
+            },
+            r10: {
+              national: { citPriority: '27.2%', citDissat: '47.6%', citLit: '58.4%', tchPtr: '27.0:1', modAccess: 'Phone: 93% · Radio: 68% · TV: 61%', polElec: '25.0%' },
+              urban:    { citPriority: '25.4%', citDissat: '45.4%', citLit: '68.0%', tchPtr: '23.5:1', modAccess: 'Phone: 97% · Radio: 70% · TV: 82%', polElec: '48.0%' },
+              rural:    { citPriority: '30.1%', citDissat: '51.1%', citLit: '46.0%', tchPtr: '32.0:1', modAccess: 'Phone: 87% · Radio: 65% · TV: 36%', polElec: '14.2%' }
+            }
           },
           lens1: {
             source: 'Afrobarometer Ghana R9 · CDD',
@@ -6433,9 +6475,16 @@ const MACRO_FISCAL_DATA = {
           countryDesc: 'Triangulating Africa’s largest EdTech startup venture hub ($9,100 GDP PPP) against a 3% federal education budget and 23.5% rural electrification.',
           urbanRatio: '53%', ruralRatio: '47%',
           demographics: {
-            national: { citPriority: '24.2%', citDissat: '46.8%', citLit: '49.5%', tchPtr: '45.0:1', modAccess: 'Phone: 90% · Radio: 65% · TV: 44%', polElec: '28.0%' },
-            urban:    { citPriority: '20.0%', citDissat: '41.2%', citLit: '66.0%', tchPtr: '35.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '62.0%' },
-            rural:    { citPriority: '28.5%', citDissat: '52.0%', citLit: '34.0%', tchPtr: '58.0:1', modAccess: 'Phone: 84% · Radio: 62% · TV: 18%', polElec: '12.0%' }
+            r9: {
+              national: { citPriority: '19.1%', citDissat: '73.1%', citLit: '49.5%', tchPtr: '45.0:1', modAccess: 'Phone: 90% · Radio: 65% · TV: 44%', polElec: '28.0%' },
+              urban:    { citPriority: '16.3%', citDissat: '74.3%', citLit: '66.0%', tchPtr: '35.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '62.0%' },
+              rural:    { citPriority: '21.2%', citDissat: '72.2%', citLit: '34.0%', tchPtr: '58.0:1', modAccess: 'Phone: 84% · Radio: 62% · TV: 18%', polElec: '12.0%' }
+            },
+            r10: {
+              national: { citPriority: '14.2%', citDissat: '76.6%', citLit: '49.5%', tchPtr: '45.0:1', modAccess: 'Phone: 90% · Radio: 65% · TV: 44%', polElec: '28.0%' },
+              urban:    { citPriority: '13.0%', citDissat: '78.6%', citLit: '66.0%', tchPtr: '35.0:1', modAccess: 'Phone: 96% · Radio: 68% · TV: 72%', polElec: '62.0%' },
+              rural:    { citPriority: '15.0%', citDissat: '75.1%', citLit: '34.0%', tchPtr: '58.0:1', modAccess: 'Phone: 84% · Radio: 62% · TV: 18%', polElec: '12.0%' }
+            }
           },
           lens1: {
             source: 'Afrobarometer Nigeria R9 · CLEEN',
@@ -6495,9 +6544,16 @@ const MACRO_FISCAL_DATA = {
           countryDesc: 'Triangulating a 31% rural electricity rate and 73-language fragmentation against recent free secondary education expansion policy.',
           urbanRatio: '45%', ruralRatio: '55%',
           demographics: {
-            national: { citPriority: '19.4%', citDissat: '39.8%', citLit: '38.5%', tchPtr: '42.1:1', modAccess: 'Phone: 82% · Radio: 58% · TV: 34%', polElec: '36.4%' },
-            urban:    { citPriority: '16.0%', citDissat: '32.0%', citLit: '52.0%', tchPtr: '34.0:1', modAccess: 'Phone: 92% · Radio: 64% · TV: 62%', polElec: '74.0%' },
-            rural:    { citPriority: '22.5%', citDissat: '45.0%', citLit: '27.0%', tchPtr: '51.0:1', modAccess: 'Phone: 74% · Radio: 52% · TV: 11%', polElec: '14.0%' }
+            r9: {
+              national: { citPriority: '16.9%', citDissat: '15.6%', citLit: '38.5%', tchPtr: '42.1:1', modAccess: 'Phone: 82% · Radio: 58% · TV: 34%', polElec: '36.4%' },
+              urban:    { citPriority: '11.2%', citDissat: '13.4%', citLit: '52.0%', tchPtr: '34.0:1', modAccess: 'Phone: 92% · Radio: 64% · TV: 62%', polElec: '74.0%' },
+              rural:    { citPriority: '21.7%', citDissat: '17.3%', citLit: '27.0%', tchPtr: '51.0:1', modAccess: 'Phone: 74% · Radio: 52% · TV: 11%', polElec: '14.0%' }
+            },
+            r10: {
+              national: { citPriority: '13.6%', citDissat: '15.8%', citLit: '38.5%', tchPtr: '42.1:1', modAccess: 'Phone: 82% · Radio: 58% · TV: 34%', polElec: '36.4%' },
+              urban:    { citPriority: '9.3%',  citDissat: '15.2%', citLit: '52.0%', tchPtr: '34.0:1', modAccess: 'Phone: 92% · Radio: 64% · TV: 62%', polElec: '74.0%' },
+              rural:    { citPriority: '16.4%', citDissat: '16.2%', citLit: '27.0%', tchPtr: '51.0:1', modAccess: 'Phone: 74% · Radio: 52% · TV: 11%', polElec: '14.0%' }
+            }
           },
           lens1: {
             source: 'Afrobarometer Zambia R9',
@@ -6557,9 +6613,16 @@ const MACRO_FISCAL_DATA = {
           countryDesc: 'Operating as the upper-bound empirical control: 100% school power, 28/100 fixed broadband, and 16.2:1 pupil-teacher ratio prove what works when infrastructure is solved.',
           urbanRatio: '41%', ruralRatio: '59%',
           demographics: {
-            national: { citPriority: '8.2%', citDissat: '14.5%', citLit: '89.2%', tchPtr: '16.2:1', modAccess: 'Phone: 99% · Radio: 82% · TV: 96%', polElec: '100.0%' },
-            urban:    { citPriority: '7.5%', citDissat: '12.0%', citLit: '92.0%', tchPtr: '15.0:1', modAccess: 'Phone: 100% · Radio: 84% · TV: 98%', polElec: '100.0%' },
-            rural:    { citPriority: '8.8%', citDissat: '16.2%', citLit: '87.0%', tchPtr: '17.0:1', modAccess: 'Phone: 98% · Radio: 80% · TV: 95%', polElec: '100.0%' }
+            r9: {
+              national: { citPriority: '3.8%', citDissat: '51.1%', citLit: '89.2%', tchPtr: '16.2:1', modAccess: 'Phone: 99% · Radio: 82% · TV: 96%', polElec: '100.0%' },
+              urban:    { citPriority: '4.1%', citDissat: '55.5%', citLit: '92.0%', tchPtr: '15.0:1', modAccess: 'Phone: 100% · Radio: 84% · TV: 98%', polElec: '100.0%' },
+              rural:    { citPriority: '3.6%', citDissat: '48.0%', citLit: '87.0%', tchPtr: '17.0:1', modAccess: 'Phone: 98% · Radio: 80% · TV: 95%', polElec: '100.0%' }
+            },
+            r10: {
+              national: { citPriority: '3.2%', citDissat: '27.3%', citLit: '89.2%', tchPtr: '16.2:1', modAccess: 'Phone: 99% · Radio: 82% · TV: 96%', polElec: '100.0%' },
+              urban:    { citPriority: '2.2%', citDissat: '26.3%', citLit: '92.0%', tchPtr: '15.0:1', modAccess: 'Phone: 100% · Radio: 84% · TV: 98%', polElec: '100.0%' },
+              rural:    { citPriority: '3.9%', citDissat: '27.9%', citLit: '87.0%', tchPtr: '17.0:1', modAccess: 'Phone: 98% · Radio: 80% · TV: 95%', polElec: '100.0%' }
+            }
           },
           lens1: {
             source: 'Statistics Mauritius · Afrobarometer',
@@ -6731,8 +6794,28 @@ const MACRO_FISCAL_DATA = {
       renderDemographics(iso, segment);
     }
 
+    function setAfrobarometerRound(round) {
+      _activeAfrobarometerRound = round;
+      const btnR9 = document.getElementById('btn-ab-r9');
+      const btnR10 = document.getElementById('btn-ab-r10');
+      if (btnR9 && btnR10) {
+        if (round === 'r9') {
+          btnR9.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
+          btnR10.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
+        } else {
+          btnR10.className = 'px-3 py-1.5 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
+          btnR9.className = 'px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition';
+        }
+      }
+      renderDemographics(_activeIso, _activeSegment);
+    }
+
     function renderDemographics(iso, segment) {
-      const d = countryData[iso]?.deepDive?.demographics[segment];
+      const dd = countryData[iso]?.deepDive;
+      if (!dd) return;
+      const round = _activeAfrobarometerRound || 'r9';
+      const roundData = dd.demographics?.[round] || dd.demographics;
+      const d = roundData?.[segment] || dd.demographics?.[segment];
       if (!d) return;
 
       if (document.getElementById('quad-cit-priority')) document.getElementById('quad-cit-priority').textContent = d.citPriority;
@@ -6741,6 +6824,37 @@ const MACRO_FISCAL_DATA = {
       if (document.getElementById('quad-tch-ptr')) document.getElementById('quad-tch-ptr').textContent = d.tchPtr;
       if (document.getElementById('quad-mod-access')) document.getElementById('quad-mod-access').textContent = d.modAccess;
       if (document.getElementById('quad-pol-elec')) document.getElementById('quad-pol-elec').textContent = d.polElec;
+
+      // Update dynamic sub-labels based on country and round
+      const abLabel = document.getElementById('quad-cit-ab-label');
+      if (abLabel) {
+        if (iso === 'RWA') {
+          abLabel.textContent = 'RGB Report Card';
+        } else {
+          abLabel.textContent = round === 'r10' ? 'Afrobarometer R10' : 'Afrobarometer R9';
+        }
+      }
+
+      const litLabel = document.getElementById('quad-cit-lit-label');
+      if (litLabel) {
+        if (iso === 'KEN') litLabel.textContent = 'Uwezo Grade 3-5';
+        else if (iso === 'TZA') litLabel.textContent = 'Uwezo TZA Gr 3-5';
+        else if (iso === 'RWA') litLabel.textContent = 'LARS / SDI Gr 3-5';
+        else if (iso === 'GHA') litLabel.textContent = 'NSAT / ICAN Gr 4';
+        else if (iso === 'NGA') litLabel.textContent = 'NEDS / ICAN Gr 4-6';
+        else if (iso === 'ZMB') litLabel.textContent = 'NAS / SACMEQ Gr 5';
+        else if (iso === 'MUS') litLabel.textContent = 'SACMEQ / PISA-D';
+      }
+
+      const lens1Source = document.getElementById('lens1-source');
+      if (lens1Source) {
+        if (iso === 'RWA') {
+          lens1Source.textContent = 'RGB Citizen Report Card · World Bank SDI';
+        } else {
+          const assessSource = (iso === 'KEN' || iso === 'TZA') ? 'Uwezo' : (iso === 'GHA' || iso === 'NGA' ? 'PAL Network / SDI' : (iso === 'ZMB' ? 'NAS / SACMEQ' : 'SACMEQ'));
+          lens1Source.textContent = (round === 'r10' ? 'Afrobarometer R10 (2024-25)' : 'Afrobarometer R9 (2021-23)') + ' · ' + assessSource;
+        }
+      }
     }
 
     // Demographic Filter Toggle

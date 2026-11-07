@@ -212,6 +212,11 @@ The repository contains an automated test suite executed with `pytest`:
 | `d623606` | Nov 4, 2026 | 7-Country ecosystem deep dives & Giga maps | Rwanda, Tanzania, Ghana, Nigeria profiles; Giga school connectivity panel; 16-quote field voice strip |
 | `980aa5d` | Nov 5, 2026 | 4-Feature decision upgrade & presentation deck | Dual Gatekeeping (Teacher + SMC), TaRL rotations, Supply-Demand Matrix, AoA Codebook (`data/AoA_Survey_to_Pillar_Codebook.md`), Giga mapping (`scripts/map_giga_schools.py`), `build_checkin_deck.py`, `Project_Idea_Check-in.pptx` |
 | `3059af6` | Nov 6, 2026 | Macro-Fiscal & Aid Observatory (IMF + IATI) | `fetch_imf_cofog.py`, `fetch_iati_funding.py`, `compile_macro_fiscal_indicators.py`, `test_*.py` test suite, Digital Recurrent Cliff quad-lens in `index.html` (29,388 transactions, $1.84B aid) |
+| `8c589a6` | Nov 7, 2026 | Thesis critique resolution & automated decision test suite | `data/data_provenance_registry.json`, `test_decision_logic.py` (15 regression tests), reframed macro-fiscal indicators |
+| `99b82a8` | Nov 7, 2026 | Multi-country Ookla 2024Q1 tiles & Giga maps | 41,754 cellular tiles across 7 economies, Giga school mapping pipelines |
+| `15f357e` | Nov 7, 2026 | Multi-country documentation & data transparency | `README.md`, `WORK_SUMMARY.md`, `DATA_DICTIONARY_AND_LOOKUP.md` |
+| `190b35b` | Nov 7, 2026 | Afrobarometer R9 & R10 multi-country panel ingestion | 12 country-round processed files (KEN, TZA, GHA, NGA, ZMB, MUS), longitudinal comparison |
+| `HEAD` | Nov 7, 2026 | Afrobarometer R9/R10 longitudinal toggle & Uwezo Tanzania extraction | `index.html` dynamic R9 vs R10 toggle across 7 economies, `data/raw/uwezo_tanzania_national_summary.csv`, `data/processed/uwezo_TZA_latest.json` |
 
 ---
 

@@ -14,6 +14,7 @@ This registry provides a complete, auditable mapping of every indicator, metric,
 | `data/processed/afrobarometer_{ISO3}_r9.json` | Citizen demand, national problem ranking, delivery satisfaction | `scripts/extract_afrobarometer_education.py` | 6 SSA economies (KEN, TZA, GHA, NGA, ZMB, MUS) | N = 11,169 citizens (weighted) | 2021–2023 (Round 9 Merged Panel) |
 | `data/processed/afrobarometer_{ISO3}_r10.json` | Longitudinal citizen sentiment & government performance comparison | `scripts/extract_afrobarometer_education.py` | 6 SSA economies (KEN, TZA, GHA, NGA, ZMB, MUS) | N = 11,200 citizens (weighted) | 2024–2025 (Round 10 Merged Panel) |
 | `data/processed/uwezo_KEN_latest.json` | Foundational literacy/numeracy & household devices | `scripts/extract_citizen_assessments.py` | Kenya (National, Urban, Rural, Sex) | N = 135,000 children | 2021–2023 (6th/7th Assessments) |
+| `data/processed/uwezo_TZA_latest.json` | Foundational literacy/numeracy & household devices | `scripts/extract_citizen_assessments.py` | Tanzania (National, Urban, Rural, Sex) | N = 108,000 children | 2021–2023 (Twaweza Uwezo Assessments) |
 | `data/processed/modality_reach_KEN.json` | Empirical delivery reach, access & friction indices | `scripts/compile_modality_reach.py` | Kenya | Multi-study synthesis | 2020–2024 |
 | `data/processed/survey_data_calibrated.json` | Teacher conditions, airtime tax & hardware status | `scripts/process_survey_data_calibrated.py` | 48 SSA nations | N = 800 respondents | 2024 (Alliance of Alliances) |
 | `data/processed/supply_demand_matrix_data.js` | 48 SSA Demand vs 148 Supply Matrix with proxy badges | `scripts/build_matrix_dataset.py` | 48 SSA nations & 148 EdTech players | 48 countries × 148 players | 2024–2026 |
@@ -94,12 +95,18 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 
 ---
 
-## 4. Ground-Truth Layer 2: Citizen Assessments (`uwezo_KEN_latest.json`)
+## 4. Ground-Truth Layer 2: Citizen Assessments (`uwezo_KEN_latest.json` & `uwezo_TZA_latest.json`)
 
-* **Source:** Usawa Agenda (Uwezo Kenya 6th & 7th National Learning Assessments, 2021–2023).
-* **Sample Size:** $N = 135,000$ assessed children across households.
-* **Raw Input:** `data/raw/uwezo_kenya_national_summary.csv`
+* **Sources:** Usawa Agenda (Uwezo Kenya 6th & 7th National Learning Assessments, 2021–2023) and Twaweza East Africa (Uwezo Tanzania National Learning Assessments, 2021–2023).
+* **Sample Size:** $N = 135,000$ assessed children across Kenya; $N = 108,000$ assessed children across Tanzania Mainland.
+* **Raw Inputs:** `data/raw/uwezo_kenya_national_summary.csv` and `data/raw/uwezo_tanzania_national_summary.csv`.
+* **Institutional Coverage Scope:** Uwezo Citizen-Led Assessments (CLAs) operate exclusively in East Africa across **Kenya, Tanzania, and Uganda**. For the remaining focus economies:
+  * **Rwanda:** Non-Uwezo jurisdiction; citizen assessments are constrained. Governed by Ministry LARS and World Bank Service Delivery Indicators (SDI).
+  * **Ghana & Nigeria:** PAL Network ICAN assessments, National Standardised Assessment Test (NSAT), and Nigeria Education Data Survey (NEDS).
+  * **Zambia:** National Assessment Survey (NAS) and SACMEQ.
+  * **Mauritius:** SACMEQ and national high-proficiency benchmarks.
 
+### Kenya Uwezo Assessment Benchmark
 | Metric | Target Population | National (%) | Urban (%) | Rural (%) | Gender Split (M / F) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Foundational Literacy** | Grade 3–5 pupils reading Grade 2 story | **41.6%** | **54.2%** | **36.8%** | 39.5% (Boys) / 43.8% (Girls) |
@@ -108,6 +115,16 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 | **Household Radio** | All households owning working radio | **62.0%** | **68.0%** | **59.0%** | Key broadcast vehicle for remote learning |
 | **Household Television** | All households owning working TV | **45.0%** | **72.0%** | **32.0%** | Severe urban-rural disparity |
 | **Household Mobile Phone** | All households owning mobile phone | **91.0%** | **96.0%** | **88.0%** | Universal reach for SMS/USSD interventions |
+
+### Tanzania Uwezo Assessment Benchmark
+| Metric | Target Population | National (%) | Urban (%) | Rural (%) | Gender Split (M / F) |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Foundational Literacy** | Grade 3–5 pupils reading Grade 2 story (Kiswahili) | **52.0%** | **66.5%** | **44.0%** | 49.8% (Boys) / 54.2% (Girls) |
+| **Foundational Numeracy** | Grade 3–5 pupils solving Grade 2 arithmetic/subtraction | **51.5%** | **64.0%** | **45.2%** | 52.1% (Boys) / 50.9% (Girls) |
+| **Out-of-School Rate** | Children ages 6–16 not enrolled | **9.2%** | **5.8%** | **11.4%** | Elevated in pastoral/rural zones |
+| **Household Radio** | All households owning working radio | **69.0%** | **72.0%** | **67.0%** | Dominant reach across rural districts |
+| **Household Television** | All households owning working TV | **28.0%** | **58.0%** | **12.0%** | Sharp urban concentration (Dar es Salaam) |
+| **Household Mobile Phone** | All households owning mobile phone | **88.0%** | **95.0%** | **83.0%** | Broad foundation for micro-learning |
 
 ---
 

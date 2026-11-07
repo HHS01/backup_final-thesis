@@ -1,0 +1,234 @@
+{
+  "metadata": {
+    "country_iso3": "TZA",
+    "country_label_in_file": null,
+    "data_year": 2023,
+    "data_year_source": "--year (no year column to filter on)",
+    "years_in_file": [],
+    "mode": "summary",
+    "scale": "percentages on a 0-100 scale; 'n' is the unweighted valid base (summary mode: summed sample sizes, if a count column exists)",
+    "source_file": "uwezo_tanzania_national_summary.csv",
+    "sheet": null,
+    "rows_read": 1,
+    "rows_used": 1,
+    "extraction_timestamp_utc": "2026-11-07T19:40:37+00:00",
+    "script_version": "1.0.0"
+  },
+  "indicators": {
+    "foundational_literacy": {
+      "status": "ok",
+      "variable": "read_story_pct",
+      "label": "",
+      "derived_as": "as given",
+      "weight_variable": "sample_size",
+      "estimates": {
+        "national": {
+          "pct": 52.0,
+          "n": 108000,
+          "n_units": 1
+        },
+        "urban": {
+          "pct": 66.5,
+          "n": 108000,
+          "n_units": 1
+        },
+        "rural": {
+          "pct": 44.0,
+          "n": 108000,
+          "n_units": 1
+        },
+        "male": {
+          "pct": 49.8,
+          "n": 108000,
+          "n_units": 1
+        },
+        "female": {
+          "pct": 54.2,
+          "n": 108000,
+          "n_units": 1
+        }
+      }
+    },
+    "foundational_numeracy": {
+      "status": "ok",
+      "variable": "math_subtraction_pct",
+      "label": "",
+      "derived_as": "as given",
+      "weight_variable": "sample_size",
+      "estimates": {
+        "national": {
+          "pct": 51.5,
+          "n": 108000,
+          "n_units": 1
+        },
+        "urban": {
+          "pct": 64.0,
+          "n": 108000,
+          "n_units": 1
+        },
+        "rural": {
+          "pct": 45.2,
+          "n": 108000,
+          "n_units": 1
+        },
+        "male": {
+          "pct": 52.1,
+          "n": 108000,
+          "n_units": 1
+        },
+        "female": {
+          "pct": 50.9,
+          "n": 108000,
+          "n_units": 1
+        }
+      }
+    },
+    "out_of_school_children": {
+      "status": "ok",
+      "variable": "out_of_school_pct",
+      "label": "",
+      "derived_as": "as given",
+      "weight_variable": "sample_size",
+      "estimates": {
+        "national": {
+          "pct": 9.2,
+          "n": 108000,
+          "n_units": 1
+        },
+        "urban": {
+          "pct": 5.8,
+          "n": 108000,
+          "n_units": 1
+        },
+        "rural": {
+          "pct": 11.4,
+          "n": 108000,
+          "n_units": 1
+        },
+        "male": null,
+        "female": null
+      }
+    },
+    "household_technology": {
+      "status": "ok",
+      "radio": {
+        "status": "ok",
+        "variable": "radio_ownership_pct",
+        "label": "",
+        "derived_as": "as given",
+        "weight_variable": "sample_size",
+        "estimates": {
+          "national": {
+            "pct": 69.0,
+            "n": 108000,
+            "n_units": 1
+          },
+          "urban": {
+            "pct": 72.0,
+            "n": 108000,
+            "n_units": 1
+          },
+          "rural": {
+            "pct": 67.0,
+            "n": 108000,
+            "n_units": 1
+          }
+        }
+      },
+      "television": {
+        "status": "ok",
+        "variable": "tv_ownership_pct",
+        "label": "",
+        "derived_as": "as given",
+        "weight_variable": "sample_size",
+        "estimates": {
+          "national": {
+            "pct": 28.0,
+            "n": 108000,
+            "n_units": 1
+          },
+          "urban": {
+            "pct": 58.0,
+            "n": 108000,
+            "n_units": 1
+          },
+          "rural": {
+            "pct": 12.0,
+            "n": 108000,
+            "n_units": 1
+          }
+        }
+      },
+      "mobile_phone": {
+        "status": "ok",
+        "variable": "phone_ownership_pct",
+        "label": "",
+        "derived_as": "as given",
+        "weight_variable": "sample_size",
+        "estimates": {
+          "national": {
+            "pct": 88.0,
+            "n": 108000,
+            "n_units": 1
+          },
+          "urban": {
+            "pct": 95.0,
+            "n": 108000,
+            "n_units": 1
+          },
+          "rural": {
+            "pct": 83.0,
+            "n": 108000,
+            "n_units": 1
+          }
+        }
+      }
+    }
+  },
+  "data_audit": {
+    "column_mappings": {
+      "country": {
+        "columns": [],
+        "labels": [],
+        "status": "not_found",
+        "method": "fuzzy match on name and label",
+        "alternatives": []
+      },
+      "year": {
+        "columns": [],
+        "labels": [],
+        "status": "not_found",
+        "method": "fuzzy match on name and label",
+        "alternatives": []
+      },
+      "sex": {
+        "columns": [],
+        "labels": [],
+        "status": "not_found",
+        "method": "fuzzy match on name and label",
+        "alternatives": []
+      }
+    },
+    "value_interpretation": {},
+    "filters": {
+      "grades": [
+        3,
+        5
+      ],
+      "ages": [
+        6,
+        16
+      ],
+      "country_value": null,
+      "year": 2023
+    },
+    "assumptions": [
+      "Summary mode: percentages are assumed to already refer to the target populations (Grades 3-5; ages 6-16); this cannot be verified from the table."
+    ],
+    "warnings": [
+      "No variable labels available (plain CSV/Excel): matching uses column names only. For coded names such as 'hh07k', supply --codebook.",
+      "No country column found; assuming the whole file is the requested country.",
+      "No usable sex column (not_found); those splits are null."
+    ]
+  }
+}
