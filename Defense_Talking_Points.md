@@ -39,7 +39,7 @@
 > 
 > School Management Committees describe the 'pilot graveyard': broken tablets locked in cupboards after six months, while commercial apps harvest children's data without parental consent. Our framework introduces a 40/60 maintenance budget rule and a child data protection rubric.
 > 
-> Local African innovators are locked out by tenders that favor foreign cloud giants, even though foreign AI accuracy collapses from 90% in English down to 18% in indigenous African languages. Our observatory proves why offline-first, local-language Digital Public Goods are pedagogically superior."*
+> Local African innovators are locked out by tenders that favor foreign cloud giants, even though foreign AI accuracy collapses from 90% in English down to 18% in indigenous African languages. Our observatory provides an evidence-based framework showing why offline-first, local-language Digital Public Goods are pedagogically resilient."*
 
 ---
 

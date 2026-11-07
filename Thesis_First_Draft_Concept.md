@@ -7,8 +7,8 @@
 **Format:** Full Master Model — Component A (Theoretical Concept & Analytical Framework) & Component B (Practical Decision-Support Prototype)  
 **Supervisor / Reviewer:** Prof. Elisa Bignante, Department of Cultures, Politics and Society, University of Turin  
 **Candidate Workspace & Repositories:**  
-* Practical Deliverable Repository: `https://github.com/rsnl42/CC_3` (Live Observatory: `https://rsnl42.github.io/CC_3/`)  
-* Linked Benchmark Explorer: `https://github.com/rsnl42/EEA_2` (Live Dashboard: `https://rsnl42.github.io/EEA_2/`)  
+* Practical Deliverable Repository: `https://github.com/SunilRaman42/CC_3` (Live Observatory: `https://SunilRaman42.github.io/CC_3/`)  
+* Linked Benchmark Explorer: `https://github.com/SunilRaman42/EEA_2` (Live Dashboard: `https://SunilRaman42.github.io/EEA_2/`)  
 
 ---
 
@@ -160,8 +160,8 @@ National statistics frequently mislead policymakers because electricity and inte
 ### 4. Component B: The Practical Decision-Support Deliverable (AF2 Q1)
 
 The practical component comprises a deployed, open-access web observatory with zero server-side maintenance costs:
-* **Primary Observatory URL:** [`https://rsnl42.github.io/CC_3/`](https://rsnl42.github.io/CC_3/)
-* **Linked Assessment Explorer:** [`https://rsnl42.github.io/EEA_2/`](https://rsnl42.github.io/EEA_2/)
+* **Primary Observatory URL:** [`https://SunilRaman42.github.io/CC_3/`](https://SunilRaman42.github.io/CC_3/)
+* **Linked Assessment Explorer:** [`https://SunilRaman42.github.io/EEA_2/`](https://SunilRaman42.github.io/EEA_2/)
 
 The application provides four integrated tool modules:
 1. **Seven-Country Comparative Profiles & Discrepancy Matrix:** Deep-dive benchmarking across Kenya, Rwanda, Tanzania, Ghana, Nigeria, Zambia, and Mauritius (serving as a high-infrastructure contrast). The Discrepancy Matrix systematically contrasts stated policy targets with verified classroom gaps.

@@ -507,7 +507,7 @@
                     <span class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                       👩‍🏫 Lens 2: Frontline Teacher Reality
                     </span>
-                    <span id="lens2-source" class="text-[11px] text-slate-400 font-mono">AoA Survey (N=800) · RTI</span>
+                    <span id="lens2-source" class="text-[11px] text-amber-700 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded font-mono">AoA Prior (N=800 SIMULATED)</span>
                   </div>
                   <h4 id="lens2-heading" class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Informal Salary Tax &amp; Crowding</h4>
                   <p id="lens2-desc" class="text-xs text-slate-600 leading-relaxed mb-4">
@@ -2660,11 +2660,11 @@
               <span id="survey-live-status-dot" class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
               <div>
                 <div class="flex items-center gap-2">
-                  <span id="survey-mode-badge" class="font-bold text-xs uppercase tracking-wider text-emerald-900 bg-emerald-200/70 px-2 py-0.5 rounded">
-                    Active Mode: Calibrated Baseline Synthesis
+                  <span id="survey-mode-badge" class="font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2 py-0.5 rounded border border-amber-300">
+                    Active Mode: Calibration Prior Seed [SIMULATED]
                   </span>
-                  <span id="survey-n-badge" class="font-mono text-xs text-emerald-800 font-bold">
-                    N = 800 Verified Responses (48 SSA Nations)
+                  <span id="survey-n-badge" class="font-mono text-xs text-stone-700 font-bold">
+                    N = 800 Simulated Prior Responses (Awaiting Primary Field Intake)
                   </span>
                 </div>
                 <div id="survey-mode-desc" class="text-xs text-stone-600 mt-0.5">
@@ -6197,7 +6197,7 @@ const MACRO_FISCAL_DATA = {
             voiceQuote: '“Our school roof leaks and children share one textbook among five pupils; what will a tablet do when there is no power to charge it?”'
           },
           lens2: {
-            source: 'AoA Survey (N=800) · RTI',
+            source: 'AoA Prior (N=800 SIMULATED) · RTI',
             heading: 'The Informal Salary Tax & Crowding',
             desc: 'Teachers bear the private financial burden of state digitalization. Without zero-rated educational domains, mobile data is purchased from personal wages.',
             airtime: '4% – 8%', ptr: '50:1', decay: '>60%',
@@ -11997,13 +11997,13 @@ const SURVEY_CODEBOOK = [
 
       const badge = document.getElementById('survey-mode-badge');
       if (badge) {
-        badge.className = 'font-bold text-xs uppercase tracking-wider text-emerald-900 bg-emerald-200/70 px-2 py-0.5 rounded';
-        badge.textContent = 'Active Mode: Calibrated Baseline Synthesis';
+        badge.className = 'font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2.5 py-0.5 rounded border border-amber-300';
+        badge.textContent = 'Active Mode: Calibration Prior Seed [SIMULATED]';
       }
 
       const desc = document.getElementById('survey-mode-desc');
       if (desc) {
-        desc.textContent = 'Pre-calibrated against World Bank 6-Pillars WDI 2024, GEM 2023, AfroBench, Briter, and HolonIQ.';
+        desc.textContent = 'Pre-calibrated simulation prior based on aggregate distributions (WDI, GEM 2023, Briter, HolonIQ) awaiting live field returns.';
       }
 
       const statusBox = document.getElementById('survey-ingestion-status');

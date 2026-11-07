@@ -168,17 +168,17 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 
 * **Engines:** `fetch_imf_cofog.py`, `fetch_iati_funding.py`, `compile_macro_fiscal_indicators.py`
 * **Observatory Location:** Lens 4: Macro-Fiscal & External Aid Reality (Tab 1)
-* **Coverage Scope:** All 54 African economies (with intensive deep-dive analytics across 7 focus economies: Kenya, Rwanda, Tanzania, Ghana, Nigeria, Senegal, Zambia).
+* **Coverage Scope:** All 54 African economies (with intensive deep-dive analytics across 7 focus economies: Kenya, Rwanda, Tanzania, Ghana, Nigeria, Zambia, and Mauritius as high-infrastructure control benchmark; supplemented by qualitative field voices from Senegal).
 * **Time Horizon:** 2017–2024 annual time series.
 
 ### Processed Macro-Fiscal Assets
 
 | File Path | Description | Data Source | Records / Sample |
 | :--- | :--- | :--- | :--- |
-| `data/imf/imf_cofog_shares.csv` | Domestic public expenditures across COFOG functions (% of total outlays) | IMF Government Finance Statistics (GFS) COFOG | Annual domestic shares (2017–2024) across African economies |
+| `data/imf/imf_cofog_shares.csv` | Domestic public expenditures across COFOG functions (% of total outlays) | IMF Government Finance Statistics (GFS) COFOG | Annual domestic shares (2017–2024) across reporting economies (KEN, MUS, TZA, ZMB) |
 | `data/imf/imf_cofog_long.csv` | Long tidy-format expenditure amounts in local currency and USD | IMF GFS COFOG | Function codes 709 (Education), 7047 (Communication), 7045 (Transport), 7 (Total) |
 | `data/iati/iati_transactions.csv` | Cleaned and normalized official development finance transactions | IATI Datastore API | 29,388 raw transactions across 7 pilot economies |
-| `data/iati/iati_funding_by_year.csv` | Aggregated external aid flows by recipient country, year, and sector | IATI Datastore API | 1,187 country-year-sector records ($1.84B education, $52M ICT) |
+| `data/iati/iati_funding_by_year.csv` | Aggregated external aid flows by recipient country, year, and sector | IATI Datastore API | 1,187 country-year-sector records ($1.84B education, $52M ICT across 7 economies) |
 | `data/processed/macro_fiscal_ecosystem.json` | Master compiled JSON integrating domestic shares, aid totals, and ratios | Synthesizer compiler | 7 deep-dive economies + 54 country dynamic lookup |
 | `data/processed/macro_fiscal_data.js` | Direct client-side JavaScript export powering Lens 4 interactive UI | Synthesizer compiler | Window-scoped `MACRO_FISCAL_DATA` object |
 
@@ -186,11 +186,41 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 
 | Metric / Indicator Code | Metric Definition | Source Agency | Empirical Finding (Kenya Baseline) | Analytical Meaning / Digital Recurrent Cliff |
 | :--- | :--- | :--- | :--- | :--- |
-| `COFOG 709 Share` | General government education outlays (% of total outlays) | IMF GFS COFOG | **18.4%** | Shows high political commitment to national schooling in aggregate budgets. |
-| `COFOG 7047 Share` | General government communication/ICT outlays (% of total outlays) | IMF GFS COFOG | **0.46%** | Less than 0.5% of total budget is allocated to communications infrastructure. |
-| `Dual Expenditure Gap` | Ratio of Education Outlays to Central ICT Outlays | Derived (`709 / 7047`) | **40 : 1** | Demonstrates that digital education is underfunded on the recurrent ICT budget line by a factor of 40:1. |
-| `IATI Total Education Aid` | Cumulative external aid commitments/disbursements to education (2017–2024) | IATI Datastore (CRS 111, 112, 113, 114) | **$1.84 Billion** (Across 7 economies) | Heavy external donor subsidization of capital projects and school development. |
-| `IATI Total ICT Aid` | Cumulative external aid to telecommunications/ICT (2017–2024) | IATI Datastore (CRS 220) | **$52 Million** (Across 7 economies) | External ICT aid is less than 3% of education aid, illustrating the infrastructure funding gap. |
-| `2020 COVID Surge Ratio` | Ratio of 2020 emergency external disbursements to 2019 pre-pandemic baseline | IATI Datastore | **1.85× to 3.20×** | Emergency donor surges financed rapid remote learning pilots that evaporated post-pandemic. |
+| `COFOG 709 Share` | General government education outlays (% of total outlays) | IMF GFS COFOG | **18.4%** | Shows strong domestic political commitment to national schooling in aggregate public budgets. |
+| `COFOG 7047 Share` | General government communication/ICT outlays (% of total outlays) | IMF GFS COFOG | **0.46%** | Less than 0.5% of total budget is allocated to central communications and telecom infrastructure. |
+| `Dual Expenditure Gap (Domestic)` | Ratio of Domestic Education Outlays to Central ICT Outlays | Derived (`COFOG 709 / 7047`) | **40 : 1** | Demonstrates that national education spending exceeds central ICT spending by 40:1. Serves as a macro-level financing asymmetry proxy. |
+| `External Aid Asymmetry (Aid Flows)` | Ratio of Cumulative External Education Aid to External ICT Aid | Derived (`IATI CRS 111-114 / 220`) | **35.4 : 1** ($1.84B vs $52M across 7 economies) | Demonstrates that external development finance heavily favors educational program transfers over telecom infrastructure by 35:1. |
+| `IATI Total Education Aid` | Cumulative external aid commitments/disbursements to education (2017–2024) | IATI Datastore (CRS 111, 112, 113, 114) | **$1.84 Billion** (Across 7 economies) | Heavy external donor subsidization of pedagogical initiatives and school capital projects. |
+| `IATI Total ICT Aid` | Cumulative external aid to telecommunications/ICT (2017–2024) | IATI Datastore (CRS 220) | **$52 Million** (Across 7 economies) | External ICT aid is less than 3% of education aid, illustrating the telecommunications funding gap. |
+| `2020 COVID Surge Ratio` | Ratio of 2020 emergency external disbursements to 2019 pre-pandemic baseline | IATI Datastore | **1.85× to 3.20×** | Emergency donor surges financed rapid remote learning pilots that suffered contraction post-pandemic. |
+
+> [!NOTE]
+> **Macro Proxy Scope & Methodological Caveats:**
+> COFOG 7047 (Communication) and IATI Sector 220 (Telecommunications) capture *national central communications infrastructure* rather than line-item school-level recurrent operational costs (such as local device repair, battery replacements, or monthly classroom SIM airtime). These figures are indicative macro-level financing proxies illustrating structural capital-versus-operational asymmetry, rather than direct causal proof of school-level pilot collapse. Granular public-expenditure databases (such as World Bank BOOST) represent the logical next micro-level proxy for disaggregated school-level recurrent versus capital budget lines.
+
+---
+
+## 9. Headline Statistics Provenance Registry
+
+Every headline statistic cited in the thesis concept, analytical frameworks, and decision observatory is registered below with its originating agency, formal definition, measurement vintage, and denominator boundaries:
+
+| Headline Statistic | Source Agency & Academic Citation | Vintage | Formal Definition & Measurement Scope | Denominator & Sampling Boundaries |
+| :--- | :--- | :--- | :--- | :--- |
+| **85% Pilot Graveyard** | World Bank EduTech (Trucano, 2013, 2016); Unwin (*ICT4D*, 2009; 2019) | 2016, 2019 | Proportion of donor-funded digital education initiatives that contract severely or cease operations within 18 months post-grant. | Donor-funded EdTech pilot projects across Sub-Saharan Africa without ring-fenced domestic recurrent budget line absorption. |
+| **80%–90% Digital Budget on Hardware** | UNESCO Global Education Monitoring (GEM) Report; Kenya Auditor General DLP Performance Audit | 2019, 2023 | Share of initial digital learning capital procurement spent exclusively on physical devices (tablets/laptops). | Capital expenditure (CapEx) component of national educational technology rollouts; excludes ongoing maintenance and training. |
+| **0.56% Median School Broadband** | UNICEF-ITU Giga School Connectivity Initiative; ITU WTIS Indicators | 2023–2024 | Median proportion of rural public primary schools with verified $\ge 10\text{ Mbps}$ broadband internet connectivity. | Rural public primary schools surveyed across Giga mapping partner countries in Sub-Saharan Africa. |
+| **4%–8% Informal Teacher Salary Tax** | GSMA Mobile for Development; Uwezo East Africa Frontline Educator Surveys | 2021, 2023 | Share of monthly net teacher salary expended personally on commercial cellular data bundles to upload school administrative returns. | Frontline public primary teachers in schools without state-funded institutional internet or active zero-rating covenants. |
+| **18%–38% African Language LLM Accuracy** | AfroBench / Masakhane NLP / IrokoBench Benchmarks (Ogueji et al., 2023; Adelani et al., 2024) | 2023–2024 | Downstream diagnostic and comprehension task accuracy of frontier commercial LLMs in major African languages vs. $\ge 88\%$ in English. | Benchmarked across major regional African languages (Swahili, Hausa, Yoruba, Amharic, isiZulu). |
+| **70.8% Products vs. 82.5% Rural Schools** | *Dual Denominator Finding:* Supply-Demand Discrepancy Matrix ($N=148$) vs. World Bank/UNESCO Rural Baseline | 2024 | **Product Denominator ($N=148$):** 70.8% of surveyed EdTech products require continuous smartphone/tablet and broadband connectivity.<br>**School Denominator ($N=\text{SSA rural schools}$):** 82.5% of rural public schools lack reliable grid power or broadband. | **Crucial Denominator Separation:** Contrasts the technical architectural assumptions of vendor offerings against rural structural classroom realities. |
+| **87% Learning Poverty Rate** | World Bank & UNESCO Institute for Statistics (UIS) Joint Learning Poverty Report | 2022 | Proportion of 10-year-olds in Sub-Saharan Africa unable to read and understand a simple narrative text. | Regional aggregate for Sub-Saharan Africa; composite of out-of-school rate and below-minimum-reading-proficiency rate. |
+| **Kenya 78,432 Verified Schools** | Kenya Ministry of Education Basic Education Statistical Booklet / NEMIS Registry / Giga Project | 2020–2022 | Total census count of all registered basic education learning institutions in Kenya. | **Institutional Composition:** Includes Early Childhood Development Education (ECDE pre-primary: ~46,530), primary schools (~32,437), and secondary schools (~10,487), spanning both public and registered private sectors. |
+
+---
+
+## 10. Survey Evidence Layer: Schema Placeholder & Calibration Prior Notice
+
+The Alliance of Alliances (AoA) survey evidence module incorporates a dual-mode telemetry engine:
+* **Seed Schema Placeholder ($N = 800$):** A calibrated simulation prior derived from aggregate macro distributions (World Bank 6-Pillars WDI, UNESCO GEM 2023, Briter Bridges, and HolonIQ). It serves strictly as an architectural schema placeholder to validate UI layout, cross-tabulation algorithms, and telemetry cards without hardcoding. **No empirical thesis conclusions rest on this simulation prior.**
+* **Dynamic Ingestion Architecture:** The underlying ingestion pipeline (`process_survey_data_calibrated.py` and client-side `parseAndIngestCSV`) computes all distributions, cross-tabulations (e.g. electricity reliability by rural/urban location), and discrepancy gaps dynamically on the fly. When primary field survey returns are uploaded via CSV or Google Sheets, all metrics recalculate automatically with zero hardcoded analytical overrides.
 
 

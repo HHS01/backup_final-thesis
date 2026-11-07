@@ -4,7 +4,7 @@
 const MACRO_FISCAL_DATA = {
   "metadata": {
     "title": "Macro-Fiscal & External Aid Observatory Dataset",
-    "compiled_utc": "2026-11-07T16:07:01.546297+00:00",
+    "compiled_utc": "2026-11-07T17:30:44.536874+00:00",
     "script_version": "1.1.0",
     "coverage_window": "2017-2024",
     "target_economies": [

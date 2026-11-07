@@ -7,8 +7,8 @@
 **Format:** Full Master Model — Component A (Theoretical Framework & Thesis Dossier) & Component B (Interactive Decision-Support Observatory)  
 **Academic Supervisor:** Prof. Elisa Bignante, Department of Cultures, Politics and Society, University of Turin  
 **Deliverable Repositories & Deployments:**  
-* **Decision Support Observatory (Component B):** [`https://github.com/rsnl42/CC_3`](https://github.com/rsnl42/CC_3) (Live: [`https://rsnl42.github.io/CC_3/`](https://rsnl42.github.io/CC_3/))  
-* **Benchmark Explorer (Linked Foundation):** [`https://github.com/rsnl42/EEA_2`](https://github.com/rsnl42/EEA_2) (Live: [`https://rsnl42.github.io/EEA_2/`](https://rsnl42.github.io/EEA_2/))  
+* **Decision Support Observatory (Component B):** [`https://github.com/SunilRaman42/CC_3`](https://github.com/SunilRaman42/CC_3) (Live: [`https://SunilRaman42.github.io/CC_3/`](https://SunilRaman42.github.io/CC_3/))  
+* **Benchmark Explorer (Linked Foundation):** [`https://github.com/SunilRaman42/EEA_2`](https://github.com/SunilRaman42/EEA_2) (Live: [`https://SunilRaman42.github.io/EEA_2/`](https://SunilRaman42.github.io/EEA_2/))  
 **Last Updated:** November 2026  
 
 ---
@@ -54,7 +54,7 @@ To break the cycle of procurement waste, this project operationalizes UNESCO's *
 │ ├─────────────────────────────────────────────────────────────────────────┤ │
 │ │ 2. ECOSYSTEM PROFILES & SPATIAL CONNECTIVITY                            │ │
 │ │    • 7 Target Economies: Kenya, Rwanda, Tanzania, Ghana, Nigeria,       │ │
-│ │      Senegal, Zambia                                                    │ │
+│ │      Zambia, Mauritius (control) + Senegal (field voice)                │ │
 │ │    • Giga School Mapping (78,432 Kenya schoolhouse coordinates)         │ │
 │ │    • GEEAP "Smart Buys" Decision Simulator                              │ │
 │ ├─────────────────────────────────────────────────────────────────────────┤ │
@@ -123,8 +123,8 @@ The practical deliverable is a high-performance, single-page web observatory (12
 #### 4. Lens 4: Macro-Fiscal & Aid Observatory Matrix (IMF COFOG + IATI)
 - **IMF Government Finance Statistics (GFS) COFOG Ingestion (2017–2024):** Ingests domestic public expenditures across Education, Communication, Transport, and Total Outlays.
 - **IATI Datastore Aid Ingestion (2017–2024):** Normalizes 29,388 official external development transactions totaling **$1.84 Billion in education financing** and **$52 Million in central ICT aid** across 7 focus economies.
-- **The "Digital Recurrent Cliff" Quad-Lens:** Empirically demonstrates the 40:1 disparity between massive initial donor CapEx loans and negligible domestic central ICT recurrent allocations (e.g., Kenya allocates 18.4% of budget to Education, but only 0.46% to central ICT operations), explaining why schools are left with zero operational maintenance budgets.
-- **Dynamic 7-Country Interactive Matrix:** One-click drill-downs into Kenya, Rwanda, Tanzania, Ghana, Nigeria, Senegal, and Zambia displaying domestic expenditure shares, 8-year cumulative aid disbursements, and 2020 COVID-19 emergency surge spikes.
+- **The "Digital Recurrent Cliff" Quad-Lens:** Empirically illustrates the macro-financing asymmetry through the 40:1 domestic expenditure ratio (e.g., Kenya allocates 18.4% of budget to Education, but only 0.46% to central communications infrastructure) alongside a 35:1 external aid asymmetry ($1.84B education aid vs $52M ICT aid across the focus economies), providing an indicative macro proxy for why hardware donations lack sustainable operational counterpart budgets.
+- **Dynamic 7-Country Interactive Matrix:** One-click drill-downs into Kenya, Rwanda, Tanzania, Ghana, Nigeria, Zambia, and Mauritius (control benchmark) displaying domestic expenditure shares, 8-year cumulative aid disbursements, and 2020 COVID-19 emergency surge spikes.
 
 ---
 
@@ -218,31 +218,32 @@ The repository contains an automated test suite executed with `pytest`:
 ## 5. Master File & Directory Index
 
 ### Root Research & Concept Documents
-* [`WORK_SUMMARY.md`](file:///workspaces/CC_3/WORK_SUMMARY.md) — This master document summarizing all progress, systems, and research assets.
-* [`README.md`](file:///workspaces/CC_3/README.md) — Top-level repository guide with quick-start instructions and architecture overview.
-* [`Thesis_First_Draft_Concept.md`](file:///workspaces/CC_3/Thesis_First_Draft_Concept.md) — Academic thesis draft for the UniTO Master in ICT for Development and Social Good.
-* [`reference_notes.md`](file:///workspaces/CC_3/reference_notes.md) — Academic citation verification table, statutory acts, and defense talking points.
-* [`Defense_Talking_Points.md`](file:///workspaces/CC_3/Defense_Talking_Points.md) — Rapid-fire strategic answers for academic thesis defense committees.
-* [`DATA_DICTIONARY_AND_LOOKUP.md`](file:///workspaces/CC_3/DATA_DICTIONARY_AND_LOOKUP.md) — Complete data dictionary of all processed metrics, sample sizes, and source APIs.
-* [`Analytical_Framework_Answers.md`](file:///workspaces/CC_3/Analytical_Framework_Answers.md) — Formal answers to Analytical Framework 1 and 2 master requirements.
+* [`WORK_SUMMARY.md`](./WORK_SUMMARY.md) — This master document summarizing all progress, systems, and research assets.
+* [`README.md`](./README.md) — Top-level repository guide with quick-start instructions and architecture overview.
+* [`Thesis_First_Draft_Concept.md`](./Thesis_First_Draft_Concept.md) — Academic thesis draft for the UniTO Master in ICT for Development and Social Good.
+* [`reference_notes.md`](./reference_notes.md) — Academic citation verification table, statutory acts, and defense talking points.
+* [`Defense_Talking_Points.md`](./Defense_Talking_Points.md) — Rapid-fire strategic answers for academic thesis defense committees.
+* [`DATA_DICTIONARY_AND_LOOKUP.md`](./DATA_DICTIONARY_AND_LOOKUP.md) — Complete data dictionary of all processed metrics, sample sizes, and source APIs.
+* [`Analytical_Framework_Answers.md`](./Analytical_Framework_Answers.md) — Formal answers to Analytical Framework 1 and 2 master requirements.
 
 ### Interactive Web Deliverables
-* [`index.html`](file:///workspaces/CC_3/index.html) — The primary interactive Decision Observatory (12,035 lines, 4 lenses, 7 tools).
-* [`EdTech_Readiness_Check_Printable.html`](file:///workspaces/CC_3/EdTech_Readiness_Check_Printable.html) — Standalone printable pack for classroom feasibility and SMC rubrics.
-* [`Rotation_Planner_Printable.html`](file:///workspaces/CC_3/Rotation_Planner_Printable.html) — Standalone printable pack for 3-station TaRL rotation timetables.
-* [`Vetted_Solutions_Directory_Printable.html`](file:///workspaces/CC_3/Vetted_Solutions_Directory_Printable.html) — Standalone printable catalog of resilient offline DPGs.
+* [`index.html`](./index.html) — The primary interactive Decision Observatory (12,035 lines, 4 lenses, 7 tools).
+* [`EdTech_Readiness_Check_Printable.html`](./EdTech_Readiness_Check_Printable.html) — Standalone printable pack for classroom feasibility and SMC rubrics.
+* [`Rotation_Planner_Printable.html`](./Rotation_Planner_Printable.html) — Standalone printable pack for 3-station TaRL rotation timetables.
+* [`Vetted_Solutions_Directory_Printable.html`](./Vetted_Solutions_Directory_Printable.html) — Standalone printable catalog of resilient offline DPGs.
 
 ### Python Data Harvesting & Synthesis Pipelines
-* [`fetch_6pillars_pipeline.py`](file:///workspaces/CC_3/fetch_6pillars_pipeline.py) — Harvests World Bank, UIS, and ITU indicators for 48 SSA nations across UNESCO 6 Pillars.
-* [`fetch_imf_cofog.py`](file:///workspaces/CC_3/fetch_imf_cofog.py) — Ingests domestic public expenditures (COFOG 709 Education vs 7047 ICT) across African economies.
-* [`fetch_iati_funding.py`](file:///workspaces/CC_3/fetch_iati_funding.py) — Ingests 29,388 official external development transactions from the IATI Datastore API.
-* [`compile_macro_fiscal_indicators.py`](file:///workspaces/CC_3/compile_macro_fiscal_indicators.py) — Synthesizes macro-fiscal indicators and the Digital Recurrent Cliff data engine.
-* [`build_checkin_deck.py`](file:///workspaces/CC_3/build_checkin_deck.py) — Programmatically builds academic presentation decks (`Project_Idea_Check-in.pptx`).
+* [`fetch_6pillars_pipeline.py`](./fetch_6pillars_pipeline.py) — Harvests World Bank, UIS, and ITU indicators for 48 SSA nations across UNESCO 6 Pillars.
+* [`fetch_imf_cofog.py`](./fetch_imf_cofog.py) — Ingests domestic public expenditures (COFOG 709 Education vs 7047 ICT) across African economies.
+* [`fetch_iati_funding.py`](./fetch_iati_funding.py) — Ingests 29,388 official external development transactions from the IATI Datastore API.
+* [`compile_macro_fiscal_indicators.py`](./compile_macro_fiscal_indicators.py) — Synthesizes macro-fiscal indicators and the Digital Recurrent Cliff data engine.
+* [`build_checkin_deck.py`](./build_checkin_deck.py) — Programmatically builds academic presentation decks (`Project_Idea_Check-in.pptx`).
 
-### Automated Test Suites
-* [`test_compile_macro_fiscal_indicators.py`](file:///workspaces/CC_3/test_compile_macro_fiscal_indicators.py) — 8 tests covering macro-fiscal calculations, ISO coverage, and currency conversion.
-* [`test_fetch_iati_funding.py`](file:///workspaces/CC_3/test_fetch_iati_funding.py) — 6 tests covering IATI Datastore API queries, sector codes, and USD aggregation.
-* [`test_fetch_imf_cofog.py`](file:///workspaces/CC_3/test_fetch_imf_cofog.py) — 4 tests covering IMF GFS COFOG share parsing, file schemas, and CLI behavior.
+### Automated Test Suite (33/33 Tests Passing)
+* [`test_decision_logic.py`](./test_decision_logic.py) — 15 tests covering Gatekeeping thresholds, statutory vetoes, and TaRL rotation arithmetic.
+* [`test_compile_macro_fiscal_indicators.py`](./test_compile_macro_fiscal_indicators.py) — 8 tests covering macro-fiscal calculations, ISO coverage, and currency conversion.
+* [`test_fetch_iati_funding.py`](./test_fetch_iati_funding.py) — 6 tests covering IATI Datastore API queries, sector codes, and USD aggregation.
+* [`test_fetch_imf_cofog.py`](./test_fetch_imf_cofog.py) — 4 tests covering IMF GFS COFOG share parsing, file schemas, and CLI behavior.
 
 ### Processed Datasets (`data/` Directory)
 * `data/processed/latest_country_profiles_6pillars.csv` — Wide macro matrix across 48 SSA economies.
