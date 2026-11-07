@@ -162,3 +162,35 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 | **Hardware Architecture Divergence** | Laptops/desktops assumed by donor portals | **70.8%** providers target basic phones; only **31.7%** support fully offline sync | Severe mismatch between donor laptop procurement and offline mobile realities. |
 | **Post-Grant Sustainability Cliff** | "Successful pilot completed" reports | **61.3%** of initiatives collapse or contract drastically within 12 months of donor exit | Validates the 85% Pilot Graveyard thesis finding without ring-fenced OpEx. |
 
+---
+
+## 8. Macro-Fiscal & External Aid Observatory Layer (`data/processed/macro_fiscal_data.js` & `.json`)
+
+* **Engines:** `fetch_imf_cofog.py`, `fetch_iati_funding.py`, `compile_macro_fiscal_indicators.py`
+* **Observatory Location:** Lens 4: Macro-Fiscal & External Aid Reality (Tab 1)
+* **Coverage Scope:** All 54 African economies (with intensive deep-dive analytics across 7 focus economies: Kenya, Rwanda, Tanzania, Ghana, Nigeria, Senegal, Zambia).
+* **Time Horizon:** 2017–2024 annual time series.
+
+### Processed Macro-Fiscal Assets
+
+| File Path | Description | Data Source | Records / Sample |
+| :--- | :--- | :--- | :--- |
+| `data/imf/imf_cofog_shares.csv` | Domestic public expenditures across COFOG functions (% of total outlays) | IMF Government Finance Statistics (GFS) COFOG | Annual domestic shares (2017–2024) across African economies |
+| `data/imf/imf_cofog_long.csv` | Long tidy-format expenditure amounts in local currency and USD | IMF GFS COFOG | Function codes 709 (Education), 7047 (Communication), 7045 (Transport), 7 (Total) |
+| `data/iati/iati_transactions.csv` | Cleaned and normalized official development finance transactions | IATI Datastore API | 29,388 raw transactions across 7 pilot economies |
+| `data/iati/iati_funding_by_year.csv` | Aggregated external aid flows by recipient country, year, and sector | IATI Datastore API | 1,187 country-year-sector records ($1.84B education, $52M ICT) |
+| `data/processed/macro_fiscal_ecosystem.json` | Master compiled JSON integrating domestic shares, aid totals, and ratios | Synthesizer compiler | 7 deep-dive economies + 54 country dynamic lookup |
+| `data/processed/macro_fiscal_data.js` | Direct client-side JavaScript export powering Lens 4 interactive UI | Synthesizer compiler | Window-scoped `MACRO_FISCAL_DATA` object |
+
+### Core Macro-Fiscal & Aid Indicators
+
+| Metric / Indicator Code | Metric Definition | Source Agency | Empirical Finding (Kenya Baseline) | Analytical Meaning / Digital Recurrent Cliff |
+| :--- | :--- | :--- | :--- | :--- |
+| `COFOG 709 Share` | General government education outlays (% of total outlays) | IMF GFS COFOG | **18.4%** | Shows high political commitment to national schooling in aggregate budgets. |
+| `COFOG 7047 Share` | General government communication/ICT outlays (% of total outlays) | IMF GFS COFOG | **0.46%** | Less than 0.5% of total budget is allocated to communications infrastructure. |
+| `Dual Expenditure Gap` | Ratio of Education Outlays to Central ICT Outlays | Derived (`709 / 7047`) | **40 : 1** | Demonstrates that digital education is underfunded on the recurrent ICT budget line by a factor of 40:1. |
+| `IATI Total Education Aid` | Cumulative external aid commitments/disbursements to education (2017–2024) | IATI Datastore (CRS 111, 112, 113, 114) | **$1.84 Billion** (Across 7 economies) | Heavy external donor subsidization of capital projects and school development. |
+| `IATI Total ICT Aid` | Cumulative external aid to telecommunications/ICT (2017–2024) | IATI Datastore (CRS 220) | **$52 Million** (Across 7 economies) | External ICT aid is less than 3% of education aid, illustrating the infrastructure funding gap. |
+| `2020 COVID Surge Ratio` | Ratio of 2020 emergency external disbursements to 2019 pre-pandemic baseline | IATI Datastore | **1.85× to 3.20×** | Emergency donor surges financed rapid remote learning pilots that evaporated post-pandemic. |
+
+
