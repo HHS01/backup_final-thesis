@@ -24,7 +24,7 @@ This repository hosts the academic research, data engineering pipelines, empiric
 
 The inquiry addresses why top-down digital education initiatives chronically collapse in low-resource African schools (the **"85% Pilot Graveyard"**). Grounded in **UNESCO's Six Pillars for the Digital Transformation of Education**, the project establishes a **Vertical Traceability Architecture** connecting three interdependent levels:
 1. **Macro Lens:** Systemic public finance (IMF GFS COFOG), official development aid (IATI Datastore), and open data benchmarking across 48 Sub-Saharan African economies.
-2. **Meso Lens:** Spatial schoolhouse connectivity (UNICEF-ITU Giga maps for 78,432 schools) and project portfolio tracking (237 World Bank digital education loans).
+2. **Meso Lens:** Spatial schoolhouse connectivity (UNICEF-ITU Giga maps spatial pipeline & Ookla 2024Q1 cellular intelligence across 7 economies) and project portfolio tracking (237 World Bank digital education loans).
 3. **Micro Lens:** Frontline classroom reality (Alliance of Alliances field surveys), dual-gatekeeping feasibility audits, 3-station rotational pedagogy (TaRL), and resilient offline Digital Public Goods (DPGs).
 
 ---

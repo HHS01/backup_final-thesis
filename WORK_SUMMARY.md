@@ -55,7 +55,7 @@ To break the cycle of procurement waste, this project operationalizes UNESCO's *
 │ │ 2. ECOSYSTEM PROFILES & SPATIAL CONNECTIVITY                            │ │
 │ │    • 7 Target Economies: Kenya, Rwanda, Tanzania, Ghana, Nigeria,       │ │
 │ │      Zambia, Mauritius (control) + Senegal (field voice)                │ │
-│ │    • Giga School Mapping (78,432 Kenya schoolhouse coordinates)         │ │
+│ │    • Giga School Mapping (Spatial pipeline across 7 SSA economies)      │ │
 │ │    • GEEAP "Smart Buys" Decision Simulator                              │ │
 │ ├─────────────────────────────────────────────────────────────────────────┤ │
 │ │ 3. FRONTLINE CLASSROOM DECISION TOOLS                                   │ │
@@ -113,7 +113,7 @@ The practical deliverable is a high-performance, single-page web observatory (12
 
 #### 2. Lens 2: The Infrastructure Reality
 - **Spatial Electrification & Broadband Discrepancy:** Direct visualization of the gap between national grid availability (e.g. 77% Kenya) and primary school electrification (30–40% in rural counties).
-- **UNICEF-ITU Giga School Connectivity Maps:** Interactive geospatial distribution of 78,432 verified Kenya public schools categorized into connected, partially connected, and unserved clusters.
+- **UNICEF-ITU Giga School Connectivity Pipeline:** Interactive geospatial maps and connectivity diagnostics across 7 focus economies (KEN, RWA, TZA, GHA, NGA, ZMB, MUS; currently utilizing calibrated synthetic spatial demo seeds of 3,000 schools/country awaiting official Giga API token clearance).
 - **Ookla Speedtest Intelligence:** Ground-truth latency and download speeds across urban vs. rural mobile cell towers.
 
 #### 3. Lens 3: The Pilot Reality
@@ -166,7 +166,7 @@ The practical deliverable is a high-performance, single-page web observatory (12
 | `fetch_imf_cofog.py` | IMF Government Finance Statistics (GFS) COFOG API & GFS archives | `data/imf/imf_cofog_long.csv`<br>`data/imf/imf_cofog_shares.csv`<br>`data/imf/imf_cofog_coverage.csv`<br>`data/imf/imf_cofog_audit.json` | Pulls domestic central government outlays across Education (709), Communication (7047), Transport (7045), and Total Outlays. Covers all 54 African economies with incremental caching. |
 | `fetch_iati_funding.py` | International Aid Transparency Initiative (IATI) Datastore API | `data/iati/iati_transactions.csv`<br>`data/iati/iati_funding_by_year.csv`<br>`data/iati/iati_audit.json` | Harvests 29,388 raw transactions (2017–2024), filters DAC CRS sector codes for Education (111/112/113/114) and Telecommunications/ICT (220), normalizes currencies to USD, and tracks annual disbursements. |
 | `compile_macro_fiscal_indicators.py` | Ingested IMF COFOG + IATI outputs + World Bank WDI | `data/processed/macro_fiscal_ecosystem.json`<br>`data/processed/macro_fiscal_data.js` | Synthesizes domestic expenditure shares, external aid trends, 40:1 ICT financing bottlenecks, and compiles the Digital Recurrent Cliff quad-lens data structure for `index.html`. |
-| `scripts/map_giga_schools.py` | UNICEF-ITU Giga Maps school database (Kenya) | `data/maps/KEN/schools_map.html`<br>`data/maps/KEN/summary_by_admin1.csv`<br>`data/maps/KEN/summary_overall.csv` | Processes 78,432 school coordinates, calculates connectivity status per county/admin-1, and generates interactive leaflet maps and statistical audit summaries. |
+| `scripts/map_giga_schools.py` | UNICEF-ITU Giga Maps spatial schema | `data/maps/{ISO3}/schools_map.html`<br>`data/maps/{ISO3}/summary_by_admin1.csv`<br>`data/maps/{ISO3}/summary_overall.csv` | Spatial engine mapping school coordinates and connectivity across 7 economies (KEN, RWA, TZA, GHA, NGA, ZMB, MUS; 3,000 schools/country in calibrated demo mode awaiting Giga API token). |
 | `scripts/verify_dpg_urls.py` | `data/resources_registry.json` | `data/last_link_verification_report.md` | Automated health-check pipeline pinging all certified DPG web endpoints and repositories, tracking HTTP response codes, latency (ms), and flagging broken redirects. |
 | `build_checkin_deck.py` | Processed datasets & academic talking points | `Project_Idea_Check-in.pptx` | Programmatic PowerPoint generation engine constructing high-resolution academic presentation slides with embedded tables, diagrams, and typography for supervisor check-ins. |
 
@@ -250,7 +250,8 @@ The repository contains an automated test suite executed with `pytest`:
 * `data/processed/macro_fiscal_data.js` & `data/processed/macro_fiscal_ecosystem.json` — Pre-compiled macro-fiscal indicators, IATI aid trends, and domestic budget shares.
 * `data/processed/supply_demand_matrix_data.js` — 48 SSA demand environments matched against 148 EdTech vendor architectures.
 * `data/processed/survey_evidence_data.js` — Calibrated baseline data ($N = 800$) and live ingestion hot-swap engine for AoA survey data.
-* `data/maps/KEN/` — UNICEF-ITU Giga school mapping dataset (78,432 schools) and leaflet map generator.
+* `data/maps/{ISO3}/` — Spatial school mapping datasets and Leaflet interactive visualizations across all 7 focus economies (KEN, RWA, TZA, GHA, NGA, ZMB, MUS).
+* `data/processed/connectivity/` — Empirical Ookla 2024 Q1 cellular and fixed-line speed/latency spatial tiles (41,754 tiles across 7 economies).
 * `data/resources_registry.json` — Machine-readable registry of verified Digital Public Goods with automated uptime verification.
 * `data/AoA_Survey_to_Pillar_Codebook.md` & `.csv` — 104-item survey instrument codebook mapped to UNESCO 6 Pillars.
 
