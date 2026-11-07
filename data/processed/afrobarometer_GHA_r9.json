@@ -1,0 +1,112 @@
+{
+  "metadata": {
+    "country_iso3": "GHA",
+    "country_label_in_file": "Ghana",
+    "country_column": "COUNTRY",
+    "round": "9",
+    "sample_size_n": 2369,
+    "n_urban": 1417,
+    "n_rural": 952,
+    "urban_rural_variable": "URBRUR",
+    "weight_variable": "withinwt_ea",
+    "weighted": true,
+    "scale": "percentages on a 0-100 scale; 'n' is the unweighted valid base",
+    "source_file": "R9.Merge_39ctry.20Nov23.final_.release_Updated.4Jun25-3.sav",
+    "extraction_timestamp_utc": "2026-11-07T18:43:16+00:00",
+    "script_version": "1.0.0",
+    "assumptions": [],
+    "warnings": []
+  },
+  "indicators": {
+    "education_priority_problem": {
+      "status": "ok",
+      "definition": "Share of respondents naming education in any of their top-3 national problems; 'first_mention' is education as the 1st problem only.",
+      "denominator": "all respondents in the country sample",
+      "variables_used": [
+        {
+          "variable": "Q45PT1",
+          "label": "Q45pt1. Most important problems - 1st response",
+          "education_identified_by": "value label contains 'Education'"
+        },
+        {
+          "variable": "Q45PT2",
+          "label": "Q45pt2. Most important problems - 2nd response",
+          "education_identified_by": "value label contains 'Education'"
+        },
+        {
+          "variable": "Q45PT3",
+          "label": "Q45pt3. Most important problems - 3rd response",
+          "education_identified_by": "value label contains 'Education'"
+        }
+      ],
+      "any_top3_mention": {
+        "national": {
+          "pct": 27.08,
+          "n": 2369
+        },
+        "urban": {
+          "pct": 23.29,
+          "n": 1417
+        },
+        "rural": {
+          "pct": 32.66,
+          "n": 952
+        }
+      },
+      "first_mention": {
+        "national": {
+          "pct": 7.32,
+          "n": 2369
+        },
+        "urban": {
+          "pct": 5.66,
+          "n": 1417
+        },
+        "rural": {
+          "pct": 9.76,
+          "n": 952
+        }
+      }
+    },
+    "school_deficits": {
+      "status": "not_found",
+      "note": "No school-problem items found by keyword (searched variable labels for 'school' plus: textbooks, teaching quality, absent teachers, overcrowded, toilets). These items were asked in early Afrobarometer rounds but may not exist in this round's questionnaire.",
+      "skipped_candidates": []
+    },
+    "satisfaction_education_delivery": {
+      "status": "ok",
+      "variable": "Q46H",
+      "label": "Q46h. Handling addressing educational needs",
+      "classification": "answer labels 'fairly/very well' vs 'fairly/very badly'",
+      "definition": "Government handling 'addressing educational needs'. Denominator excludes don't know / haven't heard enough / refused.",
+      "pct_well": {
+        "national": {
+          "pct": 39.59,
+          "n": 2363
+        },
+        "urban": {
+          "pct": 41.93,
+          "n": 1415
+        },
+        "rural": {
+          "pct": 36.13,
+          "n": 948
+        }
+      },
+      "pct_badly": {
+        "national": {
+          "pct": 60.41,
+          "n": 2363
+        },
+        "urban": {
+          "pct": 58.07,
+          "n": 1415
+        },
+        "rural": {
+          "pct": 63.87,
+          "n": 948
+        }
+      }
+    }
+  }
+}

@@ -1,8 +1,8 @@
 {
   "metadata": {
     "country_iso3": "KEN",
-    "country_label_in_file": null,
-    "country_column": null,
+    "country_label_in_file": "Kenya",
+    "country_column": "COUNTRY",
     "round": "9",
     "sample_size_n": 2400,
     "n_urban": 840,
@@ -11,13 +11,11 @@
     "weight_variable": "withinwt_ea",
     "weighted": true,
     "scale": "percentages on a 0-100 scale; 'n' is the unweighted valid base",
-    "source_file": "afrobarometer_release-dataset_ken_r9_en_2023-03-01.sav",
-    "extraction_timestamp_utc": "2026-11-03T23:29:19+00:00",
+    "source_file": "R9.Merge_39ctry.20Nov23.final_.release_Updated.4Jun25-3.sav",
+    "extraction_timestamp_utc": "2026-11-07T18:43:05+00:00",
     "script_version": "1.0.0",
     "assumptions": [],
-    "warnings": [
-      "No country column found; assuming the whole file is the requested country."
-    ]
+    "warnings": []
   },
   "indicators": {
     "education_priority_problem": {
