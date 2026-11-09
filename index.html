@@ -333,6 +333,10 @@
           <button onclick="switchTab('theory-tab')" id="btn-theory-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
             Methodology &amp; Discrepancy Matrix
           </button>
+          <button onclick="switchTab('surveys-tab')" id="btn-surveys-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Field Surveys &amp; Collector
+          </button>
           <button onclick="switchTab('appendix-tab')" id="btn-appendix-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
             Research Appendix &amp; Citations
           </button>
@@ -1454,13 +1458,841 @@
           </div>
         </div>
 
-        <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm mb-8">
-          <h3 class="font-bold text-slate-900 text-lg mb-3 font-serif">Master Discrepancy Matrix Visualization</h3>
-          <p class="text-xs text-slate-600 mb-4">
-            Triangulating the 4 pilot archetypes across the 3 core structural gaps: Connectivity, Sustainability, and Linguistic Inclusion.
-          </p>
-          <img src="./data/analysis_b/master_discrepancy_matrix.png" alt="Master Discrepancy Matrix" class="w-full max-h-[460px] object-contain mx-auto rounded-lg shadow-sm border border-slate-100">
+
+        <!-- ================================================================= -->
+        <!-- INTERACTIVE TRIANGULATION HEATMAP (AFROBAROMETER R10 x MACRO)     -->
+        <!-- ================================================================= -->
+        <div id="survey-portal-anchor"></div>
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-8" id="triangulation-heatmap-section">
+          <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-200 mb-6">
+            <div>
+              <div class="flex items-center gap-2 mb-1.5">
+                <span class="badge-pill bg-rose-100 text-rose-800 text-xs font-bold font-mono">Layer 1 × Layer 2 Triangulation</span>
+                <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold font-mono">Afrobarometer R10 (N=11,200)</span>
+                <span class="badge-pill bg-slate-100 text-slate-700 text-xs font-bold font-mono">7 Focus Economies</span>
+              </div>
+              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif">Multi-Country Discrepancy Heatmap: Macro vs. Ground Truth</h3>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-4xl">
+                Contrasting nationally aggregated open indicators (World Bank WDI, UIS, ITU) against face-to-face citizen self-reports from <strong>Afrobarometer Round 10</strong>. Click any cell to inspect the empirical divergence and policy implications.
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="./Teacher_Diagnostic_Survey.html" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                Access Practitioner Survey Forms
+              </a>
+            </div>
+          </div>
+
+          <!-- Heatmap Interactive Table -->
+          <div class="overflow-x-auto rounded-xl border border-slate-200 shadow-sm mb-6">
+            <table class="w-full text-left text-xs border-collapse">
+              <thead class="bg-slate-50 text-slate-700 font-serif font-bold uppercase tracking-wider text-[11px] border-b border-slate-200">
+                <tr>
+                  <th class="py-3 px-4">Country & Sample</th>
+                  <th class="py-3 px-3 text-center">Pillar 2: HH Electricity<br><span class="text-[9px] font-sans font-normal text-slate-500">WB National vs AB Mains</span></th>
+                  <th class="py-3 px-3 text-center">Pillar 2: Rural Grid<br><span class="text-[9px] font-sans font-normal text-slate-500">WB Rural vs AB Observed</span></th>
+                  <th class="py-3 px-3 text-center">Pillar 2: Internet Access<br><span class="text-[9px] font-sans font-normal text-slate-500">WB Users vs AB Mobile</span></th>
+                  <th class="py-3 px-3 text-center">Pillar 5: Language &amp; AI<br><span class="text-[9px] font-sans font-normal text-slate-500">15% Supply vs Home Dialects</span></th>
+                  <th class="py-3 px-3 text-center">Governance Paradox<br><span class="text-[9px] font-sans font-normal text-slate-500">Edu Satisfaction vs School Grid</span></th>
+                  <th class="py-3 px-3 text-center">Pillar 3: Cash Precarity<br><span class="text-[9px] font-sans font-normal text-slate-500">AB Lived Income Shortage</span></th>
+                  <th class="py-3 px-3 text-center bg-slate-100">Layer 3: Practitioner<br><span class="text-[9px] font-sans font-normal text-slate-500">AoA Field Diagnostic</span></th>
+                </tr>
+              </thead>
+              <tbody id="interactive-heatmap-body" class="divide-y divide-slate-200">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Active Drilldown Drawer / Card -->
+          <div id="heatmap-drilldown-card" class="bg-slate-50 rounded-xl p-5 border border-slate-200 transition-all duration-300">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-3">
+              <div class="flex items-center gap-2">
+                <span id="drilldown-badge" class="badge-pill bg-slate-200 text-slate-800 text-[10px] font-bold font-mono">SELECT A METRIC</span>
+                <h4 id="drilldown-title" class="font-bold text-slate-900 text-sm font-serif">Click any cell above to inspect the empirical divergence</h4>
+              </div>
+              <span id="drilldown-country" class="text-xs font-bold text-indigo-700"></span>
+            </div>
+            <div id="drilldown-content" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+              <div class="bg-white p-3.5 rounded-lg border border-slate-200">
+                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Macro Aggregation (Layer 1)</span>
+                <div id="drilldown-macro-val" class="text-base font-extrabold text-slate-800">—</div>
+                <div id="drilldown-macro-src" class="text-[10px] text-slate-500 mt-0.5">Select a cell</div>
+              </div>
+              <div class="bg-white p-3.5 rounded-lg border border-slate-200">
+                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Citizen Self-Report (Layer 2)</span>
+                <div id="drilldown-field-val" class="text-base font-extrabold text-slate-800">—</div>
+                <div id="drilldown-field-src" class="text-[10px] text-slate-500 mt-0.5">Afrobarometer Round 10</div>
+              </div>
+              <div class="bg-white p-3.5 rounded-lg border border-slate-200">
+                <span class="text-[10px] uppercase font-bold text-slate-400 block mb-1">Empirical Divergence &amp; Policy Distortion</span>
+                <div id="drilldown-gap-val" class="text-base font-extrabold text-indigo-700">—</div>
+                <div id="drilldown-desc" class="text-[11px] text-slate-600 mt-1 leading-relaxed">Click any cell in the heatmap matrix above to drill down into the specific indicator gap and examine why procurement decisions fail.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Static Matrix Fallback (Collapsible) -->
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+            <span>Methodological note: Macro indicators sourced from World Bank WDI &amp; UIS. Citizen data from Afrobarometer R10 (38-country release, 2024-2026).</span>
+            <details class="cursor-pointer text-indigo-600 font-semibold hover:underline">
+              <summary class="list-none">View Legacy 4-Country Synthesis Matrix Image</summary>
+              <div class="mt-3 p-3 bg-white border border-slate-200 rounded-lg">
+                <img src="./data/analysis_b/master_discrepancy_matrix.png" alt="Legacy Matrix" class="w-full max-h-[350px] object-contain mx-auto">
+              </div>
+            </details>
+          </div>
         </div>
+
+        <script>
+        const heatmapData = [
+  {
+    "iso3": "KEN",
+    "name": "Kenya",
+    "flag": "\ud83c\uddf0\ud83c\uddea",
+    "sample_size_ab": 2400,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 77.0,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 66.2,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -10.8,
+        "unit": "%",
+        "type": "overstatement",
+        "desc": "Macro claims 77.0% access; citizens report 66.2% mains connection (-10.8pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 67.1,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 80.1,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 13.0,
+        "unit": "%",
+        "type": "divergence",
+        "desc": "Interviewer observed grid in 80.1% of rural clusters vs WB rural estimate 67.1%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 34.98,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 61.1,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 26.1,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro estimates 34.98% users; citizen survey shows 61.1% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 82.62,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 56.1,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": -26.5,
+        "unit": "%",
+        "type": "standard",
+        "desc": "Satisfaction is 56.1%, yet only 82.62% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 89.5,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "89.5% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 75.0,
+        "field_src": "Classroom Ground Truth (Kiswahili, Kikuyu, Dholuo) \u00b7 GEM Spotlight",
+        "gap": -60.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 62.0,
+        "token_tax": "1.8x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 75.0% of learners speak Kiswahili, Kikuyu, Dholuo at home. LLM benchmark performance collapses to 62.0% of English (AfroBench/IrokoBench) with a 1.8x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "GHA",
+    "name": "Ghana",
+    "flag": "\ud83c\uddec\ud83c\udded",
+    "sample_size_ab": 2400,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 91.9,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 89.0,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -2.9,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro claims 91.9% access; citizens report 89.0% mains connection (-2.9pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 82.6,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 87.1,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 4.5,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Interviewer observed grid in 87.1% of rural clusters vs WB rural estimate 82.6%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 72.18,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 57.1,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": -15.1,
+        "unit": "%",
+        "type": "overstatement",
+        "desc": "Macro estimates 72.18% users; citizen survey shows 57.1% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 24.95,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 52.2,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": 27.3,
+        "unit": "%",
+        "type": "paradox",
+        "desc": "Satisfaction is 52.2%, yet only 24.95% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 71.6,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "moderate",
+        "desc": "71.6% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 80.0,
+        "field_src": "Classroom Ground Truth (Akan (Twi/Fante), Ewe, Ga) \u00b7 GEM Spotlight",
+        "gap": -65.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 25.0,
+        "token_tax": "2.6x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 80.0% of learners speak Akan (Twi/Fante), Ewe, Ga at home. LLM benchmark performance collapses to 25.0% of English (AfroBench/IrokoBench) with a 2.6x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "NGA",
+    "name": "Nigeria",
+    "flag": "\ud83c\uddf3\ud83c\uddec",
+    "sample_size_ab": 1600,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 62.5,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 69.7,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": 7.2,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro claims 62.5% access; citizens report 69.7% mains connection (7.2pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 23.5,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 45.5,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 22.0,
+        "unit": "%",
+        "type": "divergence",
+        "desc": "Interviewer observed grid in 45.5% of rural clusters vs WB rural estimate 23.5%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 41.21,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 42.6,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 1.4,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro estimates 41.21% users; citizen survey shows 42.6% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": null,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 23.5,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": null,
+        "unit": "%",
+        "type": "standard",
+        "desc": "School electrification data missing."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 94.9,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "94.9% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 82.0,
+        "field_src": "Classroom Ground Truth (Hausa, Yoruba, Igbo) \u00b7 GEM Spotlight",
+        "gap": -67.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 32.0,
+        "token_tax": "2.4x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 82.0% of learners speak Hausa, Yoruba, Igbo at home. LLM benchmark performance collapses to 32.0% of English (AfroBench/IrokoBench) with a 2.4x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "TZA",
+    "name": "Tanzania",
+    "flag": "\ud83c\uddf9\ud83c\uddff",
+    "sample_size_ab": 2400,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 52.4,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 51.6,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -0.8,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro claims 52.4% access; citizens report 51.6% mains connection (-0.8pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 33.7,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 61.1,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 27.4,
+        "unit": "%",
+        "type": "divergence",
+        "desc": "Interviewer observed grid in 61.1% of rural clusters vs WB rural estimate 33.7%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 31.16,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 29.3,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": -1.9,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro estimates 31.16% users; citizen survey shows 29.3% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 37.33,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 82.7,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": 45.4,
+        "unit": "%",
+        "type": "paradox",
+        "desc": "Satisfaction is 82.7%, yet only 37.33% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 85.5,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "85.5% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 90.0,
+        "field_src": "Classroom Ground Truth (Kiswahili, Sukuma) \u00b7 GEM Spotlight",
+        "gap": -75.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 62.0,
+        "token_tax": "1.8x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 90.0% of learners speak Kiswahili, Sukuma at home. LLM benchmark performance collapses to 62.0% of English (AfroBench/IrokoBench) with a 1.8x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "ZMB",
+    "name": "Zambia",
+    "flag": "\ud83c\uddff\ud83c\uddf2",
+    "sample_size_ab": 1200,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 53.6,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 27.1,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -26.5,
+        "unit": "%",
+        "type": "overstatement",
+        "desc": "Macro claims 53.6% access; citizens report 27.1% mains connection (-26.5pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 31.3,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 24.4,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": -6.9,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Interviewer observed grid in 24.4% of rural clusters vs WB rural estimate 31.3%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 17.1,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 32.0,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 14.9,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro estimates 17.1% users; citizen survey shows 32.0% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 36.4,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 84.3,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": 47.9,
+        "unit": "%",
+        "type": "paradox",
+        "desc": "Satisfaction is 84.3%, yet only 36.4% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 89.7,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "89.7% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 80.0,
+        "field_src": "Classroom Ground Truth (Bemba, Nyanja, Tonga) \u00b7 GEM Spotlight",
+        "gap": -65.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 18.0,
+        "token_tax": "3.4x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 80.0% of learners speak Bemba, Nyanja, Tonga at home. LLM benchmark performance collapses to 18.0% of English (AfroBench/IrokoBench) with a 3.4x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "MUS",
+    "name": "Mauritius",
+    "flag": "\ud83c\uddf2\ud83c\uddfa",
+    "sample_size_ab": 1200,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 100.0,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 98.4,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -1.6,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro claims 100.0% access; citizens report 98.4% mains connection (-1.6pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 100.0,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 100.0,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 0.0,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Interviewer observed grid in 100.0% of rural clusters vs WB rural estimate 100.0%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 73.31,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 83.9,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 10.6,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro estimates 73.31% users; citizen survey shows 83.9% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 100.0,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 72.9,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": -27.1,
+        "unit": "%",
+        "type": "standard",
+        "desc": "Satisfaction is 72.9%, yet only 100.0% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 35.1,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "moderate",
+        "desc": "35.1% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 55.0,
+        "field_src": "Classroom Ground Truth (Morisyen (Cr\u00e9ole), Bhojpuri) \u00b7 GEM Spotlight",
+        "gap": -40.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 28.0,
+        "token_tax": "2.1x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 55.0% of learners speak Morisyen (Cr\u00e9ole), Bhojpuri at home. LLM benchmark performance collapses to 28.0% of English (AfroBench/IrokoBench) with a 2.1x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "RWA",
+    "name": "Rwanda",
+    "flag": "\ud83c\uddf7\ud83c\uddfc",
+    "sample_size_ab": 0,
+    "note": "Absent from AB R10 Release",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": null,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": null,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Data missing in R10."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": null,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": null,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Data missing in R10."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": null,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": null,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Data missing in R10."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": null,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": null,
+        "unit": "%",
+        "type": "standard",
+        "desc": "School electrification data missing."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "moderate",
+        "desc": "Data missing."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 85.0,
+        "field_src": "Classroom Ground Truth (Kinyarwanda) \u00b7 GEM Spotlight",
+        "gap": -70.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 38.0,
+        "token_tax": "2.8x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 85.0% of learners speak Kinyarwanda at home. LLM benchmark performance collapses to 38.0% of English (AfroBench/IrokoBench) with a 2.8x token cost penalty."
+      }
+    }
+  }
+];
+
+        function renderInteractiveHeatmap() {
+          const tbody = document.getElementById('interactive-heatmap-body');
+          if (!tbody) return;
+          tbody.innerHTML = '';
+
+          heatmapData.forEach(c => {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-slate-50/80 transition-colors border-b border-slate-100';
+
+            let html = `
+              <td class="py-3 px-4">
+                <div class="font-bold text-slate-900 flex items-center gap-1.5">
+                  <span class="text-base">${c.flag}</span> ${c.name}
+                </div>
+                <div class="text-[10px] text-slate-400 font-mono">${c.sample_size_ab ? 'N=' + c.sample_size_ab.toLocaleString() + ' (AB R10)' : c.note}</div>
+              </td>
+            `;
+
+            function getCellHTML(dimKey, dim) {
+              if (!dim || (dim.gap === null && dim.field_val === null)) {
+                return `<td class="py-2.5 px-3 text-center text-slate-300 font-mono text-[11px]">—</td>`;
+              }
+              if (dimKey === 'practitioner_audit') {
+                return `
+                  <td class="py-2.5 px-3 text-center bg-slate-50">
+                    <span onclick="selectHeatmapCell('${c.iso3}', '${dimKey}')" class="cursor-pointer inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-200 text-slate-600 font-mono text-[10px] font-bold hover:bg-slate-300 transition">
+                      <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                      Pending N
+                    </span>
+                  </td>
+                `;
+              }
+              if (dimKey === 'economic_precarity') {
+                const val = dim.field_val;
+                const color = val > 80 ? 'bg-rose-100 text-rose-800 border-rose-200' : (val > 60 ? 'bg-amber-100 text-amber-800 border-amber-200' : 'bg-emerald-100 text-emerald-800 border-emerald-200');
+                return `
+                  <td class="py-2.5 px-3 text-center">
+                    <button onclick="selectHeatmapCell('${c.iso3}', '${dimKey}')" class="px-2 py-1 rounded border font-mono font-bold text-[11px] ${color} hover:ring-2 hover:ring-indigo-400 transition">
+                      ${val}%
+                    </button>
+                  </td>
+                `;
+              }
+              if (dimKey === 'linguistic') {
+                return `
+                  <td class="py-2.5 px-3 text-center">
+                    <button onclick="selectHeatmapCell('${c.iso3}', '${dimKey}')" class="px-2 py-1 rounded border font-mono text-[11px] bg-red-100 text-red-900 border-red-300 font-bold hover:ring-2 hover:ring-indigo-400 transition" title="Linguistic exclusion gap">
+                      ${dim.gap}pp
+                    </button>
+                  </td>
+                `;
+              }
+
+              const gap = dim.gap;
+              let bg = 'bg-slate-100 text-slate-700 border-slate-200';
+              let sign = gap > 0 ? '+' : '';
+              if (dimKey === 'electricity') {
+                if (gap < -15) bg = 'bg-rose-100 text-rose-900 border-rose-300 font-bold';
+                else if (gap < -5) bg = 'bg-amber-100 text-amber-900 border-amber-300';
+                else bg = 'bg-emerald-100 text-emerald-800 border-emerald-200';
+              } else if (dimKey === 'internet') {
+                if (Math.abs(gap) > 20) bg = 'bg-indigo-100 text-indigo-900 border-indigo-300 font-bold';
+                else if (Math.abs(gap) > 10) bg = 'bg-amber-100 text-amber-800 border-amber-200';
+                else bg = 'bg-emerald-100 text-emerald-800 border-emerald-200';
+              } else if (dimKey === 'gov_paradox') {
+                if (gap > 30) bg = 'bg-purple-100 text-purple-900 border-purple-300 font-bold';
+                else if (gap > 15) bg = 'bg-blue-100 text-blue-900 border-blue-200';
+                else bg = 'bg-slate-100 text-slate-700 border-slate-200';
+              } else if (dimKey === 'rural_grid') {
+                if (Math.abs(gap) > 20) bg = 'bg-orange-100 text-orange-900 border-orange-300';
+                else bg = 'bg-slate-100 text-slate-700 border-slate-200';
+              }
+
+              return `
+                <td class="py-2.5 px-3 text-center">
+                  <button onclick="selectHeatmapCell('${c.iso3}', '${dimKey}')" class="px-2 py-1 rounded border font-mono text-[11px] ${bg} hover:ring-2 hover:ring-indigo-400 transition" title="Click to view drilldown">
+                    ${sign}${gap}pp
+                  </button>
+                </td>
+              `;
+            }
+
+            html += getCellHTML('electricity', c.dimensions.electricity);
+            html += getCellHTML('rural_grid', c.dimensions.rural_grid);
+            html += getCellHTML('internet', c.dimensions.internet);
+            html += getCellHTML('linguistic', c.dimensions.linguistic);
+            html += getCellHTML('gov_paradox', c.dimensions.gov_paradox);
+            html += getCellHTML('economic_precarity', c.dimensions.economic_precarity);
+            html += getCellHTML('practitioner_audit', c.dimensions.practitioner_audit);
+
+            tr.innerHTML = html;
+            tbody.appendChild(tr);
+          });
+        }
+
+        function selectHeatmapCell(iso3, dimKey) {
+          const c = heatmapData.find(x => x.iso3 === iso3);
+          if (!c) return;
+          const dim = c.dimensions[dimKey];
+          if (!dim) return;
+
+          document.getElementById('drilldown-country').textContent = `${c.flag} ${c.name} (${c.iso3})`;
+          document.getElementById('drilldown-badge').textContent = dim.name.toUpperCase();
+          document.getElementById('drilldown-title').textContent = `${c.name}: ${dim.name} Divergence`;
+          
+          document.getElementById('drilldown-macro-val').textContent = dim.macro_val !== null ? `${dim.macro_val}${dim.unit}` : 'N/A';
+          document.getElementById('drilldown-macro-src').textContent = dim.macro_src || '—';
+
+          document.getElementById('drilldown-field-val').textContent = dim.field_val !== null ? `${dim.field_val}${dim.unit}` : 'Pending Field Data';
+          document.getElementById('drilldown-field-src').textContent = dim.field_src || '—';
+
+          const gapText = dim.gap !== null ? (dim.gap > 0 ? `+${dim.gap}pp Gap` : `${dim.gap}pp Gap`) : (dimKey === 'economic_precarity' ? `${dim.field_val}% Stress Rate` : 'Awaiting Collection');
+          document.getElementById('drilldown-gap-val').textContent = gapText;
+          document.getElementById('drilldown-desc').textContent = dim.desc || '';
+
+          const card = document.getElementById('heatmap-drilldown-card');
+          card.classList.add('ring-2', 'ring-indigo-500');
+          setTimeout(() => card.classList.remove('ring-2', 'ring-indigo-500'), 800);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+          renderInteractiveHeatmap();
+        });
+        if (document.readyState === 'complete' || document.readyState === 'interactive') {
+          renderInteractiveHeatmap();
+        }
+</script>
+
 
         <!-- ================================================================= -->
         <!-- SUPPLY-DEMAND MISMATCH MATRIX & TRANSPARENT PROXY OBSERVATORY     -->
@@ -3068,6 +3900,232 @@
   <!-- ================================================================= -->
   <!-- APPENDIX: RESEARCH EVIDENCE, FIGURES & STAKEHOLDER DIRECTIVES     -->
   <!-- ================================================================= -->
+  
+  <!-- ================================================================= -->
+  <!-- FIELD SURVEYS & PRACTITIONER DATA PORTAL TAB                      -->
+  <!-- ================================================================= -->
+  <div id="surveys-tab" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div class="mb-8">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="badge-pill bg-emerald-100 text-emerald-800 text-xs font-bold font-mono">Layer 3 Field Instruments</span>
+        <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-mono font-bold">UNESCO Global Education Coalition / AoA</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Frontline Field Evidence &amp; Survey Instrument Hub</h2>
+      <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-4xl leading-relaxed">
+        Collect and ground-truth empirical data directly from educators, technology founders, and domain experts. Survey responses are logged in secure client-side storage, calculate instant diagnostic feasibility scores for the respondent, and aggregate into regional discrepancy indicators.
+      </p>
+    </div>
+
+    <!-- 3 Survey Instrument Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <!-- Card 1: Teacher Survey -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-indigo-300 transition">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-100 text-indigo-800">Instrument T-1</span>
+            <span class="text-xs text-slate-400">~6 mins</span>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base font-serif mb-2">Frontline Teacher Classroom Diagnostic</h3>
+          <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+            Audits physical electricity reliability, out-of-pocket mobile data expenses (the "Teacher Salary Tax"), pupil-teacher ratios, and mother-tongue language alignment.
+          </p>
+          <div class="p-3 bg-slate-50 rounded-lg text-[11px] text-slate-500 mb-4 space-y-1">
+            <div class="font-bold text-slate-700">Respondent Incentive:</div>
+            <div>Instant Classroom Feasibility Score + 3-Station Rotation Schedule recommendation.</div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a href="./Teacher_Diagnostic_Survey.html" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition">
+            Launch Teacher Diagnostic →
+          </a>
+          <button onclick="copySurveyLink('teacher')" class="w-full text-center text-[11px] text-indigo-600 hover:text-indigo-800 font-medium py-1">
+            🔗 Copy Shareable Link for WhatsApp/Email
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2: EdTech Provider Survey -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-indigo-300 transition">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-100 text-amber-800">Instrument P-1</span>
+            <span class="text-xs text-slate-400">~8 mins</span>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base font-serif mb-2">African EdTech Provider &amp; Founder Survey</h3>
+          <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+            Measures architecture requirements (offline vs. cloud), pricing models (B2C vs. B2G tenders), donor grant dependency, and indigenous language localization.
+          </p>
+          <div class="p-3 bg-slate-50 rounded-lg text-[11px] text-slate-500 mb-4 space-y-1">
+            <div class="font-bold text-slate-700">Respondent Incentive:</div>
+            <div>Instant UNESCO 6-Pillars Market Fit Rating &amp; DPG eligibility check.</div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a href="./AoA survey/SSA_Provider_Survey_v1_PUBLIC.docx" download class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-slate-800 text-white hover:bg-slate-700 shadow-sm transition">
+            Download Provider Survey (.docx)
+          </a>
+          <div class="text-center text-[11px] text-slate-400 py-1">Online form mirror launching shortly</div>
+        </div>
+      </div>
+
+      <!-- Card 3: Expert Panel Consultation -->
+      <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-indigo-300 transition">
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-purple-100 text-purple-800">Instrument E-1</span>
+            <span class="text-xs text-slate-400">~12 mins</span>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base font-serif mb-2">Policy &amp; Donor Expert Delphi Consultation</h3>
+          <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+            Captures qualitative perspectives on the "85% Pilot Graveyard", national curriculum accreditation bottlenecks, and AI readiness across Sub-Saharan Africa.
+          </p>
+          <div class="p-3 bg-slate-50 rounded-lg text-[11px] text-slate-500 mb-4 space-y-1">
+            <div class="font-bold text-slate-700">Target Group:</div>
+            <div>Ministries of Education, UNESCO/World Bank specialists, Academic researchers.</div>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <a href="./AoA survey/SSA_Expert_Consultation_R1_v1_PUBLIC.docx" download class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-slate-800 text-white hover:bg-slate-700 shadow-sm transition">
+            Download Expert Protocol (.docx)
+          </a>
+          <div class="text-center text-[11px] text-slate-400 py-1">Qualitative semi-structured format</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Researcher Admin / Data Vault Panel -->
+    <div class="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 border border-slate-800 shadow-md">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-800 mb-6">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500 text-slate-950">RESEARCHER DATA VAULT</span>
+            <span class="text-xs text-slate-400">Encrypted Local Storage &amp; Export</span>
+          </div>
+          <h3 class="text-lg font-bold font-serif text-white">Collected Responses Ingestion &amp; Discrepancy Triangulation</h3>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="refreshVaultDisplay()" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 transition">
+            🔄 Refresh Vault
+          </button>
+          <button onclick="exportVaultJSON()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition">
+            📥 Export All (.JSON)
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 text-xs">
+        <div class="lg:col-span-1 space-y-4">
+          <div class="p-4 bg-slate-800/80 rounded-xl border border-slate-700 space-y-2">
+            <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">Vault Statistics</span>
+            <div class="text-2xl font-extrabold text-emerald-400" id="vault-count">0 Recorded Submissions</div>
+            <p class="text-slate-400 text-[11px] leading-relaxed">
+              Responses logged via the Teacher Diagnostic or manual ingestion are securely cached client-side. No third party or public visitor can see your individual records.
+            </p>
+          </div>
+          <div class="p-4 bg-slate-800/80 rounded-xl border border-slate-700 space-y-2">
+            <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">Manual Batch Ingestion</span>
+            <p class="text-slate-400 text-[11px]">Paste JSON payloads from Google Forms or WhatsApp collection:</p>
+            <textarea id="vault-manual-input" placeholder='[{"country":"KEN","power":"solar"...}]' class="w-full h-20 bg-slate-950 border border-slate-700 rounded p-2 font-mono text-[10px] text-emerald-400"></textarea>
+            <button onclick="ingestManualPayload()" class="w-full py-1.5 bg-slate-700 hover:bg-slate-600 rounded text-slate-200 font-bold transition text-[11px]">
+              Ingest Into Repository Vault
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 border-b border-slate-800 mb-2">
+              <span class="font-bold text-slate-300 font-mono text-[11px]">Ingested Records Stream</span>
+              <span class="text-[10px] text-slate-500 font-mono">Format: Standardized AoA Payload</span>
+            </div>
+            <div id="vault-stream" class="h-48 overflow-y-auto font-mono text-[10px] text-slate-400 space-y-1">
+              <div class="text-slate-600 italic">No field records submitted yet. Distribute the Teacher Diagnostic survey link to populate this stream.</div>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+            <span>Periodic Analysis: Run <code class="text-indigo-400">python3 scripts/run_monthly_triangulation.py</code> to recalculate heatmap divergence</span>
+            <button onclick="clearVault()" class="text-rose-400 hover:text-rose-300 text-[10px]">Clear Vault Data</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function copySurveyLink(type) {
+      const url = window.location.origin + window.location.pathname.replace('index.html', '') + 'Teacher_Diagnostic_Survey.html';
+      navigator.clipboard.writeText(url);
+      alert('Copied shareable survey link to clipboard:\n' + url);
+    }
+
+    function refreshVaultDisplay() {
+      const countEl = document.getElementById('vault-count');
+      const streamEl = document.getElementById('vault-stream');
+      if (!countEl || !streamEl) return;
+
+      const records = JSON.parse(localStorage.getItem('collected_teacher_diagnostics') || '[]');
+      countEl.textContent = `${records.length} Recorded Submission${records.length === 1 ? '' : 's'}`;
+
+      if (records.length === 0) {
+        streamEl.innerHTML = '<div class="text-slate-600 italic">No field records submitted yet. Distribute the Teacher Diagnostic survey link to populate this stream.</div>';
+        return;
+      }
+
+      streamEl.innerHTML = records.map((r, i) => `
+        <div class="p-2 rounded bg-slate-900 border border-slate-800 mb-1">
+          <span class="text-emerald-400 font-bold">#${i+1} [${r.country || 'N/A'}]</span>
+          <span class="text-slate-300 ml-2">${r.location || 'N/A'} · PTR ${r.ptr || 'N/A'} · Power: ${r.power || 'N/A'} · Tax: ${r.salary_tax || 'N/A'}</span>
+          <span class="text-slate-500 block text-[9px] mt-0.5">${r.timestamp || ''}</span>
+        </div>
+      `).reverse().join('');
+    }
+
+    function exportVaultJSON() {
+      const records = JSON.parse(localStorage.getItem('collected_teacher_diagnostics') || '[]');
+      if (records.length === 0) {
+        alert('Vault is currently empty. No submissions to export.');
+        return;
+      }
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(records, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `field_survey_responses_${new Date().toISOString().slice(0,10)}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    }
+
+    function ingestManualPayload() {
+      const input = document.getElementById('vault-manual-input').value.trim();
+      if (!input) return;
+      try {
+        const parsed = JSON.parse(input);
+        const existing = JSON.parse(localStorage.getItem('collected_teacher_diagnostics') || '[]');
+        if (Array.isArray(parsed)) {
+          existing.push(...parsed);
+        } else {
+          existing.push(parsed);
+        }
+        localStorage.setItem('collected_teacher_diagnostics', JSON.stringify(existing));
+        document.getElementById('vault-manual-input').value = '';
+        refreshVaultDisplay();
+        alert('Successfully ingested payload into vault!');
+      } catch (e) {
+        alert('Invalid JSON format: ' + e.message);
+      }
+    }
+
+    function clearVault() {
+      if (confirm('Are you sure you want to clear all cached survey submissions?')) {
+        localStorage.removeItem('collected_teacher_diagnostics');
+        refreshVaultDisplay();
+      }
+    }
+
+    // Refresh on tab load
+    document.addEventListener('DOMContentLoaded', refreshVaultDisplay);
+  </script>
+
   <div id="appendix-tab" class="tab-content hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
     <div class="mb-6">
       <span class="badge-pill bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200">Reference Materials &amp; Academic Archive</span>

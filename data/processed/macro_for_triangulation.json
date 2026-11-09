@@ -1,0 +1,74 @@
+{
+  "GHA": {
+    "wb_total_elec_access_%": 91.9,
+    "wb_rural_elec_access_%": 82.6,
+    "wb_urban_elec_access_%": 98.6,
+    "wb_internet_users_%": 72.18,
+    "wb_mobile_subscr_per100": 113.65,
+    "wb_fixed_broadband_per100": 0.66,
+    "uis_schools_w_electricity_%": 24.95,
+    "giga_school_connectivity_%": 61.23,
+    "wb_primary_ptr": 26.99,
+    "country": "Ghana"
+  },
+  "KEN": {
+    "wb_total_elec_access_%": 77.0,
+    "wb_rural_elec_access_%": 67.1,
+    "wb_urban_elec_access_%": 98.1,
+    "wb_internet_users_%": 34.98,
+    "wb_mobile_subscr_per100": 126.48,
+    "wb_fixed_broadband_per100": 3.04,
+    "uis_schools_w_electricity_%": 82.62,
+    "giga_school_connectivity_%": 65.56,
+    "wb_primary_ptr": 30.65,
+    "country": "Kenya"
+  },
+  "MUS": {
+    "wb_total_elec_access_%": 100.0,
+    "wb_rural_elec_access_%": 100.0,
+    "wb_urban_elec_access_%": 100.0,
+    "wb_internet_users_%": 73.31,
+    "wb_mobile_subscr_per100": 172.68,
+    "wb_fixed_broadband_per100": 27.97,
+    "uis_schools_w_electricity_%": 100.0,
+    "giga_school_connectivity_%": null,
+    "wb_primary_ptr": 16.2,
+    "country": "Mauritius"
+  },
+  "NGA": {
+    "wb_total_elec_access_%": 62.5,
+    "wb_rural_elec_access_%": 23.5,
+    "wb_urban_elec_access_%": 85.5,
+    "wb_internet_users_%": 41.21,
+    "wb_mobile_subscr_per100": 70.76,
+    "wb_fixed_broadband_per100": 0.08,
+    "uis_schools_w_electricity_%": null,
+    "giga_school_connectivity_%": 50.92,
+    "wb_primary_ptr": null,
+    "country": "Nigeria"
+  },
+  "TZA": {
+    "wb_total_elec_access_%": 52.4,
+    "wb_rural_elec_access_%": 33.7,
+    "wb_urban_elec_access_%": 85.2,
+    "wb_internet_users_%": 31.16,
+    "wb_mobile_subscr_per100": 126.56,
+    "wb_fixed_broadband_per100": 0.25,
+    "uis_schools_w_electricity_%": 37.33,
+    "giga_school_connectivity_%": 71.02,
+    "wb_primary_ptr": 50.63,
+    "country": "Tanzania"
+  },
+  "ZMB": {
+    "wb_total_elec_access_%": 53.6,
+    "wb_rural_elec_access_%": 31.3,
+    "wb_urban_elec_access_%": 80.3,
+    "wb_internet_users_%": 17.1,
+    "wb_mobile_subscr_per100": 108.7,
+    "wb_fixed_broadband_per100": 0.79,
+    "uis_schools_w_electricity_%": 36.4,
+    "giga_school_connectivity_%": 58.75,
+    "wb_primary_ptr": 42.06,
+    "country": "Zambia"
+  }
+}

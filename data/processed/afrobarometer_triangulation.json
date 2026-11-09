@@ -1,0 +1,80 @@
+{
+  "KEN": {
+    "n_total": 2400,
+    "n_rural": 1368,
+    "ea_has_electricity_grid_pct": 87.3,
+    "ea_rural_electricity_grid_pct": 80.1,
+    "hh_mains_electricity_pct": 66.2,
+    "own_mobile_phone_pct": 94.5,
+    "mobile_internet_pct": 61.1,
+    "internet_regular_pct": 58.6,
+    "gov_edu_well_pct": 56.1,
+    "gov_elec_well_pct": 60.1,
+    "never_without_income_pct": 10.5
+  },
+  "GHA": {
+    "n_total": 2400,
+    "n_rural": 929,
+    "ea_has_electricity_grid_pct": 94.3,
+    "ea_rural_electricity_grid_pct": 87.1,
+    "hh_mains_electricity_pct": 89.0,
+    "own_mobile_phone_pct": 92.3,
+    "mobile_internet_pct": 57.1,
+    "internet_regular_pct": 51.9,
+    "gov_edu_well_pct": 52.2,
+    "gov_elec_well_pct": 53.5,
+    "never_without_income_pct": 28.4
+  },
+  "NGA": {
+    "n_total": 1600,
+    "n_rural": 896,
+    "ea_has_electricity_grid_pct": 66.5,
+    "ea_rural_electricity_grid_pct": 45.5,
+    "hh_mains_electricity_pct": 69.7,
+    "own_mobile_phone_pct": 81.0,
+    "mobile_internet_pct": 42.6,
+    "internet_regular_pct": 42.3,
+    "gov_edu_well_pct": 23.5,
+    "gov_elec_well_pct": 13.4,
+    "never_without_income_pct": 5.1
+  },
+  "TZA": {
+    "n_total": 2400,
+    "n_rural": 1440,
+    "ea_has_electricity_grid_pct": 76.0,
+    "ea_rural_electricity_grid_pct": 61.1,
+    "hh_mains_electricity_pct": 51.6,
+    "own_mobile_phone_pct": 85.5,
+    "mobile_internet_pct": 29.3,
+    "internet_regular_pct": 25.9,
+    "gov_edu_well_pct": 82.7,
+    "gov_elec_well_pct": 68.4,
+    "never_without_income_pct": 14.5
+  },
+  "ZMB": {
+    "n_total": 1200,
+    "n_rural": 720,
+    "ea_has_electricity_grid_pct": 52.7,
+    "ea_rural_electricity_grid_pct": 24.4,
+    "hh_mains_electricity_pct": 27.1,
+    "own_mobile_phone_pct": 77.9,
+    "mobile_internet_pct": 32.0,
+    "internet_regular_pct": 29.7,
+    "gov_edu_well_pct": 84.3,
+    "gov_elec_well_pct": 12.6,
+    "never_without_income_pct": 10.3
+  },
+  "MUS": {
+    "n_total": 1200,
+    "n_rural": 760,
+    "ea_has_electricity_grid_pct": 100.0,
+    "ea_rural_electricity_grid_pct": 100.0,
+    "hh_mains_electricity_pct": 98.4,
+    "own_mobile_phone_pct": 96.3,
+    "mobile_internet_pct": 83.9,
+    "internet_regular_pct": 88.7,
+    "gov_edu_well_pct": 72.9,
+    "gov_elec_well_pct": 91.3,
+    "never_without_income_pct": 64.9
+  }
+}

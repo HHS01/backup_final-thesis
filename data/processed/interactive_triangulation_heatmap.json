@@ -1,0 +1,618 @@
+[
+  {
+    "iso3": "KEN",
+    "name": "Kenya",
+    "flag": "\ud83c\uddf0\ud83c\uddea",
+    "sample_size_ab": 2400,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 77.0,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 66.2,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -10.8,
+        "unit": "%",
+        "type": "overstatement",
+        "desc": "Macro claims 77.0% access; citizens report 66.2% mains connection (-10.8pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 67.1,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 80.1,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 13.0,
+        "unit": "%",
+        "type": "divergence",
+        "desc": "Interviewer observed grid in 80.1% of rural clusters vs WB rural estimate 67.1%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 34.98,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 61.1,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 26.1,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro estimates 34.98% users; citizen survey shows 61.1% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 82.62,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 56.1,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": -26.5,
+        "unit": "%",
+        "type": "standard",
+        "desc": "Satisfaction is 56.1%, yet only 82.62% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 89.5,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "89.5% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 75.0,
+        "field_src": "Classroom Ground Truth (Kiswahili, Kikuyu, Dholuo) \u00b7 GEM Spotlight",
+        "gap": -60.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 62.0,
+        "token_tax": "1.8x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 75.0% of learners speak Kiswahili, Kikuyu, Dholuo at home. LLM benchmark performance collapses to 62.0% of English (AfroBench/IrokoBench) with a 1.8x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "GHA",
+    "name": "Ghana",
+    "flag": "\ud83c\uddec\ud83c\udded",
+    "sample_size_ab": 2400,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 91.9,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 89.0,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -2.9,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro claims 91.9% access; citizens report 89.0% mains connection (-2.9pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 82.6,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 87.1,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 4.5,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Interviewer observed grid in 87.1% of rural clusters vs WB rural estimate 82.6%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 72.18,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 57.1,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": -15.1,
+        "unit": "%",
+        "type": "overstatement",
+        "desc": "Macro estimates 72.18% users; citizen survey shows 57.1% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 24.95,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 52.2,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": 27.3,
+        "unit": "%",
+        "type": "paradox",
+        "desc": "Satisfaction is 52.2%, yet only 24.95% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 71.6,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "moderate",
+        "desc": "71.6% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 80.0,
+        "field_src": "Classroom Ground Truth (Akan (Twi/Fante), Ewe, Ga) \u00b7 GEM Spotlight",
+        "gap": -65.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 25.0,
+        "token_tax": "2.6x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 80.0% of learners speak Akan (Twi/Fante), Ewe, Ga at home. LLM benchmark performance collapses to 25.0% of English (AfroBench/IrokoBench) with a 2.6x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "NGA",
+    "name": "Nigeria",
+    "flag": "\ud83c\uddf3\ud83c\uddec",
+    "sample_size_ab": 1600,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 62.5,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 69.7,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": 7.2,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro claims 62.5% access; citizens report 69.7% mains connection (7.2pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 23.5,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 45.5,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 22.0,
+        "unit": "%",
+        "type": "divergence",
+        "desc": "Interviewer observed grid in 45.5% of rural clusters vs WB rural estimate 23.5%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 41.21,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 42.6,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 1.4,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro estimates 41.21% users; citizen survey shows 42.6% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": null,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 23.5,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": null,
+        "unit": "%",
+        "type": "standard",
+        "desc": "School electrification data missing."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 94.9,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "94.9% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 82.0,
+        "field_src": "Classroom Ground Truth (Hausa, Yoruba, Igbo) \u00b7 GEM Spotlight",
+        "gap": -67.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 32.0,
+        "token_tax": "2.4x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 82.0% of learners speak Hausa, Yoruba, Igbo at home. LLM benchmark performance collapses to 32.0% of English (AfroBench/IrokoBench) with a 2.4x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "TZA",
+    "name": "Tanzania",
+    "flag": "\ud83c\uddf9\ud83c\uddff",
+    "sample_size_ab": 2400,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 52.4,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 51.6,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -0.8,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro claims 52.4% access; citizens report 51.6% mains connection (-0.8pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 33.7,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 61.1,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 27.4,
+        "unit": "%",
+        "type": "divergence",
+        "desc": "Interviewer observed grid in 61.1% of rural clusters vs WB rural estimate 33.7%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 31.16,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 29.3,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": -1.9,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro estimates 31.16% users; citizen survey shows 29.3% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 37.33,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 82.7,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": 45.4,
+        "unit": "%",
+        "type": "paradox",
+        "desc": "Satisfaction is 82.7%, yet only 37.33% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 85.5,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "85.5% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 90.0,
+        "field_src": "Classroom Ground Truth (Kiswahili, Sukuma) \u00b7 GEM Spotlight",
+        "gap": -75.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 62.0,
+        "token_tax": "1.8x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 90.0% of learners speak Kiswahili, Sukuma at home. LLM benchmark performance collapses to 62.0% of English (AfroBench/IrokoBench) with a 1.8x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "ZMB",
+    "name": "Zambia",
+    "flag": "\ud83c\uddff\ud83c\uddf2",
+    "sample_size_ab": 1200,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 53.6,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 27.1,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -26.5,
+        "unit": "%",
+        "type": "overstatement",
+        "desc": "Macro claims 53.6% access; citizens report 27.1% mains connection (-26.5pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 31.3,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 24.4,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": -6.9,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Interviewer observed grid in 24.4% of rural clusters vs WB rural estimate 31.3%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 17.1,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 32.0,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 14.9,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro estimates 17.1% users; citizen survey shows 32.0% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 36.4,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 84.3,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": 47.9,
+        "unit": "%",
+        "type": "paradox",
+        "desc": "Satisfaction is 84.3%, yet only 36.4% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 89.7,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "critical",
+        "desc": "89.7% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 80.0,
+        "field_src": "Classroom Ground Truth (Bemba, Nyanja, Tonga) \u00b7 GEM Spotlight",
+        "gap": -65.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 18.0,
+        "token_tax": "3.4x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 80.0% of learners speak Bemba, Nyanja, Tonga at home. LLM benchmark performance collapses to 18.0% of English (AfroBench/IrokoBench) with a 3.4x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "MUS",
+    "name": "Mauritius",
+    "flag": "\ud83c\uddf2\ud83c\uddfa",
+    "sample_size_ab": 1200,
+    "note": "Afrobarometer Round 10 (2024-2026)",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": 100.0,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": 98.4,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": -1.6,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Macro claims 100.0% access; citizens report 98.4% mains connection (-1.6pp gap)."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": 100.0,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": 100.0,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": 0.0,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Interviewer observed grid in 100.0% of rural clusters vs WB rural estimate 100.0%."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": 73.31,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": 83.9,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": 10.6,
+        "unit": "%",
+        "type": "understatement",
+        "desc": "Macro estimates 73.31% users; citizen survey shows 83.9% active mobile web access."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": 100.0,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 72.9,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": -27.1,
+        "unit": "%",
+        "type": "standard",
+        "desc": "Satisfaction is 72.9%, yet only 100.0% of primary schools have electricity."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": 35.1,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "moderate",
+        "desc": "35.1% of households have gone without cash income. Data-heavy apps impose punitive burden."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 55.0,
+        "field_src": "Classroom Ground Truth (Morisyen (Cr\u00e9ole), Bhojpuri) \u00b7 GEM Spotlight",
+        "gap": -40.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 28.0,
+        "token_tax": "2.1x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 55.0% of learners speak Morisyen (Cr\u00e9ole), Bhojpuri at home. LLM benchmark performance collapses to 28.0% of English (AfroBench/IrokoBench) with a 2.1x token cost penalty."
+      }
+    }
+  },
+  {
+    "iso3": "RWA",
+    "name": "Rwanda",
+    "flag": "\ud83c\uddf7\ud83c\uddfc",
+    "sample_size_ab": 0,
+    "note": "Absent from AB R10 Release",
+    "dimensions": {
+      "electricity": {
+        "name": "Household Electricity Access",
+        "macro_val": null,
+        "macro_src": "World Bank WDI (EG.ELC.ACCS.ZS)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q93A (Connected to Mains)",
+        "gap": null,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Data missing in R10."
+      },
+      "rural_grid": {
+        "name": "Rural Grid Infrastructure",
+        "macro_val": null,
+        "macro_src": "World Bank WDI Rural (EG.ELC.ACCS.RU.ZS)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 EA_SVC_A (Grid observed in Rural EA)",
+        "gap": null,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Data missing in R10."
+      },
+      "internet": {
+        "name": "Active Mobile Internet",
+        "macro_val": null,
+        "macro_src": "World Bank / ITU (IT.NET.USER.ZS)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q90H (Mobile Internet Access)",
+        "gap": null,
+        "unit": "%",
+        "type": "aligned",
+        "desc": "Data missing in R10."
+      },
+      "gov_paradox": {
+        "name": "Governance vs School Infra Paradox",
+        "macro_val": null,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q47H (Gov Handles Education Well)",
+        "gap": null,
+        "unit": "%",
+        "type": "standard",
+        "desc": "School electrification data missing."
+      },
+      "economic_precarity": {
+        "name": "Teacher/Citizen Cash Precarity",
+        "macro_val": null,
+        "macro_src": "World Bank GDP per Capita PPP ($)",
+        "field_val": null,
+        "field_src": "Afrobarometer R10 Q7E (Gone without cash income)",
+        "gap": null,
+        "unit": "% precarity",
+        "type": "moderate",
+        "desc": "Data missing."
+      },
+      "practitioner_audit": {
+        "name": "Practitioner AoA Ground Truth",
+        "macro_val": null,
+        "macro_src": "Target Benchmark",
+        "field_val": null,
+        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "gap": null,
+        "unit": "",
+        "type": "pending",
+        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+      },
+      "linguistic": {
+        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
+        "macro_val": 15.0,
+        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
+        "field_val": 85.0,
+        "field_src": "Classroom Ground Truth (Kinyarwanda) \u00b7 GEM Spotlight",
+        "gap": -70.0,
+        "unit": "%",
+        "type": "critical",
+        "ai_perf": 38.0,
+        "token_tax": "2.8x",
+        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 85.0% of learners speak Kinyarwanda at home. LLM benchmark performance collapses to 38.0% of English (AfroBench/IrokoBench) with a 2.8x token cost penalty."
+      }
+    }
+  }
+]

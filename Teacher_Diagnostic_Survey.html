@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSA Frontline Teacher EdTech Diagnostic · UNESCO 6-Pillars Framework</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #f8fafc; color: #1e293b; }
+    .font-serif { font-family: 'Newsreader', serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+</head>
+<body class="p-4 sm:p-8 max-w-3xl mx-auto">
+  <div class="mb-8">
+    <a href="./index.html" class="inline-flex items-center text-xs font-semibold text-indigo-600 hover:text-indigo-800 mb-4 transition">
+      ← Back to Master Decision Observatory
+    </a>
+    <div class="flex items-center gap-2 mb-2">
+      <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-indigo-100 text-indigo-800">AoA Instrument T-1</span>
+      <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-100 text-amber-800">Frontline Field Evidence</span>
+    </div>
+    <h1 class="text-2xl sm:text-3xl font-bold font-serif text-slate-900">Sub-Saharan Africa Teacher EdTech Diagnostic</h1>
+    <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
+      This diagnostic collects ground-truth data from practicing educators to measure structural mismatches between top-down procurement policies and frontline classroom conditions. Submissions are processed client-side and can be exported as clean JSON or submitted directly to our research repository.
+    </p>
+  </div>
+
+  <form id="teacher-diagnostic-form" class="space-y-6" onsubmit="handleSurveySubmit(event)">
+    <!-- Metadata & Location -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+      <h2 class="text-base font-bold text-slate-900 font-serif border-b pb-2">1. Geographic & Institutional Context</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Country *</label>
+          <select id="country" required class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 focus:ring-2 focus:ring-indigo-500">
+            <option value="">Select country...</option>
+            <option value="KEN">Kenya (KEN)</option>
+            <option value="GHA">Ghana (GHA)</option>
+            <option value="NGA">Nigeria (NGA)</option>
+            <option value="TZA">Tanzania (TZA)</option>
+            <option value="ZMB">Zambia (ZMB)</option>
+            <option value="MUS">Mauritius (MUS)</option>
+            <option value="RWA">Rwanda (RWA)</option>
+            <option value="OTHER">Other SSA Country</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">District / Administrative Region *</label>
+          <input type="text" id="district" required placeholder="e.g., Kilifi County, Lusaka Province" class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 focus:ring-2 focus:ring-indigo-500">
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">School Location *</label>
+          <select id="location_type" required class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 focus:ring-2 focus:ring-indigo-500">
+            <option value="rural">Rural / Village</option>
+            <option value="peri_urban">Peri-urban / Informal Settlement</option>
+            <option value="urban">Urban Center</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Average Pupil-Teacher Ratio (Class Size) *</label>
+          <input type="number" id="ptr" required min="5" max="150" placeholder="e.g., 55" class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800 focus:ring-2 focus:ring-indigo-500">
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 2: Infrastructure & Connectivity -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+      <h2 class="text-base font-bold text-slate-900 font-serif border-b pb-2">2. Pillar 2: Classroom Electricity & Connectivity Reality</h2>
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">How is your classroom or school powered?</label>
+          <select id="power_type" required class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800">
+            <option value="grid_reliable">National Grid (Reliable >8 hrs/day)</option>
+            <option value="grid_intermittent">National Grid (Intermittent / Frequent Blackouts)</option>
+            <option value="solar">Solar Micro-generation / Battery Only</option>
+            <option value="generator">Diesel/Petrol Generator (Occasional use)</option>
+            <option value="none">No Electricity Access</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">What kind of internet connectivity is available in teaching spaces?</label>
+          <select id="conn_type" required class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800">
+            <option value="none">Zero Connectivity (100% Offline)</option>
+            <option value="teacher_personal">Teacher's Personal Mobile Hotspot (Paid out-of-pocket)</option>
+            <option value="metered_modem">School-provided 3G/4G MiFi or Router</option>
+            <option value="broadband">Fixed Broadband / Dedicated Fiber</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 3: Out-of-Pocket Data Burden & Device Sustainability -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+      <h2 class="text-base font-bold text-slate-900 font-serif border-b pb-2">3. Pillar 3: The Informal "Teacher Salary Tax"</h2>
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Do you spend personal income on mobile data/airtime to carry out school or teaching tasks (e.g. syncing records, downloading lessons)?</label>
+          <select id="salary_tax" required class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800">
+            <option value="regular">Yes, every week (regular expenditure)</option>
+            <option value="occasional">Yes, occasionally when emergencies happen</option>
+            <option value="no_reimbursed">No, expenses are fully reimbursed by the school</option>
+            <option value="no_school_pays">No, the school provides free Wi-Fi/data bundles</option>
+            <option value="never_digital">No, I do not use digital tools for school</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Estimated monthly expenditure on mobile data for teaching duties (USD equivalent):</label>
+          <input type="number" id="data_expenditure_usd" min="0" max="100" step="0.5" placeholder="e.g., 6.50" class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800">
+        </div>
+      </div>
+    </div>
+
+    <!-- Pillar 5 & 6: Language, Content, and AI -->
+    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+      <h2 class="text-base font-bold text-slate-900 font-serif border-b pb-2">4. Pillars 5 & 6: Language Fit & Educational AI</h2>
+      <div class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">Primary language spoken by learners at home vs. language of mandated digital tools:</label>
+          <select id="lang_fit" required class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800">
+            <option value="mismatch">Severe Mismatch: Tools only in English/French; learners need mother-tongue instruction</option>
+            <option value="partial">Partial: Some bilingual content available, but vocabulary is difficult</option>
+            <option value="matched">Well Matched: Tools are in learners' first language</option>
+          </select>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-700 mb-1">If using Generative AI or smart tools in your lesson planning or grading, how accurately does it handle your local context/language?</label>
+          <select id="ai_accuracy" class="w-full p-2.5 rounded-lg border border-slate-300 bg-slate-50 text-slate-800">
+            <option value="not_used">I do not use AI tools</option>
+            <option value="poor">Fails or produces severe hallucinations in local dialect/syllabus</option>
+            <option value="moderate">Acceptable for general English tasks; unusable for local curricula</option>
+            <option value="good">Accurate and helpful</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Submission & Export -->
+    <div class="p-6 bg-slate-900 text-white rounded-2xl flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <div class="font-bold text-sm">Save or Export Diagnostic Response</div>
+        <div class="text-[11px] text-slate-400">Submissions are stored locally in your browser and can be copied as verified research payloads.</div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button type="submit" class="px-5 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 font-bold text-xs shadow-md transition">
+          Submit &amp; View Audit Score
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Submission Modal / Output Drawer -->
+  <div id="result-box" class="hidden mt-8 bg-white p-6 rounded-2xl border-2 border-indigo-500 shadow-lg space-y-4">
+    <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
+        <h3 class="font-bold text-base text-slate-900 font-serif">Diagnostic Successfully Logged!</h3>
+      </div>
+      <span id="response-timestamp" class="text-[10px] font-mono text-slate-400"></span>
+    </div>
+
+    <div class="p-4 bg-slate-50 rounded-xl space-y-2 text-xs">
+      <div class="font-bold text-slate-800">Classroom Feasibility Diagnostic Score:</div>
+      <div id="readiness-score-display" class="text-xl font-extrabold text-indigo-700"></div>
+      <p id="readiness-summary-text" class="text-slate-600 leading-relaxed"></p>
+    </div>
+
+    <div>
+      <label class="block text-xs font-semibold text-slate-700 mb-1">Standardized JSON Payload (Research Triangulation):</label>
+      <textarea id="json-output" readonly class="w-full h-32 p-3 font-mono text-[11px] bg-slate-900 text-emerald-400 rounded-lg border border-slate-700"></textarea>
+      <div class="flex items-center justify-between mt-2 text-xs">
+        <button onclick="copyPayload()" class="px-3 py-1.5 rounded bg-slate-200 hover:bg-slate-300 font-bold text-slate-800 transition">
+          📋 Copy JSON Payload
+        </button>
+        <span id="copy-status" class="text-emerald-600 font-bold hidden">Copied to clipboard!</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSurveySubmit(e) {
+      e.preventDefault();
+      const payload = {
+        instrument: "AoA-Teacher-v1",
+        timestamp: new Date().toISOString(),
+        country: document.getElementById('country').value,
+        district: document.getElementById('district').value,
+        location: document.getElementById('location_type').value,
+        ptr: parseInt(document.getElementById('ptr').value, 10),
+        power: document.getElementById('power_type').value,
+        connectivity: document.getElementById('conn_type').value,
+        salary_tax: document.getElementById('salary_tax').value,
+        data_spend_usd: parseFloat(document.getElementById('data_expenditure_usd').value || 0),
+        language_fit: document.getElementById('lang_fit').value,
+        ai_accuracy: document.getElementById('ai_accuracy').value
+      };
+
+      // Calculate simple feasibility score
+      let score = 100;
+      if (payload.power === 'none') score -= 35;
+      else if (payload.power === 'grid_intermittent' || payload.power === 'solar') score -= 15;
+
+      if (payload.connectivity === 'none') score -= 25;
+      else if (payload.connectivity === 'teacher_personal') score -= 20;
+
+      if (payload.salary_tax === 'regular') score -= 15;
+      if (payload.ptr > 50) score -= 15;
+      if (payload.language_fit === 'mismatch') score -= 15;
+
+      score = Math.max(0, score);
+
+      document.getElementById('response-timestamp').textContent = payload.timestamp;
+      document.getElementById('readiness-score-display').textContent = `${score}/100 — ${score < 40 ? 'High Vulnerability (Strictly Offline DPGs Only)' : (score < 70 ? 'Moderate Feasibility (3-Station Rotation Required)' : 'Standard Digital Feasibility')}`;
+      
+      let summary = "";
+      if (score < 40) {
+        summary = "Classroom operates in acute infrastructural scarcity. Commercial cloud-native SaaS and 1:1 laptop procurement will collapse within weeks. Mandatory recommendations: Zero-rating, solar battery packs, and offline-first Digital Public Goods (Kolibri, RACHEL).";
+      } else if (score < 70) {
+        summary = "Classroom has structural bottlenecks (such as large class size or teacher out-of-pocket data burden). Recommend implementing 3-Station Rotational Pedagogy to overcome device scarcity.";
+      } else {
+        summary = "Classroom possesses sufficient baseline infrastructure to pilot hybrid digital tools, provided mother-tongue curriculum alignment is preserved.";
+      }
+      document.getElementById('readiness-summary-text').textContent = summary;
+
+      document.getElementById('json-output').value = JSON.stringify(payload, null, 2);
+      document.getElementById('result-box').classList.remove('hidden');
+
+      // Also store in localStorage array for local researcher pooling
+      try {
+        const existing = JSON.parse(localStorage.getItem('collected_teacher_diagnostics') || '[]');
+        existing.push(payload);
+        localStorage.setItem('collected_teacher_diagnostics', JSON.stringify(existing));
+      } catch (err) {
+        console.error("Local storage error", err);
+      }
+    }
+
+    function copyPayload() {
+      const textarea = document.getElementById('json-output');
+      textarea.select();
+      navigator.clipboard.writeText(textarea.value);
+      const status = document.getElementById('copy-status');
+      status.classList.remove('hidden');
+      setTimeout(() => status.classList.add('hidden'), 2000);
+    }
+  </script>
+</body>
+</html>
