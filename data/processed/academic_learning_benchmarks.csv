@@ -1,0 +1,8 @@
+iso3,hlo_score,expected_years_school,learning_adjusted_years,learning_poverty_pct,sacmeq_reading_latest,sacmeq_math_latest,uwezo_lit_national,uwezo_num_national,sdi_teacher_absence_pct,sdi_teacher_content_pct
+KEN,454.96,11.63,8.47,79.29,577.6,608.0,41.6,46.8,47.3,59.8
+TZA,388.48,7.22,4.48,,555.2,560.1,52.0,51.5,46.7,43.1
+RWA,358.08,6.85,3.93,,,,,,39.8,38.5
+GHA,307.28,12.12,5.96,,,,,,,
+NGA,309.02,10.19,5.04,,,,,,53.0,31.2
+ZMB,358.14,8.79,5.04,98.5,456.0,477.0,,,,
+MUS,472.77,12.43,9.41,,583.2,630.5,,,,

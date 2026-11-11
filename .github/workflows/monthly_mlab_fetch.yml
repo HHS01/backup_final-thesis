@@ -1,0 +1,42 @@
+name: Monthly M-Lab Connectivity Sync
+
+on:
+  schedule:
+    # Runs on the 18th of every month at 03:00 UTC (after M-Lab publishes previous month's stats)
+    - cron: '0 3 18 * *'
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions UI
+
+permissions:
+  contents: write
+
+jobs:
+  sync-mlab:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install pandas pyarrow
+
+      - name: Fetch Latest M-Lab Rolling Window
+        run: |
+          python scripts/fetch_mlab.py update --out data/processed/connectivity
+
+      - name: Commit Updated Connectivity Data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "M-Lab Sync Bot"
+          git add data/processed/connectivity/
+          if git diff --staged --quiet; then
+            echo "No new M-Lab data — already up to date."
+          else
+            git commit -m "data(mlab): monthly QoS update — $(date -u '+%Y-%m') [skip ci]"
+            git push
+          fi

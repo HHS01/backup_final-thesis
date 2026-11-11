@@ -406,6 +406,14 @@ def main():
     parser.add_argument("--start-year", type=int, default=2015, help="Start year for timeseries (default: 2015)")
     parser.add_argument("--end-year", type=int, default=2024, help="End year for timeseries (default: 2024)")
     parser.add_argument("--out-dir", default="data", help="Output directory path (default: 'data')")
+    parser.add_argument("--deep-indicators", action="store_true",
+                        help="After 6-pillars fetch, run fetch_wb_indicators + fetch_uis for detailed "
+                             "teacher-capacity and school-infrastructure indicators, then merge into "
+                             "indicators_timeseries.csv (requires scripts/indicators_config.json)")
+    parser.add_argument("--deep-countries", nargs="+", metavar="ISO3",
+                        help="Countries for --deep-indicators (default: pilot countries from indicators_config.json)")
+    parser.add_argument("--deep-db", metavar="PATH",
+                        help="SQLite history store for --deep-indicators (optional; enables revision tracking)")
 
     args = parser.parse_args()
 
@@ -480,6 +488,105 @@ def main():
             proj_file = proc_dir / "wb_digital_education_projects.csv"
             df_projects.to_csv(proj_file, index=False)
             print(f"[✓] Saved World Bank Projects: {proj_file} ({len(df_projects)} projects)")
+
+    # ------------------------------------------------------------------
+    # Optional: deep teacher-capacity + school-infrastructure indicators
+    # (fetch_wb_indicators.py + fetch_uis.py from scripts/)
+    # ------------------------------------------------------------------
+    if getattr(args, "deep_indicators", False):
+        import importlib.util, json as _json
+        from pathlib import Path as _Path
+
+        _scripts_dir = _Path(__file__).resolve().parent / "scripts"
+        _cfg_path = _scripts_dir / "indicators_config.json"
+
+        if not _cfg_path.exists():
+            print("\n[!] --deep-indicators: indicators_config.json not found at", _cfg_path)
+        else:
+            print("\n" + "=" * 75)
+            print(" DEEP INDICATORS: Teacher Capacity + School Infrastructure (WB + UIS)")
+            print("=" * 75)
+
+            # Load config and resolve country list
+            with open(_cfg_path, encoding="utf-8") as _f:
+                _cfg = _json.load(_f)
+            _pilot = args.deep_countries or _cfg.get("countries", [])
+            _deep_out = proc_dir / "deep_indicators"
+            _deep_out.mkdir(parents=True, exist_ok=True)
+
+            # --- World Bank deep fetch ---
+            def _load_script(name):
+                spec = importlib.util.spec_from_file_location(name, _scripts_dir / f"{name}.py")
+                mod = importlib.util.module_from_spec(spec)
+                # ensure store is importable from scripts dir
+                import sys as _sys
+                if str(_scripts_dir) not in _sys.path:
+                    _sys.path.insert(0, str(_scripts_dir))
+                spec.loader.exec_module(mod)
+                return mod
+
+            try:
+                _wb = _load_script("fetch_wb_indicators")
+                _start_yr = args.start_year
+                _end_yr = args.end_year
+                print(f"\n[Deep WB] Fetching {len(_pilot)} countries, {_start_yr}-{_end_yr}...")
+                _wb.cmd_fetch(_cfg, _pilot, _start_yr, _end_yr, _deep_out,
+                              db=getattr(args, "deep_db", None))
+                print(f"[✓] Deep WB indicators written to {_deep_out}/wb_*.csv")
+            except Exception as _e:
+                print(f"[!] Deep WB fetch failed: {_e}")
+
+            # --- UIS deep fetch ---
+            try:
+                _uis = _load_script("fetch_uis")
+                print(f"\n[Deep UIS] Fetching {len(_pilot)} countries, {_start_yr}-{_end_yr}...")
+                _uis.cmd_fetch(_cfg, _pilot, _start_yr, _end_yr,
+                               version=None, footnotes=False,
+                               out=_deep_out, db=getattr(args, "deep_db", None))
+                print(f"[✓] Deep UIS indicators written to {_deep_out}/uis_*.csv")
+            except Exception as _e:
+                print(f"[!] Deep UIS fetch failed: {_e}")
+
+            # --- Merge into main timeseries ---
+            try:
+                _merge_dfs = []
+                _wb_long = _deep_out / "wb_long.csv"
+                _uis_long = _deep_out / "uis_long.csv"
+                if _wb_long.exists():
+                    _wdf = pd.read_csv(_wb_long)
+                    # Align columns to 6-pillars timeseries schema
+                    _wdf["pillar_num"] = 0
+                    _wdf["pillar_name"] = "deep_indicators"
+                    _wdf["indicator_code"] = _wdf["indicator"]
+                    _wdf["indicator_name"] = _wdf["indicator_name"]
+                    _wdf["region"] = _wdf["iso3"].apply(
+                        lambda x: "SSA" if x in SSA_48 else ("MENA" if x in MENA_21 else "OTHER"))
+                    _wdf["source"] = "World Bank WDI (deep)"
+                    _merge_dfs.append(_wdf[["iso3", "region", "pillar_num", "pillar_name",
+                                            "indicator_code", "indicator_name", "year", "value", "source"]])
+                if _uis_long.exists():
+                    _udf = pd.read_csv(_uis_long)
+                    _udf["pillar_num"] = 0
+                    _udf["pillar_name"] = "deep_indicators"
+                    _udf["indicator_code"] = _udf["indicator_code"]
+                    _udf["indicator_name"] = _udf["label"]
+                    _udf["region"] = _udf["iso3"].apply(
+                        lambda x: "SSA" if x in SSA_48 else ("MENA" if x in MENA_21 else "OTHER"))
+                    _udf["source"] = "UNESCO UIS (direct)"
+                    _merge_dfs.append(_udf[["iso3", "region", "pillar_num", "pillar_name",
+                                            "indicator_code", "indicator_name", "year", "value", "source"]])
+                if _merge_dfs and not df_long.empty:
+                    _merged = pd.concat([df_long] + _merge_dfs, ignore_index=True)
+                    _merged_path = proc_dir / "indicators_timeseries_full.csv"
+                    _merged.to_csv(_merged_path, index=False)
+                    print(f"\n[✓] Merged timeseries (6-pillars + deep indicators): {_merged_path} ({len(_merged)} rows)")
+                elif _merge_dfs:
+                    _merged = pd.concat(_merge_dfs, ignore_index=True)
+                    _merged_path = proc_dir / "indicators_timeseries_full.csv"
+                    _merged.to_csv(_merged_path, index=False)
+                    print(f"\n[✓] Deep indicators merged: {_merged_path} ({len(_merged)} rows)")
+            except Exception as _e:
+                print(f"[!] Merge step failed: {_e}")
 
     print("\n" + "=" * 75)
     print(" Pipeline execution complete! All tidy data stored in data/processed/")

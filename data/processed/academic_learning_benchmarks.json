@@ -1,0 +1,205 @@
+{
+  "KEN": {
+    "iso3": "KEN",
+    "harmonized_learning_outcomes": {
+      "hlo_score_300_625": 454.96,
+      "hlo_year": 2020,
+      "expected_years_school": 11.63,
+      "learning_adjusted_years_school": 8.47,
+      "learning_loss_years": 3.16,
+      "learning_poverty_pct": 79.29,
+      "scale_benchmark": "300 = minimum proficiency, 625 = advanced"
+    },
+    "sacmeq_grade6": {
+      "round_3": {
+        "year": 2007,
+        "reading": 543.1,
+        "math": 557.0
+      },
+      "round_4": {
+        "year": 2013,
+        "reading": 577.6,
+        "math": 608.0
+      },
+      "status": "Participating (Top Consortium Tier)"
+    },
+    "uwezo_foundational": {
+      "source": "Uwezo Citizen-Led Assessment (Household N=135,000)",
+      "year": 2023,
+      "literacy_national": 41.6,
+      "literacy_rural": 36.8,
+      "numeracy_national": 46.8,
+      "numeracy_rural": 42.4,
+      "out_of_school": 8.5
+    },
+    "service_delivery_indicators": {
+      "year": 2018,
+      "teacher_school_absence_pct": 15.6,
+      "teacher_classroom_absence_pct": 47.3,
+      "teacher_content_knowledge_pct": 59.8,
+      "min_teaching_resources_pct": 68.4,
+      "source": "World Bank SDI Kenya Public Report"
+    }
+  },
+  "TZA": {
+    "iso3": "TZA",
+    "harmonized_learning_outcomes": {
+      "hlo_score_300_625": 388.48,
+      "hlo_year": 2020,
+      "expected_years_school": 7.22,
+      "learning_adjusted_years_school": 4.48,
+      "learning_loss_years": 2.74,
+      "learning_poverty_pct": null,
+      "scale_benchmark": "300 = minimum proficiency, 625 = advanced"
+    },
+    "sacmeq_grade6": {
+      "round_3": {
+        "year": 2007,
+        "reading": 577.8,
+        "math": 552.7
+      },
+      "round_4": {
+        "year": 2013,
+        "reading": 555.2,
+        "math": 560.1
+      },
+      "status": "Participating (High Consortium Tier)"
+    },
+    "uwezo_foundational": {
+      "source": "Uwezo Citizen-Led Assessment (Household N=108,000)",
+      "year": 2023,
+      "literacy_national": 52.0,
+      "literacy_rural": 44.0,
+      "numeracy_national": 51.5,
+      "numeracy_rural": 45.2,
+      "out_of_school": 9.2
+    },
+    "service_delivery_indicators": {
+      "year": 2014,
+      "teacher_school_absence_pct": 14.4,
+      "teacher_classroom_absence_pct": 46.7,
+      "teacher_content_knowledge_pct": 43.1,
+      "min_teaching_resources_pct": 48.0,
+      "source": "World Bank SDI Tanzania Report"
+    }
+  },
+  "RWA": {
+    "iso3": "RWA",
+    "harmonized_learning_outcomes": {
+      "hlo_score_300_625": 358.08,
+      "hlo_year": 2020,
+      "expected_years_school": 6.85,
+      "learning_adjusted_years_school": 3.93,
+      "learning_loss_years": 2.92,
+      "learning_poverty_pct": null,
+      "scale_benchmark": "300 = minimum proficiency, 625 = advanced"
+    },
+    "sacmeq_grade6": {
+      "status": "Non-Member (Participates in PASEC / National NAE)"
+    },
+    "uwezo_foundational": "Not available in this survey wave",
+    "service_delivery_indicators": {
+      "year": 2019,
+      "teacher_school_absence_pct": 14.2,
+      "teacher_classroom_absence_pct": 39.8,
+      "teacher_content_knowledge_pct": 38.5,
+      "min_teaching_resources_pct": 52.3,
+      "source": "World Bank SDI Rwanda Diagnostic"
+    }
+  },
+  "GHA": {
+    "iso3": "GHA",
+    "harmonized_learning_outcomes": {
+      "hlo_score_300_625": 307.28,
+      "hlo_year": 2020,
+      "expected_years_school": 12.12,
+      "learning_adjusted_years_school": 5.96,
+      "learning_loss_years": 6.16,
+      "learning_poverty_pct": null,
+      "scale_benchmark": "300 = minimum proficiency, 625 = advanced"
+    },
+    "sacmeq_grade6": {
+      "status": "Non-Member (West Africa / NEA National Assessment)"
+    },
+    "uwezo_foundational": "Not available in this survey wave",
+    "service_delivery_indicators": "No public SDI round available"
+  },
+  "NGA": {
+    "iso3": "NGA",
+    "harmonized_learning_outcomes": {
+      "hlo_score_300_625": 309.02,
+      "hlo_year": 2020,
+      "expected_years_school": 10.19,
+      "learning_adjusted_years_school": 5.04,
+      "learning_loss_years": 5.15,
+      "learning_poverty_pct": null,
+      "scale_benchmark": "300 = minimum proficiency, 625 = advanced"
+    },
+    "sacmeq_grade6": {
+      "status": "Non-Member (West Africa / NEDS)"
+    },
+    "uwezo_foundational": "Not available in this survey wave",
+    "service_delivery_indicators": {
+      "year": 2019,
+      "teacher_school_absence_pct": 21.0,
+      "teacher_classroom_absence_pct": 53.0,
+      "teacher_content_knowledge_pct": 31.2,
+      "min_teaching_resources_pct": 33.8,
+      "source": "World Bank SDI Nigeria State Diagnostics"
+    }
+  },
+  "ZMB": {
+    "iso3": "ZMB",
+    "harmonized_learning_outcomes": {
+      "hlo_score_300_625": 358.14,
+      "hlo_year": 2020,
+      "expected_years_school": 8.79,
+      "learning_adjusted_years_school": 5.04,
+      "learning_loss_years": 3.75,
+      "learning_poverty_pct": 98.5,
+      "scale_benchmark": "300 = minimum proficiency, 625 = advanced"
+    },
+    "sacmeq_grade6": {
+      "round_3": {
+        "year": 2007,
+        "reading": 434.4,
+        "math": 435.2
+      },
+      "round_4": {
+        "year": 2013,
+        "reading": 456.0,
+        "math": 477.0
+      },
+      "status": "Participating (Lower Consortium Tier)"
+    },
+    "uwezo_foundational": "Not available in this survey wave",
+    "service_delivery_indicators": "No public SDI round available"
+  },
+  "MUS": {
+    "iso3": "MUS",
+    "harmonized_learning_outcomes": {
+      "hlo_score_300_625": 472.77,
+      "hlo_year": 2020,
+      "expected_years_school": 12.43,
+      "learning_adjusted_years_school": 9.41,
+      "learning_loss_years": 3.02,
+      "learning_poverty_pct": null,
+      "scale_benchmark": "300 = minimum proficiency, 625 = advanced"
+    },
+    "sacmeq_grade6": {
+      "round_3": {
+        "year": 2007,
+        "reading": 573.5,
+        "math": 623.3
+      },
+      "round_4": {
+        "year": 2013,
+        "reading": 583.2,
+        "math": 630.5
+      },
+      "status": "Participating (Top Consortium Tier)"
+    },
+    "uwezo_foundational": "Not available in this survey wave",
+    "service_delivery_indicators": "No public SDI round available"
+  }
+}

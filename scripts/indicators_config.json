@@ -1,0 +1,190 @@
+{
+  "countries": [
+    "KEN",
+    "GHA",
+    "TZA",
+    "RWA",
+    "ZMB",
+    "MUS",
+    "NGA"
+  ],
+  "start_year": 2010,
+  "indicators": {
+    "teacher_capacity": {
+      "SE.PRM.TCHR": "Teachers in primary education (headcount)",
+      "SE.SEC.TCHR": "Teachers in secondary education (headcount)",
+      "SE.PRM.ENRL.TC.ZS": "Pupil-teacher ratio, primary",
+      "SE.SEC.ENRL.TC.ZS": "Pupil-teacher ratio, secondary",
+      "SE.PRM.TCAQ.ZS": "Trained teachers in primary education (% of total teachers)",
+      "SE.SEC.TCAQ.ZS": "Trained teachers in secondary education (% of total teachers)"
+    },
+    "learning_need": {
+      "SE.LPV.PRIM": "Learning poverty (share of 10-year-olds unable to read a simple text)",
+      "SE.PRM.UNER": "Children out of school, primary (number)"
+    },
+    "infrastructure_readiness": {
+      "EG.ELC.ACCS.ZS": "Access to electricity (% of population)",
+      "EG.ELC.ACCS.RU.ZS": "Access to electricity, rural (% of rural population)",
+      "SP.RUR.TOTL.ZS": "Rural population (% of total)"
+    },
+    "household_connectivity": {
+      "IT.NET.USER.ZS": "Individuals using the Internet (% of population)",
+      "IT.CEL.SETS.P2": "Mobile cellular subscriptions (per 100 people)"
+    },
+    "policy_push": {
+      "SE.XPD.TOTL.GD.ZS": "Government expenditure on education (% of GDP)"
+    }
+  },
+  "uis_indicators": {
+    "teacher_capacity": [
+      {
+        "label": "Teachers, primary",
+        "code": "20162",
+        "match": [
+          "teachers in primary education"
+        ],
+        "exclude": [
+          "ratio",
+          "percentage",
+          "female",
+          "trained",
+          "qualified"
+        ]
+      },
+      {
+        "label": "Teachers, secondary",
+        "code": "20182",
+        "match": [
+          "teachers in secondary education"
+        ],
+        "exclude": [
+          "ratio",
+          "percentage",
+          "female",
+          "trained",
+          "qualified",
+          "lower",
+          "upper"
+        ]
+      },
+      {
+        "label": "Pupil-trained teacher ratio, primary",
+        "code": "PTRHC.1.TRAINED",
+        "match": [
+          "pupil-trained teacher ratio",
+          "primary"
+        ]
+      },
+      {
+        "label": "Pupil-qualified teacher ratio, primary",
+        "code": "PTRHC.1.QUALIFIED",
+        "match": [
+          "pupil-qualified teacher ratio",
+          "primary"
+        ]
+      },
+      {
+        "label": "Pupil-trained teacher ratio, secondary",
+        "code": "PTRHC.2T3.TRAINED",
+        "match": [
+          "pupil-trained teacher ratio",
+          "secondary"
+        ]
+      },
+      {
+        "label": "Teachers with min. required qualifications, primary (%) [UIS:TRTP]",
+        "code": "TRTP.1",
+        "match": [
+          "minimum required qualifications",
+          "primary"
+        ]
+      },
+      {
+        "label": "Qualified teachers, primary (%)",
+        "code": "QUTP.1",
+        "match": [
+          "qualified",
+          "primary",
+          "both sexes"
+        ],
+        "exclude": [
+          "ratio",
+          "pre-primary"
+        ]
+      }
+    ],
+    "school_infrastructure": [
+      {
+        "label": "Primary schools with internet for pedagogical purposes (%)",
+        "match": [
+          "internet",
+          "pedagogical",
+          "primary"
+        ]
+      },
+      {
+        "label": "Primary schools with computers for pedagogical purposes (%)",
+        "match": [
+          "computers",
+          "pedagogical",
+          "primary"
+        ]
+      },
+      {
+        "label": "Primary schools with electricity (%)",
+        "match": [
+          "electricity",
+          "primary",
+          "schools"
+        ]
+      }
+    ],
+    "learning_need": [
+      {
+        "label": "Minimum proficiency in reading, end of primary (%)",
+        "code": "READ.PRIMARY",
+        "match": [
+          "minimum proficiency",
+          "reading",
+          "primary",
+          "both sexes"
+        ],
+        "exclude": [
+          "ses",
+          "urban",
+          "rural",
+          "language",
+          "immigrant",
+          "parity",
+          "lpia",
+          "wpia",
+          "gpia"
+        ]
+      }
+    ]
+  },
+  "history_years": 10,
+  "mlab": {
+    "slices": [
+      "downloads_by_country",
+      "downloads_by_country_subdivision1",
+      "uploads_by_country_subdivision1"
+    ],
+    "metrics": [
+      "download",
+      "upload",
+      "latency",
+      "loss"
+    ],
+    "percentiles": [
+      10,
+      25,
+      50,
+      75,
+      90
+    ],
+    "history_months": 36,
+    "min_sample_count": 100,
+    "refresh_last": 1
+  }
+}
