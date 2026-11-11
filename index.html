@@ -8,7 +8,7 @@
     .emoji { font-family: "Noto Color Emoji", "Apple Color Emoji", "Segoe UI Emoji", "Twemoji Mozilla", sans-serif; }
   </style>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EdTech Policy &amp; Feasibility Observatory · Sub-Saharan Africa &amp; MENA</title>
+  <title>EdTech Policy &amp; Feasibility Observatory · Sub-Saharan Africa</title>
   <meta name="description" content="An open-access decision-support observatory bridging macro benchmarks, UNESCO's 6 Pillars of EdTech, and classroom feasibility realities.">
 
   <!-- Google Fonts: Plus Jakarta Sans & Newsreader -->
@@ -260,7 +260,7 @@
         </div>
         <div>
           <span id="nav-title" class="font-extrabold text-slate-900 text-base sm:text-lg tracking-tight block leading-tight">EdTech Policy Observatory</span>
-          <span id="nav-subtitle" class="text-xs text-slate-500 font-medium hidden sm:block">Sub-Saharan Africa &amp; MENA Evidence Engine</span>
+          <span id="nav-subtitle" class="text-xs text-slate-500 font-medium hidden sm:block">Sub-Saharan Africa Evidence Engine</span>
         </div>
       </div>
 
@@ -301,7 +301,7 @@
         </h1>
 
         <p id="hero-desc" class="text-base sm:text-lg text-slate-300 font-normal leading-relaxed mb-8">
-          A multi-stakeholder analytical observatory reconciling OECD PISA cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa and MENA.
+          A multi-stakeholder analytical observatory reconciling OECD PISA cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa.
         </p>
 
         <!-- Metric Cards Grid (Adapts to Active Lens) -->
@@ -325,7 +325,7 @@
             7-Country Comparative Deep Dive
           </button>
           <button onclick="switchTab('dashboards-tab')" id="btn-dashboards-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
-            Interactive Triangulation Engines
+            Policy Decision Tools &amp; Triangulation Engines
           </button>
           <button onclick="switchTab('codebook-tab')" id="btn-codebook-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
             6-Pillars Variable Explorer &amp; Data
@@ -695,16 +695,6 @@
                 </select>
               </div>
 
-              <!-- Longitudinal Survey Round Filter (for Lens 1) -->
-              <div id="ab-round-group" class="bg-slate-100 p-1 rounded-xl flex items-center border border-slate-200">
-                <span class="text-[11px] font-bold text-slate-500 uppercase px-2">Survey Round:</span>
-                <button onclick="setAfrobarometerRound('r9')" id="btn-ab-r9" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition">
-                  Round 9 (2021-23)
-                </button>
-                <button onclick="setAfrobarometerRound('r10')" id="btn-ab-r10" class="px-2.5 py-1 rounded-lg text-xs font-semibold text-slate-600 hover:text-slate-900 transition">
-                  Round 10 (2024-25)
-                </button>
-              </div>
             </div>
           </div>
 
@@ -742,7 +732,7 @@
         <!-- ================================================================= -->
         <!-- MACRO-FISCAL & EXTERNAL AID OBSERVATORY MATRIX (2017-2024)       -->
             <!-- ================================================================= -->
-            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10" id="macro-fiscal-observatory-section">
+            <div class="hidden bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-10" id="macro-fiscal-observatory-section">
               <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-200 mb-6">
                 <div class="flex-1">
                   <div class="flex items-center gap-2 mb-1.5">
@@ -772,15 +762,15 @@
                       <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span>ICT: $352.1M (7.5%)</span>
                     </div>
                   </div>
-                  <button onclick="toggleMacroFiscalTable()" id="btn-macro-fiscal-toggle" class="px-4 py-2 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-300 transition flex items-center gap-2 cursor-pointer shadow-xs self-start sm:self-auto">
-                    <span id="macro-toggle-icon" class="text-base font-black leading-none">−</span>
-                    <span id="macro-toggle-text">Collapse 7-Country Fiscal Table</span>
+                  <button onclick="toggleMacroFiscalTable()" id="btn-macro-fiscal-toggle" class="px-4 py-2 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-300 transition flex items-center gap-2 cursor-pointer shadow-xs self-start sm:self-auto" aria-expanded="false" aria-controls="macro-fiscal-table-container">
+                    <span id="macro-toggle-icon" class="text-base font-black leading-none">+</span>
+                    <span id="macro-toggle-text">Expand 7-Country Fiscal Table</span>
                   </button>
                 </div>
               </div>
 
-              <!-- Comparative Table Container (Visible by default) -->
-              <div id="macro-fiscal-table-container" class="overflow-x-auto border border-slate-200 rounded-xl">
+              <!-- Comparative Table Container (Collapsed by default) -->
+              <div id="macro-fiscal-table-container" class="hidden overflow-x-auto border border-slate-200 rounded-xl">
                 <table class="w-full text-left text-xs border-collapse divide-y divide-slate-200" id="macro-fiscal-table">
                   <thead class="bg-slate-50 text-slate-700 font-bold border-b border-slate-200">
                     <tr>
@@ -799,147 +789,25 @@
                 </table>
                 <div class="mt-4 p-3 bg-slate-50 border-t border-slate-200 flex flex-wrap items-center justify-between text-xs text-slate-500">
                   <div>Source: IMF Government Finance Statistics (GFS) COFOG 2017-2024, IATI Datastore Solr API (29,388 transactions), World Bank EdStats.</div>
-                  <div class="italic text-[11px]">Click any country row above to load its full Quad-Lens ecosystem deep dive.</div>
+                  <div class="italic text-[11px]">The selected country is highlighted. Click a row to load its Quad-Lens ecosystem deep dive.</div>
                 </div>
               </div>
             </div>
 
-            <!-- INTERVENTION BENCHMARK: GEEAP & EDTECH HUB LIFECYCLE MODEL -->
-            <details class="group bg-white rounded-2xl p-6 sm:p-8 text-slate-800 shadow-sm border border-slate-200 mt-8" open>
-              <summary class="cursor-pointer list-none flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-200 select-none">
-                <div>
-                  <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200 mb-1.5">
-                    Literature Benchmark: 4 Intervention Archetypes
-                  </div>
-                  <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 font-serif">
-                    Policy Cost-Effectiveness &amp; Lifecycle Risk Comparison (GEEAP / TCO Framework)
-                  </h3>
-                  <p class="text-slate-500 text-xs mt-0.5 max-w-3xl leading-relaxed">
-                    Compares 4 standard public deployment archetypes against Nobel-led GEEAP cost-effectiveness (&sigma;/$100) and EdTech Hub 3-year Total Cost of Ownership failure rates.
-                  </p>
-                </div>
-                <div class="flex items-center gap-3 shrink-0">
-                  <span class="text-xs font-bold text-slate-500 group-open:hidden">Click to Expand ▼</span>
-                  <span class="text-xs font-bold text-slate-500 hidden group-open:inline">Click to Collapse ▲</span>
-                </div>
-              </summary>
 
-              <div class="pt-5">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
-                  <div>
-                    <span class="text-xs font-bold text-slate-700 block">Select Intervention Archetype:</span>
-                    <span class="text-[11px] text-slate-500">Evaluates empirical failure probability and gatekeeping clearance</span>
-                  </div>
-                  <div class="w-full sm:w-auto">
-                    <select onchange="runSimStrategy(this.value)" id="sim-strategy-select" class="w-full sm:w-96 bg-white text-slate-900 text-xs font-bold rounded-lg border-2 border-blue-500 px-3.5 py-2 shadow-xs focus:ring-2 focus:ring-blue-500 cursor-pointer">
-                      <option value="strat-tablets" selected>Strategy A: 1:1 Cloud Tablets (Kenya DLP Model)</option>
-                      <option value="strat-sms">Strategy B: SMS / USSD Micro-Curriculum (Eneza Model)</option>
-                      <option value="strat-broadcast">Strategy C: Free-to-Air Educational Broadcast (Ubongo)</option>
-                      <option value="strat-rotation">Strategy D: 3-Station Rotation + Solar DPG Microservers</option>
-                    </select>
-                  </div>
-                </div>
-
-              <!-- Simulation Metrics Display -->
-              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
-                
-                <!-- Card 1: GEEAP Cost-Effectiveness -->
-                <div class="bg-slate-50/80 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-                  <div>
-                    <span class="text-[11px] uppercase tracking-wider text-slate-500 font-bold block mb-1">GEEAP Cost-Effectiveness</span>
-                    <div class="flex items-baseline gap-2 mb-2">
-                      <span id="sim-geeap-score" class="text-3xl font-extrabold text-rose-700 font-serif">0.015 &sigma;</span>
-                      <span class="text-xs text-slate-500">per $100 spent</span>
-                    </div>
-                    <div class="mb-3">
-                      <span id="sim-geeap-badge" class="inline-block px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-300 text-xs font-bold">
-                        GEEAP Rating: Bad Buy
-                      </span>
-                    </div>
-                    <p id="sim-geeap-desc" class="text-xs text-slate-600 leading-relaxed">
-                      High capital cost ($200/pupil) yielding near-zero learning gains (+0.03&sigma;). Fails cost-effectiveness threshold.
-                    </p>
-                  </div>
-                  <div class="mt-4 pt-3 border-t border-slate-200 text-[10px] text-slate-500">
-                    Source: Rodriguez-Segura (2022); Angrist et al. (2020)
-                  </div>
-                </div>
-
-                <!-- Card 2: Lifecycle Sustainability & Failure Risk -->
-                <div class="bg-slate-50/80 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-                  <div>
-                    <span class="text-[11px] uppercase tracking-wider text-slate-500 font-bold block mb-1">EdTech Hub Lifecycle Risk</span>
-                    <div class="flex items-baseline gap-2 mb-2">
-                      <span id="sim-fail-risk" class="text-3xl font-extrabold text-rose-700 font-serif">95.6%</span>
-                      <span class="text-xs text-slate-500">Probability of Collapse</span>
-                    </div>
-                    <!-- Visual Risk Meter Bar -->
-                    <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden mb-3">
-                      <div id="sim-risk-bar" class="bg-rose-600 h-full transition-all duration-500" style="width: 95.6%;"></div>
-                    </div>
-                    <div class="mb-3">
-                      <span id="sim-fail-badge" class="inline-block px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-300 text-xs font-bold">
-                        CapEx: 90% · OpEx: 10%
-                      </span>
-                    </div>
-                    <p id="sim-fail-desc" class="text-xs text-slate-600 leading-relaxed">
-                      3-year OpEx requirement ($2.5x CapEx) is unfunded. Hardware degrades rapidly without replacement or repair budgets.
-                    </p>
-                  </div>
-                  <div class="mt-4 pt-3 border-t border-slate-200 text-[10px] text-slate-500">
-                    Source: Haßler et al. (2020); Trucano (2021)
-                  </div>
-                </div>
-
-                <!-- Card 3: Empirical Gating Audit & Recommendation -->
-                <div class="bg-slate-50/80 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-                  <div>
-                    <span class="text-[11px] uppercase tracking-wider text-slate-500 font-bold block mb-3">Empirical Gating Matrix</span>
-                    
-                    <div class="space-y-2 mb-4">
-                      <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-600 font-medium">Energy Grid Gate:</span>
-                        <span id="gate-power" class="font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Failed (33% off-grid)</span>
-                      </div>
-                      <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-600 font-medium">Airtime Tax Gate:</span>
-                        <span id="gate-data" class="font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Failed (4-8% Wage Tax)</span>
-                      </div>
-                      <div class="flex items-center justify-between text-xs">
-                        <span class="text-slate-600 font-medium">Foundational Literacy:</span>
-                        <span id="gate-lit" class="font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Severe Deficit (79%)</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="pt-3 border-t border-slate-200 bg-slate-100/70 -mx-5 -mb-5 p-4 rounded-b-xl">
-                    <span class="text-[10px] uppercase font-bold text-slate-500 block mb-1">Actionable Policy Directive:</span>
-                    <p id="sim-directive" class="text-xs font-bold text-slate-900 leading-snug">
-                      Cease 1:1 hardware procurement. Reallocate digital capital into teacher coaching and solar rotational kits.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-              </div>
-            </details>
           </div>
-        </div>
 
         <!-- ================================================================ -->
         <!-- FIELD VOICES: EDITORIAL STRIP — Qualitative Ground-Truth          -->
         <!-- ================================================================ -->
         
-        </div>
-      </div>
-
       <!-- TAB 2: INTERACTIVE ENGINES -->
       <div id="dashboards-tab" class="tab-content hidden">
         <div class="mb-8">
-          <span class="badge-pill bg-purple-100 text-purple-800 mb-2">Micro-Data &amp; Cross-National Exploration</span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Interactive Triangulation Engines</h2>
+          <span class="badge-pill bg-purple-100 text-purple-800 mb-2">Policy Decision Tools &amp; Triangulation Engines</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Policy Decision Tools &amp; Triangulation Engines</h2>
           <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
-            Access the two underlying analytical web engines powering this observatory: the 85-country OECD PISA exploration dashboard and the 800-respondent Alliance of Alliances ground-truth engine.
+            Access the policy simulation and analytical engines powering this observatory: the GEEAP/TCO cost-effectiveness simulator, the 85-country OECD PISA exploration dashboard, and the N=800 synthetic SSA survey baseline.
           </p>
         </div>
 
@@ -955,72 +823,152 @@
                   <h3 class="text-base font-extrabold text-slate-900 font-serif">GIGA School Connectivity Monitor</h3>
                   <span id="giga-status-pill" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-700 border border-amber-200">⏳ API Pending</span>
                 </div>
-                <p class="text-xs text-slate-500 mt-0.5">UNICEF–ITU · Real-time school internet coverage · SSA &amp; MENA focus</p>
+                <p class="text-xs text-slate-500 mt-0.5">UNICEF–ITU · Real-time school internet coverage · SSA focus</p>
               </div>
             </div>
             <a href="https://projectconnect.unicef.org/map" target="_blank" class="text-xs font-semibold text-cyan-700 hover:text-cyan-900 underline underline-offset-2 transition">projectconnect.unicef.org ↗</a>
           </div>
 
-          <!-- GIGA Country Cards — static until API key arrives -->
+          <!-- GIGA Country Cards -->
           <div class="p-6">
-            <p class="text-xs text-slate-500 mb-4 italic">
-              Real-time values will populate automatically once the GIGA API key is activated. The structure below is live-ready — only the endpoint key is needed.
+            <p class="text-xs text-slate-500 mb-4">
+              Showing the seven focus economies. Bars represent school internet coverage; missing reference values are left blank rather than inferred.
             </p>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5" id="giga-country-grid">
-              <!-- Kenya -->
-              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
-                <div class="text-xs font-mono font-semibold text-slate-600 mb-1">KEN · Kenya</div>
-                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="KEN">—</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
-                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
-                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
-                </div>
-                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="KEN">—% coverage</div>
-              </div>
-              <!-- Nigeria -->
-              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
-                <div class="text-xs font-mono font-semibold text-slate-600 mb-1">NGA · Nigeria</div>
-                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="NGA">—</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
-                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
-                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
-                </div>
-                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="NGA">—% coverage</div>
-              </div>
-              <!-- Ghana -->
-              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
-                <div class="text-xs font-mono font-semibold text-slate-600 mb-1">GHA · Ghana</div>
-                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="GHA">—</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
-                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
-                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
-                </div>
-                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="GHA">—% coverage</div>
-              </div>
-              <!-- Egypt -->
-              <div class="bg-white rounded-xl border border-slate-200 p-4 text-center shadow-sm">
-                <div class="text-xs font-mono font-semibold text-slate-600 mb-1">EGY · Egypt</div>
-                <div class="text-2xl font-extrabold font-serif text-slate-800 giga-connected" data-country="EGY">—</div>
-                <div class="text-[10px] text-slate-400 mt-0.5">schools connected</div>
-                <div class="mt-2 h-1.5 w-full rounded-full bg-slate-100 overflow-hidden">
-                  <div class="giga-bar h-full bg-cyan-500 rounded-full transition-all duration-700" style="width:0%"></div>
-                </div>
-                <div class="text-[10px] text-slate-400 mt-1 giga-pct" data-country="EGY">—% coverage</div>
-              </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-5" id="giga-country-grid">
+              <!-- Populated from the seven-country reference dataset. -->
             </div>
 
-            <!-- API Integration Instructions (developer note, collapsed) -->
             <details class="text-xs border border-dashed border-cyan-300 rounded-xl px-4 py-3 bg-white/60">
-              <summary class="font-semibold text-cyan-800 cursor-pointer select-none">Developer: Activate GIGA API feed</summary>
+              <summary class="font-semibold text-cyan-800 cursor-pointer select-none">Data coverage and source notes</summary>
               <div class="mt-3 space-y-1.5 text-slate-600 leading-relaxed font-mono text-[11px]">
-                <p>1. Set <code class="bg-slate-100 px-1 rounded">GIGA_API_KEY</code> in <code class="bg-slate-100 px-1 rounded">const GIGA_API_KEY = "YOUR_KEY_HERE"</code> below.</p>
-                <p>2. The function <code class="bg-slate-100 px-1 rounded">fetchGigaData()</code> will fire on tab open and populate the cards above.</p>
-                <p>3. Endpoint: <code class="bg-slate-100 px-1 rounded">https://api.giga.school/v1/schools?country_code={ISO}&amp;connectivity=true</code></p>
-                <p>4. No other changes needed — the grid is live-ready.</p>
+                <p>Reference values are currently available for Kenya, Ghana, and Nigeria. Other focus economies remain unreported until comparable school-connectivity data is available.</p>
+                <p>The coverage bar is the share of schools reported connected to the internet; it is not an electricity-access measure.</p>
               </div>
             </details>
           </div>
         </div>
+
+
+        <!-- GEEAP / TCO SIMULATOR (moved from Tab 1) -->
+        <!-- INTERVENTION BENCHMARK: GEEAP & EDTECH HUB LIFECYCLE MODEL -->
+        <details class="group bg-white rounded-2xl p-6 sm:p-8 text-slate-800 shadow-sm border border-slate-200 mt-8">
+          <summary class="cursor-pointer list-none flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-4 border-b border-slate-200 select-none">
+            <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-md bg-slate-100 text-slate-700 text-xs font-bold border border-slate-200 mb-1.5">
+            Literature Benchmark: 4 Intervention Archetypes
+          </div>
+          <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 font-serif">
+            Policy Cost-Effectiveness &amp; Lifecycle Risk Comparison (GEEAP / TCO Framework)
+          </h3>
+          <p class="text-slate-500 text-xs mt-0.5 max-w-3xl leading-relaxed">
+            Compares 4 standard public deployment archetypes against Nobel-led GEEAP cost-effectiveness (&sigma;/$100) and EdTech Hub 3-year Total Cost of Ownership failure rates.
+          </p>
+            </div>
+            <div class="flex items-center gap-3 shrink-0">
+          <span class="text-xs font-bold text-slate-500 group-open:hidden">Click to Expand ▼</span>
+          <span class="text-xs font-bold text-slate-500 hidden group-open:inline">Click to Collapse ▲</span>
+            </div>
+          </summary>
+
+          <div class="pt-5">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 mb-6">
+          <div>
+            <span class="text-xs font-bold text-slate-700 block">Select Intervention Archetype:</span>
+            <span class="text-[11px] text-slate-500">Evaluates empirical failure probability and gatekeeping clearance</span>
+          </div>
+          <div class="w-full sm:w-auto">
+            <select onchange="runSimStrategy(this.value)" id="sim-strategy-select" class="w-full sm:w-96 bg-white text-slate-900 text-xs font-bold rounded-lg border-2 border-blue-500 px-3.5 py-2 shadow-xs focus:ring-2 focus:ring-blue-500 cursor-pointer">
+              <option value="strat-tablets" selected>Strategy A: 1:1 Cloud Tablets (Kenya DLP Model)</option>
+              <option value="strat-sms">Strategy B: SMS / USSD Micro-Curriculum (Eneza Model)</option>
+              <option value="strat-broadcast">Strategy C: Free-to-Air Educational Broadcast (Ubongo)</option>
+              <option value="strat-rotation">Strategy D: 3-Station Rotation + Solar DPG Microservers</option>
+            </select>
+          </div>
+            </div>
+
+          <!-- Simulation Metrics Display -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 pt-6">
+            
+            <!-- Card 1: GEEAP Cost-Effectiveness -->
+            <div class="bg-slate-50/80 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-bold block mb-1">GEEAP Cost-Effectiveness</span>
+            <div class="flex items-baseline gap-2 mb-2">
+              <span id="sim-geeap-score" class="text-3xl font-extrabold text-rose-700 font-serif">0.015 &sigma;</span>
+              <span class="text-xs text-slate-500">per $100 spent</span>
+            </div>
+            <div class="mb-3">
+              <span id="sim-geeap-badge" class="inline-block px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-300 text-xs font-bold">
+            GEEAP Rating: Bad Buy
+              </span>
+            </div>
+            <p id="sim-geeap-desc" class="text-xs text-slate-600 leading-relaxed">
+              High capital cost ($200/pupil) yielding near-zero learning gains (+0.03&sigma;). Fails cost-effectiveness threshold.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-[10px] text-slate-500">
+            Source: Rodriguez-Segura (2022); Angrist et al. (2020)
+          </div>
+            </div>
+
+            <!-- Card 2: Lifecycle Sustainability & Failure Risk -->
+            <div class="bg-slate-50/80 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-bold block mb-1">EdTech Hub Lifecycle Risk</span>
+            <div class="flex items-baseline gap-2 mb-2">
+              <span id="sim-fail-risk" class="text-3xl font-extrabold text-rose-700 font-serif">95.6%</span>
+              <span class="text-xs text-slate-500">Probability of Collapse</span>
+            </div>
+            <!-- Visual Risk Meter Bar -->
+            <div class="w-full bg-slate-200 h-2.5 rounded-full overflow-hidden mb-3">
+              <div id="sim-risk-bar" class="bg-rose-600 h-full transition-all duration-500" style="width: 95.6%;"></div>
+            </div>
+            <div class="mb-3">
+              <span id="sim-fail-badge" class="inline-block px-2.5 py-1 rounded-md bg-rose-100 text-rose-800 border border-rose-300 text-xs font-bold">
+            CapEx: 90% · OpEx: 10%
+              </span>
+            </div>
+            <p id="sim-fail-desc" class="text-xs text-slate-600 leading-relaxed">
+              3-year OpEx requirement ($2.5x CapEx) is unfunded. Hardware degrades rapidly without replacement or repair budgets.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-[10px] text-slate-500">
+            Source: Haßler et al. (2020); Trucano (2021)
+          </div>
+            </div>
+
+            <!-- Card 3: Empirical Gating Audit & Recommendation -->
+            <div class="bg-slate-50/80 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
+          <div>
+            <span class="text-[11px] uppercase tracking-wider text-slate-500 font-bold block mb-3">Empirical Gating Matrix</span>
+            
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-600 font-medium">Energy Grid Gate:</span>
+            <span id="gate-power" class="font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Failed (33% off-grid)</span>
+              </div>
+              <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-600 font-medium">Airtime Tax Gate:</span>
+            <span id="gate-data" class="font-bold text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">Failed (4-8% Wage Tax)</span>
+              </div>
+              <div class="flex items-center justify-between text-xs">
+            <span class="text-slate-600 font-medium">Foundational Literacy:</span>
+            <span id="gate-lit" class="font-bold text-amber-800 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">Severe Deficit (79%)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 border-t border-slate-200 bg-slate-100/70 -mx-5 -mb-5 p-4 rounded-b-xl">
+            <span class="text-[10px] uppercase font-bold text-slate-500 block mb-1">Actionable Policy Directive:</span>
+            <p id="sim-directive" class="text-xs font-bold text-slate-900 leading-snug">
+              Cease 1:1 hardware procurement. Reallocate digital capital into teacher coaching and solar rotational kits.
+            </p>
+          </div>
+            </div>
+
+          </div>
+          </div>
+        </details>
 
         <!-- Engines Showcase Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -1324,7 +1272,7 @@
                   </tr>
                 </thead>
                 <tbody class="divide-y divide-slate-100 font-mono text-xs">
-                  <tr class="hover:bg-slate-50/80 transition">
+                  <tr data-country-iso="KEN" class="hover:bg-slate-50/80 transition cursor-pointer" onclick="selectCountry('KEN')">
                     <td class="py-3 px-3 font-sans font-bold text-slate-900">Kenya <span class="block text-[10px] text-slate-400 font-normal">Silicon Savannah</span></td>
                     <td class="py-3 px-2 text-center font-bold text-emerald-700 bg-emerald-50/50">25 / 45</td>
                     <td class="py-3 px-2 text-center">27.9%</td>
@@ -1337,7 +1285,7 @@
                     <td class="py-3 px-2 text-center font-sans">Swahili · <strong class="text-emerald-700">62%</strong></td>
                     <td class="py-3 px-2 text-center">73.4</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/80 transition bg-blue-50/20">
+                  <tr data-country-iso="RWA" class="hover:bg-slate-50/80 transition cursor-pointer" onclick="selectCountry('RWA')">
                     <td class="py-3 px-3 font-sans font-bold text-slate-900">Rwanda <span class="block text-[10px] text-blue-700 font-normal">State Push vs Crowding</span></td>
                     <td class="py-3 px-2 text-center font-bold text-blue-700 bg-blue-50/50">30 / 45</td>
                     <td class="py-3 px-2 text-center">14.2%</td>
@@ -1350,7 +1298,7 @@
                     <td class="py-3 px-2 text-center font-sans">Eng/Kinyar · <strong class="text-rose-600">38%</strong></td>
                     <td class="py-3 px-2 text-center">72.6</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/80 transition bg-cyan-50/20">
+                  <tr data-country-iso="TZA" class="hover:bg-slate-50/80 transition cursor-pointer" onclick="selectCountry('TZA')">
                     <td class="py-3 px-3 font-sans font-bold text-slate-900">Tanzania <span class="block text-[10px] text-cyan-700 font-normal">Swahili Foundational Anchor</span></td>
                     <td class="py-3 px-2 text-center font-bold text-cyan-800 bg-cyan-50/50">33 / 45</td>
                     <td class="py-3 px-2 text-center">13.4%</td>
@@ -1363,7 +1311,7 @@
                     <td class="py-3 px-2 text-center font-sans">Swahili · <strong class="text-blue-700">58%</strong></td>
                     <td class="py-3 px-2 text-center">68.2</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/80 transition">
+                  <tr data-country-iso="GHA" class="hover:bg-slate-50/80 transition cursor-pointer" onclick="selectCountry('GHA')">
                     <td class="py-3 px-3 font-sans font-bold text-slate-900">Ghana <span class="block text-[10px] text-teal-700 font-normal">West Africa Frontrunner</span></td>
                     <td class="py-3 px-2 text-center font-bold text-teal-800 bg-teal-50/50">27 / 45</td>
                     <td class="py-3 px-2 text-center">13.2%</td>
@@ -1376,7 +1324,7 @@
                     <td class="py-3 px-2 text-center font-sans">Eng/Akan · <strong class="text-amber-600">28%</strong></td>
                     <td class="py-3 px-2 text-center">65.7</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/80 transition">
+                  <tr data-country-iso="NGA" class="hover:bg-slate-50/80 transition cursor-pointer" onclick="selectCountry('NGA')">
                     <td class="py-3 px-3 font-sans font-bold text-slate-900">Nigeria <span class="block text-[10px] text-indigo-700 font-normal">Macro Generator Economy</span></td>
                     <td class="py-3 px-2 text-center font-bold text-indigo-800 bg-indigo-50/50">36 / 45</td>
                     <td class="py-3 px-2 text-center text-rose-700 font-bold">3.0%</td>
@@ -1389,7 +1337,7 @@
                     <td class="py-3 px-2 text-center font-sans">Eng/Hausa · <strong class="text-amber-600">32%</strong></td>
                     <td class="py-3 px-2 text-center">69.1</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/80 transition">
+                  <tr data-country-iso="ZMB" class="hover:bg-slate-50/80 transition cursor-pointer" onclick="selectCountry('ZMB')">
                     <td class="py-3 px-3 font-sans font-bold text-slate-900">Zambia <span class="block text-[10px] text-amber-700 font-normal">Vulnerability Lower-Bound</span></td>
                     <td class="py-3 px-2 text-center font-bold text-amber-800 bg-amber-50/50">37 / 45</td>
                     <td class="py-3 px-2 text-center">15.4%</td>
@@ -1402,7 +1350,7 @@
                     <td class="py-3 px-2 text-center font-sans">73 Langs · <strong class="text-rose-700">18%</strong></td>
                     <td class="py-3 px-2 text-center">64.2</td>
                   </tr>
-                  <tr class="hover:bg-slate-50/80 transition bg-rose-50/20">
+                  <tr data-country-iso="MUS" class="hover:bg-slate-50/80 transition cursor-pointer" onclick="selectCountry('MUS')">
                     <td class="py-3 px-3 font-sans font-bold text-slate-900">Mauritius <span class="block text-[10px] text-rose-700 font-normal">Upper-Bound SIDS Control</span></td>
                     <td class="py-3 px-2 text-center font-bold text-rose-800 bg-rose-50/50">18 / 45</td>
                     <td class="py-3 px-2 text-center">14.2%</td>
@@ -1430,6 +1378,13 @@
           <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
             Articulating the three structural epistemological biases that invalidate direct transposition of OECD comparative frameworks to Sub-Saharan Africa.
           </p>
+          <div class="mt-4 p-4 rounded-xl border border-indigo-200 bg-indigo-50/70 flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div class="text-sm font-bold text-indigo-950">Supply-Demand Mismatch Matrix</div>
+              <div class="text-xs text-indigo-800 mt-0.5">Compare country needs with the solution catalog and an explicitly synthetic teacher-response signal.</div>
+            </div>
+            <a href="#supply-demand-mismatch-matrix" class="px-3 py-2 rounded-lg bg-indigo-700 text-white text-xs font-bold hover:bg-indigo-800 transition">Jump to matrix ↓</a>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
@@ -1451,9 +1406,9 @@
 
           <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
             <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-700 font-black flex items-center justify-center mb-3">3</div>
-            <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Hardware Trap (MENA Lesson)</h3>
+            <h3 class="font-extrabold text-slate-900 text-base mb-2 font-serif">The Hardware-First Fallacy</h3>
             <p class="text-xs text-slate-600 leading-relaxed">
-              High-income MENA systems demonstrate that near-100% device penetration paired with low teacher pedagogical guidance produces leisure displacement, proving that infrastructure without teacher agency fails to elevate outcomes.
+              Counting procured devices as learning access ignores school power, teacher workload, offline capability, and local-language fit. In SSA classrooms, hardware without those supports can remain unused or shift recurring costs onto teachers and families.
             </p>
           </div>
         </div>
@@ -1496,7 +1451,7 @@
                   <th class="py-3 px-3 text-center">Pillar 5: Language &amp; AI<br><span class="text-[9px] font-sans font-normal text-slate-500">15% Supply vs Home Dialects</span></th>
                   <th class="py-3 px-3 text-center">Governance Paradox<br><span class="text-[9px] font-sans font-normal text-slate-500">Edu Satisfaction vs School Grid</span></th>
                   <th class="py-3 px-3 text-center">Pillar 3: Cash Precarity<br><span class="text-[9px] font-sans font-normal text-slate-500">AB Lived Income Shortage</span></th>
-                  <th class="py-3 px-3 text-center bg-slate-100">Layer 3: Practitioner<br><span class="text-[9px] font-sans font-normal text-slate-500">AoA Field Diagnostic</span></th>
+                  <th class="py-3 px-3 text-center bg-slate-100">Layer 3: Teacher Survey<br><span class="text-[9px] font-sans font-normal text-slate-500">Synthetic baseline · hover for country N</span></th>
                 </tr>
               </thead>
               <tbody id="interactive-heatmap-body" class="divide-y divide-slate-200">
@@ -2170,9 +2125,38 @@
           if (!tbody) return;
           tbody.innerHTML = '';
 
+          const teacherRecords = SURVEY_BASELINE.teachers.records || [];
+          heatmapData.forEach(country => {
+            const sample = teacherRecords.filter(record => record.country === country.name);
+            const reliablePower = sample.filter(record =>
+              record.elec === 'Mostly reliable' || record.elec === 'Always reliable'
+            ).length;
+            const fieldValue = sample.length ? Math.round((reliablePower / sample.length) * 1000) / 10 : null;
+            const macroValue = country.dimensions.gov_paradox?.macro_val ?? null;
+            const gap = fieldValue !== null && macroValue !== null
+              ? Math.round((fieldValue - macroValue) * 10) / 10
+              : null;
+            country.dimensions.practitioner_audit = {
+              name: 'Synthetic Teacher Power Signal',
+              macro_val: macroValue,
+              macro_src: 'UIS (% Primary Schools with Electricity)',
+              field_val: fieldValue,
+              field_src: 'Synthetic AoA teacher baseline (mostly/always reliable school power)',
+              sample_size: sample.length,
+              gap,
+              unit: '%',
+              type: 'synthetic',
+              desc: fieldValue !== null && macroValue !== null
+                ? `Illustrative synthetic baseline: ${fieldValue}% of ${sample.length} teacher responses report mostly or always reliable school power; UIS reports ${macroValue}% of primary schools with electricity. This is simulated, not observed field evidence.`
+                : 'No synthetic teacher responses or UIS school-power estimate available for this country.'
+            };
+          });
+
           heatmapData.forEach(c => {
             const tr = document.createElement('tr');
-            tr.className = 'hover:bg-slate-50/80 transition-colors border-b border-slate-100';
+            tr.className = 'hover:bg-slate-50/80 transition-colors border-b border-slate-100 cursor-pointer';
+            tr.setAttribute('data-country-iso', c.iso3);
+            tr.setAttribute('onclick', `selectCountry('${c.iso3}')`);
 
             let html = `
               <td class="py-3 px-4">
@@ -2190,10 +2174,11 @@
               if (dimKey === 'practitioner_audit') {
                 return `
                   <td class="py-2.5 px-3 text-center bg-slate-50">
-                    <span onclick="selectHeatmapCell('${c.iso3}', '${dimKey}')" class="cursor-pointer inline-flex items-center gap-1 px-2 py-1 rounded bg-slate-200 text-slate-600 font-mono text-[10px] font-bold hover:bg-slate-300 transition">
-                      <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                      Pending N
-                    </span>
+                    <button onclick="selectHeatmapCell('${c.iso3}', '${dimKey}')" class="inline-flex flex-col items-center px-2 py-1 rounded border border-indigo-200 bg-indigo-50 text-indigo-800 font-mono text-[10px] font-bold hover:ring-2 hover:ring-indigo-400 transition"
+                      title="Synthetic teacher responses considered for ${c.name}: N=${dim.sample_size}">
+                      <span>${dim.field_val ?? '—'}${dim.field_val === null ? '' : '%'}</span>
+                      <span class="text-[9px] font-normal text-indigo-600">Synthetic · N=${dim.sample_size}</span>
+                    </button>
                   </td>
                 `;
               }
@@ -2258,6 +2243,7 @@
             tr.innerHTML = html;
             tbody.appendChild(tr);
           });
+          highlightActiveCountryInTables(typeof _activeIso !== 'undefined' ? _activeIso : 'KEN');
         }
 
         function selectHeatmapCell(iso3, dimKey) {
@@ -2276,7 +2262,9 @@
           document.getElementById('drilldown-field-val').textContent = dim.field_val !== null ? `${dim.field_val}${dim.unit}` : 'Pending Field Data';
           document.getElementById('drilldown-field-src').textContent = dim.field_src || '—';
 
-          const gapText = dim.gap !== null ? (dim.gap > 0 ? `+${dim.gap}pp Gap` : `${dim.gap}pp Gap`) : (dimKey === 'economic_precarity' ? `${dim.field_val}% Stress Rate` : 'Awaiting Collection');
+          const gapText = dim.gap !== null
+            ? `${dim.gap > 0 ? '+' : ''}${dim.gap}pp vs. school electrification`
+            : (dimKey === 'economic_precarity' ? `${dim.field_val}% Stress Rate` : 'Awaiting Collection');
           document.getElementById('drilldown-gap-val').textContent = gapText;
           document.getElementById('drilldown-desc').textContent = dim.desc || '';
 
@@ -2297,16 +2285,16 @@
         <!-- ================================================================= -->
         <!-- SUPPLY-DEMAND MISMATCH MATRIX & TRANSPARENT PROXY OBSERVATORY     -->
         <!-- ================================================================= -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm" id="supply-demand-mismatch-matrix">
           <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-200 mb-6">
             <div>
               <div class="flex items-center gap-2 mb-1.5">
                 <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold">Empirical Macro Layer</span>
-                <span class="badge-pill bg-amber-100 text-amber-800 text-xs font-mono">PISA Blind Spot &amp; Proxy Badges</span>
+                <span class="badge-pill bg-amber-100 text-amber-800 text-xs font-mono">Synthetic Teacher Signal · Curated Supply Catalog</span>
               </div>
               <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif">Supply-Demand Mismatch Matrix (48 SSA Demand vs. 148 Supply)</h3>
               <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-4xl">
-                Contrasting foundational national learning poverty and infrastructure scarcity against active market solutions. Highlighting the <strong>PISA Data Blind Spot</strong> with transparent proxy indicators where official learning poverty is unmeasured.
+                Contrasting macro learning and infrastructure needs with the curated solution catalog, alongside a synthetic teacher digital-use signal. Survey signal is illustrative, not observed fieldwork.
               </p>
             </div>
             <div class="flex items-center gap-2 text-xs">
@@ -2316,9 +2304,6 @@
               </button>
               <button onclick="setMatrixPlayerScope('all_ssa')" id="btn-scope-ssa" class="px-3 py-1.5 rounded-lg font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition">
                 All 118 SSA Players
-              </button>
-              <button onclick="setMatrixPlayerScope('mena_tier')" id="btn-scope-mena" class="px-3 py-1.5 rounded-lg font-semibold bg-white border border-slate-200 text-slate-500 hover:bg-slate-50 transition">
-                MENA Reference (21)
               </button>
             </div>
           </div>
@@ -2343,8 +2328,8 @@
           <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200 text-xs text-amber-900 mb-4 flex items-start gap-2.5">
             <span class="text-base">🔍</span>
             <div class="leading-relaxed">
-              <strong>Methodological Transparency Anchor:</strong>
-              Cells marked with <span class="badge-pill bg-amber-200 text-amber-900 text-[10px] py-0 px-1.5 font-bold">PROXY</span> denote countries where World Bank 2022–2025 standardized Learning Poverty is unmeasured. Rather than dropping these nations (creating digital austerity) or assuming 0%, the observatory anchors on UNESCO Adult Illiteracy deficit (<code class="text-[10px] font-mono">100 - Adult Literacy Rate</code>) as an explicit proxy, confronting the PISA data blind spot directly.
+              <strong>Methodological transparency:</strong>
+              Learning-poverty <span class="badge-pill bg-amber-200 text-amber-900 text-[10px] py-0 px-1.5 font-bold">PROXY</span> values use the UNESCO adult-illiteracy deficit where standardized data is unavailable. The teacher digital-use signal is computed from the calibrated synthetic response baseline; hover over a value for its country sample size. The supply side remains a curated solution catalog.
             </div>
           </div>
 
@@ -2355,6 +2340,7 @@
                 <tr>
                   <th class="p-3 bg-slate-50 sticky left-0 z-30 min-w-[170px] border-r border-slate-200">Country &amp; Macro Need</th>
                   <th class="p-3 min-w-[120px]">Demand: Learning Poverty</th>
+                  <th class="p-3 min-w-[150px]">Teacher Digital Use<br><span class="text-[9px] font-normal text-slate-500">Synthetic baseline · hover for N</span></th>
                   <th class="p-3 min-w-[110px]">Rural Electrification</th>
                   <th class="p-3 min-w-[110px]">School / Fixed BB</th>
                   <th class="p-3 min-w-[340px]">Mapped Market Solutions &amp; Alignment Fit</th>
@@ -2372,7 +2358,6 @@
             <div class="flex items-center gap-3">
               <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span> Verified Core SSA</span>
               <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Proxy Indicator</span>
-              <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span> MENA Comparison</span>
             </div>
           </div>
 
@@ -3450,7 +3435,7 @@
         <div class="mt-8 p-4 rounded-xl bg-stone-100 border border-stone-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-stone-600">
           <div class="flex items-center gap-2">
             <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 shrink-0"></span>
-            <span><strong>Automated Verification Engine:</strong> Tested monthly via <code class="bg-stone-200 px-1 py-0.5 rounded text-[11px]">scripts/verify_dpg_urls.py</code> with 301-redirect resolution and domain squatter detection.</span>
+            <span><strong>Automated Verification Engine:</strong> Links are checked for redirects and invalid domains on a regular schedule.</span>
           </div>
           <div class="flex items-center gap-2 text-stone-500 shrink-0">
             <span>Last Audit: <strong>Nov 1, 2026 (All 9 URLs 200 OK)</strong></span>
@@ -3511,10 +3496,10 @@
               <div>
                 <div class="flex items-center gap-2">
                   <span id="survey-mode-badge" class="font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2 py-0.5 rounded border border-amber-300">
-                    Active Mode: Calibration Prior Seed [SIMULATED]
+                    Active Mode: Synthetic calibrated baseline · N=800
                   </span>
                   <span id="survey-n-badge" class="font-mono text-xs text-stone-700 font-bold">
-                    N = 800 Simulated Prior Responses (Awaiting Primary Field Intake)
+                    N = 800 simulated responses across 48 SSA countries
                   </span>
                 </div>
                 <div id="survey-mode-desc" class="text-xs text-stone-600 mt-0.5">
@@ -3523,7 +3508,7 @@
               </div>
             </div>
             <div class="text-right shrink-0">
-              <span class="text-[11px] font-mono text-stone-500">Dual Pipeline: Calibrated Seeding ⇄ Hot-Swap Live CSV</span>
+              <span class="text-[11px] font-mono text-stone-500">Synthetic baseline · optional live response import</span>
             </div>
           </div>
 
@@ -3912,7 +3897,7 @@
       </div>
       <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Frontline Field Evidence &amp; Survey Instrument Hub</h2>
       <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-4xl leading-relaxed">
-        Collect and ground-truth empirical data directly from educators, technology founders, and domain experts. Survey responses are logged in secure client-side storage, calculate instant diagnostic feasibility scores for the respondent, and aggregate into regional discrepancy indicators.
+        Review a calibrated synthetic baseline and collect responses from educators, technology founders, and domain experts. Imported submissions stay in this browser; external KoboToolbox responses are not synced automatically.
       </p>
     </div>
 
@@ -3938,6 +3923,9 @@
           <a href="./Teacher_Diagnostic_Survey.html" target="_blank" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-indigo-600 text-white hover:bg-indigo-700 shadow-sm transition">
             Launch Teacher Diagnostic →
           </a>
+          <a href="https://kobo.humanitarianresponse.info/x/SSA_TeacherDiagnostic" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-indigo-100 text-indigo-800 hover:bg-indigo-200 border border-indigo-300 transition">
+            📋 Open Teacher KoboToolbox Mirror ↗
+          </a>
           <button onclick="copySurveyLink('teacher')" class="w-full text-center text-[11px] text-indigo-600 hover:text-indigo-800 font-medium py-1">
             🔗 Copy Shareable Link for WhatsApp/Email
           </button>
@@ -3961,10 +3949,10 @@
           </div>
         </div>
         <div class="space-y-2">
-          <a href="./AoA survey/SSA_Provider_Survey_v1_PUBLIC.docx" download class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-slate-800 text-white hover:bg-slate-700 shadow-sm transition">
-            Download Provider Survey (.docx)
+          <a href="https://kobo.humanitarianresponse.info/x/SSA_EdTech_Provider" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-amber-600 text-white hover:bg-amber-700 shadow-sm transition">
+            📋 Open Provider KoboToolbox Mirror ↗
           </a>
-          <div class="text-center text-[11px] text-slate-400 py-1">Online form mirror launching shortly</div>
+          <div class="text-center text-[11px] text-slate-400 py-1">External form · responses require import to appear here</div>
         </div>
       </div>
 
@@ -3985,10 +3973,10 @@
           </div>
         </div>
         <div class="space-y-2">
-          <a href="./AoA survey/SSA_Expert_Consultation_R1_v1_PUBLIC.docx" download class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-slate-800 text-white hover:bg-slate-700 shadow-sm transition">
-            Download Expert Protocol (.docx)
+          <a href="https://kobo.humanitarianresponse.info/x/SSA_ExpertDelphi" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold bg-purple-600 text-white hover:bg-purple-700 shadow-sm transition">
+            📋 Open Expert KoboToolbox Mirror ↗
           </a>
-          <div class="text-center text-[11px] text-slate-400 py-1">Qualitative semi-structured format</div>
+          <div class="text-center text-[11px] text-slate-400 py-1">External form · responses require import to appear here</div>
         </div>
       </div>
     </div>
@@ -3999,7 +3987,7 @@
         <div>
           <div class="flex items-center gap-2 mb-1">
             <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-500 text-slate-950">RESEARCHER DATA VAULT</span>
-            <span class="text-xs text-slate-400">Encrypted Local Storage &amp; Export</span>
+            <span class="text-xs text-slate-400">Browser Storage &amp; Export</span>
           </div>
           <h3 class="text-lg font-bold font-serif text-white">Collected Responses Ingestion &amp; Discrepancy Triangulation</h3>
         </div>
@@ -4008,7 +3996,7 @@
             🔄 Refresh Vault
           </button>
           <button onclick="exportVaultJSON()" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white transition">
-            📥 Export All (.JSON)
+            📥 Export Response Data
           </button>
         </div>
       </div>
@@ -4017,15 +4005,15 @@
         <div class="lg:col-span-1 space-y-4">
           <div class="p-4 bg-slate-800/80 rounded-xl border border-slate-700 space-y-2">
             <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">Vault Statistics</span>
-            <div class="text-2xl font-extrabold text-emerald-400" id="vault-count">0 Recorded Submissions</div>
+            <div class="text-2xl font-extrabold text-emerald-400" id="vault-count">800 Synthetic Responses</div>
             <p class="text-slate-400 text-[11px] leading-relaxed">
-              Responses logged via the Teacher Diagnostic or manual ingestion are securely cached client-side. No third party or public visitor can see your individual records.
+              The baseline is simulated and shown for demonstration. Imported live submissions are stored in this browser only; browser storage is not encrypted and is not shared with external KoboToolbox forms.
             </p>
           </div>
           <div class="p-4 bg-slate-800/80 rounded-xl border border-slate-700 space-y-2">
             <span class="text-slate-400 text-[10px] uppercase font-bold tracking-wider">Manual Batch Ingestion</span>
-            <p class="text-slate-400 text-[11px]">Paste JSON payloads from Google Forms or WhatsApp collection:</p>
-            <textarea id="vault-manual-input" placeholder='[{"country":"KEN","power":"solar"...}]' class="w-full h-20 bg-slate-950 border border-slate-700 rounded p-2 font-mono text-[10px] text-emerald-400"></textarea>
+            <p class="text-slate-400 text-[11px]">Paste a structured response payload to add live submissions:</p>
+            <textarea id="vault-manual-input" placeholder="Paste response data here" class="w-full h-20 bg-slate-950 border border-slate-700 rounded p-2 font-mono text-[10px] text-emerald-400"></textarea>
             <button onclick="ingestManualPayload()" class="w-full py-1.5 bg-slate-700 hover:bg-slate-600 rounded text-slate-200 font-bold transition text-[11px]">
               Ingest Into Repository Vault
             </button>
@@ -4039,11 +4027,11 @@
               <span class="text-[10px] text-slate-500 font-mono">Format: Standardized AoA Payload</span>
             </div>
             <div id="vault-stream" class="h-48 overflow-y-auto font-mono text-[10px] text-slate-400 space-y-1">
-              <div class="text-slate-600 italic">No field records submitted yet. Distribute the Teacher Diagnostic survey link to populate this stream.</div>
+              <div class="text-slate-600 italic">Synthetic baseline responses and any browser-local submissions appear here.</div>
             </div>
           </div>
           <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
-            <span>Periodic Analysis: Run <code class="text-indigo-400">python3 scripts/run_monthly_triangulation.py</code> to recalculate heatmap divergence</span>
+            <span>Live submissions remain separate from the synthetic baseline until imported into the analysis.</span>
             <button onclick="clearVault()" class="text-rose-400 hover:text-rose-300 text-[10px]">Clear Vault Data</button>
           </div>
         </div>
@@ -4064,32 +4052,62 @@
       if (!countEl || !streamEl) return;
 
       const records = JSON.parse(localStorage.getItem('collected_teacher_diagnostics') || '[]');
-      countEl.textContent = `${records.length} Recorded Submission${records.length === 1 ? '' : 's'}`;
+      const summary = SURVEY_BASELINE.metadata.summaryStats || {};
+      countEl.textContent = `${(summary.totalRespondents || 0).toLocaleString()} Simulated Baseline · ${records.length} Live`;
+      streamEl.replaceChildren();
 
-      if (records.length === 0) {
-        streamEl.innerHTML = '<div class="text-slate-600 italic">No field records submitted yet. Distribute the Teacher Diagnostic survey link to populate this stream.</div>';
-        return;
-      }
+      const addRecord = (label, country, detail, isSynthetic) => {
+        const row = document.createElement('div');
+        row.className = 'p-2 rounded bg-slate-900 border border-slate-800 mb-1';
+        const title = document.createElement('span');
+        title.className = `${isSynthetic ? 'text-amber-300' : 'text-emerald-400'} font-bold`;
+        title.textContent = `${label} · ${country || 'Country not reported'}${isSynthetic ? ' · SYNTHETIC' : ''}`;
+        const description = document.createElement('span');
+        description.className = 'text-slate-300 ml-2';
+        description.textContent = detail;
+        row.append(title, description);
+        streamEl.appendChild(row);
+      };
 
-      streamEl.innerHTML = records.map((r, i) => `
-        <div class="p-2 rounded bg-slate-900 border border-slate-800 mb-1">
-          <span class="text-emerald-400 font-bold">#${i+1} [${r.country || 'N/A'}]</span>
-          <span class="text-slate-300 ml-2">${r.location || 'N/A'} · PTR ${r.ptr || 'N/A'} · Power: ${r.power || 'N/A'} · Tax: ${r.salary_tax || 'N/A'}</span>
-          <span class="text-slate-500 block text-[9px] mt-0.5">${r.timestamp || ''}</span>
-        </div>
-      `).reverse().join('');
+      const syntheticExamples = [
+        ...(SURVEY_BASELINE.teachers.records || []).slice(0, 2).map(record => ({
+          label: 'Teacher',
+          country: record.country,
+          detail: `${record.location} · Power: ${record.elec} · Digital use: ${record.usesDigital}`
+        })),
+        ...(SURVEY_BASELINE.providers.records || []).slice(0, 1).map(record => ({
+          label: 'Provider',
+          country: record.hqCountry,
+          detail: `${record.offering} · Offline support: ${record.offline}`
+        })),
+        ...(SURVEY_BASELINE.experts.records || []).slice(0, 1).map(record => ({
+          label: 'Expert',
+          country: record.country,
+          detail: `${record.vantage} · Constraint: ${record.constraint}`
+        }))
+      ];
+      syntheticExamples.forEach(record => addRecord(record.label, record.country, record.detail, true));
+
+      records.slice(-10).reverse().forEach((record, index) => {
+        addRecord(
+          `Live submission ${records.length - index}`,
+          record.country,
+          `Location: ${record.location || 'N/A'} · PTR: ${record.ptr || 'N/A'} · Power: ${record.power || 'N/A'} · Data cost: ${record.salary_tax || 'N/A'}`,
+          false
+        );
+      });
     }
 
     function exportVaultJSON() {
       const records = JSON.parse(localStorage.getItem('collected_teacher_diagnostics') || '[]');
-      if (records.length === 0) {
-        alert('Vault is currently empty. No submissions to export.');
-        return;
-      }
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(records, null, 2));
+      const exportData = {
+        syntheticBaseline: SURVEY_BASELINE,
+        liveBrowserSubmissions: records
+      };
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
       const downloadAnchor = document.createElement('a');
       downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `field_survey_responses_${new Date().toISOString().slice(0,10)}.json`);
+      downloadAnchor.setAttribute("download", 'survey-response-data.json');
       document.body.appendChild(downloadAnchor);
       downloadAnchor.click();
       downloadAnchor.remove();
@@ -4116,7 +4134,7 @@
     }
 
     function clearVault() {
-      if (confirm('Are you sure you want to clear all cached survey submissions?')) {
+      if (confirm('Clear live submissions stored in this browser? The synthetic baseline will remain.')) {
         localStorage.removeItem('collected_teacher_diagnostics');
         refreshVaultDisplay();
       }
@@ -4419,7 +4437,7 @@
     // =================================================================
     let currentLens = 'systemic';
 
-    function switchLens(lensKey) {
+    function switchLens(lensKey, updateUrl = true) {
       currentLens = lensKey;
       const btnSys = document.getElementById('lens-btn-systemic');
       const btnCls = document.getElementById('lens-btn-classroom');
@@ -4463,7 +4481,7 @@
         navSubtitle.textContent = 'Sub-Saharan Africa & MENA Evidence Engine';
         heroBadge.innerHTML = '<span>Global South Decision-Support Framework</span><span>•</span><span>UNESCO 6-Pillars Operationalized</span>';
         heroHeading.innerHTML = 'Bridging Macro Assessment, the <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-teal-300 font-sans">6 Pillars of EdTech</span>, and Systemic Fragility';
-        heroDesc.textContent = 'A multi-stakeholder analytical observatory reconciling OECD PISA cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa and MENA.';
+        heroDesc.textContent = 'A multi-stakeholder analytical observatory reconciling OECD PISA cross-national metrics, 69-country development data, and Alliance of Alliances (AoA) field surveys to evaluate digital education across Sub-Saharan Africa.';
 
         renderHeroMetrics('systemic');
       } else {
@@ -4492,6 +4510,7 @@
         navTitle.textContent = 'Classroom Feasibility & Solutions Toolkit';
         navSubtitle.textContent = 'Practical Implementation Layer for Schools';
       }
+      if (updateUrl) syncAppUrlState();
     }
 
     function renderHeroMetrics(lens) {
@@ -4548,8 +4567,26 @@
     // =================================================================
     // SYSTEMIC SUB-TAB NAVIGATION
     // =================================================================
-    function switchTab(tabId) {
-      document.querySelectorAll('#canvas-systemic .tab-content').forEach(el => {
+    let appNavigationReady = false;
+
+    function syncAppUrlState() {
+      if (!appNavigationReady) return;
+      const params = new URLSearchParams(window.location.search);
+      const activeTab = document.querySelector('#body-canvas .tab-content:not(.hidden)')?.id;
+      if (activeTab) params.set('tab', activeTab);
+      if (typeof currentLens !== 'undefined') params.set('view', currentLens);
+      const activeClassroomTab = document.querySelector('#canvas-classroom .classroom-content:not(.hidden)')?.id;
+      if (activeClassroomTab) params.set('classroomTab', activeClassroomTab);
+      if (typeof _activeIso !== 'undefined') params.set('country', _activeIso);
+      if (typeof _activeLens !== 'undefined') params.set('lens', String(_activeLens));
+      if (typeof _activeSegment !== 'undefined') params.set('segment', _activeSegment);
+      if (typeof _tab3ActiveIso !== 'undefined') params.set('tab3', _tab3ActiveIso);
+      const query = params.toString();
+      window.history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+    }
+
+    function switchTab(tabId, updateUrl = true) {
+      document.querySelectorAll('#body-canvas .tab-content').forEach(el => {
         el.classList.add('hidden');
         el.classList.remove('block');
       });
@@ -4558,6 +4595,7 @@
       if (target) {
         target.classList.remove('hidden');
         target.classList.add('block');
+        if (updateUrl) syncAppUrlState();
       }
 
       document.querySelectorAll('#tab-nav-systemic .tab-btn').forEach(btn => {
@@ -4575,7 +4613,7 @@
     // =================================================================
     // CLASSROOM SUB-TAB NAVIGATION
     // =================================================================
-    function switchClassroomTab(subtabId) {
+    function switchClassroomTab(subtabId, updateUrl = true) {
       document.querySelectorAll('#canvas-classroom .classroom-content').forEach(el => {
         el.classList.add('hidden');
         el.classList.remove('block');
@@ -4597,6 +4635,7 @@
         activeBtn.classList.add('bg-emerald-700', 'text-white', 'shadow-sm');
         activeBtn.classList.remove('text-stone-700', 'hover:bg-stone-200/60');
       }
+      if (updateUrl) syncAppUrlState();
     }
 
     // =================================================================
@@ -5230,7 +5269,7 @@
       if (status === 'degraded') {
         return `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-rose-100 text-rose-800" title="Recent link ping failed. Mirror active."><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Degraded</span>`;
       }
-      return `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800" title="HTTP Status: 200 OK • Verified via scripts/verify_dpg_urls.py"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Verified (${dayText})</span>`;
+      return `<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-100 text-emerald-800" title="HTTP status 200; link verified"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Verified (${dayText})</span>`;
     }
 
     // Active filter state
@@ -5317,6 +5356,7 @@
           </div>
         `;
       }).join('');
+      highlightActiveCountryInTables(typeof _activeIso !== 'undefined' ? _activeIso : 'KEN');
     }
 
     function renderDPGs(filterKey) { _dpgCatFilter = filterKey || 'ALL'; applyDPGFilters(); }
@@ -7258,15 +7298,18 @@ const MACRO_FISCAL_DATA = {
       const el = document.getElementById('macro-fiscal-table-container');
       const icon = document.getElementById('macro-toggle-icon');
       const text = document.getElementById('macro-toggle-text');
+      const button = document.getElementById('btn-macro-fiscal-toggle');
       if (!el) return;
       if (el.classList.contains('hidden')) {
         el.classList.remove('hidden');
         if (icon) icon.textContent = '−';
         if (text) text.textContent = 'Collapse 7-Country Fiscal Table';
+        if (button) button.setAttribute('aria-expanded', 'true');
       } else {
         el.classList.add('hidden');
         if (icon) icon.textContent = '+';
         if (text) text.textContent = 'Expand 7-Country Fiscal Table';
+        if (button) button.setAttribute('aria-expanded', 'false');
       }
     }
 
@@ -7330,10 +7373,11 @@ const MACRO_FISCAL_DATA = {
         const flagImg = code ? `<img src="https://flagcdn.com/w40/${code}.png" class="flag-img" alt="${r.iso3}">` : '';
 
         return `
-          <tr class="hover:bg-slate-50 cursor-pointer transition border-b border-slate-100" onclick="selectCountry('${r.iso3}')">
+          <tr data-country-iso="${r.iso3}" aria-selected="${r.iso3 === _activeIso}" class="hover:bg-slate-50 cursor-pointer transition border-b border-slate-100" onclick="selectCountry('${r.iso3}')">
             <td class="p-3 font-semibold text-slate-900 flex items-center gap-2">
               ${flagImg}
               <div class="font-bold text-slate-900">${r.name.replace(/^[^\w\s]+\s*/, '')}</div>
+              <span data-active-country-marker class="${r.iso3 === _activeIso ? '' : 'hidden'} badge-pill bg-blue-700 text-white text-[9px] font-bold">Selected</span>
             </td>
             <td class="p-3">${eduB}</td>
             <td class="p-3">${commB}</td>
@@ -7346,6 +7390,7 @@ const MACRO_FISCAL_DATA = {
           </tr>
         `;
       }).join('');
+      highlightActiveCountryInTables(_activeIso);
     }
 
     // SYSTEMIC DATA: 7-COUNTRY EMPIRICAL DATA STORE & DEEP-DIVE ENGINES
@@ -7354,7 +7399,7 @@ const MACRO_FISCAL_DATA = {
     let _comparisonIso = '';
     let _activeLens = 1;
     let _activeSegment = 'national';
-    let _activeAfrobarometerRound = 'r9';
+    let _activeAfrobarometerRound = 'r10';
     let _tab3ActiveIso = 'RWA';
 
     const countryData = {
@@ -7391,14 +7436,14 @@ const MACRO_FISCAL_DATA = {
             }
           },
           lens1: {
-            source: 'Afrobarometer R9 · Uwezo',
+            source: 'Afrobarometer R10 · Uwezo',
             heading: 'Basic School Quality vs. Hardware Hype',
             desc: 'Citizens consistently prioritize physical textbooks, basic roofs, and teacher presence over digital tablets. Dissatisfaction spikes sharply in rural wards.',
             voiceLabel: 'Field Voice (Usawa Community Survey):',
             voiceQuote: '“Our school roof leaks and children share one textbook among five pupils; what will a tablet do when there is no power to charge it?”'
           },
           lens2: {
-            source: 'AoA Prior (N=800 SIMULATED) · RTI',
+            source: 'Synthetic AoA teacher baseline (N=800 SSA) · calibrated',
             heading: 'The Informal Salary Tax & Crowding',
             desc: 'Teachers bear the private financial burden of state digitalization. Without zero-rated educational domains, mobile data is purchased from personal wages.',
             airtime: '4% – 8%', ptr: '50:1', decay: '>60%',
@@ -7996,6 +8041,21 @@ const MACRO_FISCAL_DATA = {
       displayCurrentVoiceQuote(quotes);
     }
 
+
+    function highlightActiveCountryInTables(iso) {
+      if (!iso) return;
+      document.querySelectorAll('tr[data-country-iso]').forEach(r => {
+        const isActive = r.getAttribute('data-country-iso') === iso;
+        r.setAttribute('aria-selected', String(isActive));
+        r.querySelector('[data-active-country-marker]')?.classList.toggle('hidden', !isActive);
+        if (isActive) {
+          r.classList.add('bg-blue-100/70', 'ring-2', 'ring-inset', 'ring-blue-500', 'font-medium');
+        } else {
+          r.classList.remove('bg-blue-100/70', 'ring-2', 'ring-inset', 'ring-blue-500', 'font-medium');
+        }
+      });
+    }
+
     function selectCountry(iso) {
       _activeIso = iso;
       
@@ -8099,6 +8159,8 @@ const MACRO_FISCAL_DATA = {
       updateDemographicButtons(iso);
       updateSpatialDisparityBanner();
       renderActiveLens();
+      highlightActiveCountryInTables(iso);
+      syncAppUrlState();
     }
 
 
@@ -8355,13 +8417,13 @@ const MACRO_FISCAL_DATA = {
       const container = document.getElementById('spatial-disparity-container');
       if (!container) return;
 
-      const round = _activeAfrobarometerRound || 'r9';
+      const round = _activeAfrobarometerRound || 'r10';
 
       function getDisparityCard(iso, isSecondary) {
         const d = countryData[iso];
         const dd = d?.deepDive;
         if (!dd || !dd.demographics) return '';
-        const rData = dd.demographics[round] || dd.demographics['r9'];
+        const rData = dd.demographics[round] || dd.demographics['r10'] || dd.demographics['r9'];
         if (!rData || !rData.urban || !rData.rural) return '';
 
         const urb = rData.urban;
@@ -8468,9 +8530,11 @@ const MACRO_FISCAL_DATA = {
     }
 
     function renderLens1Card(iso, d, dd, isComparison) {
-      const round = _activeAfrobarometerRound || 'r9';
-      const roundData = dd.demographics?.[round] || dd.demographics || {};
-      const dDem = roundData?.[_activeSegment] || dd.demographics?.[_activeSegment] || {};
+      const round = 'r10'; // Always show R10 as primary; R9 shown as comparison inline
+      const rDataR9 = dd.demographics?.['r9'] || {};
+      const rDataR10 = dd.demographics?.['r10'] || dd.demographics || {};
+      const dDemR9 = rDataR9?.[_activeSegment] || {};
+      const dDem = rDataR10?.[_activeSegment] || dd.demographics?.[_activeSegment] || {};
 
       const litSources = {
         'KEN': 'Uwezo Grade 3-5', 'TZA': 'Uwezo TZA Gr 3-5', 'RWA': 'LARS / SDI Gr 3-5',
@@ -8479,16 +8543,29 @@ const MACRO_FISCAL_DATA = {
       const litLabel = litSources[iso] || 'Standardized Assessment';
 
       const assessSource = (iso === 'KEN' || iso === 'TZA') ? 'Uwezo' : (iso === 'GHA' || iso === 'NGA' ? 'PAL Network / SDI' : (iso === 'ZMB' ? 'NAS / SACMEQ' : (iso === 'MUS' ? 'SACMEQ' : 'SDI')));
-      const lens1Source = iso === 'RWA' ? 'RGB Citizen Report Card · World Bank SDI' : `${round === 'r10' ? 'Afrobarometer R10 (2024-25)' : 'Afrobarometer R9 (2021-23)'} · ${assessSource}`;
+      const lens1Source = iso === 'RWA' ? 'RGB Citizen Report Card · World Bank SDI' : `Afrobarometer R9 (2021-23) & R10 (2024-25) · ${assessSource}`;
 
       const dissatSem = getDissatSemantics(dDem.citDissat);
       const litSem = getLitSemantics(dDem.citLit);
+      const renderRoundComparison = (r9Value, r10Value, r10Class, r10Badge) => `
+        <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-1 my-1.5 text-center">
+          <div>
+            <div class="text-[9px] text-slate-400 font-mono font-bold">R9 · 2021-23</div>
+            <div class="text-base font-bold text-slate-400 tracking-tight">${r9Value || 'N/A'}</div>
+          </div>
+          <span class="text-slate-400 text-sm font-bold" aria-hidden="true">→</span>
+          <div>
+            <div class="text-[9px] text-indigo-600 font-mono font-bold">R10 · 2024-25</div>
+            <div class="text-xl font-black ${r10Class} tracking-tight">${r10Value || 'N/A'}</div>
+            ${r10Badge}
+          </div>
+        </div>`;
 
       return `
         <div class="mb-5">
           <div class="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500 mb-1.5">
             <span class="font-mono text-[11px] font-bold text-slate-700">${lens1Source}</span>
-            <span class="badge-pill bg-slate-100 text-slate-700 text-[10px] font-bold">Afrobarometer ${round.toUpperCase()} · ${_activeSegment.toUpperCase()}</span>
+            <span class="badge-pill bg-slate-100 text-slate-700 text-[10px] font-bold">AB R9+R10 · ${_activeSegment.toUpperCase()}</span>
           </div>
           <h4 class="text-base sm:text-lg font-bold text-slate-900 font-serif mb-1">${dd.lens1?.heading || 'Citizen Demand vs. Hardware Priorities'}</h4>
           <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${dd.lens1?.desc || ''}</p>
@@ -8501,13 +8578,15 @@ const MACRO_FISCAL_DATA = {
               <div class="flex items-center justify-between mb-1">
                 <span class="metric-tip border-b border-dotted border-slate-400 text-[11px] font-bold text-slate-600 uppercase tracking-wider" data-tip="Percentage of surveyed citizens who rank education among their top 3 national development priorities (Afrobarometer).">Citizen Priority</span>
               </div>
-              <div class="text-2xl font-black text-slate-900 tracking-tight my-1">${dDem.citPriority || 'N/A'}</div>
+              ${renderRoundComparison(
+                dDemR9.citPriority,
+                dDem.citPriority,
+                'text-slate-900',
+                '<span class="inline-flex text-[9px] font-semibold px-1.5 py-0.5 rounded-md bg-slate-200/70 text-slate-700">Top-3 Priority Demand</span>'
+              )}
               <div class="w-full bg-slate-200 rounded-full h-1.5 mt-1.5 overflow-hidden">
                 <div class="bg-blue-600 h-full rounded-full transition-all" style="width: ${Math.min(100, parseFloat(dDem.citPriority)||0)}%"></div>
               </div>
-            </div>
-            <div class="mt-2">
-              <span class="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-200/70 text-slate-700">Top-3 Priority Demand</span>
             </div>
           </div>
 
@@ -8517,13 +8596,15 @@ const MACRO_FISCAL_DATA = {
               <div class="flex items-center justify-between mb-1">
                 <span class="metric-tip border-b border-dotted border-slate-400 text-[11px] font-bold text-slate-600 uppercase tracking-wider" data-tip="Percentage of citizens reporting that government is handling public education 'fairly badly' or 'very badly' (Afrobarometer).">Dissatisfaction</span>
               </div>
-              <div class="text-2xl font-black ${dissatSem.text} tracking-tight my-1">${dDem.citDissat || 'N/A'}</div>
+              ${renderRoundComparison(
+                dDemR9.citDissat,
+                dDem.citDissat,
+                dissatSem.text,
+                `<span class="inline-flex text-[9px] font-bold px-1.5 py-0.5 rounded-md ${dissatSem.badgeClass}">${dissatSem.badgeText}</span>`
+              )}
               <div class="w-full bg-slate-200 rounded-full h-1.5 mt-1.5 overflow-hidden">
                 <div class="${(parseFloat(dDem.citDissat)||0) > 35 ? 'bg-rose-500' : 'bg-amber-500'} h-full rounded-full transition-all" style="width: ${Math.min(100, parseFloat(dDem.citDissat)||0)}%"></div>
               </div>
-            </div>
-            <div class="mt-2">
-              <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md ${dissatSem.badgeClass}">${dissatSem.badgeText}</span>
             </div>
           </div>
 
@@ -8534,13 +8615,15 @@ const MACRO_FISCAL_DATA = {
                 <span class="metric-tip border-b border-dotted border-slate-400 text-[11px] font-bold text-slate-600 uppercase tracking-wider" data-tip="Percentage of Grade 3-5 primary pupils able to read and comprehend a simple paragraph in national assessments (${litLabel}).">Basic Literacy</span>
                 <span class="text-[9px] font-mono text-slate-400">${litLabel.split(' ')[0]}</span>
               </div>
-              <div class="text-2xl font-black ${litSem.text} tracking-tight my-1">${dDem.citLit || 'N/A'}</div>
+              ${renderRoundComparison(
+                dDemR9.citLit,
+                dDem.citLit,
+                litSem.text,
+                `<span class="inline-flex text-[9px] font-bold px-1.5 py-0.5 rounded-md ${litSem.badgeClass}">${litSem.badgeText}</span>`
+              )}
               <div class="w-full bg-slate-200 rounded-full h-1.5 mt-1.5 overflow-hidden">
                 <div class="${(parseFloat(dDem.citLit)||0) >= 70 ? 'bg-emerald-500' : ((parseFloat(dDem.citLit)||0) >= 40 ? 'bg-amber-500' : 'bg-rose-500')} h-full rounded-full transition-all" style="width: ${Math.min(100, parseFloat(dDem.citLit)||0)}%"></div>
               </div>
-            </div>
-            <div class="mt-2">
-              <span class="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-md ${litSem.badgeClass}">${litSem.badgeText}</span>
             </div>
           </div>
         </div>
@@ -9070,7 +9153,7 @@ const MACRO_FISCAL_DATA = {
     }
     
     function renderLens2Card(iso, d, dd, isComparison) {
-      const round = _activeAfrobarometerRound || 'r9';
+      const round = _activeAfrobarometerRound || 'r10';
       const roundData = dd.demographics?.[round] || dd.demographics || {};
       const dDem = roundData?.[_activeSegment] || dd.demographics?.[_activeSegment] || {};
 
@@ -9146,7 +9229,7 @@ const MACRO_FISCAL_DATA = {
     }
 
     function renderLens3Card(iso, d, dd, isComparison) {
-      const round = _activeAfrobarometerRound || 'r9';
+      const round = _activeAfrobarometerRound || 'r10';
       const roundData = dd.demographics?.[round] || dd.demographics || {};
       const dDem = roundData?.['national'] || dd.demographics?.['national'] || {};
       const energyIns = getEnergyDependencyInsight(iso);
@@ -9555,6 +9638,8 @@ const MACRO_FISCAL_DATA = {
     // Interactive Segment Switcher
     function setDeepDiveLens(lensNum) {
       _activeLens = lensNum;
+      const macroFiscalSection = document.getElementById('macro-fiscal-observatory-section');
+      if (macroFiscalSection) macroFiscalSection.classList.toggle('hidden', lensNum !== 4);
 
       [1, 2, 3, 4].forEach(n => {
         const btn = document.getElementById('btn-lens-' + n);
@@ -9566,17 +9651,8 @@ const MACRO_FISCAL_DATA = {
         }
       });
 
-      // Survey round selector is only relevant for Lens 1
-      const abGroup = document.getElementById('ab-round-group');
-      if (abGroup) {
-        if (lensNum === 1) {
-          abGroup.style.display = 'flex';
-        } else {
-          abGroup.style.display = 'none';
-        }
-      }
-
       renderActiveLens();
+      syncAppUrlState();
     }
 
     function toggleCompareDropdown() {
@@ -9699,6 +9775,7 @@ const MACRO_FISCAL_DATA = {
       if (activeBtn) activeBtn.className = 'px-2.5 py-1 rounded-lg text-xs font-bold bg-white text-slate-900 shadow-sm transition';
 
       renderActiveLens();
+      syncAppUrlState();
     }
 
     function renderDeepDive(iso, segment) {
@@ -9790,6 +9867,7 @@ const MACRO_FISCAL_DATA = {
     };
 
     function selectTab3Country(iso) {
+      if (iso && iso !== 'COMPARE') highlightActiveCountryInTables(iso);
       _tab3ActiveIso = iso;
 
       document.querySelectorAll('.tab3-pill').forEach(p => {
@@ -9814,6 +9892,7 @@ const MACRO_FISCAL_DATA = {
             <p class="text-xs text-slate-500 max-w-xl mx-auto mt-1">Scroll down to inspect side-by-side indicator scores across all 6 UNESCO Pillars for Rwanda, Tanzania, Kenya, Ghana, Nigeria, Zambia, and Mauritius.</p>
           </div>
         `;
+        syncAppUrlState();
         return;
       }
 
@@ -9896,6 +9975,7 @@ const MACRO_FISCAL_DATA = {
           </div>
         </div>
       `;
+      syncAppUrlState();
     }
 
         // GEEAP and EdTech Hub Lifecycle Simulator
@@ -10008,57 +10088,95 @@ const MACRO_FISCAL_DATA = {
     // Drop your GIGA API key here when approved:
     const GIGA_API_KEY = ""; // e.g. "Bearer eyJ..."
 
-    // Static fallback data (from Project Connect public dashboard, 2024)
-    const GIGA_STATIC = {
-      KEN: { connected: "12,841", pct: 54 },
-      NGA: { connected: "7,203",  pct: 21 },
-      GHA: { connected: "5,618",  pct: 47 },
-      EGY: { connected: "19,440", pct: 68 },
+    const GIGA_COUNTRIES = [
+      { iso: 'KEN', name: 'Kenya', flag: '🇰🇪' },
+      { iso: 'RWA', name: 'Rwanda', flag: '🇷🇼' },
+      { iso: 'TZA', name: 'Tanzania', flag: '🇹🇿' },
+      { iso: 'GHA', name: 'Ghana', flag: '🇬🇭' },
+      { iso: 'NGA', name: 'Nigeria', flag: '🇳🇬' },
+      { iso: 'ZMB', name: 'Zambia', flag: '🇿🇲' },
+      { iso: 'MUS', name: 'Mauritius', flag: '🇲🇺' }
+    ];
+    const GIGA_REFERENCE = {
+      KEN: { connected: 12841, pct: 54 },
+      GHA: { connected: 5618, pct: 47 },
+      NGA: { connected: 7203, pct: 21 }
     };
 
+    function renderGigaCountryCards(values) {
+      const grid = document.getElementById('giga-country-grid');
+      if (!grid) return;
+      grid.innerHTML = GIGA_COUNTRIES.map(country => {
+        const data = values[country.iso] || {};
+        const pct = Number.isFinite(Number(data.pct)) && data.pct !== null
+          ? Math.max(0, Math.min(100, Number(data.pct)))
+          : null;
+        const connected = Number.isFinite(Number(data.connected)) && data.connected !== null
+          ? Number(data.connected).toLocaleString()
+          : 'Not reported';
+        const progressValue = pct === null ? '' : `aria-valuenow="${pct}"`;
+        const progressText = pct === null ? 'Coverage not reported' : `${pct}% coverage`;
+        return `
+          <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm">
+            <div class="flex items-center gap-2 text-xs font-mono font-semibold text-slate-600">
+              <span class="text-xl" aria-hidden="true">${country.flag}</span>
+              <span>${country.iso} · ${country.name}</span>
+            </div>
+            <div class="text-2xl font-extrabold font-serif text-slate-800 mt-3">${pct === null ? '—' : `${pct}%`}</div>
+            <div class="text-[10px] text-slate-500">schools connected to internet</div>
+            <div class="mt-3 h-3 w-full rounded-full bg-cyan-100 border border-cyan-200 overflow-hidden"
+              role="progressbar" aria-label="${country.name} school internet coverage" aria-valuemin="0" aria-valuemax="100" ${progressValue}
+              ${pct === null ? 'aria-valuetext="Coverage not reported"' : `aria-valuetext="${pct}% coverage"`}>
+              <div class="giga-bar h-full bg-cyan-600 rounded-full transition-all duration-700" style="width:${pct ?? 0}%"></div>
+            </div>
+            <div class="flex items-center justify-between gap-2 mt-1.5 text-[10px]">
+              <span class="font-bold text-cyan-800">${progressText}</span>
+              <span class="text-slate-400">${connected} schools</span>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
     async function fetchGigaData() {
-      const countries = ['KEN','NGA','GHA','EGY'];
+      renderGigaCountryCards(GIGA_REFERENCE);
+      const countries = GIGA_COUNTRIES.map(country => country.iso);
       if (!GIGA_API_KEY) {
-        // Use static fallback and show it as reference data
         const pill = document.getElementById('giga-status-pill');
         if (pill) {
-          pill.textContent = 'Reference Data (2024)';
+          pill.textContent = 'Reference values · 3/7 countries';
           pill.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200';
         }
-        countries.forEach((iso, idx) => {
-          const d = GIGA_STATIC[iso];
-          if (!d) return;
-          document.querySelectorAll(`.giga-connected[data-country="${iso}"]`).forEach(el => el.textContent = d.connected);
-          document.querySelectorAll(`.giga-pct[data-country="${iso}"]`).forEach(el => el.textContent = `${d.pct}% coverage`);
-          const bars = document.querySelectorAll(`.giga-bar`);
-          if (bars && bars[idx]) bars[idx].style.width = `${d.pct}%`;
-        });
         return;
       }
-      // Live fetch when API key is set
+
       const pill = document.getElementById('giga-status-pill');
       if (pill) pill.textContent = 'Fetching live…';
       try {
         const results = await Promise.all(countries.map(iso =>
           fetch(`https://api.giga.school/v1/schools?country_code=${iso}&connectivity=true`, {
             headers: { 'Authorization': GIGA_API_KEY }
-          }).then(r => r.json())
+          }).then(response => {
+            if (!response.ok) throw new Error(`GIGA request failed for ${iso}: ${response.status}`);
+            return response.json();
+          })
         ));
+        const liveValues = { ...GIGA_REFERENCE };
+        results.forEach((data, i) => {
+          const count = Number(data.count);
+          const pct = Number(data.coverage_pct);
+          liveValues[countries[i]] = {
+            connected: Number.isFinite(count) ? count : null,
+            pct: Number.isFinite(pct) ? pct : null
+          };
+        });
+        renderGigaCountryCards(liveValues);
         if (pill) {
           pill.textContent = '🟢 Live';
           pill.className = 'inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-700 border border-emerald-200';
         }
-        results.forEach((data, i) => {
-          const iso = countries[i];
-          const count = data.count?.toLocaleString() ?? '—';
-          const pct = data.coverage_pct ?? 0;
-          document.querySelectorAll(`.giga-connected[data-country="${iso}"]`).forEach(el => el.textContent = count);
-          document.querySelectorAll(`.giga-pct[data-country="${iso}"]`).forEach(el => el.textContent = `${pct}% coverage`);
-          const bars = document.querySelectorAll(`.giga-bar`);
-          if (bars && bars[i]) bars[i].style.width = `${pct}%`;
-        });
-      } catch(e) {
-        if (pill) pill.textContent = '⚠️ Fetch error';
+      } catch (error) {
+        if (pill) pill.textContent = 'Live unavailable · reference shown';
+        console.error('Unable to fetch live GIGA data:', error);
       }
     }
 
@@ -12245,16 +12363,15 @@ const MATRIX_PLAYERS = [
 ];
 
 
-    let matrixPlayerScope = 'core'; // 'core' | 'all_ssa' | 'mena_tier'
+    let matrixPlayerScope = 'core';
     let matrixDomainFilter = 'ALL';
 
     function setMatrixPlayerScope(scope) {
       matrixPlayerScope = scope;
       const btnCore = document.getElementById('btn-scope-core');
       const btnSSA = document.getElementById('btn-scope-ssa');
-      const btnMENA = document.getElementById('btn-scope-mena');
 
-      [btnCore, btnSSA, btnMENA].forEach(btn => {
+      [btnCore, btnSSA].forEach(btn => {
         if (!btn) return;
         btn.className = 'px-3 py-1.5 rounded-lg font-semibold bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition text-xs';
       });
@@ -12263,8 +12380,6 @@ const MATRIX_PLAYERS = [
         btnCore.className = 'px-3 py-1.5 rounded-lg font-bold bg-slate-900 text-white shadow-sm transition text-xs';
       } else if (scope === 'all_ssa' && btnSSA) {
         btnSSA.className = 'px-3 py-1.5 rounded-lg font-bold bg-indigo-900 text-white shadow-sm transition text-xs';
-      } else if (scope === 'mena_tier' && btnMENA) {
-        btnMENA.className = 'px-3 py-1.5 rounded-lg font-bold bg-slate-700 text-white shadow-sm transition text-xs';
       }
 
       renderSupplyMatrix();
@@ -12290,14 +12405,10 @@ const MATRIX_PLAYERS = [
       const searchTerm = (document.getElementById('matrix-search')?.value || '').toLowerCase().trim();
 
       // 1. Filter players based on scope and domain
-      let activePlayers = MATRIX_PLAYERS.filter(p => !p.qa_flag); // Exclude duplicates & university non-startups
+      let activePlayers = MATRIX_PLAYERS.filter(p => !p.qa_flag && !p.is_mena);
 
       if (matrixPlayerScope === 'core') {
         activePlayers = activePlayers.filter(p => p.is_core_25);
-      } else if (matrixPlayerScope === 'all_ssa') {
-        activePlayers = activePlayers.filter(p => !p.is_mena);
-      } else if (matrixPlayerScope === 'mena_tier') {
-        activePlayers = activePlayers.filter(p => p.is_mena);
       }
 
       if (matrixDomainFilter !== 'ALL') {
@@ -12313,12 +12424,7 @@ const MATRIX_PLAYERS = [
       });
 
       // 2. Filter countries
-      let activeCountries = MATRIX_COUNTRIES;
-      if (matrixPlayerScope === 'mena_tier') {
-        activeCountries = activeCountries.filter(c => c.region === 'MENA');
-      } else {
-        activeCountries = activeCountries.filter(c => c.region === 'SSA');
-      }
+      let activeCountries = MATRIX_COUNTRIES.filter(c => c.region === 'SSA');
 
       if (searchTerm) {
         activeCountries = activeCountries.filter(c => {
@@ -12330,17 +12436,27 @@ const MATRIX_PLAYERS = [
       }
 
       if (summaryEl) {
-        summaryEl.textContent = 'Showing ' + activeCountries.length + ' ' + (matrixPlayerScope === 'mena_tier' ? 'MENA Reference' : 'Sub-Saharan Africa') + ' nations matched against ' + activePlayers.length + ' active EdTech solutions (' + matrixPlayerScope.toUpperCase() + ' scope).';
+        summaryEl.textContent = 'Showing ' + activeCountries.length + ' Sub-Saharan African nations matched against ' + activePlayers.length + ' catalogued EdTech solutions (' + matrixPlayerScope.toUpperCase() + ' scope). Teacher digital-use values use synthetic responses.';
       }
 
       if (!activeCountries.length) {
-        tbody.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-slate-400 italic">No countries or players match the selected filter.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-slate-400 italic">No countries or players match the selected filter.</td></tr>';
         return;
       }
 
       tbody.innerHTML = activeCountries.map(c => {
         const cPlayers = playersByCountry[c.country.toLowerCase()] || [];
         const hasPlayers = cPlayers.length > 0;
+        const teacherSample = SURVEY_BASELINE.teachers.records.filter(record =>
+          record.country.toLowerCase() === c.country.toLowerCase()
+        );
+        const digitalUseN = teacherSample.filter(record => record.usesDigital === 'Yes').length;
+        const digitalUsePct = teacherSample.length
+          ? Math.round((digitalUseN / teacherSample.length) * 1000) / 10
+          : null;
+        const teacherSignal = digitalUsePct === null
+          ? '<span class="text-slate-400">No sample</span>'
+          : `<span class="font-bold text-indigo-800">${digitalUsePct}%</span><span class="block text-[10px] text-slate-500">Synthetic · N=${teacherSample.length}</span>`;
 
         // Demand Badges
         const lpText = c.learning_poverty !== null ? (c.learning_poverty + '%') : '<span class="text-slate-400">Unreported</span>';
@@ -12359,7 +12475,7 @@ const MATRIX_PLAYERS = [
         if (hasPlayers) {
           solutionsHtml = '<div class="flex flex-wrap gap-1.5">' +
             cPlayers.map(p => {
-              const borderClass = p.is_core_25 ? 'bg-indigo-50 border-indigo-200 text-indigo-900 font-bold' : (p.is_mena ? 'bg-slate-100 border-slate-200 text-slate-700' : 'bg-slate-50 border-slate-200 text-slate-800');
+              const borderClass = p.is_core_25 ? 'bg-indigo-50 border-indigo-200 text-indigo-900 font-bold' : 'bg-slate-50 border-slate-200 text-slate-800';
               const pillClass = p.is_core_25 ? 'bg-indigo-200 text-indigo-800' : 'bg-slate-200 text-slate-600';
               return '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md border text-[11px] ' + borderClass + '">' +
                 '<span>' + p.name + '</span>' +
@@ -12383,6 +12499,9 @@ const MATRIX_PLAYERS = [
           '</td>' +
           '<td class="p-3 whitespace-nowrap">' +
             lpBadge + litRow +
+          '</td>' +
+          '<td class="p-3 whitespace-nowrap text-center" title="Synthetic calibrated teacher responses for ' + c.country + ': N=' + teacherSample.length + '">' +
+            teacherSignal +
           '</td>' +
           '<td class="p-3 whitespace-nowrap ' + elecClass + '">' +
             '<span>' + elecText + '</span>' +
@@ -12408,7 +12527,7 @@ const MATRIX_PLAYERS = [
 // 1. Calibrated Baseline Synthesized Distribution (N=800: 600 Teachers, 120 Providers, 80 Experts)
 const SURVEY_BASELINE = {
   "metadata": {
-    "studyTitle": "Sub-Saharan Africa EdTech Landscape Review (Calibrated Synthesis)",
+    "studyTitle": "Sub-Saharan Africa EdTech Landscape Review (Synthetic Baseline · N=800)",
     "initiative": "Global EdTech Alliance of Alliances \u00b7 UNESCO Global Education Coalition",
     "lastUpdated": "2026-10-30 09:16:01",
     "calibrationStatus": "Calibrated against 6-Pillars WDI 2024, GEM 2023, AfroBench, Briter, and HolonIQ",
@@ -14953,18 +15072,21 @@ const SURVEY_CODEBOOK = [
       const badge = document.getElementById('survey-mode-badge');
       if (badge) {
         badge.className = 'font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2.5 py-0.5 rounded border border-amber-300';
-        badge.textContent = 'Active Mode: Calibration Prior Seed [SIMULATED]';
+        badge.textContent = 'Active Mode: Synthetic calibrated baseline · N=800';
       }
 
       const desc = document.getElementById('survey-mode-desc');
       if (desc) {
-        desc.textContent = 'Pre-calibrated simulation prior based on aggregate distributions (WDI, GEM 2023, Briter, HolonIQ) awaiting live field returns.';
+        desc.textContent = 'Calibrated synthetic response records, aligned to published regional distributions for demonstration.';
       }
+
+      const nBadge = document.getElementById('survey-n-badge');
+      if (nBadge) nBadge.textContent = 'N = 800 simulated responses across 48 SSA countries';
 
       const statusBox = document.getElementById('survey-ingestion-status');
       if (statusBox) {
         statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-stone-100 text-stone-700 block';
-        statusBox.textContent = 'Restored calibrated baseline: 800 respondents across 48 Sub-Saharan African nations.';
+        statusBox.textContent = 'Restored synthetic baseline: 800 simulated responses across 48 Sub-Saharan African nations.';
       }
 
       renderSurveyDashboard();
@@ -15065,6 +15187,25 @@ const SURVEY_CODEBOOK = [
       try { renderMacroFiscalTable(); } catch(e) { console.error('Error renderMacroFiscalTable (final):', e); }
       try { selectTab3Country('RWA'); } catch(e) { console.error('Error selectTab3Country:', e); }
       try { setDeepDiveLens(1); } catch(e) { console.error('Error setDeepDiveLens:', e); }
+      appNavigationReady = true;
+      const params = new URLSearchParams(window.location.search);
+      const view = params.get('view');
+      if (view === 'systemic' || view === 'classroom') switchLens(view, false);
+      const country = params.get('country');
+      if (country && countryData[country]) selectCountry(country);
+      const lens = Number(params.get('lens'));
+      if ([1, 2, 3, 4].includes(lens)) setDeepDiveLens(lens);
+      const segment = params.get('segment');
+      if (segment === 'national' || segment === 'urban' || segment === 'rural') setDemographicSegment(segment);
+      const tab3 = params.get('tab3');
+      if (tab3 === 'COMPARE' || (tab3 && tab3CountryData[tab3])) selectTab3Country(tab3);
+      const classroomTab = params.get('classroomTab');
+      if (classroomTab && document.getElementById(classroomTab)?.classList.contains('classroom-content')) {
+        switchClassroomTab(classroomTab, false);
+      }
+      const tabId = params.get('tab');
+      if (tabId && document.getElementById(tabId)?.classList.contains('tab-content')) switchTab(tabId, false);
+      syncAppUrlState();
       if (window.twemoji) {
         try { twemoji.parse(document.body, { folder: 'svg', ext: '.svg' }); } catch(e) {}
       }

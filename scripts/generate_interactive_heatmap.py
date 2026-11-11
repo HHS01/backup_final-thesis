@@ -6,6 +6,11 @@ with open('/workspaces/backup_final-thesis/data/processed/afrobarometer_triangul
 with open('/workspaces/backup_final-thesis/data/processed/macro_for_triangulation.json') as f:
     macro_data = json.load(f)
 
+with open('/workspaces/backup_final-thesis/data/processed/survey_data_calibrated.json') as f:
+    survey_data = json.load(f)
+
+teacher_records = survey_data.get("teachers", {}).get("records", [])
+
 countries = [
     {"iso3": "KEN", "name": "Kenya", "flag": "🇰🇪"},
     {"iso3": "GHA", "name": "Ghana", "flag": "🇬🇭"},
@@ -46,6 +51,20 @@ for c in countries:
     # 5. Financial Precarity (Data Cost Feasibility)
     never_no_cash = ab.get("never_without_income_pct")
     precarity_rate = round(100.0 - never_no_cash, 1) if never_no_cash is not None else None
+
+    # 6. Synthetic practitioner audit: teacher reports of mostly/always reliable power
+    teacher_sample = [r for r in teacher_records if r.get("country") == c["name"]]
+    reliable_power_n = sum(
+        r.get("elec") in ("Mostly reliable", "Always reliable")
+        for r in teacher_sample
+    )
+    reliable_power_pct = round(100.0 * reliable_power_n / len(teacher_sample), 1) if teacher_sample else None
+    synthetic_n = len(teacher_sample)
+    synthetic_macro_gap = (
+        round(reliable_power_pct - uis_elec, 1)
+        if reliable_power_pct is not None and uis_elec is not None
+        else None
+    )
 
     entry = {
         "iso3": iso,
@@ -110,15 +129,22 @@ for c in countries:
                 "desc": f"{precarity_rate}% of households have gone without cash income. Data-heavy apps impose punitive burden." if precarity_rate is not None else "Data missing."
             },
             "practitioner_audit": {
-                "name": "Practitioner AoA Ground Truth",
-                "macro_val": None,
-                "macro_src": "Target Benchmark",
-                "field_val": None,
-                "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
-                "gap": None,
-                "unit": "",
-                "type": "pending",
-                "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
+                "name": "Synthetic Teacher Power Signal",
+                "macro_val": uis_elec,
+                "macro_src": "UIS (% Primary Schools with Electricity)",
+                "field_val": reliable_power_pct,
+                "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+                "sample_size": synthetic_n,
+                "gap": synthetic_macro_gap,
+                "unit": "%",
+                "type": "synthetic",
+                "desc": (
+                    f"Illustrative synthetic baseline: {reliable_power_pct}% of {synthetic_n} teacher responses "
+                    f"report mostly or always reliable school power; UIS reports {uis_elec}% of primary schools "
+                    "with electricity. This is simulated, not observed field evidence."
+                    if reliable_power_pct is not None and uis_elec is not None
+                    else "No synthetic teacher responses or UIS school-power estimate available for this country."
+                )
             }
         }
     }

@@ -62,28 +62,16 @@
         "desc": "89.5% of households have gone without cash income. Data-heavy apps impose punitive burden."
       },
       "practitioner_audit": {
-        "name": "Practitioner AoA Ground Truth",
-        "macro_val": null,
-        "macro_src": "Target Benchmark",
-        "field_val": null,
-        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
-        "gap": null,
-        "unit": "",
-        "type": "pending",
-        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
-      },
-      "linguistic": {
-        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
-        "macro_val": 15.0,
-        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
-        "field_val": 75.0,
-        "field_src": "Classroom Ground Truth (Kiswahili, Kikuyu, Dholuo) \u00b7 GEM Spotlight",
-        "gap": -60.0,
+        "name": "Synthetic Teacher Power Signal",
+        "macro_val": 82.62,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 53.2,
+        "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+        "sample_size": 47,
+        "gap": -29.4,
         "unit": "%",
-        "type": "critical",
-        "ai_perf": 62.0,
-        "token_tax": "1.8x",
-        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 75.0% of learners speak Kiswahili, Kikuyu, Dholuo at home. LLM benchmark performance collapses to 62.0% of English (AfroBench/IrokoBench) with a 1.8x token cost penalty."
+        "type": "synthetic",
+        "desc": "Illustrative synthetic baseline: 53.2% of 47 teacher responses report mostly or always reliable school power; UIS reports 82.62% of primary schools with electricity. This is simulated, not observed field evidence."
       }
     }
   },
@@ -150,28 +138,16 @@
         "desc": "71.6% of households have gone without cash income. Data-heavy apps impose punitive burden."
       },
       "practitioner_audit": {
-        "name": "Practitioner AoA Ground Truth",
-        "macro_val": null,
-        "macro_src": "Target Benchmark",
-        "field_val": null,
-        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
-        "gap": null,
-        "unit": "",
-        "type": "pending",
-        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
-      },
-      "linguistic": {
-        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
-        "macro_val": 15.0,
-        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
-        "field_val": 80.0,
-        "field_src": "Classroom Ground Truth (Akan (Twi/Fante), Ewe, Ga) \u00b7 GEM Spotlight",
-        "gap": -65.0,
+        "name": "Synthetic Teacher Power Signal",
+        "macro_val": 24.95,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 44.4,
+        "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+        "sample_size": 18,
+        "gap": 19.4,
         "unit": "%",
-        "type": "critical",
-        "ai_perf": 25.0,
-        "token_tax": "2.6x",
-        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 80.0% of learners speak Akan (Twi/Fante), Ewe, Ga at home. LLM benchmark performance collapses to 25.0% of English (AfroBench/IrokoBench) with a 2.6x token cost penalty."
+        "type": "synthetic",
+        "desc": "Illustrative synthetic baseline: 44.4% of 18 teacher responses report mostly or always reliable school power; UIS reports 24.95% of primary schools with electricity. This is simulated, not observed field evidence."
       }
     }
   },
@@ -238,28 +214,16 @@
         "desc": "94.9% of households have gone without cash income. Data-heavy apps impose punitive burden."
       },
       "practitioner_audit": {
-        "name": "Practitioner AoA Ground Truth",
+        "name": "Synthetic Teacher Power Signal",
         "macro_val": null,
-        "macro_src": "Target Benchmark",
-        "field_val": null,
-        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 20.4,
+        "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+        "sample_size": 49,
         "gap": null,
-        "unit": "",
-        "type": "pending",
-        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
-      },
-      "linguistic": {
-        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
-        "macro_val": 15.0,
-        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
-        "field_val": 82.0,
-        "field_src": "Classroom Ground Truth (Hausa, Yoruba, Igbo) \u00b7 GEM Spotlight",
-        "gap": -67.0,
         "unit": "%",
-        "type": "critical",
-        "ai_perf": 32.0,
-        "token_tax": "2.4x",
-        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 82.0% of learners speak Hausa, Yoruba, Igbo at home. LLM benchmark performance collapses to 32.0% of English (AfroBench/IrokoBench) with a 2.4x token cost penalty."
+        "type": "synthetic",
+        "desc": "No synthetic teacher responses or UIS school-power estimate available for this country."
       }
     }
   },
@@ -326,28 +290,16 @@
         "desc": "85.5% of households have gone without cash income. Data-heavy apps impose punitive burden."
       },
       "practitioner_audit": {
-        "name": "Practitioner AoA Ground Truth",
-        "macro_val": null,
-        "macro_src": "Target Benchmark",
-        "field_val": null,
-        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
-        "gap": null,
-        "unit": "",
-        "type": "pending",
-        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
-      },
-      "linguistic": {
-        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
-        "macro_val": 15.0,
-        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
-        "field_val": 90.0,
-        "field_src": "Classroom Ground Truth (Kiswahili, Sukuma) \u00b7 GEM Spotlight",
-        "gap": -75.0,
+        "name": "Synthetic Teacher Power Signal",
+        "macro_val": 37.33,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 25.0,
+        "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+        "sample_size": 16,
+        "gap": -12.3,
         "unit": "%",
-        "type": "critical",
-        "ai_perf": 62.0,
-        "token_tax": "1.8x",
-        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 90.0% of learners speak Kiswahili, Sukuma at home. LLM benchmark performance collapses to 62.0% of English (AfroBench/IrokoBench) with a 1.8x token cost penalty."
+        "type": "synthetic",
+        "desc": "Illustrative synthetic baseline: 25.0% of 16 teacher responses report mostly or always reliable school power; UIS reports 37.33% of primary schools with electricity. This is simulated, not observed field evidence."
       }
     }
   },
@@ -414,28 +366,16 @@
         "desc": "89.7% of households have gone without cash income. Data-heavy apps impose punitive burden."
       },
       "practitioner_audit": {
-        "name": "Practitioner AoA Ground Truth",
-        "macro_val": null,
-        "macro_src": "Target Benchmark",
-        "field_val": null,
-        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
-        "gap": null,
-        "unit": "",
-        "type": "pending",
-        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
-      },
-      "linguistic": {
-        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
-        "macro_val": 15.0,
-        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
-        "field_val": 80.0,
-        "field_src": "Classroom Ground Truth (Bemba, Nyanja, Tonga) \u00b7 GEM Spotlight",
-        "gap": -65.0,
+        "name": "Synthetic Teacher Power Signal",
+        "macro_val": 36.4,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 30.8,
+        "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+        "sample_size": 26,
+        "gap": -5.6,
         "unit": "%",
-        "type": "critical",
-        "ai_perf": 18.0,
-        "token_tax": "3.4x",
-        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 80.0% of learners speak Bemba, Nyanja, Tonga at home. LLM benchmark performance collapses to 18.0% of English (AfroBench/IrokoBench) with a 3.4x token cost penalty."
+        "type": "synthetic",
+        "desc": "Illustrative synthetic baseline: 30.8% of 26 teacher responses report mostly or always reliable school power; UIS reports 36.4% of primary schools with electricity. This is simulated, not observed field evidence."
       }
     }
   },
@@ -502,28 +442,16 @@
         "desc": "35.1% of households have gone without cash income. Data-heavy apps impose punitive burden."
       },
       "practitioner_audit": {
-        "name": "Practitioner AoA Ground Truth",
-        "macro_val": null,
-        "macro_src": "Target Benchmark",
-        "field_val": null,
-        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
-        "gap": null,
-        "unit": "",
-        "type": "pending",
-        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
-      },
-      "linguistic": {
-        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
-        "macro_val": 15.0,
-        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
-        "field_val": 55.0,
-        "field_src": "Classroom Ground Truth (Morisyen (Cr\u00e9ole), Bhojpuri) \u00b7 GEM Spotlight",
-        "gap": -40.0,
+        "name": "Synthetic Teacher Power Signal",
+        "macro_val": 100.0,
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 56.0,
+        "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+        "sample_size": 25,
+        "gap": -44.0,
         "unit": "%",
-        "type": "critical",
-        "ai_perf": 28.0,
-        "token_tax": "2.1x",
-        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 55.0% of learners speak Morisyen (Cr\u00e9ole), Bhojpuri at home. LLM benchmark performance collapses to 28.0% of English (AfroBench/IrokoBench) with a 2.1x token cost penalty."
+        "type": "synthetic",
+        "desc": "Illustrative synthetic baseline: 56.0% of 25 teacher responses report mostly or always reliable school power; UIS reports 100.0% of primary schools with electricity. This is simulated, not observed field evidence."
       }
     }
   },
@@ -590,28 +518,16 @@
         "desc": "Data missing."
       },
       "practitioner_audit": {
-        "name": "Practitioner AoA Ground Truth",
+        "name": "Synthetic Teacher Power Signal",
         "macro_val": null,
-        "macro_src": "Target Benchmark",
-        "field_val": null,
-        "field_src": "AoA Teacher/Provider Survey (Pending Field Collection)",
+        "macro_src": "UIS (% Primary Schools with Electricity)",
+        "field_val": 51.4,
+        "field_src": "Synthetic AoA teacher baseline (mostly/always reliable school power)",
+        "sample_size": 37,
         "gap": null,
-        "unit": "",
-        "type": "pending",
-        "desc": "Awaiting live practitioner field diagnostic submissions (10-30 responses)."
-      },
-      "linguistic": {
-        "name": "Pillar 5: Linguistic Fit & AI Token Tax",
-        "macro_val": 15.0,
-        "macro_src": "Market Supply Estimate (EdTech Hub SSA Scan: ~15% multi-lingual)",
-        "field_val": 85.0,
-        "field_src": "Classroom Ground Truth (Kinyarwanda) \u00b7 GEM Spotlight",
-        "gap": -70.0,
         "unit": "%",
-        "type": "critical",
-        "ai_perf": 38.0,
-        "token_tax": "2.8x",
-        "desc": "Only ~15% of EdTech tools support mother-tongue languages, yet 85.0% of learners speak Kinyarwanda at home. LLM benchmark performance collapses to 38.0% of English (AfroBench/IrokoBench) with a 2.8x token cost penalty."
+        "type": "synthetic",
+        "desc": "No synthetic teacher responses or UIS school-power estimate available for this country."
       }
     }
   }
