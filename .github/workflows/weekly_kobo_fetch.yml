@@ -1,0 +1,70 @@
+name: Weekly Kobo Survey Fetch & Triangulation
+
+on:
+  schedule:
+    # Runs every Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch: # Allows manual trigger from the GitHub Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-and-triangulate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          pip install requests python-dotenv pandas openpyxl
+
+      # ── Step 1: Fetch latest submissions from KoboToolbox ──────────────────
+      - name: Fetch Kobo Submissions
+        env:
+          KOBO_TOKEN: ${{ secrets.KOBO_TOKEN }}
+          KOBO_SERVER: ${{ secrets.KOBO_SERVER }}
+          KOBO_UID_TEACHER: ${{ secrets.KOBO_UID_TEACHER }}
+          KOBO_UID_PROVIDER: ${{ secrets.KOBO_UID_PROVIDER }}
+          KOBO_UID_EXPERT: ${{ secrets.KOBO_UID_EXPERT }}
+          KOBO_UID_FOLLOWUP: ${{ secrets.KOBO_UID_FOLLOWUP }}
+        run: |
+          python scripts/fetch_kobo_submissions.py
+
+      # ── Step 2: Bridge — convert Kobo JSON → Excel for processing pipeline ─
+      - name: Convert Kobo JSON to Excel
+        run: |
+          python scripts/kobo_json_to_excel.py \
+            --output data/raw/SSA_Survey_Responses_Live.xlsx
+
+      # ── Step 3: Clean, aggregate & compute distributions ───────────────────
+      - name: Process Survey Data
+        run: |
+          python scripts/process_survey_data_calibrated.py \
+            --input  data/raw/SSA_Survey_Responses_Live.xlsx \
+            --output data/processed/survey_data_calibrated.json
+
+      # ── Step 4: Run triangulation against macro indicators ─────────────────
+      - name: Run Triangulation Update
+        run: |
+          python scripts/run_monthly_triangulation.py
+
+      # ── Step 3: Commit any updated data files back to the repo ─────────────
+      - name: Commit Updated Data Files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "Kobo Sync Bot"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "No new data — nothing to commit."
+          else
+            git commit -m "data(kobo): weekly sync — $(date -u '+%Y-%m-%d') [skip ci]"
+            git push
+          fi

@@ -1,0 +1,402 @@
+[
+  {
+    "_id": "sub_e_0001",
+    "A1_system": "TZA",
+    "A3_based": "outside_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0002",
+    "A1_system": "NGA",
+    "A3_based": "in_country",
+    "A4_perspective": "policy",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0003",
+    "A1_system": "KEN",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0004",
+    "A1_system": "KEN",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0005",
+    "A1_system": "ETH",
+    "A3_based": "in_country",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0006",
+    "A1_system": "ZMB",
+    "A3_based": "outside_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0007",
+    "A1_system": "SEN",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0008",
+    "A1_system": "NGA",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0009",
+    "A1_system": "KEN",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0010",
+    "A1_system": "GHA",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "policy",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0011",
+    "A1_system": "KEN",
+    "A3_based": "outside_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0012",
+    "A1_system": "GHA",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0013",
+    "A1_system": "ETH",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "policy",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0014",
+    "A1_system": "RWA",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0015",
+    "A1_system": "ETH",
+    "A3_based": "outside_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0016",
+    "A1_system": "ZMB",
+    "A3_based": "outside_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0017",
+    "A1_system": "KEN",
+    "A3_based": "outside_africa",
+    "A4_perspective": "policy",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0018",
+    "A1_system": "TZA",
+    "A3_based": "in_country",
+    "A4_perspective": "policy",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0019",
+    "A1_system": "ETH",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0020",
+    "A1_system": "KEN",
+    "A3_based": "in_country",
+    "A4_perspective": "policy",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0021",
+    "A1_system": "SEN",
+    "A3_based": "outside_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0022",
+    "A1_system": "KEN",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0023",
+    "A1_system": "ETH",
+    "A3_based": "in_country",
+    "A4_perspective": "policy",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0024",
+    "A1_system": "TZA",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "policy",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0025",
+    "A1_system": "NGA",
+    "A3_based": "in_country",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0026",
+    "A1_system": "KEN",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0027",
+    "A1_system": "TZA",
+    "A3_based": "in_country",
+    "A4_perspective": "policy",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0028",
+    "A1_system": "KEN",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0029",
+    "A1_system": "NGA",
+    "A3_based": "in_country",
+    "A4_perspective": "policy",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0030",
+    "A1_system": "ETH",
+    "A3_based": "outside_africa",
+    "A4_perspective": "policy",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0031",
+    "A1_system": "KEN",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0032",
+    "A1_system": "GHA",
+    "A3_based": "in_country",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0033",
+    "A1_system": "NGA",
+    "A3_based": "outside_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0034",
+    "A1_system": "RWA",
+    "A3_based": "in_country",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0035",
+    "A1_system": "SEN",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0036",
+    "A1_system": "RWA",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "policy",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0037",
+    "A1_system": "KEN",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0038",
+    "A1_system": "KEN",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0039",
+    "A1_system": "TZA",
+    "A3_based": "in_country",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0040",
+    "A1_system": "RWA",
+    "A3_based": "outside_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0041",
+    "A1_system": "ZMB",
+    "A3_based": "outside_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "neither",
+    "F1_constraints_1": "internet_connectivity"
+  },
+  {
+    "_id": "sub_e_0042",
+    "A1_system": "ZMB",
+    "A3_based": "in_country",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0043",
+    "A1_system": "KEN",
+    "A3_based": "outside_africa",
+    "A4_perspective": "policy",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "devices"
+  },
+  {
+    "_id": "sub_e_0044",
+    "A1_system": "TZA",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0045",
+    "A1_system": "SEN",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0046",
+    "A1_system": "TZA",
+    "A3_based": "in_country",
+    "A4_perspective": "provision",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0047",
+    "A1_system": "NGA",
+    "A3_based": "outside_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0048",
+    "A1_system": "RWA",
+    "A3_based": "in_country",
+    "A4_perspective": "policy",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  },
+  {
+    "_id": "sub_e_0049",
+    "A1_system": "TZA",
+    "A3_based": "elsewhere_africa",
+    "A4_perspective": "provision",
+    "D4_agree_i": "agree",
+    "F1_constraints_1": "teacher_capacity"
+  },
+  {
+    "_id": "sub_e_0050",
+    "A1_system": "SEN",
+    "A3_based": "outside_africa",
+    "A4_perspective": "research_eval",
+    "D4_agree_i": "strongly_agree",
+    "F1_constraints_1": "electricity"
+  }
+]

@@ -1,0 +1,502 @@
+[
+  {
+    "_id": "sub_p_0001",
+    "A1_org_name": "EdTech Provider 1",
+    "A2_hq_country": "TZA",
+    "A3_operate_countries": "TZA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0002",
+    "A1_org_name": "EdTech Provider 2",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "smartphone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0003",
+    "A1_org_name": "EdTech Provider 3",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0004",
+    "A1_org_name": "EdTech Provider 4",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0005",
+    "A1_org_name": "EdTech Provider 5",
+    "A2_hq_country": "NGA",
+    "A3_operate_countries": "NGA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0006",
+    "A1_org_name": "EdTech Provider 6",
+    "A2_hq_country": "KEN",
+    "A3_operate_countries": "KEN KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0007",
+    "A1_org_name": "EdTech Provider 7",
+    "A2_hq_country": "KEN",
+    "A3_operate_countries": "KEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0008",
+    "A1_org_name": "EdTech Provider 8",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0009",
+    "A1_org_name": "EdTech Provider 9",
+    "A2_hq_country": "KEN",
+    "A3_operate_countries": "KEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0010",
+    "A1_org_name": "EdTech Provider 10",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0011",
+    "A1_org_name": "EdTech Provider 11",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0012",
+    "A1_org_name": "EdTech Provider 12",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "smartphone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0013",
+    "A1_org_name": "EdTech Provider 13",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0014",
+    "A1_org_name": "EdTech Provider 14",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "smartphone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0015",
+    "A1_org_name": "EdTech Provider 15",
+    "A2_hq_country": "ETH",
+    "A3_operate_countries": "ETH KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "smartphone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0016",
+    "A1_org_name": "EdTech Provider 16",
+    "A2_hq_country": "NGA",
+    "A3_operate_countries": "NGA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0017",
+    "A1_org_name": "EdTech Provider 17",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0018",
+    "A1_org_name": "EdTech Provider 18",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0019",
+    "A1_org_name": "EdTech Provider 19",
+    "A2_hq_country": "TZA",
+    "A3_operate_countries": "TZA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0020",
+    "A1_org_name": "EdTech Provider 20",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0021",
+    "A1_org_name": "EdTech Provider 21",
+    "A2_hq_country": "KEN",
+    "A3_operate_countries": "KEN KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0022",
+    "A1_org_name": "EdTech Provider 22",
+    "A2_hq_country": "KEN",
+    "A3_operate_countries": "KEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0023",
+    "A1_org_name": "EdTech Provider 23",
+    "A2_hq_country": "NGA",
+    "A3_operate_countries": "NGA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0024",
+    "A1_org_name": "EdTech Provider 24",
+    "A2_hq_country": "KEN",
+    "A3_operate_countries": "KEN KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0025",
+    "A1_org_name": "EdTech Provider 25",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0026",
+    "A1_org_name": "EdTech Provider 26",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "smartphone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0027",
+    "A1_org_name": "EdTech Provider 27",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "smartphone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0028",
+    "A1_org_name": "EdTech Provider 28",
+    "A2_hq_country": "NGA",
+    "A3_operate_countries": "NGA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0029",
+    "A1_org_name": "EdTech Provider 29",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0030",
+    "A1_org_name": "EdTech Provider 30",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0031",
+    "A1_org_name": "EdTech Provider 31",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0032",
+    "A1_org_name": "EdTech Provider 32",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "smartphone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0033",
+    "A1_org_name": "EdTech Provider 33",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0034",
+    "A1_org_name": "EdTech Provider 34",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0035",
+    "A1_org_name": "EdTech Provider 35",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0036",
+    "A1_org_name": "EdTech Provider 36",
+    "A2_hq_country": "NGA",
+    "A3_operate_countries": "NGA KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0037",
+    "A1_org_name": "EdTech Provider 37",
+    "A2_hq_country": "ETH",
+    "A3_operate_countries": "ETH KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0038",
+    "A1_org_name": "EdTech Provider 38",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0039",
+    "A1_org_name": "EdTech Provider 39",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "English Kiswahili"
+  },
+  {
+    "_id": "sub_p_0040",
+    "A1_org_name": "EdTech Provider 40",
+    "A2_hq_country": "RWA",
+    "A3_operate_countries": "RWA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0041",
+    "A1_org_name": "EdTech Provider 41",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0042",
+    "A1_org_name": "EdTech Provider 42",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0043",
+    "A1_org_name": "EdTech Provider 43",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0044",
+    "A1_org_name": "EdTech Provider 44",
+    "A2_hq_country": "NGA",
+    "A3_operate_countries": "NGA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0045",
+    "A1_org_name": "EdTech Provider 45",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0046",
+    "A1_org_name": "EdTech Provider 46",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "for_profit",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0047",
+    "A1_org_name": "EdTech Provider 47",
+    "A2_hq_country": "SEN",
+    "A3_operate_countries": "SEN KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "occasional_sync",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0048",
+    "A1_org_name": "EdTech Provider 48",
+    "A2_hq_country": "ZMB",
+    "A3_operate_countries": "ZMB KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "smartphone",
+    "D1_languages": "Local languages"
+  },
+  {
+    "_id": "sub_p_0049",
+    "A1_org_name": "EdTech Provider 49",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "ngo",
+    "B1_connectivity": "fully_offline",
+    "B2_hardware": "basic_feature_phone",
+    "D1_languages": "French"
+  },
+  {
+    "_id": "sub_p_0050",
+    "A1_org_name": "EdTech Provider 50",
+    "A2_hq_country": "GHA",
+    "A3_operate_countries": "GHA KEN RWA",
+    "A4_org_type": "social_enterprise",
+    "B1_connectivity": "continuous_broadband",
+    "B2_hardware": "laptop_pc",
+    "D1_languages": "English Kiswahili"
+  }
+]

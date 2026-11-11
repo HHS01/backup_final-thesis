@@ -1,0 +1,298 @@
+{
+  "ETH": {
+    "sample_size": 5,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 51.0,
+        "macro_baseline": 44.8,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": 6.2,
+        "gap_assessment": "Aligned"
+      },
+      "5": {
+        "ground_truth_score": 75.0,
+        "macro_baseline": null,
+        "macro_year": null,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": null,
+        "gap_assessment": "Over-performing"
+      },
+      "1": {
+        "ground_truth_score": 78.0,
+        "macro_baseline": 2.2978069565991,
+        "macro_year": 2024,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 75.7,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 44.0,
+        "macro_baseline": null,
+        "macro_year": null,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": null,
+        "gap_assessment": "Over-performing"
+      }
+    }
+  },
+  "TZA": {
+    "sample_size": 3,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 65.83,
+        "macro_baseline": 33.7,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": 32.13,
+        "gap_assessment": "Over-performing"
+      },
+      "5": {
+        "ground_truth_score": 75.0,
+        "macro_baseline": 37.32869,
+        "macro_year": 2019,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": 37.67,
+        "gap_assessment": "Over-performing"
+      },
+      "1": {
+        "ground_truth_score": 53.33,
+        "macro_baseline": 3.15504437906936,
+        "macro_year": 2024,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 50.17,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 50.0,
+        "macro_baseline": 99.1959541456952,
+        "macro_year": 2016,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": -49.2,
+        "gap_assessment": "Under-reporting friction"
+      }
+    }
+  },
+  "KEN": {
+    "sample_size": 7,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 45.36,
+        "macro_baseline": 67.1,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": -21.74,
+        "gap_assessment": "Under-reporting friction"
+      },
+      "5": {
+        "ground_truth_score": 64.29,
+        "macro_baseline": 82.62217,
+        "macro_year": 2016,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": -18.33,
+        "gap_assessment": "Under-reporting friction"
+      },
+      "1": {
+        "ground_truth_score": 75.71,
+        "macro_baseline": 4.02242346098974,
+        "macro_year": 2024,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 71.69,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 58.57,
+        "macro_baseline": 100.0,
+        "macro_year": 2023,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": -41.43,
+        "gap_assessment": "Under-reporting friction"
+      }
+    }
+  },
+  "GHA": {
+    "sample_size": 9,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 33.89,
+        "macro_baseline": 82.6,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": -48.71,
+        "gap_assessment": "Under-reporting friction"
+      },
+      "5": {
+        "ground_truth_score": 61.11,
+        "macro_baseline": 24.9533,
+        "macro_year": 2018,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": 36.16,
+        "gap_assessment": "Over-performing"
+      },
+      "1": {
+        "ground_truth_score": 65.56,
+        "macro_baseline": 2.90963831638452,
+        "macro_year": 2022,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 62.65,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 50.0,
+        "macro_baseline": 89.3283233642578,
+        "macro_year": 2024,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": -39.33,
+        "gap_assessment": "Under-reporting friction"
+      }
+    }
+  },
+  "NGA": {
+    "sample_size": 5,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 50.5,
+        "macro_baseline": 23.5,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": 27.0,
+        "gap_assessment": "Over-performing"
+      },
+      "5": {
+        "ground_truth_score": 80.0,
+        "macro_baseline": null,
+        "macro_year": null,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": null,
+        "gap_assessment": "Over-performing"
+      },
+      "1": {
+        "ground_truth_score": 68.0,
+        "macro_baseline": 0.319069049792343,
+        "macro_year": 2023,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 67.68,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 44.0,
+        "macro_baseline": 62.1766699978874,
+        "macro_year": 2018,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": -18.18,
+        "gap_assessment": "Under-reporting friction"
+      }
+    }
+  },
+  "ZMB": {
+    "sample_size": 9,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 56.94,
+        "macro_baseline": 31.3,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": 25.64,
+        "gap_assessment": "Over-performing"
+      },
+      "5": {
+        "ground_truth_score": 69.44,
+        "macro_baseline": 36.40167,
+        "macro_year": 2017,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": 33.04,
+        "gap_assessment": "Over-performing"
+      },
+      "1": {
+        "ground_truth_score": 57.78,
+        "macro_baseline": 4.07374933049157,
+        "macro_year": 2023,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 53.71,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 46.67,
+        "macro_baseline": 98.7503041012049,
+        "macro_year": 2017,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": -52.08,
+        "gap_assessment": "Under-reporting friction"
+      }
+    }
+  },
+  "SEN": {
+    "sample_size": 7,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 70.36,
+        "macro_baseline": 67.1,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": 3.26,
+        "gap_assessment": "Aligned"
+      },
+      "5": {
+        "ground_truth_score": 50.0,
+        "macro_baseline": 44.09746,
+        "macro_year": 2019,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": 5.9,
+        "gap_assessment": "Aligned"
+      },
+      "1": {
+        "ground_truth_score": 52.86,
+        "macro_baseline": 6.16277045366329,
+        "macro_year": 2023,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 46.7,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 37.14,
+        "macro_baseline": 77.1074643843027,
+        "macro_year": 2024,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": -39.97,
+        "gap_assessment": "Under-reporting friction"
+      }
+    }
+  },
+  "RWA": {
+    "sample_size": 5,
+    "pillar_comparisons": {
+      "2": {
+        "ground_truth_score": 38.5,
+        "macro_baseline": 65.2,
+        "macro_year": 2024,
+        "macro_indicator": "EG.ELC.ACCS.RU.ZS",
+        "delta_perception": -26.7,
+        "gap_assessment": "Under-reporting friction"
+      },
+      "5": {
+        "ground_truth_score": 80.0,
+        "macro_baseline": 60.79027,
+        "macro_year": 2019,
+        "macro_indicator": "UIS.SCHBSP.1.WELEC",
+        "delta_perception": 19.21,
+        "gap_assessment": "Over-performing"
+      },
+      "1": {
+        "ground_truth_score": 62.0,
+        "macro_baseline": 4.61476993560791,
+        "macro_year": 2024,
+        "macro_indicator": "SE.XPD.TOTL.GD.ZS",
+        "delta_perception": 57.39,
+        "gap_assessment": "Over-performing"
+      },
+      "4": {
+        "ground_truth_score": 38.0,
+        "macro_baseline": 67.5672511196324,
+        "macro_year": 2024,
+        "macro_indicator": "SE.PRM.TCAQ.ZS",
+        "delta_perception": -29.57,
+        "gap_assessment": "Under-reporting friction"
+      }
+    }
+  }
+}
