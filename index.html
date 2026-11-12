@@ -228,6 +228,103 @@
     }
   </style>
 
+
+  <style>
+    /* =============================================================== */
+    /* Canvas Theme & Legibility Fixes */
+    /* =============================================================== */
+    /* Canvas Backdrops: Distinct subtle tints so white cards pop */
+    #canvas-landing { background-color: #f1f5f9; }     /* slate-100 */
+    #canvas-systemic { background-color: #e0f2fe; }    /* sky-100 */
+    #canvas-classroom { background-color: #f4f6f0; }   /* warm sage-stone */
+    
+    /* Ensure tab content areas have clean white card backgrounds */
+    #canvas-systemic .tab-content { background: transparent; }
+    #canvas-classroom .classroom-content { background: transparent; }
+    
+    /* Distinct tab nav accent bars */
+    #canvas-systemic #tab-nav-systemic { border-bottom: 3px solid #0284c7; }
+    #canvas-classroom #tab-nav-classroom { border-bottom: 3px solid #059669; }
+    
+    /* Tab content section header text color enforcement */
+    #canvas-systemic .tab-content h2,
+    #canvas-systemic .tab-content h3 { color: #0f172a !important; }
+    
+    #canvas-classroom .classroom-content h2,
+    #canvas-classroom .classroom-content h3 { color: #14532d !important; }
+    
+    #canvas-landing h2,
+    #canvas-landing h3 { color: #0f172a !important; }
+    
+    /* Landing Hero Mesh */
+    .hero-mesh-landing {
+      background-color: #0b132b !important;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(29, 78, 216, 0.45) 0px, transparent 55%),
+        radial-gradient(at 100% 0%, rgba(13, 148, 136, 0.35) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(30, 58, 138, 0.5) 0px, transparent 60%) !important;
+      color: #ffffff !important;
+    }
+    .hero-landing-metric {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid rgba(255, 255, 255, 0.16) !important;
+      backdrop-filter: blur(8px);
+    }
+    
+    /* Universal open/close state styling for details */
+    details:not([open]) .details-hide {
+      display: none !important;
+    }
+    details:not([open]) .details-show {
+      display: inline-flex !important;
+    }
+    details[open] .details-show {
+      display: none !important;
+    }
+    details[open] .details-hide {
+      display: inline-flex !important;
+    }
+    
+    /* Ensure visible state for hidden utility */
+    .hidden { display: none !important; }
+    .block { display: block !important; }
+    
+    /* Stakeholder Lens Switcher High-Contrast Protection */
+    .lens-btn-active-systemic {
+      background-color: #1d4ed8 !important; /* blue-700 */
+      color: #ffffff !important;
+      border: 1px solid #1e40af !important;
+    }
+    .lens-btn-active-landing {
+      background-color: #0f172a !important; /* slate-900 */
+      color: #ffffff !important;
+      border: 1px solid #020617 !important;
+    }
+    .lens-btn-active-classroom {
+      background-color: #065f46 !important; /* emerald-800 */
+      color: #ffffff !important;
+      border: 1px solid #064e3b !important;
+    }
+    
+    /* Simulation & Action Buttons High-Contrast Protection */
+    .btn-simulate-batch {
+      background-color: #d97706 !important; /* amber-600 */
+      color: #ffffff !important;
+      border: 1px solid #b45309 !important;
+    }
+    .btn-simulate-batch:hover {
+      background-color: #b45309 !important; /* amber-700 */
+    }
+    .btn-connect-feeds {
+      background-color: #047857 !important; /* emerald-700 */
+      color: #ffffff !important;
+      border: 1px solid #065f46 !important;
+    }
+    .btn-connect-feeds:hover {
+      background-color: #065f46 !important; /* emerald-800 */
+    }
+    
+    .min-h-screen { min-height: 100vh; }</style>
 </head>
 <body id="body-canvas" class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900 transition-colors duration-300">
 
@@ -315,77 +412,40 @@
   <!-- ================================================================= -->
   <!-- LENS 0: CENTRAL OBSERVATORY & SHARED GROUND-TRUTH CANVAS (DEFAULT) -->
   <!-- ================================================================= -->
-  <div id="canvas-landing" class="block">
+  <div id="canvas-landing" class="block bg-slate-50 min-h-screen">
     
     <!-- Hero / Gateway Section -->
-    <section class="bg-gradient-to-b from-slate-900 via-slate-800 to-indigo-950 text-white pt-12 pb-14 px-4 sm:px-6 lg:px-8 border-b border-indigo-900/50">
+    <section class="hero-mesh-landing text-white pt-10 pb-12 px-4 sm:px-6 lg:px-8 border-b border-indigo-900/50">
       <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-10">
-          <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-400/30 mb-4">
-              <span>Community-First Evidence Architecture</span>
-              <span>•</span>
-              <span>Reconciling Macro Data with Frontline Realities</span>
-            </div>
-            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black font-serif tracking-tight text-white leading-tight">
-              Sub-Saharan Africa <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-300">EdTech Decision Observatory</span>
-            </h1>
-            <p class="text-slate-300 mt-3 text-sm sm:text-base leading-relaxed">
-              An open-access analytical engine reconciling top-down macro statistics (UNESCO UIS, World Bank WDI, ITU) with bottom-up grassroots practitioner evidence. Centered on the <strong>UNESCO 6 Pillars of EdTech</strong> to prevent pilot collapse and illuminate the frontline reality gap.
-            </p>
+        <div class="max-w-4xl mb-8">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-400/30 mb-4">
+            <span>Community-First Evidence Architecture</span>
+            <span>•</span>
+            <span>Reconciling Macro Data with Frontline Realities</span>
           </div>
-
-          <!-- Dual Pathway Entry Gateway -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full lg:w-auto shrink-0">
-            <!-- Pathway A: Teachers -->
-            <div class="bg-emerald-950/40 border border-emerald-500/30 rounded-2xl p-5 hover:border-emerald-400 transition flex flex-col justify-between shadow-lg">
-              <div>
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="text-2xl">🌱</span>
-                  <span class="font-bold text-white text-sm">For Teachers &amp; Schools</span>
-                </div>
-                <p class="text-xs text-emerald-200/80 mb-4 leading-relaxed">
-                  Classroom Feasibility Audit, device rotation timetables, and curated offline-first Digital Public Goods (DPGs).
-                </p>
-              </div>
-              <button onclick="switchLens('classroom')" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                Launch Classroom Toolkit →
-              </button>
-            </div>
-
-            <!-- Pathway B: Policymakers -->
-            <div class="bg-blue-950/40 border border-blue-500/30 rounded-2xl p-5 hover:border-blue-400 transition flex flex-col justify-between shadow-lg">
-              <div>
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="text-2xl">🏛️</span>
-                  <span class="font-bold text-white text-sm">For Policymakers &amp; Donors</span>
-                </div>
-                <p class="text-xs text-sky-200/80 mb-4 leading-relaxed">
-                  7-Country Deep Dive, macro-fiscal absorption modeling, simulation engines, and 6-Pillars variable codebook.
-                </p>
-              </div>
-              <button onclick="switchLens('systemic')" class="w-full py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition shadow-sm flex items-center justify-center gap-1.5 cursor-pointer">
-                Launch Policy Observatory →
-              </button>
-            </div>
-          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black font-serif tracking-tight text-white leading-tight">
+            Sub-Saharan Africa <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-300">EdTech Decision Observatory</span>
+          </h1>
+          <p class="text-slate-300 mt-3 text-sm sm:text-base leading-relaxed">
+            An open-access analytical engine reconciling top-down macro statistics (UNESCO UIS, World Bank WDI, ITU) with bottom-up grassroots practitioner evidence. Centered on the <strong>UNESCO 6 Pillars of EdTech</strong> to prevent pilot collapse and illuminate the frontline reality gap.
+          </p>
         </div>
 
         <!-- 4 Global Macro Pillars -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-slate-700/60 text-xs">
-          <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <div class="hero-landing-metric rounded-xl p-3 border">
             <span class="text-slate-400 block text-[10px] uppercase font-mono">Macro Monitored</span>
             <span class="text-xl font-bold text-sky-400">48 SSA Nations</span>
           </div>
-          <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <div class="hero-landing-metric rounded-xl p-3 border">
             <span class="text-slate-400 block text-[10px] uppercase font-mono">Frontline Diagnostic Seed</span>
             <span class="text-xl font-bold text-teal-400">N=800 Cohort</span>
           </div>
-          <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <div class="hero-landing-metric rounded-xl p-3 border">
             <span class="text-slate-400 block text-[10px] uppercase font-mono">Catalogued Solutions</span>
             <span class="text-xl font-bold text-amber-400">148 EdTech Tools</span>
           </div>
-          <div class="bg-white/5 rounded-lg p-3 border border-white/10">
+          <div class="hero-landing-metric rounded-xl p-3 border">
             <span class="text-slate-400 block text-[10px] uppercase font-mono">Core Framework</span>
             <span class="text-xl font-bold text-emerald-400">6 Pillars Operationalized</span>
           </div>
@@ -419,83 +479,101 @@
             </p>
           </div>
 
-          <!-- Quick Action Buttons -->
-          <div class="flex flex-wrap items-center gap-2">
-            <button onclick="toggleSurveyIngestionDrawer()" class="px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold shadow-sm transition flex items-center gap-1.5">
-              <span>📥</span> Connect Live Data / Feeds
-            </button>
-            <button onclick="loadDemoLiveSurveyData()" style="background-color: #d97706; color: #ffffff; border: 1px solid #b45309;" class="px-3.5 py-2 hover:opacity-95 rounded-lg text-xs font-bold shadow-sm transition flex items-center gap-1.5 cursor-pointer text-white" title="Simulate field survey batch upload for thesis defense">
-              <span class="text-amber-200 text-sm">⚡</span> <span class="text-white font-bold">Test Live Hot-Swap Demo</span>
-            </button>
-            <button onclick="resetSurveyBaseline()" class="px-3 py-2 bg-stone-200 hover:bg-stone-300 text-stone-700 rounded-lg text-xs font-semibold transition" title="Restore calibrated baseline data">
-              <span>🔄</span> Reset Prototype Data
+          <!-- Compact Collapsible Trigger for Live Simulation & Ingestion (Reduces clutter) -->
+          <div class="flex items-center gap-2">
+            <button onclick="toggleSimulationBox()" id="btn-toggle-simulation-box" class="px-3.5 py-2 rounded-xl border border-stone-300 bg-white hover:bg-stone-50 text-stone-700 text-xs font-semibold shadow-xs transition flex items-center gap-2 cursor-pointer" title="Simulate field survey batches or connect live feeds">
+              <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+              <span>⚡ Simulate Live Batches &amp; Feeds</span>
+              <span id="sim-box-caret" class="text-[10px] text-stone-500 font-mono">▸ Open</span>
             </button>
           </div>
         </div>
 
-        <!-- Live Ingestion Status Banner & Drawer -->
-        <div class="mb-8">
-          <!-- Active Mode Banner -->
-          <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
-            <div class="flex items-center gap-3">
-              <span id="survey-live-status-dot" class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
-              <div>
-                <div class="flex items-center gap-2">
-                  <span id="survey-mode-badge" class="font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2.5 py-1 rounded border border-amber-300">
-                    Prototype Mode: Simulated Survey Cohort (N=800 Seed)
-                  </span>
-                  <span id="survey-n-badge" class="font-mono text-xs text-stone-700 font-bold">
-                    N = 800 Pre-Collection Demonstration Responses
-                  </span>
-                </div>
-                <div id="survey-mode-desc" class="text-xs text-stone-600 mt-1">
-                  <strong class="text-stone-800">Epistemological Clarification:</strong> Official baselines are the verified macro statistics (WDI, UIS, ITU, IMF) in the Policy Lens. The 800 survey records represent expected distributions awaiting live field collection.
-                </div>
-              </div>
-            </div>
-            <div class="text-right shrink-0">
-              <span class="text-[11px] font-mono text-stone-500">Synthetic baseline · optional live response import</span>
-            </div>
-          </div>
-
-          <!-- Collapsible Ingestion Control Drawer (Hidden by default) -->
-          <div id="survey-ingestion-drawer" class="hidden mt-3 p-5 rounded-2xl bg-white border border-stone-300 shadow-md">
-            <div class="flex items-start justify-between gap-4 mb-4 pb-3 border-b border-stone-200">
-              <div>
-                <h4 class="font-bold text-stone-900 text-sm font-serif">Live Data Ingestion Control Panel</h4>
-                <p class="text-xs text-stone-600 mt-1 max-w-2xl">
-                  Upload exported survey CSV/JSON files or paste published Google Sheets CSV links. When uploaded, the observatory dynamically parses the fields, recomputes all percentages, and updates the telemetry in real-time. If no live data is provided, the observatory remains completely functional on the 48-nation calibrated baseline.
-                </p>
-              </div>
-              <button onclick="toggleSurveyIngestionDrawer()" class="text-stone-400 hover:text-stone-700 text-sm font-bold">✕ Close</button>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- Method 1: Local File Drag & Drop -->
-              <div class="p-4 rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/30 flex flex-col items-center justify-center text-center">
-                <div class="text-2xl mb-2">📁</div>
-                <div class="font-semibold text-xs text-stone-800 mb-1">Upload Survey CSV or JSON</div>
-                <p class="text-[11px] text-stone-500 mb-3 max-w-xs">Supports Google Forms CSV exports, raw survey tables, or calibrated JSON schemas.</p>
-                <label class="cursor-pointer px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold shadow-sm transition">
-                  <span>Browse Local File</span>
-                  <input type="file" id="survey-file-input" onchange="handleSurveyFileUpload(event)" accept=".csv,.json" class="hidden">
-                </label>
-              </div>
-
-              <!-- Method 2: Google Sheets CSV URL Sync -->
-              <div class="space-y-2.5">
-                <div class="font-semibold text-xs text-stone-800">Or Connect Live Published Google Sheet CSVs:</div>
-                <div>
-                  <label class="block text-[11px] text-stone-600 font-medium mb-0.5">Stream A (Teacher Responses CSV URL):</label>
-                  <input type="url" id="survey-url-teacher" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:border-emerald-600 focus:outline-none">
-                </div>
-                <div>
-                  <label class="block text-[11px] text-stone-600 font-medium mb-0.5">Stream B (Provider Responses CSV URL):</label>
-                  <input type="url" id="survey-url-provider" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-stone-50 focus:bg-white focus:border-emerald-600 focus:outline-none">
-                </div>
-                <button onclick="fetchLiveSurveyFeeds()" class="w-full mt-2 py-2 bg-stone-800 hover:bg-stone-900 text-white rounded-lg text-xs font-semibold transition">
-                  Fetch Remote Feeds &amp; Recalculate
+        <!-- Collapsible Ingestion & Simulation Sandbox (Hidden/Closed by default to reduce clutter) -->
+        <div id="simulation-control-box" class="hidden mb-8 transition-all duration-300">
+          <div class="p-5 rounded-2xl bg-white border border-stone-300 shadow-sm space-y-4">
+            
+            <!-- Quick Actions Toolbar inside the box -->
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-3 border-b border-stone-200">
+              <div class="flex flex-wrap items-center gap-2.5">
+                <button onclick="loadDemoLiveSurveyData()" class="btn-simulate-batch px-4 py-2 rounded-lg text-xs font-semibold shadow-sm transition flex items-center gap-1.5 cursor-pointer" title="Simulate field survey batch upload for thesis defense">
+                  <span>⚡</span> Simulate Live Batch Influx
                 </button>
+                <button onclick="toggleSurveyIngestionDrawer()" id="btn-toggle-ingestion-drawer" class="btn-connect-feeds px-4 py-2 rounded-lg text-xs font-semibold shadow-sm transition flex items-center gap-1.5 cursor-pointer">
+                  <span id="ingestion-drawer-icon">▸</span> <span id="ingestion-drawer-text">Connect Live Data / Feeds</span>
+                </button>
+                <button onclick="resetSurveyBaseline()" class="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg text-xs font-semibold shadow-xs transition flex items-center gap-1.5 cursor-pointer border border-stone-300" title="Restore calibrated baseline data">
+                  <span>🔄</span> Reset Prototype Data
+                </button>
+              </div>
+              <button onclick="toggleSimulationBox()" class="text-xs text-stone-400 hover:text-stone-700 font-medium cursor-pointer">✕ Hide Sandbox</button>
+            </div>
+
+            <!-- Active Mode Banner -->
+            <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
+              <div class="flex items-center gap-3">
+                <span id="survey-live-status-dot" class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span id="survey-mode-badge" class="font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2.5 py-1 rounded border border-amber-300">
+                      Prototype Mode: Simulated Survey Cohort (N=800 Seed)
+                    </span>
+                    <span id="survey-n-badge" class="font-mono text-xs text-stone-700 font-bold">
+                      N = 800 Pre-Collection Demonstration Responses
+                    </span>
+                  </div>
+                  <div id="survey-mode-desc" class="text-xs text-stone-600 mt-1">
+                    <strong class="text-stone-800">Epistemological Clarification:</strong> Official baselines are the verified macro statistics (WDI, UIS, ITU, IMF) in the Policy Lens. The 800 survey records represent expected distributions awaiting live field collection.
+                  </div>
+                </div>
+              </div>
+              <div class="text-right shrink-0">
+                <span class="text-[11px] font-mono text-stone-500">Synthetic baseline · optional live response import</span>
+              </div>
+            </div>
+
+            <!-- Ingestion Toast / Log -->
+            <div id="survey-ingestion-status" class="hidden mt-2 p-3 rounded-lg text-xs font-mono"></div>
+
+            <!-- Collapsible Ingestion Control Drawer (Hidden by default) -->
+            <div id="survey-ingestion-drawer" class="hidden mt-3 p-5 rounded-xl bg-stone-50 border border-stone-200 shadow-inner">
+              <div class="flex items-start justify-between gap-4 mb-4 pb-3 border-b border-stone-200">
+                <div>
+                  <h4 class="font-bold text-stone-900 text-sm font-serif">Live Data Ingestion Control Panel</h4>
+                  <p class="text-xs text-stone-600 mt-1 max-w-2xl">
+                    Upload exported survey CSV/JSON files or paste published Google Sheets CSV links. When uploaded, the observatory dynamically parses the fields, recomputes all percentages, and updates the telemetry in real-time. If no live data is provided, the observatory remains completely functional on the 48-nation calibrated baseline.
+                  </p>
+                </div>
+                <button onclick="toggleSurveyIngestionDrawer()" class="text-stone-400 hover:text-stone-700 text-sm font-bold cursor-pointer">✕ Close</button>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Method 1: Local File Drag & Drop -->
+                <div class="p-4 rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/30 flex flex-col items-center justify-center text-center">
+                  <div class="text-2xl mb-2">📁</div>
+                  <div class="font-semibold text-xs text-stone-800 mb-1">Upload Survey CSV or JSON</div>
+                  <p class="text-[11px] text-stone-500 mb-3 max-w-xs">Supports Google Forms CSV exports, raw survey tables, or calibrated JSON schemas.</p>
+                  <label class="cursor-pointer px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold shadow-sm transition">
+                    <span>Browse Local File</span>
+                    <input type="file" id="survey-file-input" onchange="handleSurveyFileUpload(event)" accept=".csv,.json" class="hidden">
+                  </label>
+                </div>
+
+                <!-- Method 2: Google Sheets CSV URL Sync -->
+                <div class="space-y-2.5">
+                  <div class="font-semibold text-xs text-stone-800">Or Connect Live Published Google Sheet CSVs:</div>
+                  <div>
+                    <label class="block text-[11px] text-stone-600 font-medium mb-0.5">Stream A (Teacher Responses CSV URL):</label>
+                    <input type="url" id="survey-url-teacher" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-white focus:border-emerald-600 focus:outline-none">
+                  </div>
+                  <div>
+                    <label class="block text-[11px] text-stone-600 font-medium mb-0.5">Stream B (Provider Responses CSV URL):</label>
+                    <input type="url" id="survey-url-provider" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-white focus:border-emerald-600 focus:outline-none">
+                  </div>
+                  <button onclick="fetchLiveSurveyFeeds()" class="w-full mt-2 py-2 bg-stone-800 hover:bg-stone-900 text-white rounded-lg text-xs font-semibold transition cursor-pointer">
+                    Fetch Remote Feeds &amp; Recalculate
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -867,16 +945,15 @@
               <div>
                 <div class="flex items-center gap-2 flex-wrap">
                   <span class="text-base sm:text-lg font-bold text-stone-900">Alliance of Alliances (AoA) Survey Instruments (104 Mapped Items)</span>
-                  <span class="badge-pill bg-blue-100 text-blue-900 text-[11px] font-mono py-0.5 px-2">Click to Expand Codebook</span>
                 </div>
                 <p class="text-xs text-stone-500 font-sans font-normal mt-0.5">
                   Inspect every question operationalizing UNESCO's Six Pillars across Teacher, Provider, and Expert protocols.
                 </p>
               </div>
             </div>
-            <span class="text-xs font-mono font-semibold text-stone-600 px-3 py-1.5 bg-stone-100 group-open:bg-emerald-100 group-open:text-emerald-800 rounded-lg transition shrink-0 ml-2">
-              <span class="group-open:hidden">▼ Show 104 Questions</span>
-              <span class="hidden group-open:inline">▲ Collapse Codebook</span>
+            <span class="text-xs font-mono font-semibold text-stone-700 px-3 py-1.5 bg-stone-100 rounded-lg transition shrink-0 ml-2 border border-stone-200">
+              <span class="details-show">▸ Show 104 Questions</span>
+              <span class="details-hide">▾ Hide 104 Questions</span>
             </span>
           </summary>
 
@@ -936,11 +1013,22 @@
 
       </div>
 
-      <!-- SECTION 2: 48-COUNTRY SUPPLY-DEMAND MISMATCH MATRIX -->
+
+      <!-- Supply-Demand Matrix Toggle Button -->
+      <div class="mt-8 flex items-center justify-between bg-white rounded-xl p-4 border border-slate-200 shadow-2xs">
+        <div>
+          <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold">48-Country EdTech Supply–Demand Observatory</span>
+          <p class="text-xs text-slate-500 mt-1">Cross-referencing catalogued EdTech solutions against classroom electricity and connectivity realities across 48 Sub-Saharan African nations</p>
+        </div>
+        <button onclick="toggleSupplyDemandMatrix()" id="btn-toggle-supply-matrix" class="px-4 py-2 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-bold transition shadow-sm flex items-center gap-1.5 cursor-pointer shrink-0 ml-4">
+          ▸ Show 48-Country Supply–Demand Matrix
+        </button>
+      </div>
+
       <section class="mt-8">
         <!-- SUPPLY-DEMAND MISMATCH MATRIX & TRANSPARENT PROXY OBSERVATORY     -->
         <!-- ================================================================= -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm" id="supply-demand-mismatch-matrix">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hidden" id="supply-demand-mismatch-matrix">
           <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-200 mb-6">
             <div>
               <div class="flex items-center gap-2 mb-1.5">
@@ -1028,7 +1116,7 @@
   </div>
 
 
-  <div id="canvas-systemic" class="hidden">
+  <div id="canvas-systemic" class="hidden bg-blue-50/30 min-h-screen">
 
     <!-- Systemic Navigation Tabs -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
@@ -1046,7 +1134,7 @@
           <button onclick="switchTab('theory-tab')" id="btn-theory-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
             Methodology &amp; Discrepancy Matrix
           </button>
-          <button onclick="switchLens(\'landing\')" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-indigo-700 hover:text-indigo-900 transition hover:bg-indigo-50 border border-indigo-200 flex items-center gap-1.5 shadow-2xs"><span>🌐</span> Central Ground Truth</button>
+          
           <button onclick="switchTab('appendix-tab')" id="btn-appendix-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-slate-600 hover:text-slate-900 transition hover:bg-slate-100">
             Research Appendix &amp; Citations
           </button>
@@ -1473,7 +1561,7 @@
                     </div>
                   </div>
                   <button onclick="toggleMacroFiscalTable()" id="btn-macro-fiscal-toggle" class="px-4 py-2 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-300 transition flex items-center gap-2 cursor-pointer shadow-xs self-start sm:self-auto" aria-expanded="false" aria-controls="macro-fiscal-table-container">
-                    <span id="macro-toggle-icon" class="text-base font-black leading-none">+</span>
+                    <span id="macro-toggle-icon" class="text-xs font-black leading-none">▸</span>
                     <span id="macro-toggle-text">Expand 7-Country Fiscal Table</span>
                   </button>
                 </div>
@@ -1575,8 +1663,10 @@
           </p>
             </div>
             <div class="flex items-center gap-3 shrink-0">
-          <span class="text-xs font-bold text-slate-500 group-open:hidden">Click to Expand ▼</span>
-          <span class="text-xs font-bold text-slate-500 hidden group-open:inline">Click to Collapse ▲</span>
+              <span class="text-xs font-semibold text-slate-600 px-3 py-1.5 bg-slate-100 rounded-lg shrink-0 border border-slate-200">
+                <span class="details-show">▸ Show Archetypes Comparison</span>
+                <span class="details-hide">▾ Hide Archetypes Comparison</span>
+              </span>
             </div>
           </summary>
 
@@ -2996,21 +3086,7 @@
         <!-- SUPPLY-DEMAND MISMATCH MATRIX & TRANSPARENT PROXY OBSERVATORY     -->
         <!-- ================================================================= -->
         
-        <!-- Interactive Central Observatory Bridge -->
-        <div class="bg-gradient-to-r from-indigo-900 to-slate-900 rounded-2xl p-6 sm:p-8 text-white shadow-lg mb-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div class="max-w-2xl">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-semibold border border-indigo-400/30 mb-2">
-              Shared Evidence Hub
-            </span>
-            <h3 class="text-xl sm:text-2xl font-bold font-serif text-white">48-Country Supply-Demand Mismatch Matrix</h3>
-            <p class="text-xs sm:text-sm text-slate-300 mt-1 leading-relaxed">
-              The full multi-stakeholder matrix cross-referencing national learning poverty, rural electrification deficits, and domestic EdTech catalogs has been positioned in the <strong>Central Observatory</strong> for universal access across policymakers, educators, and researchers.
-            </p>
-          </div>
-          <button onclick="switchLens('landing'); document.getElementById('supply-demand-mismatch-matrix')?.scrollIntoView({behavior:'smooth'});" class="px-5 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-sm shadow-md transition flex items-center gap-2 shrink-0 cursor-pointer">
-            <span>🌐</span> Open Central Mismatch Matrix →
-          </button>
-        </div>
+        
 </div>
 
     
@@ -3026,12 +3102,15 @@
 
     <!-- Collapsible 1: Empirical Discrepancy Figures (Moved from Tab 1) -->
     <details class="group bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden mb-6">
-      <summary class="p-5 sm:p-6 cursor-pointer flex items-center justify-between text-slate-900 hover:bg-slate-50 transition list-none font-serif font-bold text-sm sm:text-base">
+      <summary class="p-5 sm:p-6 cursor-pointer flex items-center justify-between text-slate-900 hover:bg-slate-50 transition list-none font-serif font-bold text-sm sm:text-base select-none">
         <span class="flex items-center gap-2">
           <span>Empirical Discrepancy Figures (Analysis B Research Charts)</span>
           <span class="text-xs font-sans font-normal text-slate-500 bg-slate-100 px-2 py-0.5 rounded-full border border-slate-200">Figures 1–3</span>
         </span>
-        <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        <span class="text-xs font-semibold text-slate-600 px-3 py-1.5 bg-slate-100 rounded-lg shrink-0 border border-slate-200">
+          <span class="details-show">▸ Show Figures 1–3</span>
+          <span class="details-hide">▾ Hide Figures 1–3</span>
+        </span>
       </summary>
       
       <div class="p-6 pt-2 border-t border-slate-100">
@@ -3146,7 +3225,7 @@
   <!-- ================================================================= -->
   <!-- LENS 2: CLASSROOM & SCHOOL LEADER CANVAS                          -->
   <!-- ================================================================= -->
-  <div id="canvas-classroom" class="block">
+  <div id="canvas-classroom" class="hidden bg-stone-50 min-h-screen">
 
     <!-- Classroom Sub-Navigation Tabs -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-2">
@@ -3162,7 +3241,7 @@
             <span class="sm:hidden">Resilient Solutions</span>
             <span class="hidden sm:inline">Vetted Resilient Solutions Directory</span>
           </button>
-          <button onclick="switchLens(\'landing\')" class="tab-btn-cls px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-emerald-800 hover:text-emerald-950 transition hover:bg-emerald-50 border border-emerald-300 flex items-center gap-1.5 shadow-2xs"><span>🌐</span> Central Ground Truth</button>
+          
         </div>
         <div class="text-xs text-stone-600 font-medium hidden lg:block pr-3">
           Classroom Ground-Truth Action Layer
@@ -3805,7 +3884,10 @@
               <span class="w-5 h-5 rounded-md bg-stone-200 text-stone-700 inline-flex items-center justify-center text-[11px] font-mono">§</span>
               <span>Citations &amp; Evidence Base</span>
             </span>
-            <span class="text-stone-400 group-open:rotate-180 transition-transform text-xs">▼</span>
+            <span class="text-xs font-semibold text-stone-600 px-2.5 py-1 bg-stone-200/80 rounded-md shrink-0 border border-stone-300">
+              <span class="details-show">▸ Show Citations</span>
+              <span class="details-hide">▾ Hide Citations</span>
+            </span>
           </summary>
           <div class="mt-4 pt-3 border-t border-stone-200 text-xs text-stone-600 space-y-2.5 leading-relaxed font-normal">
             <div><strong class="text-stone-900">[1] Curriculum Accreditation:</strong> Kenya Institute of Curriculum Development (KICD Act No. 4, 2013); Rwanda Basic Education Board (REB) National Inspectorate Framework for Teaching Materials.</div>
@@ -4220,21 +4302,7 @@
       </div>
 
       
-        <!-- Classroom Bridge to Central Community Evidence -->
-        <div class="mt-8 bg-gradient-to-r from-emerald-900 to-stone-900 rounded-2xl p-6 sm:p-8 text-white shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div class="max-w-2xl">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-semibold border border-emerald-400/30 mb-2">
-              Universal Stakeholder Hub
-            </span>
-            <h3 class="text-xl sm:text-2xl font-bold font-serif text-white">Community Evidence &amp; Frontline Ground Truth</h3>
-            <p class="text-xs sm:text-sm text-stone-300 mt-1 leading-relaxed">
-              Frontline survey data from 600 teachers, 120 providers, and 80 experts is now centrally accessible to both schools and policymakers on the <strong>Central Observatory</strong> landing page to illuminate top-down vs. bottom-up discrepancy gaps.
-            </p>
-          </div>
-          <button onclick="switchLens('landing');" class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-stone-950 font-bold text-sm shadow-md transition flex items-center gap-2 shrink-0 cursor-pointer">
-            <span>🌐</span> Inspect Frontline Community Evidence →
-          </button>
-        </div>
+        
 
       </div>
 </main>
@@ -4434,21 +4502,16 @@
 
       // Reset all switcher button styles
       const restingBtn = 'px-3 py-1.5 rounded-lg text-xs font-semibold transition text-slate-600 hover:text-slate-900 flex items-center gap-1.5 cursor-pointer';
-      if (btnLanding) {
-        btnLanding.className = restingBtn;
-        const sp = btnLanding.querySelector('span');
-        if (sp) sp.className = 'w-2 h-2 rounded-full bg-slate-300';
-      }
-      if (btnSys) {
-        btnSys.className = restingBtn;
-        const sp = btnSys.querySelector('span');
-        if (sp) sp.className = 'w-2 h-2 rounded-full bg-slate-300';
-      }
-      if (btnCls) {
-        btnCls.className = restingBtn;
-        const sp = btnCls.querySelector('span');
-        if (sp) sp.className = 'w-2 h-2 rounded-full bg-slate-300';
-      }
+      [btnLanding, btnSys, btnCls].forEach(b => {
+        if (b) {
+          b.className = restingBtn;
+          b.style.backgroundColor = '';
+          b.style.color = '';
+          b.style.borderColor = '';
+          const sp = b.querySelector('span');
+          if (sp) sp.className = 'w-2 h-2 rounded-full bg-slate-300';
+        }
+      });
 
       // Hide all canvases first
       if (canvasLanding) { canvasLanding.classList.add('hidden'); canvasLanding.classList.remove('block'); }
@@ -4457,7 +4520,9 @@
 
       if (lensKey === 'landing') {
         if (btnLanding) {
-          btnLanding.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-slate-900 text-white flex items-center gap-1.5 cursor-pointer';
+          btnLanding.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-slate-900 text-white flex items-center gap-1.5 cursor-pointer lens-btn-active-landing';
+          btnLanding.style.backgroundColor = '#0f172a';
+          btnLanding.style.color = '#ffffff';
           const spL = btnLanding.querySelector('span'); if (spL) spL.className = 'w-2 h-2 rounded-full bg-indigo-400';
         }
         if (canvasLanding) {
@@ -4474,7 +4539,10 @@
         try { renderSurveyDashboard(); } catch(e) { console.error('renderSurveyDashboard error:', e); }
       } else if (lensKey === 'systemic') {
         if (btnSys) {
-          btnSys.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-blue-700 text-white border border-blue-800 flex items-center gap-1.5 cursor-pointer';
+          btnSys.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-blue-700 text-white border border-blue-800 flex items-center gap-1.5 cursor-pointer lens-btn-active-systemic';
+          btnSys.style.backgroundColor = '#1d4ed8';
+          btnSys.style.color = '#ffffff';
+          btnSys.style.borderColor = '#1e40af';
           const spS = btnSys.querySelector('span'); if (spS) spS.className = 'w-2 h-2 rounded-full bg-sky-300';
         }
         if (canvasSys) {
@@ -4491,7 +4559,10 @@
         switchTab(activeSystemicTab || 'pilot-tab', false);
       } else if (lensKey === 'classroom') {
         if (btnCls) {
-          btnCls.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-emerald-800 text-white border border-emerald-900 flex items-center gap-1.5 cursor-pointer';
+          btnCls.className = 'px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm bg-emerald-800 text-white border border-emerald-900 flex items-center gap-1.5 cursor-pointer lens-btn-active-classroom';
+          btnCls.style.backgroundColor = '#065f46';
+          btnCls.style.color = '#ffffff';
+          btnCls.style.borderColor = '#064e3b';
           const spC = btnCls.querySelector('span'); if (spC) spC.className = 'w-2 h-2 rounded-full bg-emerald-300';
         }
         if (canvasCls) {
@@ -14816,10 +14887,23 @@ const SURVEY_CODEBOOK = [
       }
     }
 
+    function toggleSimulationBox() {
+      const box = document.getElementById('simulation-control-box');
+      const caret = document.getElementById('sim-box-caret');
+      if (!box) return;
+      const isHidden = box.classList.toggle('hidden');
+      if (caret) caret.textContent = isHidden ? '▸ Open' : '▾ Close';
+    }
+
     function toggleSurveyIngestionDrawer() {
       const drawer = document.getElementById('survey-ingestion-drawer');
+      const icon = document.getElementById('ingestion-drawer-icon');
+      const text = document.getElementById('ingestion-drawer-text');
       if (drawer) {
         drawer.classList.toggle('hidden');
+        const isHidden = drawer.classList.contains('hidden');
+        if (icon) icon.textContent = isHidden ? '▸' : '▾';
+        if (text) text.textContent = isHidden ? 'Connect Live Data / Feeds' : 'Hide Ingestion Panel';
       }
     }
 
@@ -15275,6 +15359,13 @@ const SURVEY_CODEBOOK = [
       }
 
       applyLiveMode('Live Hot-Swap Batch (Kenya/Uganda Rural Cohort)', 924);
+
+      const simBox = document.getElementById('simulation-control-box');
+      if (simBox && simBox.classList.contains('hidden')) {
+        simBox.classList.remove('hidden');
+        const caret = document.getElementById('sim-box-caret');
+        if (caret) caret.textContent = '▾ Close';
+      }
 
       const statusBox = document.getElementById('survey-ingestion-status');
       if (statusBox) {
