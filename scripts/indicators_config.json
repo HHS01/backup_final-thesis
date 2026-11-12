@@ -186,5 +186,99 @@
     "history_months": 36,
     "min_sample_count": 100,
     "refresh_last": 1
+  },
+  "boundaries": {
+    "release": "gbOpen",
+    "adm": "ADM1",
+    "simplified": true,
+    "name_field": "shapeName",
+    "id_field": "shapeID",
+    "mlab_csv": "mlab/downloads_by_country_subdivision1.csv",
+    "fuzzy_threshold": 0.86,
+    "fuzzy_margin": 0.08,
+    "stop_tokens": [
+      "region",
+      "province",
+      "county",
+      "state",
+      "district",
+      "city",
+      "division",
+      "prefecture",
+      "department",
+      "municipality",
+      "governorate",
+      "capital",
+      "territory",
+      "of",
+      "the"
+    ]
+  },
+  "dashboard": {
+    "sources": {
+      "downloads": {
+        "subdivision_csv": "mlab/downloads_by_country_subdivision1.csv",
+        "country_csv": "mlab/downloads_by_country.csv"
+      },
+      "uploads": {
+        "subdivision_csv": "mlab/uploads_by_country_subdivision1.csv",
+        "country_csv": "mlab/uploads_by_country.csv"
+      }
+    },
+    "metrics": [
+      {
+        "id": "download_p50",
+        "source": "downloads",
+        "label": "Typical download speed",
+        "unit": "Mbps",
+        "kind": "readiness",
+        "decimals": 1,
+        "help": "Middle value of speed tests in the region: half of tests were faster, half slower.",
+        "higher_is_better": true
+      },
+      {
+        "id": "download_p25",
+        "source": "downloads",
+        "label": "Download speed, slower end",
+        "unit": "Mbps",
+        "kind": "readiness",
+        "decimals": 1,
+        "help": "A quarter of tests were slower than this. Shows what the worse-served users get.",
+        "higher_is_better": true
+      },
+      {
+        "id": "latency_p50",
+        "source": "downloads",
+        "label": "Typical response delay",
+        "unit": "ms",
+        "kind": "readiness",
+        "decimals": 0,
+        "help": "Round-trip delay. Lower is better; high delay hurts video calls and live lessons.",
+        "higher_is_better": false
+      },
+      {
+        "id": "upload_p50",
+        "source": "uploads",
+        "label": "Typical upload speed",
+        "unit": "Mbps",
+        "kind": "readiness",
+        "decimals": 1,
+        "help": "Middle value of upload tests.",
+        "higher_is_better": true
+      }
+    ],
+    "extra_layers": []
+  },
+  "changes": {
+    "window": 3,
+    "since": [
+      "3m",
+      "6m",
+      "12m"
+    ],
+    "z_min": 2.5,
+    "rel_min": 0.1,
+    "min_valid": 2,
+    "min_history": 8
   }
 }

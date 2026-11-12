@@ -2,6 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌐</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
   <style>
@@ -168,6 +169,7 @@
     }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/@twemoji/api@latest/dist/twemoji.min.js" crossorigin="anonymous"></script>
+  <script src="./js/vendor/d3.v7.min.js"></script>
 
   <style>
     .flag-img {
@@ -1107,9 +1109,39 @@
         </div>
       </div>
 
-    
+      </section>
 
-    <!-- FIELD SURVEYS & PRACTITIONER DATA PORTAL TAB                      -->
+      <!-- ================================================================= -->
+      <!-- REGIONAL CONNECTIVITY & LONGITUDINAL CHANGE DIGEST (M-LAB IQB)   -->
+      <!-- ================================================================= -->
+      <section class="mt-10 mb-8" id="section-mlab-digest">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+          <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-200 gap-4">
+            <div>
+              <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                <span class="badge-pill bg-blue-100 text-blue-800 text-xs font-bold font-mono">Measurement Lab (NDT)</span>
+                <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold">Admin-1 Subnational Digest</span>
+                <span class="badge-pill bg-emerald-100 text-emerald-800 text-xs font-bold">Longitudinal Change Tracker</span>
+              </div>
+              <h3 class="text-xl font-black text-slate-900 font-serif tracking-tight">Regional Connectivity Digest &amp; Longitudinal Shift Detector</h3>
+              <p class="text-xs text-slate-500 mt-1 max-w-3xl">
+                Tracking monthly empirical broadband speeds (p50 typical, p25 lower-bound, latency, uploads) across subnational administrative regions (geoBoundaries ADM1). The <strong>Highlight changes</strong> selector compares each region with 3, 6, or 12 months earlier and flags statistically significant shifts beyond historical variation.
+              </p>
+            </div>
+            <div class="flex items-center gap-2 self-start md:self-auto">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 7 Focus Nations · Active
+              </span>
+            </div>
+          </div>
+
+          <!-- Container for Admin1 Explorer Component -->
+          <div id="mlab-admin1-explorer-root" class="mt-6">
+            <div class="p-8 text-center text-slate-400 text-xs font-mono animate-pulse">
+              Loading subnational boundaries and M-Lab time-series digest...
+            </div>
+          </div>
+        </div>
       </section>
 
     </main>
@@ -5588,15 +5620,24 @@
     let _voiceIdx = Math.floor(Math.random() * FIELD_VOICES.length);
 
     function renderVoice(idx) {
-      const v = FIELD_VOICES[idx];
+      const v = FIELD_VOICES && FIELD_VOICES[idx];
+      if (!v) return;
       const col = PILLAR_COLORS[v.pillar_color] || PILLAR_COLORS.blue;
-      document.getElementById('voice-pillar-strip').style.backgroundColor = col.strip;
-      document.getElementById('voice-pillar-badge').className = `inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${col.badge}`;
-      document.getElementById('voice-pillar-badge').textContent = v.pillar;
-      document.getElementById('voice-geo-badge').textContent = v.geo.replace(/[\uD83C-\uDBFF\uDC00-\uDFFF]+/g, '').trim();
-      document.getElementById('voice-quote').textContent = `"${v.quote}"`;
-      document.getElementById('voice-citation').textContent = v.citation;
-      document.getElementById('voice-counter').textContent = `${idx + 1} / ${FIELD_VOICES.length}`;
+      const strip = document.getElementById('voice-pillar-strip');
+      if (strip) strip.style.backgroundColor = col.strip;
+      const badge = document.getElementById('voice-pillar-badge');
+      if (badge) {
+        badge.className = `inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${col.badge}`;
+        badge.textContent = v.pillar;
+      }
+      const geo = document.getElementById('voice-geo-badge');
+      if (geo) geo.textContent = v.geo ? v.geo.replace(/[\uD83C-\uDBFF\uDC00-\uDFFF]+/g, '').trim() : '';
+      const quote = document.getElementById('voice-quote');
+      if (quote) quote.textContent = `"${v.quote}"`;
+      const citation = document.getElementById('voice-citation');
+      if (citation) citation.textContent = v.citation;
+      const counter = document.getElementById('voice-counter');
+      if (counter) counter.textContent = `${idx + 1} / ${FIELD_VOICES.length}`;
     }
 
     function nextVoice() { _voiceIdx = (_voiceIdx + 1) % FIELD_VOICES.length; renderVoice(_voiceIdx); }
@@ -8234,6 +8275,9 @@ const MACRO_FISCAL_DATA = {
       updateSpatialDisparityBanner();
       renderActiveLens();
       highlightActiveCountryInTables(iso);
+      if (window.mlabExplorerApi?.setCountry) {
+        window.mlabExplorerApi.setCountry(iso).catch(() => {});
+      }
       syncAppUrlState();
     }
 
@@ -15558,6 +15602,38 @@ const SURVEY_CODEBOOK = [
         try { twemoji.parse(document.body, { folder: 'svg', ext: '.svg' }); } catch(e) {}
       }
     });
+  </script>
+
+  <!-- Mount M-Lab Subnational Regional Explorer & Longitudinal Digest -->
+  <script type="module">
+    import { mountAdmin1Explorer } from "./js/admin1_explorer.js";
+
+    async function initMlabExplorer() {
+      const container = document.getElementById('mlab-admin1-explorer-root');
+      if (!container) return;
+
+      try {
+        const explorerApi = await mountAdmin1Explorer(container, {
+          baseUrl: "./out/dashboard/",
+          country: "KEN",
+          metric: "download_p50",
+          since: "6m",
+          onSelect: (r) => {
+            console.log("Selected Admin-1 Region:", r);
+          }
+        });
+        window.mlabExplorerApi = explorerApi;
+      } catch (err) {
+        console.error("Failed to mount M-Lab Admin-1 Explorer:", err);
+        container.innerHTML = `<div class="p-4 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs">Failed to initialize regional explorer: ${err.message}</div>`;
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMlabExplorer);
+    } else {
+      initMlabExplorer();
+    }
   </script>
 </body>
 </html>

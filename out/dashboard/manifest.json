@@ -1,0 +1,154 @@
+{
+ "built": "2026-11-12T22:31:37+00:00",
+ "countries": [
+  {
+   "iso3": "KEN",
+   "iso2": "KE",
+   "name": "Kenya",
+   "n_shapes": 47,
+   "n_with_data": 37,
+   "first_period": "2025-10",
+   "last_period": "2026-09"
+  },
+  {
+   "iso3": "GHA",
+   "iso2": "GH",
+   "name": "Ghana",
+   "n_shapes": 16,
+   "n_with_data": 8,
+   "first_period": "2025-10",
+   "last_period": "2026-09"
+  },
+  {
+   "iso3": "TZA",
+   "iso2": "TZ",
+   "name": "Tanzania",
+   "n_shapes": 30,
+   "n_with_data": 19,
+   "first_period": "2025-10",
+   "last_period": "2026-09"
+  },
+  {
+   "iso3": "RWA",
+   "iso2": "RW",
+   "name": "Rwanda",
+   "n_shapes": 5,
+   "n_with_data": 5,
+   "first_period": "2025-10",
+   "last_period": "2026-09"
+  },
+  {
+   "iso3": "ZMB",
+   "iso2": "ZM",
+   "name": "Zambia",
+   "n_shapes": 10,
+   "n_with_data": 7,
+   "first_period": "2025-10",
+   "last_period": "2026-09"
+  },
+  {
+   "iso3": "MUS",
+   "iso2": "MU",
+   "name": "Mauritius",
+   "n_shapes": 12,
+   "n_with_data": 10,
+   "first_period": "2025-10",
+   "last_period": "2026-09"
+  },
+  {
+   "iso3": "NGA",
+   "iso2": "NG",
+   "name": "Nigeria",
+   "n_shapes": 37,
+   "n_with_data": 29,
+   "first_period": "2025-10",
+   "last_period": "2026-09"
+  }
+ ],
+ "metrics": [
+  {
+   "id": "download_p50",
+   "label": "Typical download speed",
+   "unit": "Mbps",
+   "kind": "readiness",
+   "decimals": 1,
+   "help": "Middle value of speed tests in the region: half of tests were faster, half slower.",
+   "source": "downloads",
+   "higher_is_better": true,
+   "static": false
+  },
+  {
+   "id": "download_p25",
+   "label": "Download speed, slower end",
+   "unit": "Mbps",
+   "kind": "readiness",
+   "decimals": 1,
+   "help": "A quarter of tests were slower than this. Shows what the worse-served users get.",
+   "source": "downloads",
+   "higher_is_better": true,
+   "static": false
+  },
+  {
+   "id": "latency_p50",
+   "label": "Typical response delay",
+   "unit": "ms",
+   "kind": "readiness",
+   "decimals": 0,
+   "help": "Round-trip delay. Lower is better; high delay hurts video calls and live lessons.",
+   "source": "downloads",
+   "higher_is_better": false,
+   "static": false
+  },
+  {
+   "id": "upload_p50",
+   "label": "Typical upload speed",
+   "unit": "Mbps",
+   "kind": "readiness",
+   "decimals": 1,
+   "help": "Middle value of upload tests.",
+   "source": "uploads",
+   "higher_is_better": true,
+   "static": false
+  }
+ ],
+ "caveats": [
+  "Speeds come from voluntary internet speed tests by the general public, not from schools. They describe regions, not individual schools, and tests are not a random sample of users.",
+  "Hatched regions have few tests (under the minimum sample size), so their figures are unreliable.",
+  "Grey regions have no usable data this period, or could not be matched to a boundary with confidence.",
+  "Region boundaries and names can change over time; a few regions may be matched approximately."
+ ],
+ "attribution": [
+  "Internet speed data: Measurement Lab (M-Lab) NDT tests.",
+  "Boundaries: geoBoundaries (William & Mary geoLab)."
+ ],
+ "boundary_licences": {
+  "KEN": {
+   "licence": "Public Domain",
+   "source": "RCMRD GeoPortal, Africa GeoPortal"
+  },
+  "GHA": {
+   "licence": "Creative Commons Attribution-ShareAlike 2.0",
+   "source": "Open Street Map"
+  },
+  "MUS": {
+   "licence": "Open Data Commons Open Database License 1.0",
+   "source": "geoBoundaries, OpenStreetMap"
+  },
+  "NGA": {
+   "licence": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "source": "GRID3"
+  },
+  "RWA": {
+   "licence": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+   "source": "The Rwanda Geo Portal"
+  },
+  "TZA": {
+   "licence": "Open Data Commons Open Database License 1.0",
+   "source": "OpenStreetMap, Wambacher"
+  },
+  "ZMB": {
+   "licence": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "source": "Zambia Data Hub"
+  }
+ }
+}

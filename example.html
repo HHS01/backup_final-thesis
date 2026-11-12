@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>M-Lab Admin-1 Explorer &amp; Longitudinal Digest</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./js/vendor/d3.v7.min.js"></script>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f8fafc; padding: 2rem; margin: 0; }
+    .card { max-width: 1200px; margin: 0 auto; background: #fff; padding: 2rem; border-radius: 1rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
+    .header { margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #e2e8f0; }
+    .title { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 0 0 0.25rem 0; }
+    .subtitle { font-size: 0.875rem; color: #64748b; margin: 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+      <h2 class="title">M-Lab Subnational Regional Explorer &amp; Longitudinal Shift Detector</h2>
+      <p class="subtitle">Standalone test harness · geoBoundaries ADM1 x M-Lab IQB longitudinal change detection (3m / 6m / 12m)</p>
+    </div>
+    <div id="conn-map"></div>
+  </div>
+
+  <script type="module">
+    import { mountAdmin1Explorer } from "./js/admin1_explorer.js";
+    import { createDashboardState, createExplorerLink } from "./js/dashboard_state.js";
+
+    const state = createDashboardState({ defaults: { country: "KEN", metric: "download_p50", since: "6m" } });
+    const link = createExplorerLink(state);
+    const api = await mountAdmin1Explorer(document.getElementById("conn-map"), {
+      baseUrl: "./out/dashboard/",
+      ...link.options
+    });
+    link.attach(api);
+    window.api = api;
+  </script>
+</body>
+</html>

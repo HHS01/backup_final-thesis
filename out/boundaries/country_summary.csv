@@ -1,0 +1,8 @@
+country_code,iso3,n_shapes,n_mlab_names,n_exact,n_normalised,n_override,n_fuzzy,n_fuzzy_suggested,n_no_shape,n_unmatched,count_mismatch,shapes_without_data
+KE,KEN,47,38,4,33,0,0,0,0,1,True,Mandera; Samburu; Elgeyo-Marakwet; Nandi; Vihiga; Tharaka; Kericho; Tana River; Bomet; Taita Taveta
+GH,GHA,16,8,6,2,0,0,0,0,0,True,Ahafo Region; Bono East Region; Savannah Region; North East Region; Northern Region; Bono Region; Volta Region; Upper West Region
+TZ,TZA,30,22,18,1,0,0,0,0,3,True,Singida; Iringa; Pwani; Ruvuma; Kigoma; Zanzibar South & Central; North Pemba; Zanzibar North; South Pemba; Katavi; Shinyanga
+RW,RWA,5,5,4,1,0,0,0,0,0,False,
+ZM,ZMB,10,7,1,6,0,0,0,0,0,True,Muchinga; North-Western; Northern
+MU,MUS,12,10,1,9,0,0,0,0,0,True,St. Brandon; Agaléga
+NG,NGA,37,30,5,24,0,0,0,0,1,True,Cross River; Abuja Federal Capital Territory; Zamfara; Benue; Katsina; Nasarawa; Bauchi; Taraba

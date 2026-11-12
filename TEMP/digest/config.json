@@ -1,0 +1,271 @@
+{
+  "countries": [
+    "KEN",
+    "GHA",
+    "TZA",
+    "RWA",
+    "ZMB",
+    "MUS",
+    "NGA"
+  ],
+  "start_year": 2010,
+  "indicators": {
+    "teacher_capacity": {
+      "SE.PRM.TCHR": "Teachers in primary education (headcount)",
+      "SE.SEC.TCHR": "Teachers in secondary education (headcount)",
+      "SE.PRM.ENRL.TC.ZS": "Pupil-teacher ratio, primary",
+      "SE.SEC.ENRL.TC.ZS": "Pupil-teacher ratio, secondary",
+      "SE.PRM.TCAQ.ZS": "Trained teachers in primary education (% of total teachers)",
+      "SE.SEC.TCAQ.ZS": "Trained teachers in secondary education (% of total teachers)"
+    },
+    "learning_need": {
+      "SE.LPV.PRIM": "Learning poverty (share of 10-year-olds unable to read a simple text)",
+      "SE.PRM.UNER": "Children out of school, primary (number)"
+    },
+    "infrastructure_readiness": {
+      "EG.ELC.ACCS.ZS": "Access to electricity (% of population)",
+      "EG.ELC.ACCS.RU.ZS": "Access to electricity, rural (% of rural population)",
+      "SP.RUR.TOTL.ZS": "Rural population (% of total)"
+    },
+    "household_connectivity": {
+      "IT.NET.USER.ZS": "Individuals using the Internet (% of population)",
+      "IT.CEL.SETS.P2": "Mobile cellular subscriptions (per 100 people)"
+    },
+    "policy_push": {
+      "SE.XPD.TOTL.GD.ZS": "Government expenditure on education (% of GDP)"
+    }
+  },
+  "uis_indicators": {
+    "teacher_capacity": [
+      {
+        "label": "Teachers, primary",
+        "match": [
+          "teachers in primary education"
+        ],
+        "exclude": [
+          "ratio",
+          "percentage",
+          "female",
+          "trained",
+          "qualified"
+        ]
+      },
+      {
+        "label": "Teachers, secondary",
+        "match": [
+          "teachers in secondary education"
+        ],
+        "exclude": [
+          "ratio",
+          "percentage",
+          "female",
+          "trained",
+          "qualified",
+          "lower",
+          "upper"
+        ]
+      },
+      {
+        "label": "Pupil-teacher ratio, primary",
+        "match": [
+          "pupil-teacher ratio",
+          "primary"
+        ]
+      },
+      {
+        "label": "Pupil-teacher ratio, secondary",
+        "match": [
+          "pupil-teacher ratio",
+          "secondary"
+        ],
+        "exclude": [
+          "lower",
+          "upper"
+        ]
+      },
+      {
+        "label": "Pupil-trained teacher ratio, primary",
+        "match": [
+          "pupil-trained teacher ratio",
+          "primary"
+        ]
+      },
+      {
+        "label": "Trained teachers, primary (%)",
+        "match": [
+          "trained",
+          "primary",
+          "teachers"
+        ],
+        "exclude": [
+          "ratio"
+        ]
+      },
+      {
+        "label": "Qualified teachers, primary (%)",
+        "match": [
+          "qualified",
+          "primary",
+          "teachers"
+        ],
+        "exclude": [
+          "ratio"
+        ]
+      }
+    ],
+    "school_infrastructure": [
+      {
+        "label": "Primary schools with internet for pedagogical purposes (%)",
+        "match": [
+          "internet",
+          "pedagogical",
+          "primary"
+        ]
+      },
+      {
+        "label": "Primary schools with computers for pedagogical purposes (%)",
+        "match": [
+          "computers",
+          "pedagogical",
+          "primary"
+        ]
+      },
+      {
+        "label": "Primary schools with electricity (%)",
+        "match": [
+          "electricity",
+          "primary",
+          "schools"
+        ]
+      }
+    ],
+    "learning_need": [
+      {
+        "label": "Minimum proficiency in reading, end of primary (%)",
+        "match": [
+          "minimum proficiency",
+          "reading",
+          "primary"
+        ]
+      }
+    ]
+  },
+  "history_years": 10,
+  "mlab": {
+    "slices": [
+      "downloads_by_country",
+      "downloads_by_country_subdivision1",
+      "uploads_by_country_subdivision1"
+    ],
+    "metrics": [
+      "download",
+      "upload",
+      "latency",
+      "loss"
+    ],
+    "percentiles": [
+      10,
+      25,
+      50,
+      75,
+      90
+    ],
+    "history_months": 36,
+    "min_sample_count": 100,
+    "refresh_last": 1
+  },
+  "boundaries": {
+    "release": "gbOpen",
+    "adm": "ADM1",
+    "simplified": true,
+    "name_field": "shapeName",
+    "id_field": "shapeID",
+    "mlab_csv": "mlab/downloads_by_country_subdivision1.csv",
+    "fuzzy_threshold": 0.86,
+    "fuzzy_margin": 0.08,
+    "stop_tokens": [
+      "region",
+      "province",
+      "county",
+      "state",
+      "district",
+      "city",
+      "division",
+      "prefecture",
+      "department",
+      "municipality",
+      "governorate",
+      "capital",
+      "territory",
+      "of",
+      "the"
+    ]
+  },
+  "dashboard": {
+    "sources": {
+      "downloads": {
+        "subdivision_csv": "mlab/downloads_by_country_subdivision1.csv",
+        "country_csv": "mlab/downloads_by_country.csv"
+      },
+      "uploads": {
+        "subdivision_csv": "mlab/uploads_by_country_subdivision1.csv",
+        "country_csv": "mlab/uploads_by_country.csv"
+      }
+    },
+    "metrics": [
+      {
+        "id": "download_p50",
+        "source": "downloads",
+        "label": "Typical download speed",
+        "unit": "Mbps",
+        "kind": "readiness",
+        "decimals": 1,
+        "help": "Middle value of speed tests in the region: half of tests were faster, half slower.",
+        "higher_is_better": true
+      },
+      {
+        "id": "download_p25",
+        "source": "downloads",
+        "label": "Download speed, slower end",
+        "unit": "Mbps",
+        "kind": "readiness",
+        "decimals": 1,
+        "help": "A quarter of tests were slower than this. Shows what the worse-served users get.",
+        "higher_is_better": true
+      },
+      {
+        "id": "latency_p50",
+        "source": "downloads",
+        "label": "Typical response delay",
+        "unit": "ms",
+        "kind": "readiness",
+        "decimals": 0,
+        "help": "Round-trip delay. Lower is better; high delay hurts video calls and live lessons.",
+        "higher_is_better": false
+      },
+      {
+        "id": "upload_p50",
+        "source": "uploads",
+        "label": "Typical upload speed",
+        "unit": "Mbps",
+        "kind": "readiness",
+        "decimals": 1,
+        "help": "Middle value of upload tests.",
+        "higher_is_better": true
+      }
+    ],
+    "extra_layers": []
+  },
+  "changes": {
+    "window": 3,
+    "since": [
+      "3m",
+      "6m",
+      "12m"
+    ],
+    "z_min": 2.5,
+    "rel_min": 0.1,
+    "min_valid": 2,
+    "min_history": 8
+  }
+}
