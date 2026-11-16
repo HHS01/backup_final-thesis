@@ -3,7 +3,7 @@
   "siteSubtitle": "Vertical Alignment across Macro · Meso · Micro",
   "bundleUrl": "../../out/dashboard/",
   "schoolDataUrl": "../../out/dashboard/",
-  "dataStatusUrl": "../giga_synthetic/data_status.json",
+  "dataStatusUrl": "./data_status.json",
   "processedDataUrl": "../../data/processed/",
   "defaults": { "level": "overview", "lens": "infrastructure" },
   "levels": [

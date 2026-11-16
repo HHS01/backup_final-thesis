@@ -6,9 +6,9 @@ This is a separate dashboard; the existing root `index.html` is unchanged. The p
 From the repository root:
 ```
 python3 -m http.server 8000
-# open http://localhost:8000/TEMP/index%20v2/
+# open http://localhost:8000/prototypes/index_v2/
 ```
-The dashboard uses `out/dashboard/` for the M-Lab bundle and `TEMP/giga_synthetic/` for generated school placeholders. D3 is loaded from a pinned CDN, so the regional map needs an internet connection.
+The dashboard uses `out/dashboard/` for the M-Lab bundle and school records. D3 is loaded from a pinned CDN, so the regional map needs an internet connection.
 
 ## How it is organised
 - `registry.json`: levels, lenses, panels, gaps, tools, entry points, data paths, and limits text.

@@ -6,7 +6,7 @@ import sys
 
 import numpy as np
 
-MODULE_PATH = Path(__file__).resolve().parents[1] / "make_synthetic_giga.py"
+MODULE_PATH = Path(__file__).resolve().parents[1] / "scripts" / "make_synthetic_giga.py"
 SPEC = importlib.util.spec_from_file_location("make_synthetic_giga", MODULE_PATH)
 GENERATOR = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = GENERATOR
