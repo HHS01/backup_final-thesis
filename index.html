@@ -48,6 +48,25 @@
       font-size: 0.75rem;
       font-weight: 600;
     }
+    .landing-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid #c7d2fe;
+      border-radius: 9999px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 0.7rem;
+      font-weight: 700;
+      line-height: 1.2;
+      transition: background-color 150ms ease, border-color 150ms ease;
+    }
+    .landing-toggle:hover { background: #e0e7ff; border-color: #a5b4fc; }
+    .landing-toggle:focus-visible { outline: 2px solid #4338ca; outline-offset: 2px; }
     .tooltip-box {
       display: none;
     }
@@ -238,7 +257,7 @@
     /* Canvas Backdrops: Distinct subtle tints so white cards pop */
     #canvas-landing { background-color: #f1f5f9; }     /* slate-100 */
     #canvas-systemic { background-color: #e0f2fe; }    /* sky-100 */
-    #canvas-classroom { background-color: #f4f6f0; }   /* warm sage-stone */
+    #canvas-classroom { background-color: #ecfdf5; }   /* emerald-50 */
     
     /* Ensure tab content areas have clean white card backgrounds */
     #canvas-systemic .tab-content { background: transparent; }
@@ -440,8 +459,8 @@
             <span class="text-xl font-bold text-sky-400">48 SSA Nations</span>
           </div>
           <div class="hero-landing-metric rounded-xl p-3 border">
-            <span class="text-slate-400 block text-[10px] uppercase font-mono">Frontline Diagnostic Seed</span>
-            <span class="text-xl font-bold text-teal-400">N=800 Cohort</span>
+            <span class="text-slate-400 block text-[10px] uppercase font-mono">Optional Demo Baseline</span>
+            <span class="text-xl font-bold text-teal-400">N=800 simulated</span>
           </div>
           <div class="hero-landing-metric rounded-xl p-3 border">
             <span class="text-slate-400 block text-[10px] uppercase font-mono">Catalogued Solutions</span>
@@ -458,132 +477,88 @@
     <!-- Main Central Observatory Content Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
 
-      <!-- SECTION 1: FRONTLINE COMMUNITY EVIDENCE & DISCREPANCY MATRIX -->
-      <div id="community-evidence-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-
-        <!-- Header Strip -->
-        <div class="mb-6 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div class="w-full grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_auto] items-center gap-2" aria-label="Research surveys">
+        <div class="flex flex-wrap items-center gap-2">
+          <a href="https://ee.kobotoolbox.org/x/30yery6R" target="_blank" rel="noopener noreferrer" title="Share classroom and teaching experiences." class="px-3 py-1.5 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-bold transition">
+            Teacher survey ↗
+          </a>
+          <a href="https://ee.kobotoolbox.org/x/qDd1CYDX" target="_blank" rel="noopener noreferrer" title="Describe your product, delivery model, and implementation context." class="px-3 py-1.5 rounded-lg border border-amber-300 bg-amber-100 hover:bg-amber-200 text-amber-950 text-xs font-bold transition">
+            EdTech Provider survey ↗
+          </a>
+          <a href="https://ee.kobotoolbox.org/x/gT97Wqr7" target="_blank" rel="noopener noreferrer" title="Contribute policy, research, or implementation expertise." class="px-3 py-1.5 rounded-lg bg-purple-700 hover:bg-purple-800 text-white text-xs font-bold transition">
+            Expert consultation ↗
+          </a>
+          <a href="https://ee.kobotoolbox.org/x/Lc8IsXOH" target="_blank" rel="noopener noreferrer" title="Optional follow-up; may request additional personal information." class="px-3 py-1.5 rounded-lg border border-purple-300 bg-purple-50 hover:bg-purple-100 text-purple-800 text-xs font-semibold transition">
+            Optional expert follow-up ↗
+          </a>
+        </div>
+        <div class="justify-self-end flex flex-wrap items-center justify-end gap-1.5" role="group" aria-label="Survey data mode">
+          <button onclick="setSurveyDataMode('real', true)" id="btn-survey-mode-real" aria-pressed="true" class="px-3 py-1.5 rounded-lg bg-indigo-700 text-white text-xs font-bold transition">
+            Real data
+          </button>
+          <button onclick="setSurveyDataMode('demo', true)" id="btn-survey-mode-demo" aria-pressed="false" class="px-3 py-1.5 rounded-lg border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 text-xs font-semibold transition">
+            Demo preview
+          </button>
+          <button onclick="toggleSurveyIngestionDrawer()" id="btn-toggle-ingestion-drawer" aria-expanded="false" aria-controls="survey-ingestion-drawer" class="landing-toggle">
+            ▸ Survey simulator
+          </button>
+        </div>
+      </div>
+      <div id="survey-data-status" role="status" aria-live="polite" class="mt-2 p-3 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-700">
+        Loading Kobo survey aggregate. Demo data is available only when selected.
+      </div>
+      <div id="survey-ingestion-drawer" class="hidden mt-3 p-4 sm:p-5 rounded-xl bg-white border border-stone-200 shadow-sm">
+        <div class="flex items-start justify-between gap-3 mb-4">
           <div>
-            <div class="flex items-center gap-2 mb-2 flex-wrap">
-              <span class="badge-pill bg-emerald-100 text-emerald-800 text-xs py-1 px-3 font-mono">
-                Tool 4 · UNESCO Six Pillars Ground-Truth
-              </span>
-              <span class="badge-pill bg-amber-100 text-amber-900 text-xs py-1 px-3 font-medium">
-                Triangulation of Grassroots vs Macro Narrative
-              </span>
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900 font-serif">
-              Community Evidence &amp; Survey Instrument Layer
-            </h2>
-            <p class="text-stone-600 mt-2 max-w-4xl text-sm sm:text-base">
-              Empirical field triangulation reconciling top-down macro statistics (UIS, WDI, ITU) with frontline realities.
-              Ingests 3 validated survey streams (<strong class="text-stone-800">600 Teachers</strong>, <strong class="text-stone-800">120 Providers</strong>, and <strong class="text-stone-800">80 System Experts</strong> across 48 Sub-Saharan African nations).
-            </p>
+            <h3 class="font-bold text-stone-900 text-sm">Survey data simulator</h3>
+            <p class="text-xs text-stone-600 mt-1">Load local CSV/JSON exports or fetch published CSV feeds to preview how survey inputs affect the dashboard. Imported data stays in this browser session and is labeled as a simulation.</p>
+            <p class="text-[11px] text-amber-800 mt-1">Do not use a public feed for confidential or identifiable data. Only the canonical sanitized aggregate is shown as Real data.</p>
           </div>
-
-          <!-- Compact Collapsible Trigger for Live Simulation & Ingestion (Reduces clutter) -->
-          <div class="flex items-center gap-2">
-            <button onclick="toggleSimulationBox()" id="btn-toggle-simulation-box" class="px-3.5 py-2 rounded-xl border border-stone-300 bg-white hover:bg-stone-50 text-stone-700 text-xs font-semibold shadow-xs transition flex items-center gap-2 cursor-pointer" title="Simulate field survey batches or connect live feeds">
-              <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-              <span>⚡ Simulate Live Batches &amp; Feeds</span>
-              <span id="sim-box-caret" class="text-[10px] text-stone-500 font-mono">▸ Open</span>
+          <button onclick="toggleSurveyIngestionDrawer()" class="text-stone-500 hover:text-stone-800 text-xs font-semibold shrink-0" aria-label="Close survey simulator">Close</button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="rounded-xl border border-dashed border-emerald-300 bg-emerald-50/40 p-4">
+            <label for="survey-file-input" class="block font-semibold text-xs text-stone-800 mb-1">Import local survey file</label>
+            <p class="text-[11px] text-stone-600 mb-3">CSV records or JSON exports / aggregates. Processing happens locally; nothing is uploaded.</p>
+            <input type="file" id="survey-file-input" onchange="handleSurveyFileUpload(event)" accept=".csv,.json,text/csv,application/json" class="block w-full text-xs text-stone-700 file:mr-3 file:rounded-lg file:border-0 file:bg-emerald-700 file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-emerald-800">
+          </div>
+          <div class="space-y-2.5">
+            <label for="survey-url-teacher" class="block text-[11px] text-stone-700 font-medium">Teacher survey CSV URL</label>
+            <input type="url" id="survey-url-teacher" placeholder="Published CSV URL" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-white focus:border-emerald-600 focus:outline-none">
+            <label for="survey-url-provider" class="block text-[11px] text-stone-700 font-medium">Provider survey CSV URL</label>
+            <input type="url" id="survey-url-provider" placeholder="Published CSV URL" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-white focus:border-emerald-600 focus:outline-none">
+            <button onclick="fetchLiveSurveyFeeds()" class="w-full py-2 bg-stone-800 hover:bg-stone-900 text-white rounded-lg text-xs font-semibold transition">
+              Fetch feeds &amp; simulate
             </button>
           </div>
         </div>
+        <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-stone-200">
+          <button onclick="loadDemoLiveSurveyData()" class="px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold">Simulate live batch</button>
+          <button onclick="resetSurveyBaseline()" class="px-3 py-1.5 rounded-lg border border-stone-300 bg-stone-100 hover:bg-stone-200 text-stone-700 text-xs font-semibold">Reset demo baseline</button>
+        </div>
+      </div>
 
-        <!-- Collapsible Ingestion & Simulation Sandbox (Hidden/Closed by default to reduce clutter) -->
-        <div id="simulation-control-box" class="hidden mb-8 transition-all duration-300">
-          <div class="p-5 rounded-2xl bg-white border border-stone-300 shadow-sm space-y-4">
-            
-            <!-- Quick Actions Toolbar inside the box -->
-            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-3 border-b border-stone-200">
-              <div class="flex flex-wrap items-center gap-2.5">
-                <button onclick="loadDemoLiveSurveyData()" class="btn-simulate-batch px-4 py-2 rounded-lg text-xs font-semibold shadow-sm transition flex items-center gap-1.5 cursor-pointer" title="Simulate field survey batch upload for thesis defense">
-                  <span>⚡</span> Simulate Live Batch Influx
-                </button>
-                <button onclick="toggleSurveyIngestionDrawer()" id="btn-toggle-ingestion-drawer" class="btn-connect-feeds px-4 py-2 rounded-lg text-xs font-semibold shadow-sm transition flex items-center gap-1.5 cursor-pointer">
-                  <span id="ingestion-drawer-icon">▸</span> <span id="ingestion-drawer-text">Connect Live Data / Feeds</span>
-                </button>
-                <button onclick="resetSurveyBaseline()" class="px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-700 rounded-lg text-xs font-semibold shadow-xs transition flex items-center gap-1.5 cursor-pointer border border-stone-300" title="Restore calibrated baseline data">
-                  <span>🔄</span> Reset Prototype Data
-                </button>
-              </div>
-              <button onclick="toggleSimulationBox()" class="text-xs text-stone-400 hover:text-stone-700 font-medium cursor-pointer">✕ Hide Sandbox</button>
-            </div>
+      <!-- SECTION 1: FRONTLINE COMMUNITY EVIDENCE & DISCREPANCY MATRIX -->
+      <div id="community-evidence-section" class="w-full py-4">
 
-            <!-- Active Mode Banner -->
-            <div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/70 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-xs">
-              <div class="flex items-center gap-3">
-                <span id="survey-live-status-dot" class="w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse shrink-0"></span>
-                <div>
-                  <div class="flex items-center gap-2">
-                    <span id="survey-mode-badge" class="font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2.5 py-1 rounded border border-amber-300">
-                      Prototype Mode: Simulated Survey Cohort (N=800 Seed)
-                    </span>
-                    <span id="survey-n-badge" class="font-mono text-xs text-stone-700 font-bold">
-                      N = 800 Pre-Collection Demonstration Responses
-                    </span>
-                  </div>
-                  <div id="survey-mode-desc" class="text-xs text-stone-600 mt-1">
-                    <strong class="text-stone-800">Epistemological Clarification:</strong> Official baselines are the verified macro statistics (WDI, UIS, ITU, IMF) in the Policy Lens. The 800 survey records represent expected distributions awaiting live field collection.
-                  </div>
-                </div>
-              </div>
-              <div class="text-right shrink-0">
-                <span class="text-[11px] font-mono text-stone-500">Synthetic baseline · optional live response import</span>
-              </div>
-            </div>
-
-            <!-- Ingestion Toast / Log -->
-            <div id="survey-ingestion-status" class="hidden mt-2 p-3 rounded-lg text-xs font-mono"></div>
-
-            <!-- Collapsible Ingestion Control Drawer (Hidden by default) -->
-            <div id="survey-ingestion-drawer" class="hidden mt-3 p-5 rounded-xl bg-stone-50 border border-stone-200 shadow-inner">
-              <div class="flex items-start justify-between gap-4 mb-4 pb-3 border-b border-stone-200">
-                <div>
-                  <h4 class="font-bold text-stone-900 text-sm font-serif">Live Data Ingestion Control Panel</h4>
-                  <p class="text-xs text-stone-600 mt-1 max-w-2xl">
-                    Upload exported survey CSV/JSON files or paste published Google Sheets CSV links. When uploaded, the observatory dynamically parses the fields, recomputes all percentages, and updates the telemetry in real-time. If no live data is provided, the observatory remains completely functional on the 48-nation calibrated baseline.
-                  </p>
-                </div>
-                <button onclick="toggleSurveyIngestionDrawer()" class="text-stone-400 hover:text-stone-700 text-sm font-bold cursor-pointer">✕ Close</button>
-              </div>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Method 1: Local File Drag & Drop -->
-                <div class="p-4 rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/30 flex flex-col items-center justify-center text-center">
-                  <div class="text-2xl mb-2">📁</div>
-                  <div class="font-semibold text-xs text-stone-800 mb-1">Upload Survey CSV or JSON</div>
-                  <p class="text-[11px] text-stone-500 mb-3 max-w-xs">Supports Google Forms CSV exports, raw survey tables, or calibrated JSON schemas.</p>
-                  <label class="cursor-pointer px-4 py-2 rounded-lg bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold shadow-sm transition">
-                    <span>Browse Local File</span>
-                    <input type="file" id="survey-file-input" onchange="handleSurveyFileUpload(event)" accept=".csv,.json" class="hidden">
-                  </label>
-                </div>
-
-                <!-- Method 2: Google Sheets CSV URL Sync -->
-                <div class="space-y-2.5">
-                  <div class="font-semibold text-xs text-stone-800">Or Connect Live Published Google Sheet CSVs:</div>
-                  <div>
-                    <label class="block text-[11px] text-stone-600 font-medium mb-0.5">Stream A (Teacher Responses CSV URL):</label>
-                    <input type="url" id="survey-url-teacher" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-white focus:border-emerald-600 focus:outline-none">
-                  </div>
-                  <div>
-                    <label class="block text-[11px] text-stone-600 font-medium mb-0.5">Stream B (Provider Responses CSV URL):</label>
-                    <input type="url" id="survey-url-provider" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv" class="w-full text-xs font-mono p-2 border border-stone-300 rounded-lg bg-white focus:border-emerald-600 focus:outline-none">
-                  </div>
-                  <button onclick="fetchLiveSurveyFeeds()" class="w-full mt-2 py-2 bg-stone-800 hover:bg-stone-900 text-white rounded-lg text-xs font-semibold transition cursor-pointer">
-                    Fetch Remote Feeds &amp; Recalculate
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Ingestion Toast / Log -->
-            <div id="survey-ingestion-status" class="hidden mt-4 p-3 rounded-lg text-xs font-mono"></div>
+        <div class="mb-4 flex items-center justify-between gap-3 bg-white rounded-xl p-4 border border-slate-200 shadow-2xs">
+          <div class="min-w-0">
+            <h2 id="community-evidence-heading" class="text-xl sm:text-2xl font-extrabold text-stone-900 font-serif">
+              Community Evidence &amp; Survey Instrument Layer
+            </h2>
+            <p class="text-xs text-stone-600 mt-1">Compare community survey evidence with macro indicators and explore where they diverge.</p>
+          </div>
+          <div class="relative group shrink-0 justify-self-end">
+            <button onclick="toggleCommunityEvidence()" id="btn-toggle-community-evidence" aria-controls="community-evidence-content" aria-describedby="community-evidence-tooltip" aria-expanded="false" class="landing-toggle">
+              ▸ Show discrepancy
+            </button>
+            <span id="community-evidence-tooltip" role="tooltip" class="pointer-events-none invisible absolute right-0 top-full z-50 mt-2 w-72 rounded-lg bg-slate-900 px-3 py-2 text-left text-[11px] leading-relaxed text-white opacity-0 shadow-lg transition group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+              Expands the community-evidence dashboard to compare frontline survey signals with macro indicators and inspect where they diverge.
+            </span>
           </div>
         </div>
 
+        <div id="community-evidence-content" class="hidden">
         <!-- MASTER DISCREPANCY MATRIX: TOP-DOWN MACRO VS FRONT-LINE REALITY -->
         <div class="mb-10">
           <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
@@ -600,7 +575,7 @@
                 Top-Down Macro Claims vs. Frontline Classroom Reality
               </h3>
               <p class="text-xs text-stone-600 mt-0.5 max-w-3xl">
-                Contrasting official institutional statistics against self-reported frontline ground truth. Notice the stark discrepancy explaining why 85% of tech pilots collapse.
+                Compare official macro indicators with survey responses only when a Kobo aggregate is available.
               </p>
             </div>
             <div class="text-xs text-stone-500 font-mono bg-stone-100 px-3 py-1.5 rounded-lg border border-stone-200">
@@ -616,7 +591,7 @@
                 <div class="flex items-center justify-between mb-3">
                   <span class="text-xs font-bold uppercase tracking-wider text-stone-500">1. Electricity Gap</span>
                   <span class="badge-pill bg-amber-100 text-amber-900 text-[11px] font-bold border border-amber-300">
-                    ⚡ 3x REALITY GAP
+                    <span id="badge-power-gap">Teacher survey signal</span>
                   </span>
                 </div>
                 
@@ -630,17 +605,17 @@
                 <!-- Ground Truth Box -->
                 <div class="p-3 rounded-xl bg-amber-50 border border-amber-300">
                   <div class="text-[10px] text-amber-800 font-bold uppercase tracking-wider flex items-center justify-between">
-                    <span>Frontline Ground-Truth</span>
-                    <span class="font-mono text-amber-700">Δ +54.1%</span>
+                    <span>Teacher Survey</span>
+                    <span id="source-power-gap" class="font-mono text-amber-700">Verified aggregate only</span>
                   </div>
-                  <div id="metric-power-gap" class="text-xl font-black text-amber-950 font-mono mt-0.5">82.5%</div>
-                  <div class="text-[11px] text-amber-900 leading-tight">Severe outages or total blackout in field schools (37.3% zero grid)</div>
+                  <div id="metric-power-gap" class="text-xl font-black text-amber-950 font-mono mt-0.5">—</div>
+                  <div id="desc-power-gap" class="text-[11px] text-amber-900 leading-tight">Awaiting a Kobo survey aggregate.</div>
                 </div>
               </div>
               
               <!-- Bottom Line Takeaway -->
               <div class="mt-3.5 pt-2.5 border-t border-stone-100 bg-amber-50/50 -mx-5 -mb-5 p-3 rounded-b-2xl text-[11px] text-stone-700">
-                <div id="takeaway-power-gap"><strong class="text-amber-900 block font-semibold mb-0.5">💡 Key Takeaway:</strong> Grid power fails in 8 of 10 rural schools. Any tablet needing daily mains charging turns into a brick within 3 weeks.</div>
+                <div id="takeaway-power-gap">No Kobo teacher responses are available yet.</div>
               </div>
             </div>
 
@@ -650,7 +625,7 @@
                 <div class="flex items-center justify-between mb-3">
                   <span class="text-xs font-bold uppercase tracking-wider text-stone-500">2. The Informal Data Tax</span>
                   <span class="badge-pill bg-rose-100 text-rose-900 text-[11px] font-bold border border-rose-300">
-                    💸 4–8% SALARY DRAIN
+                    <span id="badge-data-tax">Not directly measured</span>
                   </span>
                 </div>
                 
@@ -664,17 +639,17 @@
                 <!-- Ground Truth Box -->
                 <div class="p-3 rounded-xl bg-rose-50 border border-rose-300">
                   <div class="text-[10px] text-rose-800 font-bold uppercase tracking-wider flex items-center justify-between">
-                    <span>Frontline Ground-Truth</span>
-                    <span class="font-mono text-rose-700">Unfunded Burden</span>
+                    <span>Teacher Survey</span>
+                    <span id="source-data-tax" class="font-mono text-rose-700">Not measured</span>
                   </div>
-                  <div id="metric-data-tax" class="text-xl font-black text-rose-950 font-mono mt-0.5">39.3%</div>
-                  <div class="text-[11px] text-rose-900 leading-tight">Teachers forced to buy personal mobile bundles for ministry apps</div>
+                  <div id="metric-data-tax" class="text-xl font-black text-rose-950 font-mono mt-0.5">Not measured</div>
+                  <div id="desc-data-tax" class="text-[11px] text-rose-900 leading-tight">The current teacher form does not measure personal data spending.</div>
                 </div>
               </div>
               
               <!-- Bottom Line Takeaway -->
               <div class="mt-3.5 pt-2.5 border-t border-stone-100 bg-rose-50/50 -mx-5 -mb-5 p-3 rounded-b-2xl text-[11px] text-stone-700">
-                <div id="takeaway-data-tax"><strong class="text-rose-900 block font-semibold mb-0.5">💡 Key Takeaway:</strong> Ministries mandate digital reporting without airtime budgets, transferring the connectivity bill onto underpaid frontline teachers.</div>
+                <div id="takeaway-data-tax">No estimate is shown because this instrument does not ask about personal data spending.</div>
               </div>
             </div>
 
@@ -684,7 +659,7 @@
                 <div class="flex items-center justify-between mb-3">
                   <span class="text-xs font-bold uppercase tracking-wider text-stone-500">3. Tech Architecture</span>
                   <span class="badge-pill bg-blue-100 text-blue-900 text-[11px] font-bold border border-blue-300">
-                    ☁️ 71% CLOUD MISMATCH
+                    <span id="badge-offline-share">Provider survey signal</span>
                   </span>
                 </div>
                 
@@ -698,17 +673,17 @@
                 <!-- Ground Truth Box -->
                 <div class="p-3 rounded-xl bg-blue-50 border border-blue-300">
                   <div class="text-[10px] text-blue-800 font-bold uppercase tracking-wider flex items-center justify-between">
-                    <span>Frontline Ground-Truth</span>
-                    <span class="font-mono text-blue-700">70.8% Phone</span>
+                    <span>Provider Survey</span>
+                    <span id="source-offline-share" class="font-mono text-blue-700">Verified aggregate only</span>
                   </div>
-                  <div id="metric-offline-share" class="text-xl font-black text-blue-950 font-mono mt-0.5">31.7% Offline</div>
-                  <div class="text-[11px] text-blue-900 leading-tight">Shared entry-level phones; only 5.5% have independent RCT proof</div>
+                  <div id="metric-offline-share" class="text-xl font-black text-blue-950 font-mono mt-0.5">—</div>
+                  <div id="desc-offline-share" class="text-[11px] text-blue-900 leading-tight">Awaiting Kobo provider responses.</div>
                 </div>
               </div>
               
               <!-- Bottom Line Takeaway -->
               <div class="mt-3.5 pt-2.5 border-t border-stone-100 bg-blue-50/50 -mx-5 -mb-5 p-3 rounded-b-2xl text-[11px] text-stone-700">
-                <div id="takeaway-offline-fit"><strong class="text-blue-900 block font-semibold mb-0.5">💡 Key Takeaway:</strong> Vendors push cloud subscriptions that crash offline. Only local, zero-bandwidth Digital Public Goods (Kolibri/Kiwix) function.</div>
+                <div id="takeaway-offline-fit">No Kobo provider responses are available yet.</div>
               </div>
             </div>
 
@@ -718,7 +693,7 @@
                 <div class="flex items-center justify-between mb-3">
                   <span class="text-xs font-bold uppercase tracking-wider text-stone-500">4. Post-Donor Mortality</span>
                   <span class="badge-pill bg-purple-100 text-purple-900 text-[11px] font-bold border border-purple-300">
-                    🪦 85% PILOT GRAVEYARD
+                    <span id="badge-donor-cliff">Expert responses · counts only</span>
                   </span>
                 </div>
                 
@@ -733,16 +708,16 @@
                 <div class="p-3 rounded-xl bg-purple-50 border border-purple-300">
                   <div class="text-[10px] text-purple-800 font-bold uppercase tracking-wider flex items-center justify-between">
                     <span>Expert Consensus</span>
-                    <span class="font-mono text-purple-700">85% Collapse</span>
+                    <span id="source-donor-cliff" class="font-mono text-purple-700">Counts only</span>
                   </div>
-                  <div id="metric-donor-cliff" class="text-xl font-black text-purple-950 font-mono mt-0.5">85.0%</div>
-                  <div class="text-[11px] text-purple-900 leading-tight">Programs collapse (62.5%) or tokenized (22.5%) once grant money ends</div>
+                  <div id="metric-donor-cliff" class="text-xl font-black text-purple-950 font-mono mt-0.5">—</div>
+                  <div id="desc-donor-cliff" class="text-[11px] text-purple-900 leading-tight">Awaiting expert responses; small groups are suppressed.</div>
                 </div>
               </div>
               
               <!-- Bottom Line Takeaway -->
               <div class="mt-3.5 pt-2.5 border-t border-stone-100 bg-purple-50/50 -mx-5 -mb-5 p-3 rounded-b-2xl text-[11px] text-stone-700">
-                <div id="takeaway-donor-cliff"><strong class="text-purple-900 block font-semibold mb-0.5">💡 Key Takeaway:</strong> Contracts fund 100% upfront hardware and 0% for maintenance. When screens break or batteries die, devices are abandoned.</div>
+                <div id="takeaway-donor-cliff">No Kobo expert responses are available yet.</div>
               </div>
             </div>
 
@@ -754,13 +729,13 @@
           <!-- Vantage Stream Tabs -->
           <div class="bg-stone-100/80 p-2 border-b border-stone-200 flex flex-wrap items-center gap-2">
             <button onclick="switchSurveyStream('teachers')" id="btn-stream-teachers" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-emerald-700 text-white shadow-xs">
-              👨‍Stream A: Frontline Teachers (<span id="tab-n-teachers">N=600</span>)
+              👨‍Stream A: Frontline Teachers (<span id="tab-n-teachers">N=—</span>)
             </button>
             <button onclick="switchSurveyStream('providers')" id="btn-stream-providers" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-stone-700 hover:text-stone-900 transition hover:bg-stone-200/60">
-              Stream B: EdTech Providers (<span id="tab-n-providers">N=120</span>)
+              Stream B: EdTech Providers (<span id="tab-n-providers">N=—</span>)
             </button>
             <button onclick="switchSurveyStream('experts')" id="btn-stream-experts" class="px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold text-stone-700 hover:text-stone-900 transition hover:bg-stone-200/60">
-              Stream C: System Experts &amp; MoE (<span id="tab-n-experts">N=80</span>)
+              Stream C: System Experts &amp; MoE (<span id="tab-n-experts">N=—</span>)
             </button>
           </div>
 
@@ -771,9 +746,9 @@
               <div class="p-4 rounded-xl bg-emerald-50 border-2 border-emerald-300 text-xs text-emerald-950 flex items-start gap-3 shadow-xs">
                 <span class="text-2xl shrink-0">👩‍🏫</span>
                 <div>
-                  <div class="font-extrabold text-emerald-900 text-sm mb-0.5">Frontline Teacher Consensus (Stream A · N=600):</div>
-                  <p class="leading-relaxed text-emerald-800 font-medium">
-                    <strong class="text-emerald-950">0.0% of rural teachers report always-reliable electricity.</strong> 39.3% pay for mobile data out of their personal salaries, and 68% report that imported tablets sit locked in cupboards because there are no paper rotation guides or repair budgets. Off-grid schools need zero-airtime, paper-supported offline tools.
+                  <div id="stream-teacher-title" class="font-extrabold text-emerald-900 text-sm mb-0.5">Teacher survey summary</div>
+                  <p id="stream-teacher-takeaway" class="leading-relaxed text-emerald-800 font-medium">
+                    No Kobo teacher aggregate is available. Survey-derived findings will not be replaced with demo data.
                   </p>
                 </div>
               </div>
@@ -784,7 +759,7 @@
                   <p class="text-xs text-stone-600">Self-reported pedagogical feasibility, infrastructure barriers, and technology workload across 48 SSA nations.</p>
                 </div>
                 <span class="text-xs font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full font-bold">
-                  43.8% Rural · 30.7% Town · 25.5% City
+                  Live location breakdown appears when data is available
                 </span>
               </div>
 
@@ -796,7 +771,7 @@
                   <div id="chart-elec-by-loc" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">Notice: 0.0% of rural teachers report always-reliable power.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Small groups are suppressed in public outputs.</div>
                 </div>
 
                 <!-- Card 2: Internet Modality -->
@@ -805,7 +780,7 @@
                   <div id="chart-internet-dist" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">39.3% fund educational data from personal pocket.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Personal data spending is not measured by this instrument.</div>
                 </div>
 
                 <!-- Card 3: Workload Impact -->
@@ -814,16 +789,17 @@
                   <div id="chart-workload-dist" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">34.0% report digital tools actually add to their daily workload.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Only mapped, closed-choice responses are included.</div>
                 </div>
               </div>
 
               <!-- Qualitative Frontline Voices Ticker -->
               <div class="mt-6 p-4 rounded-xl bg-amber-50/60 border border-amber-200">
                 <div class="flex items-center gap-2 mb-3">
-                  <span class="text-amber-800 font-bold text-xs uppercase tracking-wider">Frontline Voices from the Field (Calibrated Ground-Truth):</span>
+                  <span class="text-amber-800 font-bold text-xs uppercase tracking-wider">Reviewed quotations (not included in public output)</span>
                 </div>
                 <div id="teacher-quotes-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-stone-700">
+                  Free-text responses are excluded pending human review and quote-consent checks.
                   <!-- Populated by JS -->
                 </div>
               </div>
@@ -835,9 +811,9 @@
               <div class="p-4 rounded-xl bg-amber-50 border-2 border-amber-300 text-xs text-amber-950 flex items-start gap-3 shadow-xs">
                 <span class="text-2xl shrink-0">🚀</span>
                 <div>
-                  <div class="font-extrabold text-amber-900 text-sm mb-0.5">Local African EdTech Founder Verdict (Stream B · N=120):</div>
-                  <p class="leading-relaxed text-amber-800 font-medium">
-                    <strong class="text-amber-950">71.4% build for smartphones and continuous cloud connectivity</strong> to win donor pitch competitions, even though only 31.7% of products can actually function offline where learners live. Only 5.5% have independent RCT evaluation evidence, and 61.5% pass connectivity costs onto parents and schools.
+                  <div id="stream-provider-title" class="font-extrabold text-amber-900 text-sm mb-0.5">Provider survey summary</div>
+                  <p id="stream-provider-takeaway" class="leading-relaxed text-amber-800 font-medium">
+                    No Kobo provider aggregate is available. Survey-derived findings will not be replaced with demo data.
                   </p>
                 </div>
               </div>
@@ -845,10 +821,10 @@
               <div class="flex items-center justify-between border-b border-stone-100 pb-3">
                 <div>
                   <h4 class="font-bold text-stone-900 text-base font-serif">EdTech Provider Capabilities, Architecture &amp; Business Models</h4>
-                  <p class="text-xs text-stone-600">Enterprise deployment architectures, funding pipelines, and offline compatibility across 120 SSA organizations.</p>
+                  <p class="text-xs text-stone-600">Closed-choice summaries of provider deployment and connectivity responses.</p>
                 </div>
                 <span class="text-xs font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full font-bold">
-                  68.3% Locally Founded &amp; Owned in SSA
+                  Verified survey aggregate only
                 </span>
               </div>
 
@@ -860,7 +836,7 @@
                   <div id="chart-provider-offline" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">23.3% of solutions fail completely without continuous live internet.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Small groups are suppressed in public outputs.</div>
                 </div>
 
                 <!-- Card 2: Data Payment Burden -->
@@ -869,7 +845,7 @@
                   <div id="chart-provider-data-pay" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">61.5% pass the data cost directly to learners/teachers.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Percentages use valid responses to each item.</div>
                 </div>
 
                 <!-- Card 3: Evidence Threshold -->
@@ -878,7 +854,7 @@
                   <div id="chart-provider-evidence" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">Only 5.5% possess independent RCT evaluation evidence.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Evidence selections can be multiple-response.</div>
                 </div>
               </div>
             </div>
@@ -889,9 +865,9 @@
               <div class="p-4 rounded-xl bg-purple-50 border-2 border-purple-300 text-xs text-purple-950 flex items-start gap-3 shadow-xs">
                 <span class="text-2xl shrink-0">🏛️</span>
                 <div>
-                  <div class="font-extrabold text-purple-900 text-sm mb-0.5">System Governance &amp; Ministry Consensus (Stream C · N=80):</div>
-                  <p class="leading-relaxed text-purple-800 font-medium">
-                    <strong class="text-purple-950">85.0% agree donor-funded pilots collapse within 18 months</strong> once external capital subsidies end. Only 2.5% of procurement contracts are initiated by frontline headteachers or school committees. Contracts fund 100% upfront hardware and 0% for maintenance.
+                  <div id="stream-expert-title" class="font-extrabold text-purple-900 text-sm mb-0.5">Expert consultation summary</div>
+                  <p id="stream-expert-takeaway" class="leading-relaxed text-purple-800 font-medium">
+                    No Kobo expert aggregate is available. Expert charts show counts, not percentages.
                   </p>
                 </div>
               </div>
@@ -899,10 +875,10 @@
               <div class="flex items-center justify-between border-b border-stone-100 pb-3">
                 <div>
                   <h4 class="font-bold text-stone-900 text-base font-serif">System Governance, Decision Drivers &amp; Policy Fragility</h4>
-                  <p class="text-xs text-stone-600">Expert and Ministry assessments regarding procurement power, donor reliance, and national scaling traps.</p>
+                  <p class="text-xs text-stone-600">Closed-choice expert responses; small groups are suppressed.</p>
                 </div>
                 <span class="text-xs font-mono text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-full font-bold">
-                  80 System Advisers &amp; MoE Specialists
+                  Kobo survey aggregate only
                 </span>
               </div>
 
@@ -914,7 +890,7 @@
                   <div id="chart-expert-drivers" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">Only 2.5% driven by frontline schools or headteachers.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Counts shown; categories below the suppression threshold are withheld.</div>
                 </div>
 
                 <!-- Card 2: Post-Donor Exit Fate -->
@@ -923,7 +899,7 @@
                   <div id="chart-expert-donor-exit" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">62.5% stop completely or collapse; 22.5% shrink to token presence.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Counts shown; categories below the suppression threshold are withheld.</div>
                 </div>
 
                 <!-- Card 3: Top System Constraints -->
@@ -932,7 +908,7 @@
                   <div id="chart-expert-constraints" class="space-y-2 text-xs">
                     <!-- Populated by JS -->
                   </div>
-                  <div class="mt-3 text-[11px] text-stone-500 italic">Infrastructure and recurrent operational funds dominate.</div>
+                  <div class="mt-3 text-[11px] text-stone-500 italic">Counts shown; categories below the suppression threshold are withheld.</div>
                 </div>
               </div>
             </div>
@@ -960,24 +936,6 @@
           </summary>
 
           <div class="p-6 pt-4 border-t border-stone-200 bg-stone-50/30">
-            <!-- External Forms Links -->
-            <div class="flex items-center justify-between gap-4 mb-4 flex-wrap">
-              <div class="text-xs text-stone-600">
-                Official survey protocols mirrored on HumanitarianResponse KoBoToolbox:
-              </div>
-              <div class="flex items-center gap-2 flex-wrap text-xs">
-                <a href="https://kobo.humanitarianresponse.info/x/SSA_TeacherDiagnostic" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg border border-indigo-300 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-medium transition">
-                  Teacher Kobo Form ↗
-                </a>
-                <a href="https://kobo.humanitarianresponse.info/x/SSA_EdTech_Provider" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-800 font-medium transition">
-                  Provider Kobo Form ↗
-                </a>
-                <a href="https://kobo.humanitarianresponse.info/x/SSA_ExpertDelphi" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg border border-purple-300 bg-purple-50 hover:bg-purple-100 text-purple-700 font-medium transition">
-                  Expert Kobo Form ↗
-                </a>
-              </div>
-            </div>
-
             <!-- Codebook Filters -->
             <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
               <div class="flex flex-wrap items-center gap-2 flex-1 min-w-[280px]">
@@ -1013,35 +971,54 @@
           </div>
         </details>
 
+        </div>
       </div>
 
+      <!-- REGIONAL CONNECTIVITY & LONGITUDINAL CHANGE DIGEST (M-LAB IQB) -->
+      <section id="section-mlab-digest">
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+          <div class="grid grid-cols-[minmax(0,1fr)_auto] items-center pb-6 border-b border-slate-200 gap-4">
+            <div class="min-w-0">
+              <div class="flex flex-wrap items-center gap-2 mb-1.5">
+                <span class="badge-pill bg-blue-100 text-blue-800 text-xs font-bold font-mono">Measurement Lab (NDT)</span>
+                <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold">Admin-1 Subnational Digest</span>
+                <span class="badge-pill bg-emerald-100 text-emerald-800 text-xs font-bold">Longitudinal Change Tracker</span>
+                <span class="badge-pill bg-slate-100 text-slate-700 text-xs font-bold">7 focus nations</span>
+              </div>
+              <h3 class="text-xl font-black text-slate-900 font-serif tracking-tight">Regional Connectivity Digest &amp; Longitudinal Shift Detector</h3>
+              <p class="text-xs text-slate-500 mt-1 max-w-3xl">
+                M-Lab NDT public speed tests aggregated by geoBoundaries Admin-1 region across seven countries (2025-10 to 2026-09). The choropleth shows the selected M-Lab metric for the selected month; it is not school-level data. Optional school dots are synthetic placeholders and remain separate. <strong>Highlight changes</strong> compares regions with 3, 6, or 12 months earlier.
+              </p>
+            </div>
+            <div class="flex flex-col items-end gap-2 shrink-0">
+              <button onclick="toggleMlabDigest()" id="btn-toggle-mlab-digest" aria-controls="mlab-admin1-explorer-root" aria-expanded="false" class="landing-toggle">
+                ▸ Show changes
+              </button>
+          </div>
 
-      <!-- Supply-Demand Matrix Toggle Button -->
-      <div class="mt-8 flex items-center justify-between bg-white rounded-xl p-4 border border-slate-200 shadow-2xs">
-        <div>
-          <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold">48-Country EdTech Supply–Demand Observatory</span>
-          <p class="text-xs text-slate-500 mt-1">Cross-referencing catalogued EdTech solutions against classroom electricity and connectivity realities across 48 Sub-Saharan African nations</p>
+          <div id="mlab-admin1-explorer-root" class="hidden mt-6">
+            <div class="p-8 text-center text-slate-400 text-xs font-mono animate-pulse">
+              Loading subnational boundaries and M-Lab time-series digest...
+            </div>
+          </div>
         </div>
-        <button onclick="toggleSupplyDemandMatrix()" id="btn-toggle-supply-matrix" class="px-4 py-2 rounded-lg bg-indigo-700 hover:bg-indigo-800 text-white text-xs font-bold transition shadow-sm flex items-center gap-1.5 cursor-pointer shrink-0 ml-4">
-          ▸ Show 48-Country Supply–Demand Matrix
+      </section>
+
+      <div class="mt-8 flex items-center justify-between gap-3 bg-white rounded-xl p-4 border border-slate-200 shadow-2xs">
+        <div class="min-w-0">
+          <h2 id="supply-demand-mismatch-heading" class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif">Supply–Demand Mismatch Matrix</h2>
+          <p class="text-xs sm:text-sm text-slate-600 mt-1">48 Sub-Saharan African demand profiles matched to catalogued EdTech supply. Teacher-use figures appear only for a publishable Kobo sample or in explicitly selected Demo mode; expert responses are not used.</p>
+        </div>
+        <button onclick="toggleSupplyDemandMatrix()" id="btn-toggle-supply-matrix" aria-controls="supply-demand-mismatch-matrix" aria-expanded="false" class="landing-toggle">
+          ▸ Show Matrix
         </button>
       </div>
 
       <section class="mt-8">
         <!-- SUPPLY-DEMAND MISMATCH MATRIX & TRANSPARENT PROXY OBSERVATORY     -->
         <!-- ================================================================= -->
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hidden" id="supply-demand-mismatch-matrix">
-          <div class="flex flex-wrap items-center justify-between gap-4 pb-5 border-b border-slate-200 mb-6">
-            <div>
-              <div class="flex items-center gap-2 mb-1.5">
-                <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold">Empirical Macro Layer</span>
-                <span class="badge-pill bg-amber-100 text-amber-800 text-xs font-mono">Synthetic Teacher Signal · Curated Supply Catalog</span>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 font-serif">Supply-Demand Mismatch Matrix (48 SSA Demand vs. 148 Supply)</h3>
-              <p class="text-xs sm:text-sm text-slate-600 mt-1 max-w-4xl">
-                Contrasting macro learning and infrastructure needs with the curated solution catalog, alongside a synthetic teacher digital-use signal. Survey signal is illustrative, not observed fieldwork.
-              </p>
-            </div>
+        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm hidden" id="supply-demand-mismatch-matrix" aria-labelledby="supply-demand-mismatch-heading">
+          <div class="flex flex-wrap items-center justify-end gap-2 pb-4 border-b border-slate-200 mb-5">
             <div class="flex items-center gap-2 text-xs">
               <span class="font-bold text-slate-500">Player Scope:</span>
               <button onclick="setMatrixPlayerScope('core')" id="btn-scope-core" class="px-3 py-1.5 rounded-lg font-bold bg-slate-900 text-white shadow-sm transition">
@@ -1107,41 +1084,7 @@
           </div>
 
         </div>
-      </div>
 
-      </section>
-
-      <!-- ================================================================= -->
-      <!-- REGIONAL CONNECTIVITY & LONGITUDINAL CHANGE DIGEST (M-LAB IQB)   -->
-      <!-- ================================================================= -->
-      <section class="mt-10 mb-8" id="section-mlab-digest">
-        <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-sm">
-          <div class="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-slate-200 gap-4">
-            <div>
-              <div class="flex flex-wrap items-center gap-2 mb-1.5">
-                <span class="badge-pill bg-blue-100 text-blue-800 text-xs font-bold font-mono">Measurement Lab (NDT)</span>
-                <span class="badge-pill bg-indigo-100 text-indigo-800 text-xs font-bold">Admin-1 Subnational Digest</span>
-                <span class="badge-pill bg-emerald-100 text-emerald-800 text-xs font-bold">Longitudinal Change Tracker</span>
-              </div>
-              <h3 class="text-xl font-black text-slate-900 font-serif tracking-tight">Regional Connectivity Digest &amp; Longitudinal Shift Detector</h3>
-              <p class="text-xs text-slate-500 mt-1 max-w-3xl">
-                Tracking monthly empirical broadband speeds (p50 typical, p25 lower-bound, latency, uploads) across subnational administrative regions (geoBoundaries ADM1). The <strong>Highlight changes</strong> selector compares each region with 3, 6, or 12 months earlier and flags statistically significant shifts beyond historical variation.
-              </p>
-            </div>
-            <div class="flex items-center gap-2 self-start md:self-auto">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 7 Focus Nations · Active
-              </span>
-            </div>
-          </div>
-
-          <!-- Container for Admin1 Explorer Component -->
-          <div id="mlab-admin1-explorer-root" class="mt-6">
-            <div class="p-8 text-center text-slate-400 text-xs font-mono animate-pulse">
-              Loading subnational boundaries and M-Lab time-series digest...
-            </div>
-          </div>
-        </div>
       </section>
 
     </main>
@@ -1151,7 +1094,7 @@
   <div id="canvas-systemic" class="hidden bg-blue-50/30 min-h-screen">
 
     <!-- Systemic Navigation Tabs -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-2">
       <div class="bg-white rounded-xl shadow-lg border border-slate-200 p-2 flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center gap-1 sm:gap-2 overflow-x-auto py-1" id="tab-nav-systemic">
           <button onclick="switchTab('pilot-tab')" id="btn-pilot-tab" class="tab-btn px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition bg-blue-600 text-white shadow-sm">
@@ -1592,9 +1535,9 @@
                       <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-600 inline-block"></span>ICT: $352.1M (7.5%)</span>
                     </div>
                   </div>
-                  <button onclick="toggleMacroFiscalTable()" id="btn-macro-fiscal-toggle" class="px-4 py-2 rounded-xl text-xs font-bold bg-blue-50 text-blue-700 hover:bg-blue-100 border border-blue-300 transition flex items-center gap-2 cursor-pointer shadow-xs self-start sm:self-auto" aria-expanded="false" aria-controls="macro-fiscal-table-container">
-                    <span id="macro-toggle-icon" class="text-xs font-black leading-none">▸</span>
-                    <span id="macro-toggle-text">Expand 7-Country Fiscal Table</span>
+                  <button onclick="toggleMacroFiscalTable()" id="btn-macro-fiscal-toggle" class="landing-toggle" aria-expanded="false" aria-controls="macro-fiscal-table-container">
+                    <span id="macro-toggle-icon" aria-hidden="true">▸</span>
+                    <span id="macro-toggle-text">Show fiscal table</span>
                   </button>
                 </div>
               </div>
@@ -1637,7 +1580,7 @@
           <span class="badge-pill bg-purple-100 text-purple-800 mb-2">Policy Decision Tools &amp; Triangulation Engines</span>
           <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Policy Decision Tools &amp; Triangulation Engines</h2>
           <p class="text-slate-600 mt-1 max-w-3xl text-sm sm:text-base">
-            Access the policy simulation and analytical engines powering this observatory: the GEEAP/TCO cost-effectiveness simulator, the 85-country OECD PISA exploration dashboard, and the N=800 synthetic SSA survey baseline.
+            Access the policy simulation and analytical engines powering this observatory: the GEEAP/TCO cost-effectiveness simulator, the 85-country OECD PISA exploration dashboard, and the optional Demo-only synthetic SSA survey baseline.
           </p>
         </div>
 
@@ -2957,30 +2900,37 @@
           if (!tbody) return;
           tbody.innerHTML = '';
 
-          const teacherRecords = SURVEY_BASELINE.teachers.records || [];
+          const isDemo = surveyDataMode === 'demo';
+          const teacherRecords = isDemo ? (SURVEY_BASELINE.teachers.records || []) : [];
           heatmapData.forEach(country => {
             const sample = teacherRecords.filter(record => record.country === country.name);
+            const signal = !isDemo ? CURRENT_SURVEY?.countrySignals?.[country.name] : null;
             const reliablePower = sample.filter(record =>
               record.elec === 'Mostly reliable' || record.elec === 'Always reliable'
             ).length;
-            const fieldValue = sample.length ? Math.round((reliablePower / sample.length) * 1000) / 10 : null;
+            const fieldValue = isDemo
+              ? (sample.length ? Math.round((reliablePower / sample.length) * 1000) / 10 : null)
+              : (signal?.reliablePowerPct ?? null);
+            const sampleSize = isDemo ? sample.length : (signal?.powerN ?? null);
             const macroValue = country.dimensions.gov_paradox?.macro_val ?? null;
             const gap = fieldValue !== null && macroValue !== null
               ? Math.round((fieldValue - macroValue) * 10) / 10
               : null;
             country.dimensions.practitioner_audit = {
-              name: 'Synthetic Teacher Power Signal',
+              name: isDemo ? 'Demo Teacher Power Signal' : 'Teacher Survey Power Signal',
               macro_val: macroValue,
               macro_src: 'UIS (% Primary Schools with Electricity)',
               field_val: fieldValue,
-              field_src: 'Synthetic AoA teacher baseline (mostly/always reliable school power)',
-              sample_size: sample.length,
+              field_src: isDemo ? 'Synthetic AoA teacher baseline' : 'Verified Kobo teacher aggregate',
+              sample_size: sampleSize,
               gap,
               unit: '%',
-              type: 'synthetic',
+              type: isDemo ? 'synthetic' : 'real',
               desc: fieldValue !== null && macroValue !== null
-                ? `Illustrative synthetic baseline: ${fieldValue}% of ${sample.length} teacher responses report mostly or always reliable school power; UIS reports ${macroValue}% of primary schools with electricity. This is simulated, not observed field evidence.`
-                : 'No synthetic teacher responses or UIS school-power estimate available for this country.'
+                ? (isDemo
+                  ? `Demo only: ${fieldValue}% of ${sampleSize} synthetic teacher responses report mostly or always reliable school power; UIS reports ${macroValue}%.`
+                  : `Verified Kobo aggregate: ${fieldValue}% of ${sampleSize} teacher responses report reliable mains power; UIS reports ${macroValue}%.`)
+                : (isDemo ? 'No synthetic teacher responses or UIS estimate available.' : 'No publishable teacher power aggregate for this country.')
             };
           });
 
@@ -3004,12 +2954,13 @@
                 return `<td class="py-2.5 px-3 text-center text-slate-300 font-mono text-[11px]">—</td>`;
               }
               if (dimKey === 'practitioner_audit') {
+                const sourceLabel = dim.type === 'synthetic' ? 'Demo' : 'Verified Kobo';
                 return `
                   <td class="py-2.5 px-3 text-center bg-slate-50">
                     <button onclick="selectHeatmapCell('${c.iso3}', '${dimKey}')" class="inline-flex flex-col items-center px-2 py-1 rounded border border-indigo-200 bg-indigo-50 text-indigo-800 font-mono text-[10px] font-bold hover:ring-2 hover:ring-indigo-400 transition"
-                      title="Synthetic teacher responses considered for ${c.name}: N=${dim.sample_size}">
+                      title="${sourceLabel} teacher responses for ${c.name}: ${formatSurveySampleSize(dim.sample_size)}">
                       <span>${dim.field_val ?? '—'}${dim.field_val === null ? '' : '%'}</span>
-                      <span class="text-[9px] font-normal text-indigo-600">Synthetic · N=${dim.sample_size}</span>
+                      <span class="text-[9px] font-normal text-indigo-600">${sourceLabel} · ${formatSurveySampleSize(dim.sample_size)}</span>
                     </button>
                   </td>
                 `;
@@ -3257,7 +3208,7 @@
   <!-- ================================================================= -->
   <!-- LENS 2: CLASSROOM & SCHOOL LEADER CANVAS                          -->
   <!-- ================================================================= -->
-  <div id="canvas-classroom" class="hidden bg-stone-50 min-h-screen">
+  <div id="canvas-classroom" class="hidden bg-emerald-50 min-h-screen">
 
     <!-- Classroom Sub-Navigation Tabs -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 pt-2">
@@ -4581,7 +4532,7 @@
           canvasSys.classList.remove('hidden');
           canvasSys.classList.add('block');
         }
-        if (heroBanner) heroBanner.classList.remove('hidden');
+        if (heroBanner) heroBanner.classList.add('hidden');
         if (bodyCanvas) bodyCanvas.className = 'bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900 transition-colors duration-300';
         if (navTitle) navTitle.textContent = 'EdTech Policy Observatory';
         if (navSubtitle) navSubtitle.textContent = 'Sub-Saharan Africa & MENA Evidence Engine';
@@ -4602,7 +4553,7 @@
           canvasCls.classList.add('block');
         }
         if (heroBanner) heroBanner.classList.add('hidden');
-        if (bodyCanvas) bodyCanvas.className = 'bg-stone-50 text-stone-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 transition-colors duration-300';
+        if (bodyCanvas) bodyCanvas.className = 'bg-emerald-50 text-stone-800 font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 transition-colors duration-300';
         if (navTitle) navTitle.textContent = 'Classroom Feasibility & Solutions Toolkit';
         if (navSubtitle) navSubtitle.textContent = 'Practical Implementation Layer for Schools';
 
@@ -4671,11 +4622,9 @@
     function syncAppUrlState() {
       if (!appNavigationReady) return;
       const params = new URLSearchParams(window.location.search);
-      const activeTab = document.querySelector('#body-canvas .tab-content:not(.hidden)')?.id;
-      if (activeTab) params.set('tab', activeTab);
-      if (typeof currentLens !== 'undefined') params.set('view', currentLens);
-      const activeClassroomTab = document.querySelector('#canvas-classroom .classroom-content:not(.hidden)')?.id;
-      if (activeClassroomTab) params.set('classroomTab', activeClassroomTab);
+      params.delete('view');
+      params.delete('tab');
+      params.delete('classroomTab');
       if (typeof _activeIso !== 'undefined') params.set('country', _activeIso);
       if (typeof _activeLens !== 'undefined') params.set('lens', String(_activeLens));
       if (typeof _activeSegment !== 'undefined') params.set('segment', _activeSegment);
@@ -5624,7 +5573,7 @@
       if (!v) return;
       const col = PILLAR_COLORS[v.pillar_color] || PILLAR_COLORS.blue;
       const strip = document.getElementById('voice-pillar-strip');
-      if (strip) strip.style.backgroundColor = col.strip;
+      if (strip?.style) strip.style.backgroundColor = col.strip;
       const badge = document.getElementById('voice-pillar-badge');
       if (badge) {
         badge.className = `inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold border ${col.badge}`;
@@ -7417,13 +7366,13 @@ const MACRO_FISCAL_DATA = {
       if (!el) return;
       if (el.classList.contains('hidden')) {
         el.classList.remove('hidden');
-        if (icon) icon.textContent = '−';
-        if (text) text.textContent = 'Collapse 7-Country Fiscal Table';
+        if (icon) icon.textContent = '▾';
+        if (text) text.textContent = 'Hide fiscal table';
         if (button) button.setAttribute('aria-expanded', 'true');
       } else {
         el.classList.add('hidden');
-        if (icon) icon.textContent = '+';
-        if (text) text.textContent = 'Expand 7-Country Fiscal Table';
+        if (icon) icon.textContent = '▸';
+        if (text) text.textContent = 'Show fiscal table';
         if (button) button.setAttribute('aria-expanded', 'false');
       }
     }
@@ -12484,6 +12433,39 @@ const MATRIX_PLAYERS = [
     let matrixPlayerScope = 'core';
     let matrixDomainFilter = 'ALL';
 
+    function toggleMlabDigest() {
+      const digest = document.getElementById('mlab-admin1-explorer-root');
+      const button = document.getElementById('btn-toggle-mlab-digest');
+      if (!digest || !button) {
+        console.error('Unable to toggle regional connectivity digest: required elements are missing.');
+        return;
+      }
+
+      const isHidden = digest.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', String(!isHidden));
+      button.textContent = isHidden ? '▸ Show changes' : '▾ Hide Digest';
+    }
+
+    function toggleSupplyDemandMatrix() {
+      const matrix = document.getElementById('supply-demand-mismatch-matrix');
+      const button = document.getElementById('btn-toggle-supply-matrix');
+      if (!matrix || !button) {
+        console.error('Unable to toggle supply-demand matrix: required elements are missing.');
+        return;
+      }
+
+      const isHidden = matrix.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', String(!isHidden));
+      button.textContent = isHidden
+        ? '▸ Show Matrix'
+        : '▾ Hide Matrix';
+
+      if (!isHidden) {
+        renderSupplyMatrix();
+        matrix.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
     function setMatrixPlayerScope(scope) {
       matrixPlayerScope = scope;
       const btnCore = document.getElementById('btn-scope-core');
@@ -12577,14 +12559,21 @@ const MATRIX_PLAYERS = [
             const uses = sample.filter(r => r.usesDigital === 'Yes').length;
             digitalUsePct = Math.round((uses / teacherSampleN) * 1000) / 10;
           }
-        } else if (typeof SURVEY_COUNTRY_SIGNALS !== 'undefined' && SURVEY_COUNTRY_SIGNALS[c.country]) {
+        } else if (
+          surveyDataMode === 'real' &&
+          CURRENT_SURVEY?.countrySignals?.[c.country] &&
+          Number.isFinite(CURRENT_SURVEY.countrySignals[c.country].pct)
+        ) {
+          teacherSampleN = CURRENT_SURVEY.countrySignals[c.country].n;
+          digitalUsePct = CURRENT_SURVEY.countrySignals[c.country].pct;
+        } else if (surveyDataMode === 'demo' && typeof SURVEY_COUNTRY_SIGNALS !== 'undefined' && SURVEY_COUNTRY_SIGNALS[c.country]) {
           teacherSampleN = SURVEY_COUNTRY_SIGNALS[c.country].n;
           digitalUsePct = SURVEY_COUNTRY_SIGNALS[c.country].pct;
         }
 
         const teacherSignal = digitalUsePct === null
           ? '<span class="text-slate-400 text-xs italic">Awaiting sample</span>'
-          : `<span class="font-bold text-indigo-800">${digitalUsePct}%</span><span class="block text-[10px] text-slate-500">${surveyDataMode === 'live' ? 'Live Field' : 'Field Diagnostic'} · N=${teacherSampleN}</span>`;
+          : `<span class="font-bold text-indigo-800">${digitalUsePct}%</span><span class="block text-[10px] text-slate-500">${surveyDataMode === 'real' ? 'Verified Kobo' : 'Demo'} · N=${teacherSampleN}</span>`;
 
         // Demand Badges
         const lpText = c.learning_poverty !== null ? (c.learning_poverty + '%') : '<span class="text-slate-400">Unreported</span>';
@@ -14890,13 +14879,17 @@ const SURVEY_CODEBOOK = [
 ];
 
 
-    let CURRENT_SURVEY = JSON.parse(JSON.stringify(SURVEY_BASELINE));
-    let surveyDataMode = 'baseline'; // 'baseline' | 'live'
+    let CURRENT_SURVEY = null;
+    let surveyDataMode = 'real';
+    let surveyAggregateSource = 'published';
+    let surveyLoadError = null;
+    let surveyIsLoading = false;
+    let surveyFetchVersion = 0;
     let activeSurveyStream = 'teachers'; // 'teachers' | 'providers' | 'experts'
 
     function initSurveyLayer() {
-      renderSurveyDashboard();
       renderSurveyCodebook();
+      setSurveyDataMode('real');
     }
 
     function switchSurveyStream(streamKey) {
@@ -14931,31 +14924,459 @@ const SURVEY_CODEBOOK = [
       }
     }
 
-    function toggleSimulationBox() {
-      const box = document.getElementById('simulation-control-box');
-      const caret = document.getElementById('sim-box-caret');
-      if (!box) return;
-      const isHidden = box.classList.toggle('hidden');
-      if (caret) caret.textContent = isHidden ? '▸ Open' : '▾ Close';
+    function toggleCommunityEvidence() {
+      const content = document.getElementById('community-evidence-content');
+      const button = document.getElementById('btn-toggle-community-evidence');
+      if (!content || !button) {
+        console.error('Unable to toggle community evidence: required elements are missing.');
+        return;
+      }
+
+      const isHidden = content.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', String(!isHidden));
+      button.textContent = isHidden ? '▸ Show discrepancy' : '▾ Hide discrepancy';
     }
 
-    function toggleSurveyIngestionDrawer() {
-      const drawer = document.getElementById('survey-ingestion-drawer');
-      const icon = document.getElementById('ingestion-drawer-icon');
-      const text = document.getElementById('ingestion-drawer-text');
-      if (drawer) {
-        drawer.classList.toggle('hidden');
-        const isHidden = drawer.classList.contains('hidden');
-        if (icon) icon.textContent = isHidden ? '▸' : '▾';
-        if (text) text.textContent = isHidden ? 'Connect Live Data / Feeds' : 'Hide Ingestion Panel';
+    function setSurveyDataStatus(kind, message) {
+      const status = document.getElementById('survey-data-status');
+      if (!status) return;
+      const styles = {
+        loading: 'mt-2 p-3 rounded-lg border border-slate-200 bg-slate-50 text-xs text-slate-700',
+        ready: 'mt-2 p-3 rounded-lg border border-emerald-200 bg-emerald-50 text-xs text-emerald-900',
+        demo: 'mt-2 p-3 rounded-lg border border-amber-300 bg-amber-50 text-xs text-amber-950',
+        error: 'mt-2 p-3 rounded-lg border border-rose-300 bg-rose-50 text-xs text-rose-900'
+      };
+      status.className = styles[kind] || styles.error;
+      status.textContent = message;
+    }
+
+    function isPublicSurveyAggregate(payload) {
+      const forbiddenKey = /(?:email|phone|mobile|whatsapp|full.?name|organisation|organization|school.?name|gps|geolocation|instance.?id|submission.?id|respondent.?id|uuid|uid|_?id$)/i;
+      const email = /\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/i;
+      const phone = /(?:^|\W)\+?\d[\d\s().-]{7,}\d(?:$|\W)/;
+      function safe(value) {
+        if (Array.isArray(value)) return value.every(safe);
+        if (value && typeof value === 'object') {
+          return Object.entries(value).every(([key, child]) => !forbiddenKey.test(key) && safe(child));
+        }
+        if (typeof value !== 'string') return true;
+        const timestamp = /^\d{4}-\d{2}-\d{2}T/.test(value);
+        return !email.test(value) && (timestamp || !phone.test(value)) && !/\b(?:demo|synthetic)\b/i.test(value);
+      }
+      const isCount = value => value === null || (Number.isInteger(value) && value >= 0);
+      const isPercentage = value => value === null || (Number.isFinite(value) && value >= 0 && value <= 100);
+      const isDistribution = value =>
+        value &&
+        isCount(value.n) &&
+        typeof value.suppressed === 'boolean' &&
+        Array.isArray(value.items) &&
+        value.items.every(item =>
+          item &&
+          typeof item.name === 'string' &&
+          item.name.length <= 100 &&
+          Number.isInteger(item.count) &&
+          item.count > 0 &&
+          (item.percentage === undefined || isPercentage(item.percentage))
+        );
+      const isSummaryStats = value =>
+        value &&
+        isCount(value.totalRespondents) &&
+        isCount(value.totalTeachers) &&
+        isCount(value.totalProviders) &&
+        isCount(value.totalExperts) &&
+        Number.isInteger(value.countriesRepresented) &&
+        value.countriesRepresented >= 0;
+      const isElectricityRow = row =>
+        row &&
+        ['A major city', 'A smaller town', 'A rural area'].includes(row.location) &&
+        isCount(row.n) &&
+        typeof row.suppressed === 'boolean' &&
+        Array.isArray(row.distribution) &&
+        row.distribution.every(item =>
+          item &&
+          typeof item.name === 'string' &&
+          item.name.length <= 100 &&
+          Number.isInteger(item.count) &&
+          item.count > 0 &&
+          isPercentage(item.percentage)
+        ) &&
+        isPercentage(row.none) &&
+        isPercentage(row.unreliable);
+      const isCountrySignal = value =>
+        value &&
+        isCount(value.n) &&
+        isCount(value.powerN) &&
+        (value.pct === undefined || isPercentage(value.pct)) &&
+        (value.reliablePowerPct === undefined || isPercentage(value.reliablePowerPct));
+      return Boolean(
+        payload &&
+        payload.schemaVersion === 1 &&
+        payload.mode === 'real' &&
+        ['available', 'insufficient', 'no_data'].includes(payload.status) &&
+        Number.isInteger(payload.suppressionThreshold) &&
+        payload.suppressionThreshold >= 5 &&
+        typeof payload.generatedAt === 'string' &&
+        payload.generatedAt.length <= 40 &&
+        payload.metadata?.source === 'KoboToolbox' &&
+        isSummaryStats(payload.metadata?.summaryStats) &&
+        isCount(payload.teachers?.total) &&
+        Array.isArray(payload.teachers?.elecByLocation) &&
+        payload.teachers.elecByLocation.every(isElectricityRow) &&
+        isDistribution(payload.teachers?.internetDist) &&
+        isDistribution(payload.teachers?.workloadDist) &&
+        Array.isArray(payload.teachers?.quotes) &&
+        payload.teachers.quotes.length === 0 &&
+        isCount(payload.providers?.total) &&
+        isDistribution(payload.providers?.offlineDist) &&
+        isDistribution(payload.providers?.deviceDist) &&
+        isPercentage(payload.providers?.handsetPercentage) &&
+        isDistribution(payload.providers?.dataPaymentDist) &&
+        isDistribution(payload.providers?.evidenceDist) &&
+        isCount(payload.experts?.total) &&
+        isDistribution(payload.experts?.decisionDriverDist) &&
+        isDistribution(payload.experts?.donorExitDist) &&
+        isDistribution(payload.experts?.systemConstraintDist) &&
+        isCount(payload.experts?.postGrantRiskCount) &&
+        payload.countrySignals &&
+        typeof payload.countrySignals === 'object' &&
+        Object.values(payload.countrySignals).every(isCountrySignal) &&
+        payload.followup?.includedInPublicOutput === false &&
+        safe(payload)
+      );
+    }
+
+    function updateSurveyModeButtons() {
+      const realButton = document.getElementById('btn-survey-mode-real');
+      const demoButton = document.getElementById('btn-survey-mode-demo');
+      if (realButton) {
+        realButton.setAttribute('aria-pressed', String(surveyDataMode === 'real'));
+        realButton.className = surveyDataMode === 'real'
+          ? 'px-3 py-1.5 rounded-lg bg-indigo-700 text-white text-xs font-bold transition'
+          : 'px-3 py-1.5 rounded-lg border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 text-xs font-semibold transition';
+      }
+      if (demoButton) {
+        demoButton.setAttribute('aria-pressed', String(surveyDataMode === 'demo'));
+        demoButton.className = surveyDataMode === 'demo'
+          ? 'px-3 py-1.5 rounded-lg bg-amber-600 text-white text-xs font-bold transition'
+          : 'px-3 py-1.5 rounded-lg border border-stone-300 bg-white text-stone-700 hover:bg-stone-50 text-xs font-semibold transition';
       }
     }
 
+    function formatSurveySampleSize(value) {
+      if (Number.isInteger(value)) return 'N=' + value;
+      return 'N<5 suppressed';
+    }
+
+    function escapeSurveyHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      })[character]);
+    }
+
+    function renderSurveyDistribution(containerId, distribution, countOnly = false) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      if (!distribution || distribution.suppressed) {
+        container.innerHTML = '<div class="text-[11px] text-stone-500 italic">Insufficient responses or small groups suppressed.</div>';
+        return;
+      }
+      if (!distribution.items?.length) {
+        container.innerHTML = '<div class="text-[11px] text-stone-500 italic">No Kobo responses yet.</div>';
+        return;
+      }
+      const maxCount = Math.max(...distribution.items.map(item => item.count || 0), 1);
+      container.innerHTML = distribution.items.map(item => {
+        const percentage = Number.isFinite(item.percentage) ? item.percentage : 0;
+        const width = countOnly ? Math.max(2, (item.count / maxCount) * 100) : Math.max(0, Math.min(100, percentage));
+        const label = countOnly
+          ? (item.count + ' responses')
+          : (percentage + '% · n=' + item.count);
+        return '<div>' +
+          '<div class="flex justify-between gap-2 text-[11px] mb-0.5"><span class="text-stone-700 truncate">' +
+          escapeSurveyHtml(item.name) + '</span><span class="font-mono font-bold text-stone-700">' +
+          label + '</span></div>' +
+          '<div class="w-full bg-stone-200 rounded-full h-2 overflow-hidden"><div style="width:' +
+          width + '%" class="h-full bg-indigo-600 rounded-full"></div></div></div>';
+      }).join('');
+    }
+
+    function renderRealSurveyDashboard() {
+      const data = CURRENT_SURVEY;
+      const emptyMessage = surveyIsLoading
+        ? 'Loading the published Kobo survey aggregate…'
+        : (surveyLoadError || 'No published real Kobo aggregate is available yet. No demo data has been substituted.');
+      const teachers = data?.teachers || {};
+      const providers = data?.providers || {};
+      const experts = data?.experts || {};
+      const stats = data?.metadata?.summaryStats || {};
+      const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+      };
+
+      setText('source-power-gap', 'Verified aggregate only');
+      setText('source-data-tax', 'Not measured');
+      setText('source-offline-share', 'Verified aggregate only');
+      setText('source-donor-cliff', 'Counts only');
+
+      if (!data) {
+        setSurveyDataStatus(surveyIsLoading ? 'loading' : 'error', emptyMessage);
+        setText('tab-n-teachers', 'N=—');
+        setText('tab-n-providers', 'N=—');
+        setText('tab-n-experts', 'N=—');
+        setText('metric-power-gap', '—');
+        setText('badge-power-gap', 'Teacher survey signal');
+        setText('desc-power-gap', 'No published Kobo survey aggregate is available.');
+        setText('metric-data-tax', 'Not measured');
+        setText('badge-data-tax', 'Not measured in survey');
+        setText('desc-data-tax', 'Personal data spending is not measured by this instrument.');
+        setText('metric-offline-share', '—');
+        setText('badge-offline-share', 'Provider survey signal');
+        setText('desc-offline-share', 'No published Kobo provider aggregate is available.');
+        setText('metric-donor-cliff', '—');
+        setText('badge-donor-cliff', 'Counts only');
+        setText('desc-donor-cliff', 'No published Kobo expert aggregate is available.');
+        setText('takeaway-power-gap', 'No Kobo teacher responses are available yet.');
+        setText('takeaway-data-tax', 'No estimate is shown because this instrument does not measure personal data spending.');
+        setText('takeaway-offline-fit', 'No Kobo provider responses are available yet.');
+        setText('takeaway-donor-cliff', 'No Kobo expert responses are available yet.');
+        setText('stream-teacher-title', 'Teacher survey summary');
+        setText('stream-teacher-takeaway', 'No published Kobo teacher aggregate is available.');
+        setText('stream-provider-title', 'Provider survey summary');
+        setText('stream-provider-takeaway', 'No published Kobo provider aggregate is available.');
+        setText('stream-expert-title', 'Expert consultation summary');
+        setText('stream-expert-takeaway', 'No published Kobo expert aggregate is available.');
+        const quoteGrid = document.getElementById('teacher-quotes-grid');
+        if (quoteGrid) quoteGrid.textContent = 'Free-text responses are excluded pending human review and quote-consent checks.';
+        [
+          'chart-elec-by-loc', 'chart-internet-dist', 'chart-workload-dist',
+          'chart-provider-offline', 'chart-provider-data-pay', 'chart-provider-evidence',
+          'chart-expert-drivers', 'chart-expert-donor-exit', 'chart-expert-constraints'
+        ].forEach(id => {
+          const element = document.getElementById(id);
+          if (element) element.innerHTML = '<div class="text-[11px] text-stone-500 italic">No published Kobo aggregate available.</div>';
+        });
+        return;
+      }
+
+      if (data.status === 'no_data') {
+        setSurveyDataStatus('error', 'This Kobo aggregate contains no teacher, provider, or expert responses. No findings are published.');
+      } else if (data.status === 'insufficient') {
+        setSurveyDataStatus('error', 'This aggregate is below the minimum publication threshold. No findings are displayed.');
+      } else {
+        setSurveyDataStatus(
+          'ready',
+          (surveyAggregateSource === 'local' ? 'Local sanitized Kobo aggregate' : 'Published Kobo aggregate') +
+          ' · generated ' + data.generatedAt +
+          ' · small groups below ' + data.suppressionThreshold + ' are suppressed. Follow-up contact data and free text are excluded.'
+        );
+      }
+
+      setText('tab-n-teachers', formatSurveySampleSize(teachers.total));
+      setText('tab-n-providers', formatSurveySampleSize(providers.total));
+      setText('tab-n-experts', formatSurveySampleSize(experts.total));
+
+      const rural = (teachers.elecByLocation || []).find(row => row.location.toLowerCase().includes('rural'));
+      const ruralPower = rural && !rural.suppressed
+        ? (rural.distribution || []).reduce((total, item) => {
+            if (item.name === 'Mains power with frequent cuts' || item.name === 'No electricity') {
+              return total + (item.percentage || 0);
+            }
+            return total;
+          }, 0)
+        : null;
+      setText('metric-power-gap', ruralPower === null ? 'Insufficient data' : ruralPower + '%');
+      setText('desc-power-gap', rural
+        ? formatSurveySampleSize(rural.n) + ' rural teacher responses; frequent mains cuts or no electricity.'
+        : 'No publishable rural Kobo teacher responses.');
+      setText('badge-power-gap', 'Teacher survey signal');
+      setText('takeaway-power-gap', ruralPower === null
+        ? 'The rural electricity measure is unavailable or suppressed.'
+        : 'Among the valid rural teacher responses, ' + ruralPower + '% reported frequent mains cuts or no electricity.');
+
+      setText('metric-data-tax', 'Not measured');
+      setText('desc-data-tax', 'The teacher instrument does not ask whether respondents personally pay for data.');
+      setText('badge-data-tax', 'Not measured in survey');
+      setText('takeaway-data-tax', 'No personal data-spending estimate is inferred from internet reliability responses.');
+
+      const fullyOffline = (providers.offlineDist?.items || []).find(item => item.name === 'Fully offline');
+      const handset = providers.handsetPercentage;
+      const offlinePercent = fullyOffline?.percentage;
+      setText('metric-offline-share',
+        (handset === null || handset === undefined ? 'Insufficient data' : handset + '% phone-compatible') +
+        ' · ' +
+        (offlinePercent === undefined ? 'offline: suppressed' : offlinePercent + '% fully offline')
+      );
+      setText('desc-offline-share', 'Provider-reported minimum device and offline capability; valid item counts are shown below.');
+      setText('badge-offline-share', 'Provider survey signal');
+      setText('takeaway-offline-fit', 'These responses describe provider-reported capabilities; they are not independent product tests.');
+
+      const riskCount = experts.postGrantRiskCount;
+      setText('metric-donor-cliff', riskCount === null ? 'Suppressed' : riskCount + ' responses');
+      setText('desc-donor-cliff', 'Expert responses selecting “Stops” or “Continues in reduced form”; counts only.');
+      setText('badge-donor-cliff', 'Counts only');
+      setText('takeaway-donor-cliff', riskCount === null
+        ? 'The post-pilot response count is suppressed because the sample is too small.'
+        : riskCount + ' expert responses selected stops or reduced continuation.');
+
+      setText('stream-teacher-title', 'Teacher survey · ' + formatSurveySampleSize(teachers.total));
+      setText('stream-teacher-takeaway', 'Closed-choice teacher responses are summarized below. Free text is excluded from the public aggregate.');
+      setText('stream-provider-title', 'Provider survey · ' + formatSurveySampleSize(providers.total));
+      setText('stream-provider-takeaway', 'Provider responses describe reported product capabilities and business arrangements; they are not verified product tests.');
+      setText('stream-expert-title', 'Expert consultation · ' + formatSurveySampleSize(experts.total));
+      setText('stream-expert-takeaway', 'Expert chart values are counts, not percentages. Small response groups are suppressed.');
+
+      const powerContainer = document.getElementById('chart-elec-by-loc');
+      if (powerContainer) {
+        powerContainer.innerHTML = (teachers.elecByLocation || []).map(row => {
+          if (row.suppressed || !row.distribution?.length) {
+            return '<div class="text-[11px] text-stone-500 italic">' +
+              escapeSurveyHtml(row.location) + ': insufficient responses or small groups suppressed.</div>';
+          }
+          return '<div class="mb-3"><div class="flex justify-between text-[11px] font-semibold text-stone-700 mb-1"><span>' +
+            escapeSurveyHtml(row.location) + '</span><span class="font-mono text-stone-500">' +
+            formatSurveySampleSize(row.n) + '</span></div>' +
+            row.distribution.map(item =>
+              '<div class="flex justify-between text-[10px] gap-2"><span class="text-stone-600">' +
+              escapeSurveyHtml(item.name) + '</span><span class="font-mono text-stone-700">' +
+              item.percentage + '% · n=' + item.count + '</span></div>'
+            ).join('') + '</div>';
+        }).join('') || '<div class="text-[11px] text-stone-500 italic">No Kobo responses yet.</div>';
+      }
+      renderSurveyDistribution('chart-internet-dist', teachers.internetDist);
+      renderSurveyDistribution('chart-workload-dist', teachers.workloadDist);
+      renderSurveyDistribution('chart-provider-offline', providers.offlineDist);
+      renderSurveyDistribution('chart-provider-data-pay', providers.dataPaymentDist);
+      renderSurveyDistribution('chart-provider-evidence', providers.evidenceDist);
+      renderSurveyDistribution('chart-expert-drivers', experts.decisionDriverDist, true);
+      renderSurveyDistribution('chart-expert-donor-exit', experts.donorExitDist, true);
+      renderSurveyDistribution('chart-expert-constraints', experts.systemConstraintDist, true);
+
+      const quotes = document.getElementById('teacher-quotes-grid');
+      if (quotes) quotes.textContent = 'Free-text responses are excluded from public output pending human review and quote-consent checks.';
+
+      if (data.status !== 'available') {
+        [
+          'chart-elec-by-loc', 'chart-internet-dist', 'chart-workload-dist',
+          'chart-provider-offline', 'chart-provider-data-pay', 'chart-provider-evidence',
+          'chart-expert-drivers', 'chart-expert-donor-exit', 'chart-expert-constraints'
+        ].forEach(id => {
+          const element = document.getElementById(id);
+          if (element) element.innerHTML = '<div class="text-[11px] text-stone-500 italic">Insufficient Kobo data to publish these summaries.</div>';
+        });
+      }
+
+      setText('survey-n-badge', stats.totalRespondents === null
+        ? 'Total sample size suppressed'
+        : 'N=' + (stats.totalRespondents || 0) + ' Kobo submissions');
+    }
+
+    function setSurveyDataMode(mode, reveal = false) {
+      surveyFetchVersion++;
+      surveyDataMode = mode === 'demo' ? 'demo' : 'real';
+      surveyAggregateSource = surveyDataMode === 'demo' ? 'demo' : 'published';
+      if (reveal) {
+        const content = document.getElementById('community-evidence-content');
+        if (content?.classList.contains('hidden')) toggleCommunityEvidence();
+        content?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      updateSurveyModeButtons();
+
+      if (surveyDataMode === 'demo') {
+        surveyIsLoading = false;
+        surveyLoadError = null;
+        CURRENT_SURVEY = JSON.parse(JSON.stringify(SURVEY_BASELINE));
+        setSurveyDataStatus('demo', 'Demo preview only: simulated/calibrated data, not observed survey findings. Demo data is never merged with real data.');
+        renderSurveyDashboard();
+        renderInteractiveHeatmap();
+        renderSupplyMatrix();
+        return;
+      }
+
+      CURRENT_SURVEY = null;
+      surveyLoadError = null;
+      surveyIsLoading = true;
+      renderSurveyDashboard();
+      renderInteractiveHeatmap();
+      renderSupplyMatrix();
+      loadRealSurveyAggregate();
+    }
+
+    async function loadRealSurveyAggregate() {
+      const requestVersion = surveyFetchVersion;
+      try {
+        const response = await fetch('./data/processed/survey_dashboard_live.json', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(response.status === 404
+            ? 'No published real survey aggregate is available yet (HTTP 404).'
+            : 'Could not load the real survey aggregate (HTTP ' + response.status + ').');
+        }
+        const payload = await response.json();
+        if (!isPublicSurveyAggregate(payload)) {
+          throw new Error('The survey aggregate is invalid or contains prohibited data. Use the sanitized JSON output from the Kobo processor.');
+        }
+        if (requestVersion !== surveyFetchVersion || surveyDataMode !== 'real') return;
+        CURRENT_SURVEY = payload;
+        surveyAggregateSource = 'published';
+        surveyLoadError = null;
+      } catch (error) {
+        if (requestVersion !== surveyFetchVersion || surveyDataMode !== 'real') return;
+        CURRENT_SURVEY = null;
+        surveyLoadError = error instanceof Error ? error.message : 'Unexpected error loading Kobo survey data.';
+      }
+      surveyIsLoading = false;
+      renderSurveyDashboard();
+      renderInteractiveHeatmap();
+      renderSupplyMatrix();
+    }
+
     function renderSurveyDashboard() {
+      if (surveyDataMode === 'real') {
+        renderRealSurveyDashboard();
+        return;
+      }
+
       const t = CURRENT_SURVEY.teachers;
       const p = CURRENT_SURVEY.providers;
       const e = CURRENT_SURVEY.experts;
       const stats = CURRENT_SURVEY.metadata.summaryStats || {};
+      const importedSimulation = surveyDataMode === 'simulation';
+      const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+      };
+      const demoLabel = importedSimulation ? 'Simulation' : 'Demo';
+      const demoSource = importedSimulation ? 'Local simulation' : 'Synthetic baseline';
+
+      setText('badge-power-gap', `${demoLabel} · teacher signal`);
+      setText('source-power-gap', demoSource);
+      setText('desc-power-gap', importedSimulation
+        ? 'Local simulation of rural teacher responses; not published survey findings.'
+        : 'Synthetic rural teacher responses reporting frequent power cuts or no electricity; not observed findings.');
+      setText('badge-data-tax', `${demoLabel} estimate`);
+      setText('source-data-tax', 'Illustrative only');
+      setText('desc-data-tax', importedSimulation
+        ? 'Local simulation estimate; personal data spending is not directly measured by the real teacher form.'
+        : 'Illustrative demo estimate; personal data spending is not directly measured by the real teacher form.');
+      setText('badge-offline-share', `${demoLabel} · provider signal`);
+      setText('source-offline-share', demoSource);
+      setText('desc-offline-share', 'Simulated provider-reported device and offline capabilities; not independently verified.');
+      setText('badge-donor-cliff', `${demoLabel} · expert signal`);
+      setText('source-donor-cliff', demoSource);
+      setText('desc-donor-cliff', 'Simulated expert response distribution; the real dashboard reports counts only.');
+
+      const demoTeacherTitle = document.getElementById('stream-teacher-title');
+      if (demoTeacherTitle) demoTeacherTitle.textContent = importedSimulation ? 'SIMULATION · Teacher responses' : 'DEMO · Teacher responses (synthetic)';
+      const demoProviderTitle = document.getElementById('stream-provider-title');
+      if (demoProviderTitle) demoProviderTitle.textContent = importedSimulation ? 'SIMULATION · Provider responses' : 'DEMO · Provider responses (synthetic)';
+      const demoExpertTitle = document.getElementById('stream-expert-title');
+      if (demoExpertTitle) demoExpertTitle.textContent = importedSimulation ? 'SIMULATION · Expert responses' : 'DEMO · Expert responses (synthetic)';
+      const demoTeacherSummary = document.getElementById('stream-teacher-takeaway');
+      if (demoTeacherSummary) demoTeacherSummary.textContent = importedSimulation ? 'Imported inputs are shown as an unverified local simulation, not published survey findings.' : 'Illustrative baseline only; these simulated responses are not observed survey findings.';
+      const demoProviderSummary = document.getElementById('stream-provider-takeaway');
+      if (demoProviderSummary) demoProviderSummary.textContent = importedSimulation ? 'Imported inputs are shown as an unverified local simulation, not published survey findings.' : 'Illustrative baseline only; these simulated responses are not observed survey findings.';
+      const demoExpertSummary = document.getElementById('stream-expert-takeaway');
+      if (demoExpertSummary) demoExpertSummary.textContent = importedSimulation ? 'Imported inputs are shown as an unverified local simulation, not published survey findings.' : 'Illustrative baseline only; these simulated responses are not observed survey findings.';
 
       // 1. Update Discrepancy Matrix Top Cards
       const ruralElec = (t.elecByLocation || []).find(l => l.location.toLowerCase().includes('rural')) || {};
@@ -15197,7 +15618,7 @@ const SURVEY_CODEBOOK = [
       const nBadge = document.getElementById('survey-n-badge');
       if (nBadge) {
         const total = (t.total || 600) + (p.total || 120) + (e.total || 80);
-        nBadge.textContent = 'N = ' + total + ' Verified Responses (48 SSA Nations)';
+        nBadge.textContent = 'N = ' + total + ' Simulated Responses (48 SSA Nations)';
       }
     }
 
@@ -15259,225 +15680,413 @@ const SURVEY_CODEBOOK = [
       renderSurveyCodebook();
     }
 
-    // Ingestion & Hot-Swap Mechanics
-    function handleSurveyFileUpload(event) {
-      const file = event.target.files[0];
-      if (!file) return;
+    function toggleSurveyIngestionDrawer() {
+      const drawer = document.getElementById('survey-ingestion-drawer');
+      const button = document.getElementById('btn-toggle-ingestion-drawer');
+      if (!drawer || !button) return;
+      const isHidden = drawer.classList.toggle('hidden');
+      button.setAttribute('aria-expanded', String(!isHidden));
+      button.textContent = isHidden ? '▸ Survey simulator' : '▾ Hide simulator';
+    }
 
-      const statusBox = document.getElementById('survey-ingestion-status');
-      if (statusBox) {
-        statusBox.classList.remove('hidden', 'bg-rose-100', 'text-rose-800');
-        statusBox.classList.add('bg-amber-100', 'text-amber-900');
-        statusBox.textContent = 'Parsing ' + file.name + '...';
-      }
+    function cloneSurveyBaseline() {
+      return JSON.parse(JSON.stringify(SURVEY_BASELINE));
+    }
 
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        try {
-          const content = e.target.result;
-          if (file.name.endsWith('.json')) {
-            const parsed = JSON.parse(content);
-            if (parsed.teachers || parsed.records) {
-              CURRENT_SURVEY = parsed;
-              applyLiveMode('Live JSON File: ' + file.name, (parsed.teachers?.total || 600) + (parsed.providers?.total || 120));
-              if (statusBox) {
-                statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-emerald-100 text-emerald-900 block';
-                statusBox.textContent = '✓ Successfully ingested ' + file.name + ' JSON dataset. All telemetry updated.';
-              }
-            } else {
-              throw new Error('Unrecognized JSON survey schema');
-            }
+    function makeSurveyDistribution(counts) {
+      const total = [...counts.values()].reduce((sum, count) => sum + count, 0);
+      return [...counts].map(([name, count]) => ({
+        name,
+        count,
+        percentage: Math.round(count * 1000 / total) / 10
+      }));
+    }
+
+    function parseSurveyCsv(text) {
+      const rows = [];
+      let row = [];
+      let cell = '';
+      let quoted = false;
+      for (let index = 0; index < text.length; index++) {
+        const character = text[index];
+        if (quoted) {
+          if (character === '"' && text[index + 1] === '"') {
+            cell += '"';
+            index++;
+          } else if (character === '"') {
+            quoted = false;
           } else {
-            // CSV Ingestion
-            parseAndIngestCSV(content, file.name);
+            cell += character;
           }
-        } catch (err) {
-          if (statusBox) {
-            statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-rose-100 text-rose-800 block';
-            statusBox.textContent = 'Error parsing file: ' + err.message + '. Reverting safely to calibrated baseline.';
+        } else if (character === '"' && cell.length === 0) {
+          quoted = true;
+        } else if (character === ',') {
+          row.push(cell.trim());
+          cell = '';
+        } else if (character === '\n' || character === '\r') {
+          row.push(cell.trim());
+          if (row.some(value => value !== '')) rows.push(row);
+          row = [];
+          cell = '';
+          if (character === '\r' && text[index + 1] === '\n') index++;
+        } else {
+          cell += character;
+        }
+      }
+      if (quoted) throw new Error('CSV contains an unclosed quoted field.');
+      row.push(cell.trim());
+      if (row.some(value => value !== '')) rows.push(row);
+      if (rows.length < 2) throw new Error('CSV needs a header row and at least one data row.');
+      if (rows.length > 10001) throw new Error('CSV exceeds the 10,000-row simulator limit.');
+      const headers = rows.shift().map(header => header.toLowerCase().replace(/[^a-z0-9]/g, ''));
+      if (headers.some(header => !header)) throw new Error('CSV contains an empty column name.');
+      return rows.map(values => Object.fromEntries(
+        headers.map((header, index) => [header, values[index] || ''])
+      ));
+    }
+
+    function applySurveyCsvToSimulation(data, records) {
+      if (!records.length) return [];
+      const headers = Object.keys(records[0]);
+      const column = (...candidates) => headers.find(header =>
+        candidates.some(candidate => header === candidate || header.includes(candidate))
+      );
+      const value = (record, key) => String(key ? record[key] || '' : '').trim().toLowerCase();
+      const classify = (raw, categories) => {
+        for (const [label, patterns] of categories) {
+          if (patterns.some(pattern => pattern.test(raw))) return label;
+        }
+        return null;
+      };
+      const updated = [];
+      const locationKey = column('a9location', 'location', 'schoolarea', 'area', 'where');
+      const powerKey = column('b6electricity', 'electricity', 'power');
+      const internetKey = column('b7internet', 'internet', 'connectivity');
+      const workloadKey = column('d3workloadeffect', 'workload');
+      if (locationKey && powerKey) {
+        const categories = [
+          ['always', [/reliable.?mains/, /\balways\b/, /\breliable\b/]],
+          ['mostly', [/solar/, /generator/, /\bmostly\b/]],
+          ['unreliable', [/frequent.?cuts/, /unreliable/, /intermittent/, /cuts/]],
+          ['none', [/^no$/, /\bnone\b/, /no electricity/, /without electricity/]]
+        ];
+        let matched = 0;
+        for (const location of ['Major city', 'Smaller town', 'Rural area']) {
+          const counts = new Map(categories.map(([name]) => [name, 0]));
+          let total = 0;
+          for (const record of records) {
+            const rawLocation = value(record, locationKey);
+            const matchesLocation = location === 'Rural area'
+              ? /rural/.test(rawLocation)
+              : location === 'Smaller town'
+                ? /town/.test(rawLocation)
+                : /city|urban|major/.test(rawLocation);
+            if (!matchesLocation) continue;
+            const category = classify(value(record, powerKey), categories);
+            if (category) {
+              counts.set(category, counts.get(category) + 1);
+              total++;
+              matched++;
+            }
           }
+          if (total) {
+            const target = data.teachers.elecByLocation.find(item => item.location === location);
+            const percentages = Object.fromEntries([...counts].map(([name, count]) => [
+              name, Math.round(count * 1000 / total) / 10
+            ]));
+            if (target) Object.assign(target, percentages);
+          }
+        }
+        if (matched) {
+          data.teachers.total = matched;
+          updated.push('teacher electricity by location');
+        }
+      }
+      if (internetKey) {
+        const categories = [
+          ['No internet at all', [/no.?access/, /^no$/, /no internet/]],
+          ['Intermittent / slow', [/unreliable/, /intermittent/, /slow/]],
+          ['Mobile data only (personal cost)', [/personal.?cost/, /users?.?pay/, /own.?data/, /mobile.?data/]],
+          ['High-speed / reliable', [/fully.?reliable/, /mostly.?reliable/, /high.?speed/, /^reliable$/]]
+        ];
+        const counts = new Map();
+        records.forEach(record => {
+          const category = classify(value(record, internetKey), categories);
+          if (category) counts.set(category, (counts.get(category) || 0) + 1);
+        });
+        if (counts.size) {
+          data.teachers.internetDist = makeSurveyDistribution(counts);
+          updated.push('teacher internet');
+        }
+      }
+      if (workloadKey) {
+        const categories = [
+          ['Reduce it a lot', [/reduce.*lot/, /reduces workload a lot/]],
+          ['Reduce it a little', [/reduce.*little/, /reduces workload a little/]],
+          ['No difference', [/no.?difference/]],
+          ['Add a little', [/add.*little/, /adds a little/]],
+          ['Add a lot', [/add.*lot/, /adds a lot/]]
+        ];
+        const counts = new Map();
+        records.forEach(record => {
+          const category = classify(value(record, workloadKey), categories);
+          if (category) counts.set(category, (counts.get(category) || 0) + 1);
+        });
+        if (counts.size) {
+          data.teachers.workloadDist = makeSurveyDistribution(counts);
+          updated.push('teacher workload');
+        }
+      }
+      const providerFields = [
+        {
+          keys: ['c2offline', 'offline'],
+          target: 'offlineDist',
+          label: 'provider offline capability',
+          categories: [
+            ['Fully offline', [/fully.?offline/, /^offline$/]],
+            ['Partly offline', [/partly/, /partial/]],
+            ['Needs a connection', [/needs.?connection/, /requires?.?internet/, /online.?only/]]
+          ]
+        },
+        {
+          keys: ['c3mindevice', 'minimumdevice', 'device'],
+          target: 'deviceDist',
+          label: 'provider device',
+          categories: [
+            ['Basic phone', [/basic.?phone/]],
+            ['Low-cost smartphone', [/smartphone/, /mobile phone/]],
+            ['Tablet or computer', [/tablet/, /computer/, /laptop/]],
+            ['Dedicated supplied device', [/supplied.?device/, /dedicated/]],
+            ['No personal device', [/no.?personal.?device/]]
+          ]
+        },
+        {
+          keys: ['c4datapayer', 'datapayer', 'datapayment'],
+          target: 'dataPaymentDist',
+          label: 'provider data payment',
+          categories: [
+            ['Users pay', [/users?.?pay/, /user.?pays/]],
+            ['Zero-rated for users', [/zero.?rated/]],
+            ['Provider or programme pays', [/provider.?pays/, /programme.?pays/, /program.?pays/]],
+            ['Not applicable', [/not.?applicable/, /^n\/a$/]]
+          ]
+        }
+      ];
+      for (const field of providerFields) {
+        const key = column(...field.keys);
+        if (!key) continue;
+        const counts = new Map();
+        records.forEach(record => {
+          const category = classify(value(record, key), field.categories);
+          if (category) counts.set(category, (counts.get(category) || 0) + 1);
+        });
+        if (counts.size) {
+          data.providers[field.target] = makeSurveyDistribution(counts);
+          data.providers.total = [...counts.values()].reduce((sum, count) => sum + count, 0);
+          updated.push(field.label);
+        }
+      }
+      return updated;
+    }
+
+    function sanitizeLegacySurveyJson(payload) {
+      if (!payload || typeof payload !== 'object' || !payload.teachers || !payload.providers || !payload.experts) return null;
+      const data = cloneSurveyBaseline();
+      let changed = false;
+      const copyDistribution = (source, target) => {
+        if (!Array.isArray(source)) return;
+        const allowed = new Set(target.map(item => item.name));
+        const next = source.filter(item =>
+          item &&
+          allowed.has(item.name) &&
+          Number.isFinite(item.percentage) &&
+          item.percentage >= 0 &&
+          item.percentage <= 100
+        ).map(item => ({
+          name: item.name,
+          count: Number.isInteger(item.count) && item.count >= 0 ? item.count : 0,
+          percentage: item.percentage
+        }));
+        if (next.length) {
+          target.splice(0, target.length, ...next);
+          changed = true;
         }
       };
-      reader.readAsText(file);
-    }
-
-    function parseAndIngestCSV(csvText, sourceName) {
-      const statusBox = document.getElementById('survey-ingestion-status');
-      const lines = csvText.split(/\r?\n/).filter(l => l.trim().length > 0);
-      if (lines.length < 2) throw new Error('CSV has fewer than 2 rows');
-
-      const headers = lines[0].split(',').map(h => h.replace(/["']/g, '').trim().toLowerCase());
-      const rowCount = lines.length - 1;
-
-      // Heuristic column matching
-      const locCol = headers.findIndex(h => h.includes('location') || h.includes('area') || h.includes('where'));
-      const elecCol = headers.findIndex(h => h.includes('elec') || h.includes('power'));
-      const netCol = headers.findIndex(h => h.includes('internet') || h.includes('data') || h.includes('connect'));
-      const workCol = headers.findIndex(h => h.includes('workload') || h.includes('burden'));
-
-      // If teachers CSV detected
-      if (locCol !== -1 || elecCol !== -1) {
-        let ruralCount = 0;
-        let outageCount = 0;
-        let dataTaxCount = 0;
-
-        for (let i = 1; i <= rowCount; i++) {
-          const cells = lines[i].split(',').map(c => c.replace(/["']/g, '').trim());
-          if (locCol !== -1 && cells[locCol] && cells[locCol].toLowerCase().includes('rural')) ruralCount++;
-          if (elecCol !== -1 && cells[elecCol] && (cells[elecCol].toLowerCase().includes('unreliable') || cells[elecCol].toLowerCase().includes('none') || cells[elecCol].toLowerCase().includes('no'))) outageCount++;
-          if (netCol !== -1 && cells[netCol] && (cells[netCol].toLowerCase().includes('personal') || cells[netCol].toLowerCase().includes('self') || cells[netCol].toLowerCase().includes('bundle'))) dataTaxCount++;
+      const copyTotal = (source, target) => {
+        if (Number.isInteger(source) && source >= 0) {
+          target.total = source;
+          changed = true;
         }
-
-        // Apply dynamically computed shifts to CURRENT_SURVEY
-        if (CURRENT_SURVEY.teachers && CURRENT_SURVEY.teachers.elecByLocation) {
-          const ruralRow = CURRENT_SURVEY.teachers.elecByLocation.find(l => l.location.toLowerCase().includes('rural'));
-          if (ruralRow && outageCount > 0) {
-            ruralRow.unreliable = Math.round((outageCount / rowCount) * 100 * 0.55);
-            ruralRow.none = Math.round((outageCount / rowCount) * 100 * 0.45);
+      };
+      copyTotal(payload.teachers.total, data.teachers);
+      copyTotal(payload.providers.total, data.providers);
+      copyTotal(payload.experts.total, data.experts);
+      if (Array.isArray(payload.teachers.elecByLocation)) {
+        for (const row of payload.teachers.elecByLocation) {
+          const target = data.teachers.elecByLocation.find(item => item.location === row?.location);
+          if (!target) continue;
+          for (const key of ['always', 'mostly', 'unreliable', 'none']) {
+            if (Number.isFinite(row[key]) && row[key] >= 0 && row[key] <= 100) {
+              target[key] = row[key];
+              changed = true;
+            }
           }
         }
-        if (CURRENT_SURVEY.teachers && CURRENT_SURVEY.teachers.internetDist && dataTaxCount > 0) {
-          const personalItem = CURRENT_SURVEY.teachers.internetDist.find(i => i.name.toLowerCase().includes('personal'));
-          if (personalItem) personalItem.percentage = Math.round((dataTaxCount / rowCount) * 100);
-        }
-        CURRENT_SURVEY.teachers.total = rowCount;
       }
+      [
+        [payload.teachers.internetDist, data.teachers.internetDist],
+        [payload.teachers.workloadDist, data.teachers.workloadDist],
+        [payload.providers.offlineDist, data.providers.offlineDist],
+        [payload.providers.deviceDist, data.providers.deviceDist],
+        [payload.providers.dataPaymentDist, data.providers.dataPaymentDist],
+        [payload.providers.evidenceDist, data.providers.evidenceDist],
+        [payload.experts.decisionDriverDist, data.experts.decisionDriverDist],
+        [payload.experts.donorExitDist, data.experts.donorExitDist],
+        [payload.experts.systemConstraintDist, data.experts.systemConstraintDist]
+      ].forEach(([source, target]) => copyDistribution(source, target));
+      data.teachers.quotes = [];
+      return changed ? data : null;
+    }
 
-      applyLiveMode('Live CSV File: ' + sourceName, rowCount);
+    function activateSurveySimulation(data, source, updated) {
+      surveyFetchVersion++;
+      surveyDataMode = 'simulation';
+      surveyAggregateSource = 'simulation';
+      surveyIsLoading = false;
+      surveyLoadError = null;
+      data.teachers.quotes = [];
+      CURRENT_SURVEY = data;
+      updateSurveyModeButtons();
+      renderSurveyDashboard();
+      renderInteractiveHeatmap();
+      renderSupplyMatrix();
+      setSurveyDataStatus(
+        'demo',
+        `Simulation only · ${source} · updated ${updated.join(', ')}. Unmatched indicators remain at the demo baseline; this is not published survey evidence.`
+      );
+    }
 
-      if (statusBox) {
-        statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-emerald-100 text-emerald-900 block';
-        statusBox.textContent = '✓ Successfully parsed ' + rowCount + ' field rows from ' + sourceName + '. Ground-truth telemetry recalculated.';
+    async function handleSurveyFileUpload(event) {
+      const input = event.currentTarget;
+      const file = input.files?.[0];
+      if (!file) return;
+      surveyFetchVersion++;
+      surveyIsLoading = false;
+      setSurveyDataStatus('loading', 'Reading local survey file…');
+      try {
+        if (file.size > 10 * 1024 * 1024) throw new Error('File exceeds the 10 MB simulator limit.');
+        const content = await file.text();
+        if (file.name.toLowerCase().endsWith('.json')) {
+          const payload = JSON.parse(content);
+          if (isPublicSurveyAggregate(payload)) {
+            surveyDataMode = 'real';
+            surveyAggregateSource = 'local';
+            CURRENT_SURVEY = payload;
+            surveyIsLoading = false;
+            surveyLoadError = null;
+            updateSurveyModeButtons();
+            renderSurveyDashboard();
+            renderInteractiveHeatmap();
+            renderSupplyMatrix();
+            const evidence = document.getElementById('community-evidence-content');
+            if (evidence?.classList.contains('hidden')) toggleCommunityEvidence();
+            evidence?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } else {
+            let records = Array.isArray(payload) ? payload : payload?.records;
+            if (!Array.isArray(records) && Array.isArray(payload?.data)) records = payload.data;
+            if (!Array.isArray(records)) {
+              for (const stream of ['teachers', 'providers', 'experts']) {
+                if (Array.isArray(payload?.[stream]?.records)) {
+                  records = payload[stream].records;
+                  break;
+                }
+              }
+            }
+            if (Array.isArray(records)) {
+              const data = cloneSurveyBaseline();
+              const normalized = records.map(record => Object.fromEntries(
+                Object.entries(record || {}).map(([key, value]) => [
+                  key.toLowerCase().replace(/[^a-z0-9]/g, ''),
+                  Array.isArray(value) ? value.join(' ') : String(value ?? '')
+                ])
+              ));
+              const updated = applySurveyCsvToSimulation(data, normalized);
+              if (!updated.length) throw new Error('No supported teacher or provider survey fields were found in the JSON records.');
+              activateSurveySimulation(data, 'local JSON import', updated);
+            } else {
+              const data = sanitizeLegacySurveyJson(payload);
+              if (!data) throw new Error('JSON must be a sanitized aggregate, a survey-record array, or a supported dashboard aggregate.');
+              activateSurveySimulation(data, 'local JSON import', ['supported dashboard summary fields']);
+            }
+          }
+        } else if (file.name.toLowerCase().endsWith('.csv')) {
+          const data = cloneSurveyBaseline();
+          const updated = applySurveyCsvToSimulation(data, parseSurveyCsv(content));
+          if (!updated.length) throw new Error('No supported teacher or provider survey columns were found in the CSV.');
+          activateSurveySimulation(data, 'local CSV import', updated);
+        } else {
+          throw new Error('Choose a CSV or JSON survey file.');
+        }
+      } catch (error) {
+        const message = error instanceof Error ? error.message : 'The selected file could not be read.';
+        setSurveyDataStatus('error', `Could not import survey data: ${message} The current dashboard data was not changed.`);
+      } finally {
+        input.value = '';
       }
     }
 
-    function fetchLiveSurveyFeeds() {
-      const urlT = document.getElementById('survey-url-teacher')?.value?.trim();
-      const urlP = document.getElementById('survey-url-provider')?.value?.trim();
-      const statusBox = document.getElementById('survey-ingestion-status');
-
-      if (!urlT && !urlP) {
-        if (statusBox) {
-          statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-amber-100 text-amber-900 block';
-          statusBox.textContent = 'Please provide at least one published Google Sheet CSV URL (File > Share > Publish to web > CSV).';
-        }
+    async function fetchLiveSurveyFeeds() {
+      const feeds = [
+        ['survey-url-teacher', 'teacher'],
+        ['survey-url-provider', 'provider']
+      ].map(([id, label]) => [document.getElementById(id)?.value?.trim(), label]).filter(([url]) => url);
+      if (!feeds.length) {
+        setSurveyDataStatus('error', 'Enter at least one published CSV feed URL.');
         return;
       }
-
-      if (statusBox) {
-        statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-slate-100 text-slate-800 block';
-        statusBox.textContent = 'Connecting to Google Sheets CSV endpoint...';
-      }
-
-      const targetUrl = urlT || urlP;
-      fetch(targetUrl)
-        .then(res => {
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          return res.text();
-        })
-        .then(csv => {
-          parseAndIngestCSV(csv, 'Google Sheets Live Feed');
-        })
-        .catch(err => {
-          if (statusBox) {
-            statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-amber-100 text-amber-900 block';
-            statusBox.textContent = 'Notice: Remote CORS restriction prevented direct fetch (' + err.message + '). Export as CSV and use the Browse Local File button, or check that your Google Sheet is published to web.';
+      const requestVersion = ++surveyFetchVersion;
+      setSurveyDataStatus('loading', 'Fetching published CSV feeds in this browser…');
+      try {
+        const data = cloneSurveyBaseline();
+        const updated = [];
+        for (const [rawUrl, label] of feeds) {
+          const url = new URL(rawUrl);
+          if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password) {
+            throw new Error('Feed URLs must use HTTP or HTTPS and must not contain credentials.');
           }
-        });
+          const response = await fetch(url.href, { cache: 'no-store' });
+          if (!response.ok) throw new Error(`Feed request failed with HTTP ${response.status}.`);
+          const content = await response.text();
+          if (content.length > 10 * 1024 * 1024) throw new Error('A feed exceeds the 10 MB simulator limit.');
+          const changes = applySurveyCsvToSimulation(data, parseSurveyCsv(content));
+          if (!changes.length) throw new Error(`The ${label} feed contains no supported survey columns.`);
+          updated.push(...changes);
+          if (requestVersion !== surveyFetchVersion) return;
+        }
+        activateSurveySimulation(data, 'published CSV feed import', [...new Set(updated)]);
+      } catch (error) {
+        if (requestVersion !== surveyFetchVersion) return;
+        const message = error instanceof Error ? error.message : 'Feed request failed.';
+        setSurveyDataStatus('error', `Could not simulate feed data: ${message} Check that the CSV is published and permits browser CORS access.`);
+      }
     }
 
     function loadDemoLiveSurveyData() {
-      // Thesis Defense Simulator: Ingests batch of 124 newly verified rural and peri-urban teacher records
-      CURRENT_SURVEY = JSON.parse(JSON.stringify(SURVEY_BASELINE));
-      CURRENT_SURVEY.teachers.total = 724;
-      if (CURRENT_SURVEY.teachers.elecByLocation) {
-        const ruralRow = CURRENT_SURVEY.teachers.elecByLocation.find(l => l.location.toLowerCase().includes('rural'));
-        if (ruralRow) {
-          ruralRow.none = 41.5;
-          ruralRow.unreliable = 47.7; // Total 89.2% outage
-        }
+      const data = cloneSurveyBaseline();
+      const rural = data.teachers.elecByLocation.find(row => row.location === 'Rural area');
+      if (rural) {
+        rural.none = 41.5;
+        rural.unreliable = 47.7;
       }
-      if (CURRENT_SURVEY.teachers.internetDist) {
-        const pItem = CURRENT_SURVEY.teachers.internetDist.find(i => i.name.toLowerCase().includes('personal'));
-        if (pItem) pItem.percentage = 44.8;
-      }
-
-      applyLiveMode('Live Hot-Swap Batch (Kenya/Uganda Rural Cohort)', 924);
-
-      const simBox = document.getElementById('simulation-control-box');
-      if (simBox && simBox.classList.contains('hidden')) {
-        simBox.classList.remove('hidden');
-        const caret = document.getElementById('sim-box-caret');
-        if (caret) caret.textContent = '▾ Close';
-      }
-
-      const statusBox = document.getElementById('survey-ingestion-status');
-      if (statusBox) {
-        statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-emerald-100 text-emerald-900 block';
-        statusBox.textContent = '✓ Simulated live response batch ingested: 124 rural teachers from Western Kenya & Eastern Uganda added. Total N=924. Telemetry updated.';
-      }
-      const drawer = document.getElementById('survey-ingestion-drawer');
-      if (drawer && drawer.classList.contains('hidden')) {
-        drawer.classList.remove('hidden');
-      }
-    }
-
-    function applyLiveMode(sourceLabel, totalN) {
-      surveyDataMode = 'live';
-      const dot = document.getElementById('survey-live-status-dot');
-      if (dot) {
-        dot.className = 'w-3.5 h-3.5 rounded-full bg-emerald-500 animate-ping shrink-0';
-      }
-
-      const badge = document.getElementById('survey-mode-badge');
-      if (badge) {
-        badge.className = 'font-bold text-xs uppercase tracking-wider text-emerald-950 bg-emerald-300 px-2.5 py-0.5 rounded shadow-2xs';
-        badge.textContent = 'Active Mode: Live Field Ingestion Feed';
-      }
-
-      const desc = document.getElementById('survey-mode-desc');
-      if (desc) {
-        desc.textContent = 'Connected: ' + sourceLabel + ' · Automatically recalculated on-the-fly.';
-      }
-
-      const nBadge = document.getElementById('survey-n-badge');
-      if (nBadge) {
-        nBadge.textContent = 'N = ' + totalN + ' Verified Responses (Live Field Triangulation)';
-      }
-
-      renderSurveyDashboard();
+      const personal = data.teachers.internetDist.find(item => item.name.includes('personal'));
+      if (personal) personal.percentage = 44.8;
+      data.teachers.total = 724;
+      activateSurveySimulation(data, 'simulated live batch', ['rural electricity', 'teacher internet']);
     }
 
     function resetSurveyBaseline() {
-      CURRENT_SURVEY = JSON.parse(JSON.stringify(SURVEY_BASELINE));
-      surveyDataMode = 'baseline';
-
-      const dot = document.getElementById('survey-live-status-dot');
-      if (dot) {
-        dot.className = 'w-3.5 h-3.5 rounded-full bg-emerald-500 animate-pulse shrink-0';
-      }
-
-      const badge = document.getElementById('survey-mode-badge');
-      if (badge) {
-        badge.className = 'font-bold text-xs uppercase tracking-wider text-amber-950 bg-amber-200 px-2.5 py-0.5 rounded border border-amber-300';
-        badge.textContent = 'Prototype Mode: Simulated Survey Cohort (N=800 Seed)';
-      }
-
-      const desc = document.getElementById('survey-mode-desc');
-      if (desc) {
-        desc.textContent = 'Simulated response records for prototype demonstration. Official verified baselines are in the Policy Lens.';
-      }
-
-      const nBadge = document.getElementById('survey-n-badge');
-      if (nBadge) nBadge.textContent = 'N = 800 simulated responses across 48 SSA countries';
-
-      const statusBox = document.getElementById('survey-ingestion-status');
-      if (statusBox) {
-        statusBox.className = 'mt-4 p-3 rounded-lg text-xs font-mono bg-stone-100 text-stone-700 block';
-        statusBox.textContent = 'Restored synthetic baseline: 800 simulated responses across 48 Sub-Saharan African nations.';
-      }
-
-      renderSurveyDashboard();
+      setSurveyDataMode('demo');
+      setSurveyDataStatus('demo', 'Demo preview only: restored the calibrated synthetic baseline.');
     }
 
     // Initialize on DOM load
@@ -15577,12 +16186,7 @@ const SURVEY_CODEBOOK = [
       try { setDeepDiveLens(1); } catch(e) { console.error('Error setDeepDiveLens:', e); }
       appNavigationReady = true;
       const params = new URLSearchParams(window.location.search);
-      const view = params.get('view') || 'landing';
-      if (['landing', 'systemic', 'classroom'].includes(view)) {
-        switchLens(view, false);
-      } else {
-        switchLens('landing', false);
-      }
+      switchLens('landing', false);
       const country = params.get('country');
       if (country && countryData[country]) selectCountry(country);
       const lens = Number(params.get('lens'));
@@ -15591,12 +16195,6 @@ const SURVEY_CODEBOOK = [
       if (segment === 'national' || segment === 'urban' || segment === 'rural') setDemographicSegment(segment);
       const tab3 = params.get('tab3');
       if (tab3 === 'COMPARE' || (tab3 && tab3CountryData[tab3])) selectTab3Country(tab3);
-      const classroomTab = params.get('classroomTab');
-      if (classroomTab && document.getElementById(classroomTab)?.classList.contains('classroom-content')) {
-        switchClassroomTab(classroomTab, false);
-      }
-      const tabId = params.get('tab');
-      if (tabId && document.getElementById(tabId)?.classList.contains('tab-content')) switchTab(tabId, false);
       syncAppUrlState();
       if (window.twemoji) {
         try { twemoji.parse(document.body, { folder: 'svg', ext: '.svg' }); } catch(e) {}
@@ -15615,6 +16213,7 @@ const SURVEY_CODEBOOK = [
       try {
         const explorerApi = await mountAdmin1Explorer(container, {
           baseUrl: "./out/dashboard/",
+          schoolDataUrl: "./out/dashboard/",
           country: "KEN",
           metric: "download_p50",
           since: "6m",

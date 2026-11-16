@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EdTech Traceability Observatory: Macro · Meso · Micro</title>
+  
+  <!-- Compiled Tailwind CSS & Custom Stylesheet -->
+  <link rel="stylesheet" href="../../dist/output.css">
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Local self-hosted d3 v7 (no external CDN dependency) -->
+  <script src="../../js/vendor/d3.v7.min.js"></script>
+</head>
+<body class="bg-slate-100 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+  <a class="skip" href="#page-canvas">Skip to main content</a>
+
+  <!-- TOP SPINE / NAVBAR -->
+  <header class="sticky top-0 z-40 bg-white border-b border-slate-200 shadow-xs">
+    <div class="max-w-[96rem] mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Brand Title -->
+      <div class="flex items-center gap-3">
+        <span class="text-2xl" aria-hidden="true">🌐</span>
+        <div>
+          <h1 id="site-title" class="text-base sm:text-lg font-black text-slate-900 tracking-tight leading-tight">
+            EdTech Traceability Observatory
+          </h1>
+          <p class="text-[11px] font-medium text-slate-500 leading-none">
+            Vertical Multi-Scale Architecture across Macro · Meso · Micro
+          </p>
+        </div>
+      </div>
+
+      <!-- Country Selector + Current Position -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <div class="flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-lg px-2 py-1">
+          <span class="text-[11px] font-bold text-slate-500 uppercase">Country:</span>
+          <select id="country-select" class="bg-white border border-slate-300 text-slate-900 font-bold text-xs rounded-md px-2 py-1 cursor-pointer">
+          </select>
+        </div>
+
+        <!-- Lens Tabs in Spine -->
+        <div class="flex items-center gap-1 bg-slate-50 border border-slate-200 rounded-lg p-1" id="lens-row" role="tablist" aria-label="Perspective Lenses">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- Utilities: Tools Menu + Status Tag -->
+      <div class="flex items-center gap-2">
+        <details class="relative" id="tools-menu">
+          <summary class="list-none flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 cursor-pointer transition select-none">
+            <span>⚙️ Tools</span>
+            <span class="text-[10px] text-slate-400">▼</span>
+          </summary>
+          <div class="absolute right-0 mt-2 w-72 bg-white border border-slate-200 rounded-xl shadow-xl p-2 z-50">
+            <div class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider px-2 py-1">Frontline Decision Toolkits</div>
+            <ul id="tools-list" class="space-y-1"></ul>
+          </div>
+        </details>
+
+        <span id="data-tag" class="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300" role="status">
+          Live Telemetry
+        </span>
+      </div>
+    </div>
+
+    <!-- COMPACT SURVEY RIBBON (Single neat horizontal bar) -->
+    <div class="bg-slate-900 text-white border-t border-slate-800 px-4 sm:px-6 py-1.5">
+      <div class="max-w-[96rem] mx-auto flex flex-wrap items-center justify-between gap-2 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="inline-block px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold text-[10px] uppercase tracking-wider">
+            Field Participatory Surveys
+          </span>
+          <span class="text-slate-300 hidden lg:inline text-[11px]">Contribute classroom &amp; school ground reality via KoboToolbox:</span>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <a href="https://ee.kobotoolbox.org/x/30yery6R" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-[11px] transition shadow-xs">
+            🎓 Teacher Survey ↗
+          </a>
+          <a href="https://ee.kobotoolbox.org/x/qDd1CYDX" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-amber-600 hover:bg-amber-500 text-white font-bold text-[11px] transition shadow-xs">
+            🏢 Provider Survey ↗
+          </a>
+          <a href="https://ee.kobotoolbox.org/x/gT97Wqr7" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-purple-600 hover:bg-purple-500 text-white font-bold text-[11px] transition shadow-xs">
+            🏛️ Expert Consultation ↗
+          </a>
+          <a href="https://ee.kobotoolbox.org/x/Lc8IsXOH" target="_blank" rel="noopener noreferrer" class="px-2 py-0.5 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 font-semibold text-[11px] transition">
+            📋 Follow-Up ↗
+          </a>
+          <a href="../../AoA%20survey/AoA_Survey_to_Pillar_Codebook.md" target="_blank" class="px-2 py-0.5 text-slate-400 hover:text-white font-medium text-[11px] transition underline">
+            104-Item Codebook
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- THREE-COLUMN TRACEABILITY LAYOUT -->
+  <div class="max-w-[96rem] mx-auto px-3 sm:px-6 py-5 flex-1 w-full grid grid-cols-1 lg:grid-cols-[14rem_minmax(0,1fr)_18rem] gap-5 items-start">
+
+    <!-- 1. LEFT DEPTH RAIL (Persistent Vertical Scale Gauge) -->
+    <aside id="depth-rail" class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sticky top-24" aria-label="Vertical Scale Depth Rail">
+      <div class="text-[10px] font-black uppercase tracking-wider text-slate-400 border-b border-slate-100 pb-2 mb-3">
+        Vertical Scale Depth
+      </div>
+      <nav id="depth-nodes" class="space-y-4" role="navigation" aria-label="Scale Hierarchy">
+        <!-- Rendered dynamically by app.js with nodes: 0 Overview, 1 Macro, 2 Meso, 3 Micro -->
+      </nav>
+      <div class="mt-6 pt-3 border-t border-slate-100 text-[10px] text-slate-400 leading-tight">
+        Click any node to navigate to that depth.
+      </div>
+    </aside>
+
+    <!-- 2. MAIN PAGE CANVAS (Dedicated Single Page per Level) -->
+    <main id="page-canvas" class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-5 sm:p-7 flex flex-col gap-6 min-h-[40rem]" aria-live="polite">
+      <!-- Context Chip + Active Page Content + Drill Cards rendered here by app.js -->
+    </main>
+
+    <!-- 3. RIGHT TRACE PANEL (Vertical Cross-Section HUD) -->
+    <aside id="trace" class="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sm:p-5 sticky top-24" aria-label="Vertical Traceability: cross-section depth">
+      <!-- Cross-section ladder rendered by app.js -->
+    </aside>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 py-3 mt-auto">
+    <div class="max-w-[96rem] mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500">
+      <div class="flex items-center gap-4">
+        <span class="mark-paper">On paper: official, statutory, or planned figures</span>
+        <span class="mark-ground">On the ground: measured or reported in the field</span>
+      </div>
+      <p id="limits-line" class="text-slate-400 text-[11px]"></p>
+    </div>
+  </footer>
+
+  <!-- FULL TABLE DIALOG -->
+  <dialog id="table-dialog" class="backdrop:bg-slate-900/60 rounded-2xl border border-slate-200 shadow-2xl p-6 max-w-2xl w-full">
+    <form method="dialog" class="space-y-4">
+      <div id="table-body"></div>
+      <div class="flex justify-end">
+        <button class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold rounded-lg transition cursor-pointer">
+          Close Table
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- COMPATIBILITY FALLBACKS (Guarantees no null lookups) -->
+  <div style="display:none" aria-hidden="true">
+    <div id="level-stepper"></div>
+    <div id="start-chips"></div>
+    <div id="bands"></div>
+    <div id="methods-body"></div>
+  </div>
+
+  <!-- APPLICATION BOOTSTRAP -->
+  <script type="module">
+    import { boot } from "./app.js?v=2.2";
+    boot();
+  </script>
+</body>
+</html>

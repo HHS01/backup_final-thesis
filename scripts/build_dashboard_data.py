@@ -202,7 +202,7 @@ def build(cfg, pairs, out, dest):
 def main():
     here = Path(__file__).parent
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--config", default=str(here / "config.json"))
+    ap.add_argument("--config", default=str(here / "indicators_config.json"))
     ap.add_argument("--countries", nargs="+")
     ap.add_argument("--out", default="out")
     ap.add_argument("--dest")

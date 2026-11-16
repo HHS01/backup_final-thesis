@@ -1,70 +1,116 @@
-name: Weekly Kobo Survey Fetch & Triangulation
+name: Weekly Kobo Survey Fetch & Aggregate
 
 on:
   schedule:
-    # Runs every Monday at 06:00 UTC
     - cron: '0 6 * * 1'
-  workflow_dispatch: # Allows manual trigger from the GitHub Actions tab
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish the sanitized aggregate to the public dashboard
+        required: true
+        default: false
+        type: boolean
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  fetch-and-triangulate:
+  fetch-and-aggregate:
     runs-on: ubuntu-latest
+    outputs:
+      dashboard_status: ${{ steps.process.outputs.dashboard_status }}
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies
-        run: |
-          pip install requests python-dotenv pandas openpyxl
+      - name: Install fetch dependency
+        run: python -m pip install requests
 
-      # ── Step 1: Fetch latest submissions from KoboToolbox ──────────────────
-      - name: Fetch Kobo Submissions
+      - name: Test Kobo pipeline
+        run: python -m unittest discover -s tests -p 'test_*kobo*.py'
+
+      - name: Fetch all four Kobo instruments
         env:
           KOBO_TOKEN: ${{ secrets.KOBO_TOKEN }}
-          KOBO_SERVER: ${{ secrets.KOBO_SERVER }}
+          KOBO_SERVER: ${{ vars.KOBO_SERVER }}
           KOBO_UID_TEACHER: ${{ secrets.KOBO_UID_TEACHER }}
           KOBO_UID_PROVIDER: ${{ secrets.KOBO_UID_PROVIDER }}
           KOBO_UID_EXPERT: ${{ secrets.KOBO_UID_EXPERT }}
           KOBO_UID_FOLLOWUP: ${{ secrets.KOBO_UID_FOLLOWUP }}
         run: |
-          python scripts/fetch_kobo_submissions.py
+          python scripts/fetch_kobo_submissions.py \
+            --output-dir "$RUNNER_TEMP/kobo-raw"
 
-      # ── Step 2: Bridge — convert Kobo JSON → Excel for processing pipeline ─
-      - name: Convert Kobo JSON to Excel
+      - name: Build sanitized dashboard aggregate
+        id: process
         run: |
-          python scripts/kobo_json_to_excel.py \
-            --output data/raw/SSA_Survey_Responses_Live.xlsx
+          python scripts/process_kobo_surveys.py \
+            --input-dir "$RUNNER_TEMP/kobo-raw" \
+            --output "$RUNNER_TEMP/survey_dashboard_live.json"
+          status="$(python -c "import json, os; print(json.load(open(os.path.join(os.environ['RUNNER_TEMP'], 'survey_dashboard_live.json')))['status'])")"
+          echo "dashboard_status=$status" >> "$GITHUB_OUTPUT"
 
-      # ── Step 3: Clean, aggregate & compute distributions ───────────────────
-      - name: Process Survey Data
-        run: |
-          python scripts/process_survey_data_calibrated.py \
-            --input  data/raw/SSA_Survey_Responses_Live.xlsx \
-            --output data/processed/survey_data_calibrated.json
+      - name: Upload sanitized aggregate only
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: survey-dashboard-aggregate
+          path: ${{ runner.temp }}/survey_dashboard_live.json
+          if-no-files-found: error
+          retention-days: 7
 
-      # ── Step 4: Run triangulation against macro indicators ─────────────────
-      - name: Run Triangulation Update
-        run: |
-          python scripts/run_monthly_triangulation.py
+  publish-dashboard-data:
+    needs: fetch-and-aggregate
+    if: >-
+      ${{
+        contains(fromJSON('["available","insufficient","no_data"]'), needs.fetch-and-aggregate.outputs.dashboard_status) &&
+        github.ref == 'refs/heads/main' &&
+        (
+          (github.event_name == 'workflow_dispatch' && inputs.publish == true) ||
+          (github.event_name == 'schedule' && vars.SURVEY_PUBLISH_ENABLED == 'true')
+        )
+      }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
-      # ── Step 3: Commit any updated data files back to the repo ─────────────
-      - name: Commit Updated Data Files
+    steps:
+      - name: Checkout default branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: main
+
+      - name: Download sanitized aggregate
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: survey-dashboard-aggregate
+          path: ${{ runner.temp }}/survey-dashboard
+
+      - name: Publish exact aggregate file
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "Kobo Sync Bot"
-          git add data/
-          if git diff --staged --quiet; then
-            echo "No new data — nothing to commit."
+          install -D "$RUNNER_TEMP/survey-dashboard/survey_dashboard_live.json" \
+            data/processed/survey_dashboard_live.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f -- data/processed/survey_dashboard_live.json
+          if git diff --cached --quiet; then
+            echo "Sanitized dashboard aggregate is unchanged."
           else
-            git commit -m "data(kobo): weekly sync — $(date -u '+%Y-%m-%d') [skip ci]"
-            git push
+            git commit -m "Update sanitized Kobo survey aggregate"
+            git push origin HEAD:main
           fi
+
+  quality-gate:
+    needs: fetch-and-aggregate
+    if: needs.fetch-and-aggregate.outputs.dashboard_status != 'available'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail on no or insufficient data
+        run: |
+          echo "::error::Kobo aggregate status is ${{ needs.fetch-and-aggregate.outputs.dashboard_status }}; review per-form counts and schema before considering the run complete."
+          exit 1

@@ -27,18 +27,28 @@ const CHG_COL = { improved: "#1D9E75", worsened: "#D85A30", neutral: "#5F5E5A" }
 const MAX_MARKS = 8;
 const CSS = `
 .a1x{font:14px/1.4 system-ui,sans-serif;color:#1f2933}
-.a1x-controls{display:flex;flex-wrap:wrap;gap:.75rem;align-items:end;margin-bottom:.75rem}
+.a1x-controls{display:flex;flex-direction:column;gap:.5rem;margin-bottom:.75rem}
+.a1x-control-row{display:flex;flex-wrap:wrap;gap:.75rem;align-items:end}
 .a1x-controls label{display:flex;flex-direction:column;font-size:12px;color:#52606d}
 .a1x-controls select,.a1x-controls input{font:inherit;padding:.35rem .5rem;border:1px solid #cbd5e1;border-radius:6px;background:#fff}
+.a1x-month-field{min-width:200px}.a1x-month-value{display:flex;align-items:center;gap:.45rem}.a1x-month-value input{min-width:100px;flex:1}
+.a1x-period{white-space:nowrap;font-variant-numeric:tabular-nums}
 .a1x-body{display:flex;flex-wrap:wrap;gap:1rem}
 .a1x-map{flex:2 1 360px;min-width:300px}.a1x-side{flex:1 1 240px;min-width:220px}
-.a1x-map svg{width:100%;height:auto;min-height:360px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0}
-.a1x-map path{stroke:#94a3b8;stroke-width:.6;cursor:pointer;transition:stroke .15s,filter .15s}
+.a1x-map svg{display:block;width:100%;height:auto;max-width:560px;max-height:min(65vh,480px);margin:0 auto;background:#f8fafc;border-radius:8px;border:1px solid #475569}
+.a1x-map path{stroke:#475569;stroke-width:.8;cursor:pointer;transition:stroke .15s,filter .15s}
+.a1x-map path.r{fill-opacity:.88}
 .a1x-map path:hover{stroke:#0f172a;stroke-width:1.5;filter:brightness(0.93)}
 .a1x-map path.sel{stroke:#0284c7;stroke-width:2.5;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.25))}
+.a1x-schools circle{cursor:pointer;stroke:#fff;stroke-width:1;opacity:.88}
+.a1x-schools circle:hover{stroke:#0f172a;stroke-width:2;opacity:1}
+.a1x-school-callout rect{fill:#111827;fill-opacity:.96;stroke:#e2e8f0;stroke-width:1}
+.a1x-school-callout text{fill:#fff;font-family:system-ui,sans-serif;pointer-events:none}
 .a1x-legend{display:flex;gap:2px;align-items:center;margin:.5rem 0;font-size:12px}
 .a1x-legend i{display:inline-block;width:26px;height:10px}
 .a1x-bi{display:grid;grid-template-columns:repeat(3,18px);gap:1px;margin:.5rem 0}.a1x-bi i{width:18px;height:18px}
+.a1x-school-legend{margin-top:.75rem;padding-top:.65rem;border-top:1px solid #d8dfe8;font-size:12px}
+.a1x-school-gradient{height:10px;border-radius:4px;margin:.4rem 0}
 .a1x-panel h3{margin:.2rem 0}.a1x-muted{color:#52606d;font-size:12px}.a1x-warn{color:#8a4b00;font-size:12px}
 .a1x-foot{margin-top:.75rem;font-size:11px;color:#52606d}
 `;
@@ -56,22 +66,30 @@ export async function mountAdmin1Explorer(el, opts = {}) {
   const manifest = await getJson(base + "manifest.json");
   const M = Object.fromEntries(manifest.metrics.map((m) => [m.id, m]));
   const cache = {};
+  const schoolBase = (opts.schoolDataUrl || "./").replace(/\/?$/, "/");
+  const schoolCache = {};
   const st = { country: manifest.countries.some((c) => c.iso3 === opts.country) ? opts.country : manifest.countries[0]?.iso3,
                m1: M[opts.metric] ? opts.metric : manifest.metrics[0]?.id,
                m2: M[opts.metric2] && opts.metric2 !== opts.metric ? opts.metric2 : null, t: 0, sel: null, data: null,
-               since: ["3m", "6m", "12m"].includes(opts.since) ? opts.since : null, showAll: false };
+               since: ["3m", "6m", "12m"].includes(opts.since) ? opts.since : null, showAll: false,
+               schoolMode: "off", schoolMetric: "download_median_30d_mbps", schools: null, schoolMeta: null,
+               schoolError: null, selectedSchool: null };
   let pendingPeriod = opts.period || null;
 
   const root = d3.select(el).html("").classed("a1x", true);
   const controls = root.append("div").attr("class", "a1x-controls");
+  const primaryControls = controls.append("div").attr("class", "a1x-control-row");
+  const secondaryControls = controls.append("div").attr("class", "a1x-control-row");
   const body = root.append("div").attr("class", "a1x-body");
   const mapBox = body.append("div").attr("class", "a1x-map");
   const side = body.append("div").attr("class", "a1x-side");
   const panel = side.append("div").attr("class", "a1x-panel");
-  const foot = root.append("div").attr("class", "a1x-foot");
+  const legendBox = side.append("div").attr("class", "a1x-lg");
+  const changeBox = side.append("div").attr("class", "a1x-cl a1x-muted");
+  const foot = side.append("div").attr("class", "a1x-foot");
 
-  const field = (label, node) => { const l = controls.append("label"); l.append("span").text(label); return l.append(node); };
-  const selCountry = field("Country", "select");
+  const field = (row, label, node) => { const l = row.append("label"); l.append("span").text(label); return l.append(node); };
+  const selCountry = field(primaryControls, "Country", "select");
   selCountry.selectAll("option").data(manifest.countries).join("option")
     .attr("value", (c) => c.iso3).text((c) => c.name);
   const metricOptions = (sel, withNone) => {
@@ -80,11 +98,29 @@ export async function mountAdmin1Explorer(el, opts = {}) {
     for (const [k, ms] of kinds) sel.append("optgroup").attr("label", k)
       .selectAll("option").data(ms).join("option").attr("value", (m) => m.id).text((m) => m.label);
   };
-  const selM1 = field("Show", "select"); metricOptions(selM1, false);
-  const selM2 = field("Compare with", "select"); metricOptions(selM2, true);
-  const selSince = field("Highlight changes", "select");
-  const slider = field("Month", "input").attr("type", "range").attr("min", 0).attr("value", 0);
-  const tLabel = controls.append("span").attr("class", "a1x-muted");
+  const selM1 = field(primaryControls, "Show", "select"); metricOptions(selM1, false);
+  const selM2 = field(primaryControls, "Compare with", "select"); metricOptions(selM2, true);
+  const selSchools = field(primaryControls, "School points", "select");
+  selSchools.selectAll("option").data([
+    { value: "off", label: "Off" },
+    { value: "synthetic", label: "Giga school points" },
+  ]).join("option").attr("value", (d) => d.value).text((d) => d.label);
+  const schoolMetrics = [
+    { id: "download_median_30d_mbps", label: "30-day download (Mbps)", unit: " Mbps" },
+    { id: "latency_median_30d_ms", label: "30-day latency (ms)", unit: " ms" },
+    { id: "uptime_mean_30d_pct", label: "30-day uptime (%)", unit: "%" },
+    { id: "connectivity_status", label: "Connectivity status", unit: "" },
+  ];
+  const selSchoolMetric = field(primaryControls, "Dot color", "select");
+  selSchoolMetric.selectAll("option").data(schoolMetrics).join("option")
+    .attr("value", (d) => d.id).text((d) => d.label);
+
+  const monthField = secondaryControls.append("label").attr("class", "a1x-month-field");
+  monthField.append("span").text("Month");
+  const monthValue = monthField.append("div").attr("class", "a1x-month-value");
+  const slider = monthValue.append("input").attr("type", "range").attr("min", 0).attr("value", 0);
+  const tLabel = monthValue.append("span").attr("class", "a1x-muted a1x-period");
+  const selSince = field(secondaryControls, "Highlight changes", "select");
 
   foot.html(
     `<div>${manifest.caveats.map((c) => `<div>• ${c}</div>`).join("")}</div>` +
@@ -107,6 +143,138 @@ export async function mountAdmin1Explorer(el, opts = {}) {
       `between ${fmt(r.metric, r.usual[0])} and ${fmt(r.metric, r.usual[1])}. It is a measured change, not an explanation.`;
   }
   const glyph = (r) => (r.type === "new" ? "+" : r.type === "missing" ? "–" : r.direction === "up" ? "↑" : "↓");
+
+  const schoolMetricValue = (row, metric) => {
+    const value = row[metric];
+    return value == null || value === "" || !Number.isFinite(Number(value)) ? null : Number(value);
+  };
+  const schoolsFor = (iso3) => (schoolCache[iso3] ||= getJson(`${schoolBase}${iso3}_schools.json`)
+    .then((payload) => {
+      const rows = Array.isArray(payload) ? payload : payload?.rows;
+      if (!Array.isArray(rows)) throw new Error("unexpected Giga school data format");
+      const synthetic = Array.isArray(payload)
+        ? rows.some((row) => row.synthetic === true || row.synthetic === "True" || row.synthetic === 1)
+        : payload.synthetic === true;
+      return { rows, synthetic, asOf: Array.isArray(payload) ? null : payload.asOf };
+    }));
+
+  function renderSchoolLayer(svg, projection, geo, W, H) {
+    svg.selectAll("g.a1x-schools").remove();
+    const metric = schoolMetrics.find((m) => m.id === st.schoolMetric) || schoolMetrics[0];
+    d3.select(selSchoolMetric.node().parentNode).style("display", st.schoolMode === "synthetic" ? null : "none");
+    if (st.schoolMode !== "synthetic") return;
+    const synthetic = st.schoolMeta?.synthetic ?? false;
+
+    const featureById = new Map(geo.features.map((feature) => [feature.properties.shapeID, feature]));
+    const rows = (st.schools || []).filter((school) => {
+      const lon = Number(school.longitude), lat = Number(school.latitude);
+      const feature = featureById.get(school.admin1_id);
+      return Number.isFinite(lon) && Number.isFinite(lat) && lon !== 0 && lat !== 0
+        && feature && d3.geoContains(feature, [lon, lat]);
+    });
+    const values = rows.map((row) => schoolMetricValue(row, metric.id)).filter((value) => value != null);
+    const [min, max] = values.length ? d3.extent(values) : [0, 1];
+    const color = d3.scaleSequential()
+      .domain(min === max ? [min - 1, max + 1] : [min, max])
+      .interpolator(metric.id === "latency_median_30d_ms" ? d3.interpolateYlOrRd : d3.interpolateYlGnBu);
+    const schoolColors = { connected: "#00c781", notConnected: "#ff5a4f", high: "#00c781",
+      moderate: "#eac800", low: "#f45140", unknown: "#2196f3" };
+    const connectivityStatus = (row) => {
+      const status = String(row.connectivity_govt ?? "").trim().toLowerCase();
+      if (["yes", "connected", "true", "1"].includes(status)) return "connected";
+      if (["no", "not connected", "false", "0"].includes(status)) return "notConnected";
+      return "unknown";
+    };
+    const speedBand = (value) => value == null ? "unknown" : value >= 20 ? "high" : value >= 5 ? "moderate" : "low";
+    const colorFor = (row) => {
+      if (metric.id === "connectivity_status") return schoolColors[connectivityStatus(row)];
+      const value = schoolMetricValue(row, metric.id);
+      if (value == null) return schoolColors.unknown;
+      if (metric.id === "download_median_30d_mbps") return schoolColors[speedBand(value)];
+      return color(value);
+    };
+
+    const marks = svg.append("g").attr("class", "a1x-schools");
+    marks.selectAll("circle").data(rows).join("circle")
+      .attr("cx", (row) => projection([Number(row.longitude), Number(row.latitude)])[0])
+      .attr("cy", (row) => projection([Number(row.longitude), Number(row.latitude)])[1])
+      .attr("r", (row) => row === st.selectedSchool ? 5 : 3.5)
+      .attr("fill", colorFor)
+      .on("click", (event, row) => { event.stopPropagation(); st.selectedSchool = row; api.select(row.admin1_id); })
+      .append("title").text((row) => {
+        const value = metric.id === "connectivity_status"
+          ? connectivityStatus(row) === "connected" ? "Connected"
+            : connectivityStatus(row) === "notConnected" ? "Not connected" : "Unknown"
+          : schoolMetricValue(row, metric.id) == null
+            ? "not measured"
+            : `${schoolMetricValue(row, metric.id).toFixed(1)}${metric.unit}`;
+        return `${synthetic ? "SYNTHETIC DEMO" : "GIGA SCHOOL DATA"} · ${row.school_name} · ${row.admin1_boundary} · ${metric.label}: ${value}`;
+      });
+
+    if (st.selectedSchool && rows.includes(st.selectedSchool)) {
+      const row = st.selectedSchool;
+      const [px, py] = projection([Number(row.longitude), Number(row.latitude)]);
+      const value = metric.id === "connectivity_status"
+        ? connectivityStatus(row) === "connected" ? "Connected"
+          : connectivityStatus(row) === "notConnected" ? "Not connected" : "Unknown"
+        : schoolMetricValue(row, metric.id) == null
+          ? "Unknown"
+          : `${schoolMetricValue(row, metric.id).toFixed(1)}${metric.unit}`;
+      const detail = `${row.admin1_boundary} · ${metric.label}: ${value}`;
+      const boxWidth = 224, boxHeight = 42;
+      const boxX = Math.max(4, Math.min(W - boxWidth - 4, px - boxWidth / 2));
+      const boxY = py - boxHeight - 10 >= 4 ? py - boxHeight - 10 : Math.min(H - boxHeight - 4, py + 12);
+      const shorten = (text, max) => text.length > max ? `${text.slice(0, max - 3)}...` : text;
+      const callout = svg.append("g").attr("class", "a1x-school-callout").style("pointer-events", "none");
+      callout.append("rect").attr("x", boxX).attr("y", boxY).attr("width", boxWidth).attr("height", boxHeight).attr("rx", 5);
+      const text = callout.append("text").attr("x", boxX + 9).attr("font-size", 11);
+      text.append("tspan").attr("x", boxX + 9).attr("y", boxY + 15).text(shorten(row.school_name, 32));
+      text.append("tspan").attr("x", boxX + 9).attr("y", boxY + 31).attr("font-size", 9).text(shorten(detail, 43));
+    }
+
+    const schoolLegend = legendBox.append("div").attr("class", "a1x-school-legend");
+    const legendTitle = metric.id === "download_median_30d_mbps" ? "Average Download Speed"
+      : metric.id === "connectivity_status" ? "Connectivity status" : metric.label;
+    schoolLegend.append("strong").text(`${synthetic ? "Synthetic school demo" : "Giga school data"} · ${legendTitle}`);
+    if (metric.id === "connectivity_status") {
+      const legendRow = schoolLegend.append("div").attr("class", "a1x-legend");
+      for (const [label, fill] of [
+        ["Connected", schoolColors.connected], ["Not connected", schoolColors.notConnected],
+        ["Unknown", schoolColors.unknown],
+      ]) {
+        const item = legendRow.append("span").style("display", "inline-flex").style("align-items", "center").style("gap", "3px");
+        item.append("i").style("background", fill).style("width", "9px").style("height", "9px").style("border-radius", "50%");
+        item.append("span").text(label);
+      }
+    } else if (metric.id === "download_median_30d_mbps") {
+      const legendRow = schoolLegend.append("div").attr("class", "a1x-legend");
+      for (const [label, fill] of [
+        ["High", schoolColors.high], ["Moderate", schoolColors.moderate],
+        ["Low", schoolColors.low], ["Unknown", schoolColors.unknown],
+      ]) {
+        const item = legendRow.append("span").style("display", "inline-flex").style("align-items", "center").style("gap", "3px");
+        item.append("i").style("background", fill).style("width", "9px").style("height", "9px").style("border-radius", "50%");
+        item.append("span").text(label);
+      }
+      schoolLegend.append("div").attr("class", "a1x-muted")
+        .text("30-day median · Global benchmark 20 Mbps (High ≥20; Moderate 5–<20; Low <5).");
+    } else {
+      schoolLegend.append("div").attr("class", "a1x-school-gradient")
+        .style("background", `linear-gradient(to right, ${color(min)}, ${color(max)})`);
+      schoolLegend.append("div").attr("class", "a1x-muted")
+        .text(values.length
+          ? `${min.toFixed(1)}${metric.unit} to ${max.toFixed(1)}${metric.unit} · ${rows.length} schools on map` +
+            (st.schoolMeta?.asOf ? ` · measurements through ${st.schoolMeta.asOf}` : "")
+          : "No schools with usable values on map.");
+    }
+    schoolLegend.append("div").attr("class", "a1x-warn")
+      .text(synthetic
+        ? "Synthetic placeholder values, not observed school data; separate from the M-Lab regional fill."
+        : "Metered schools are a non-random subset; regional quality estimates describe measured schools only.");
+    if (st.schoolError) {
+      schoolLegend.append("div").attr("class", "a1x-warn").text(`Could not load school placeholders: ${st.schoolError}`);
+    }
+  }
 
   function rewindGeo(geo) {
     if (!geo || !geo.features) return;
@@ -149,7 +317,7 @@ export async function mountAdmin1Explorer(el, opts = {}) {
   }
 
   function legend(c) {
-    const box = mapBox.selectAll(".a1x-lg").data([0]).join("div").attr("class", "a1x-lg").html("");
+    const box = legendBox.html("");
     if (c.bi) {
       box.append("div").attr("class", "a1x-muted")
         .text(`→ ${M[st.m1].label} (low to high)    ↑ ${M[st.m2].label} (low to high)`);
@@ -179,7 +347,7 @@ export async function mountAdmin1Explorer(el, opts = {}) {
   }
 
   function changeLegend(recs) {
-    const box = mapBox.selectAll(".a1x-cl").data([0]).join("div").attr("class", "a1x-cl a1x-muted").html("");
+    const box = changeBox.html("");
     if (!st.since) return;
     if (!recs.length) { box.text(`No changes beyond usual variation for this measure, compared with ${SINCE_LABEL[st.since]}.`); return; }
     box.text(`Arrows show the direction of change; green is better, orange is worse. Marked only where the change is beyond a ` +
@@ -212,7 +380,7 @@ export async function mountAdmin1Explorer(el, opts = {}) {
   function renderMap() {
     const { geo, series } = st.data, c = colourFn();
     tLabel.text(series.periods[st.t] || "");
-    const W = 560, H = 520;
+    const W = 560, H = 440;
     const svg = mapBox.selectAll("svg").data([0]).join("svg")
       .attr("viewBox", `0 0 ${W} ${H}`)
       .attr("width", W)
@@ -220,11 +388,12 @@ export async function mountAdmin1Explorer(el, opts = {}) {
       .attr("role", "img").attr("aria-label", "Regional map");
     svg.html(`<defs><pattern id="a1x-hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">` +
       `<line x1="0" y1="0" x2="0" y2="6" stroke="#333" stroke-width="1.5" opacity=".45"/></pattern></defs>`);
-    const path = d3.geoPath(d3.geoMercator().fitSize([W, H], geo));
+    const projection = d3.geoMercator().fitSize([W, H], geo);
+    const path = d3.geoPath(projection);
     const sid = (f) => f.properties.shapeID;
     svg.selectAll("path.r").data(geo.features).join("path").attr("class", (f) => "r" + (sid(f) === st.sel ? " sel" : ""))
       .attr("d", path).attr("fill", (f) => c.fn(series.shapes[sid(f)], st.t))
-      .on("click", (e, f) => api.select(sid(f)))
+      .on("click", (e, f) => { st.selectedSchool = null; api.select(sid(f)); })
       .append("title").text((f) => {
         const s = series.shapes[sid(f)];
         const sName = s?.name || f.properties?.shapeName || sid(f);
@@ -240,13 +409,25 @@ export async function mountAdmin1Explorer(el, opts = {}) {
     marks.append("circle").attr("r", 11).attr("fill", (r) => CHG_COL[r.effect || "neutral"]).attr("stroke", "#fff").attr("stroke-width", 1.5);
     marks.append("text").attr("text-anchor", "middle").attr("dy", "0.35em").attr("fill", "#fff").attr("font-size", 13).text(glyph);
     marks.append("title").text((r) => `${series.shapes[r.shapeId]?.name || r.shapeId}: ${sentence(r)}`);
-    legend(c); changeLegend(recs); renderPanel();
+    legend(c);
+    renderSchoolLayer(svg, projection, geo, W, H);
+    changeLegend(recs); renderPanel();
     opts.onChange?.({ country: st.country, metric: st.m1, metric2: st.m2, period: series.periods[st.t] ?? null, region: st.sel,
       since: st.since });
   }
 
   async function refresh(resetSel, selId = null) {
     await load(st.country);
+    st.schools = null;
+    st.schoolMeta = null;
+    st.schoolError = null;
+    if (st.schoolMode === "synthetic") {
+      try {
+        st.schoolMeta = await schoolsFor(st.country);
+        st.schools = st.schoolMeta.rows;
+      }
+      catch (error) { st.schoolError = error.message; }
+    }
     const n = st.data.series.periods.length;
     if (pendingPeriod) { const k = st.data.series.periods.indexOf(pendingPeriod); if (k >= 0) st.t = k; pendingPeriod = null; }
     else if (st.t === 0 && n > 0) { st.t = n - 1; }
@@ -260,12 +441,13 @@ export async function mountAdmin1Explorer(el, opts = {}) {
     d3.select(selSince.node().parentNode).style("display", keys.length ? null : "none");
     selSince.property("value", st.since || "");
     selCountry.property("value", st.country); selM1.property("value", st.m1); selM2.property("value", st.m2 || "");
+    selSchools.property("value", st.schoolMode); selSchoolMetric.property("value", st.schoolMetric);
     renderMap();
   }
 
   const api = {
     state: st, manifest,
-    setCountry: (c, region = null) => { st.country = c; return refresh(true, region); },
+    setCountry: (c, region = null) => { st.country = c; st.selectedSchool = null; return refresh(true, region); },
     setMetric: (a, b = null) => { st.m1 = a; st.m2 = b || null; return refresh(false); },
     setSince: (k) => { st.since = k || null; st.showAll = false; selSince.property("value", st.since || ""); renderMap(); },
     setPeriod: (i) => { st.t = i; slider.property("value", i); renderMap(); },
@@ -278,6 +460,12 @@ export async function mountAdmin1Explorer(el, opts = {}) {
   selM1.on("change", (e) => api.setMetric(e.target.value, st.m2));
   selM2.on("change", (e) => api.setMetric(st.m1, e.target.value));
   selSince.on("change", (e) => api.setSince(e.target.value));
+  selSchools.on("change", async (e) => {
+    st.schoolMode = e.target.value;
+    if (st.schoolMode !== "synthetic") st.selectedSchool = null;
+    await refresh(false);
+  });
+  selSchoolMetric.on("change", (e) => { st.schoolMetric = e.target.value; renderMap(); });
   slider.on("input", (e) => api.setPeriod(+e.target.value));
   await refresh(true, opts.region);
   return api;

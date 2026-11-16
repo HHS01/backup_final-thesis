@@ -1,0 +1,52 @@
+name: Quarterly IMF COFOG Data Fetch
+
+on:
+  schedule:
+    # Runs at 04:00 UTC on the 1st of Jan, Apr, Jul, Oct (quarterly)
+    - cron: '0 4 1 1,4,7,10 *'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Run script in dry‑run mode without committing'
+        required: false
+        default: 'false'
+        type: boolean
+
+permissions:
+  contents: write
+
+jobs:
+  fetch-imf-cofog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install pandas numpy
+
+      - name: Run IMF COFOG fetch script
+        env:
+          # Add any required environment variables here (e.g., API keys)
+          # IMF_API_KEY: ${{ secrets.IMF_API_KEY }}
+        run: |
+          python scripts/fetch_imf_cofog.py --api ${{ inputs.dry_run == 'true' && '--dry-run' || '' }}
+
+      - name: Commit and push updates (if any)
+        if: ${{ inputs.dry_run != 'true' }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "IMF COFOG Sync Bot"
+          git add data/imf/
+          if git diff --staged --quiet; then
+            echo "No changes to IMF COFOG data."
+          else
+            git commit -m "data(imf): quarterly COFOG update $(date -u '+%Y-%m') [skip ci]"
+            git push
+          fi

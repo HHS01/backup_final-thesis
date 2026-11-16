@@ -8,3 +8,8 @@ __pycache__/
 .env.*
 !.env.example
 *.key
+
+# Do not add future raw Kobo exports or live intermediate workbooks.
+data/raw/kobo/
+data/raw/SSA_Survey_Responses_Live.xlsx
+data/processed/survey_dashboard_live.json

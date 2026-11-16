@@ -1,0 +1,97 @@
+{
+ "synthetic": true,
+ "generated": "2026-11-13T20:53:51+00:00",
+ "seed": 7,
+ "params": {
+  "boundaries": "out/boundaries",
+  "schools": 400,
+  "days": 180,
+  "benchmark": 5.0,
+  "min_n": 5,
+  "meter_rate": [
+   0.1,
+   0.45
+  ],
+  "end_date": "2026-11-13",
+  "seed": 7,
+  "no_quirks": false,
+  "preview": false,
+  "out": "TEMP/giga_synthetic"
+ },
+ "countries": [
+  "GHA",
+  "KEN",
+  "MUS",
+  "NGA",
+  "RWA",
+  "TZA",
+  "ZMB"
+ ],
+ "quirks_injected": {
+  "GHA": {
+   "missing_coordinates": 4,
+   "swapped_lat_lon": 2,
+   "zero_coordinates": 1,
+   "duplicated_names": 7,
+   "admin1_name_variants": 59
+  },
+  "KEN": {
+   "missing_coordinates": 4,
+   "swapped_lat_lon": 2,
+   "zero_coordinates": 1,
+   "duplicated_names": 7,
+   "admin1_name_variants": 52
+  },
+  "MUS": {
+   "missing_coordinates": 4,
+   "swapped_lat_lon": 2,
+   "zero_coordinates": 1,
+   "duplicated_names": 7,
+   "admin1_name_variants": 59
+  },
+  "NGA": {
+   "missing_coordinates": 4,
+   "swapped_lat_lon": 2,
+   "zero_coordinates": 1,
+   "duplicated_names": 7,
+   "admin1_name_variants": 45
+  },
+  "RWA": {
+   "missing_coordinates": 4,
+   "swapped_lat_lon": 2,
+   "zero_coordinates": 1,
+   "duplicated_names": 7,
+   "admin1_name_variants": 51
+  },
+  "TZA": {
+   "missing_coordinates": 4,
+   "swapped_lat_lon": 2,
+   "zero_coordinates": 1,
+   "duplicated_names": 7,
+   "admin1_name_variants": 51
+  },
+  "ZMB": {
+   "missing_coordinates": 4,
+   "swapped_lat_lon": 2,
+   "zero_coordinates": 1,
+   "duplicated_names": 7,
+   "admin1_name_variants": 53
+  }
+ },
+ "benchmark_note": "good/moderate/no thresholds are placeholders",
+ "field_names_note": "Only school_id_giga, school_name, date, download_speed, upload_speed, latency are confirmed; others are guesses.",
+ "independence_note": "Not tied to M-Lab.",
+ "status_counts": {
+  "unknown": 2319,
+  "good": 293,
+  "moderate": 157,
+  "no": 31
+ },
+ "tech_shares": {
+  "No connection": 0.347,
+  "4G/LTE": 0.204,
+  "3G": 0.188,
+  "Fibre": 0.17,
+  "Satellite": 0.091
+ }
+}

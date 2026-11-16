@@ -15,12 +15,21 @@ This registry provides a complete, auditable mapping of every indicator, metric,
 | `data/processed/afrobarometer_{ISO3}_r10.json` | Longitudinal citizen sentiment & government performance comparison | `scripts/extract_afrobarometer_education.py` | 6 SSA economies (KEN, TZA, GHA, NGA, ZMB, MUS) | N = 11,200 citizens (weighted) | 2024–2025 (Round 10 Merged Panel) |
 | `data/processed/uwezo_KEN_latest.json` | Foundational literacy/numeracy & household devices | `scripts/extract_citizen_assessments.py` | Kenya (National, Urban, Rural, Sex) | N = 135,000 children | 2021–2023 (6th/7th Assessments) |
 | `data/processed/uwezo_TZA_latest.json` | Foundational literacy/numeracy & household devices | `scripts/extract_citizen_assessments.py` | Tanzania (National, Urban, Rural, Sex) | N = 108,000 children | 2021–2023 (Twaweza Uwezo Assessments) |
+| `data/processed/academic_learning_benchmarks.json` | Standardized foundational learning proficiencies | `scripts/fetch_academic_benchmarks.py` | 7 focus economies | Harmonized proficiencies | 2021–2024 (SACMEQ, PASEC, Uwezo) |
 | `data/processed/modality_reach_KEN.json` | Empirical delivery reach, access & friction indices | `scripts/compile_modality_reach.py` | Kenya | Multi-study synthesis | 2020–2024 |
-| `data/processed/survey_data_calibrated.json` | Teacher conditions, airtime tax & hardware status | `scripts/process_survey_data_calibrated.py` | 48 SSA nations | N = 800 respondents | 2024 (Alliance of Alliances) |
-| `data/processed/supply_demand_matrix_data.js` | 48 SSA Demand vs 148 Supply Matrix with proxy badges | `scripts/build_matrix_dataset.py` | 48 SSA nations & 148 EdTech players | 48 countries × 148 players | 2024–2026 |
-| `data/processed/survey_evidence_data.js` | Tri-vantage survey baseline (N=800) & 104-item codebook | `scripts/build_survey_dataset.py` | 48 SSA nations | N = 800 respondents + 104 questions | 2024–2026 (Live Ingestion Ready) |
+| `data/processed/interactive_triangulation_heatmap.json` | 7-country triangulation bridging macro claims with citizen reality | `scripts/generate_interactive_heatmap.py` | 7 focus economies | Multi-metric matrix | 2021–2025 |
+| `data/processed/afrobarometer_triangulation.json` | Citizen vs official infrastructure access comparison | `scripts/run_monthly_triangulation.py` | 6 focus economies | Aggregated indicators | 2021–2025 |
 | `data/processed/connectivity/ookla_tiles_*.csv` | Ground-truth network speed, latency & device tests (mobile + fixed) | `scripts/fetch_connectivity_data.py` | 7 economies (KEN, RWA, TZA, GHA, NGA, ZMB, MUS) | 41,754 spatial tiles (2024 Q1) | 2024 Q1 (Ookla Open Data, CC BY-NC-SA 4.0) |
-| `data/maps/{ISO3}/` | School GIS mapping, connectivity classification & admin summaries | `scripts/map_giga_schools.py` | 7 economies (KEN, RWA, TZA, GHA, NGA, ZMB, MUS) | 3,000 schools per economy (21,000 total) | 2024–2026 (UNICEF-ITU Giga alignment) |
+| `data/processed/connectivity/mlab/*.csv` | Measurement Lab NDT download/upload speed and latency | `scripts/fetch_mlab.py` | 7 economies (KEN, GHA, MUS, NGA, RWA, TZA, ZMB) | Monthly Admin-1 samples | 2020–2024 (M-Lab NDT) |
+| `out/dashboard/{ISO3}.geojson` | Rewound GeoJSON boundary polygons for Admin-1 regions | `scripts/build_dashboard_data.py` | 7 focus economies | Subnational polygons | geoBoundaries ADM1 |
+| `out/dashboard/{ISO3}.series.json` | Monthly time series of subnational QoS metrics | `scripts/build_dashboard_data.py` | 7 focus economies | Monthly metrics per Admin-1 | 2020–2024 |
+| `out/dashboard/{ISO3}.changes.json` | 3-month, 6-month, and 12-month statistical shift detections | `scripts/build_changes.py` | 7 focus economies | Trend markers | 2020–2024 |
+| `out/dashboard/{ISO3}_schools.json` | GeoJSON schoolhouse connectivity layers | `scripts/build_giga_layer.py` | 7 focus economies | 3,000 schools / country (21,000 total) | 2024–2026 (Giga schema) |
+| `out/giga_qc.json` | School connectivity quality control audit and distributions | `scripts/build_giga_layer.py` | 7 focus economies | Multi-metric audit | 2024–2026 |
+| `out/boundaries/crosswalk.csv` | Crosswalk matching M-Lab subdivision codes with geoBoundaries | `scripts/fetch_boundaries.py` | 7 focus economies | 121 administrative units | ISO 3166-2 / geoBoundaries |
+| `data/processed/survey_dashboard_live.json` | De-identified, allowlist-only field survey aggregates | `scripts/process_kobo_surveys.py` | Active survey respondents | Aggregated distributions (PII scrubbed) | 2026 (KoboToolbox live) |
+| `data/processed/survey_data_calibrated.json` | Calibrated baseline synthesis & fallback demo priors | `scripts/process_survey_data_calibrated.py` | 48 SSA nations | N = 800 respondents | 2024–2026 (Demo seed) |
+| `data/processed/supply_demand_matrix_data.js` | 48 SSA Demand vs 148 Supply Matrix with proxy badges | `scripts/build_matrix_dataset.py` | 48 SSA nations & 148 EdTech players | 48 countries × 148 players | 2024–2026 |
 
 ---
 
@@ -80,57 +89,86 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 
 ---
 
-## 3. Ground-Truth Layer 1: Citizen Voice (`afrobarometer_KEN_r9.json`)
+## 3. Subnational M-Lab Admin-1 QoS & Longitudinal Shift Layer
 
-* **Source:** Afrobarometer Round 9 Kenya National Survey (March 2023 release).
-* **Sample Size:** $N = 2,400$ adult citizens (weighted with `withinwt_ea`).
-* **Raw Dataset:** `data/raw/afrobarometer_release-dataset_ken_r9_en_2023-03-01.sav`
+* **Source Agency:** Measurement Lab (M-Lab) Network Diagnostic Tool (NDT) & geoBoundaries.
+* **Geographical Coverage:** 7 Focus Economies (KEN, GHA, MUS, NGA, RWA, TZA, ZMB) spanning 121 Admin-1 subnational jurisdictions.
+* **Temporal Horizon:** Monthly time series from January 2020 through late 2024.
+* **Generator Pipeline:** `scripts/fetch_mlab.py`, `scripts/fetch_boundaries.py`, `scripts/build_dashboard_data.py`, `scripts/build_changes.py`.
 
-| Indicator / Concept | Question / Variable | National (%) | Urban (%) | Rural (%) | Analytical Meaning |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Education in Top 3 Priorities** | `Q45PT1–3` (Code 14) | **18.59%** | **15.97%** | **19.96%** | Rural citizens rate education quality/access as a higher emergency than urban citizens. |
-| **Education as #1 Priority** | `Q45PT1` (Code 14) | **4.54%** | **3.10%** | **5.32%** | Share naming education as their single most urgent national problem. |
-| **Delivery Handled Well** | `Q46H` ("Fairly/Very Well") | **63.79%** | **69.11%** | **61.03%** | Public satisfaction with state handling of educational needs. |
-| **Delivery Handled Badly** | `Q46H` ("Fairly/Very Badly") | **36.21%** | **30.89%** | **38.97%** | Acute rural dissatisfaction with education delivery. |
+### Admin-1 Quality of Service (QoS) Indicators
+
+| Variable / Metric | Technical Definition | Unit | Sampling & Aggregation |
+| :--- | :--- | :--- | :--- |
+| `download_mbps` | Median downstream throughput measured by NDT client | Megabits per second (Mbps) | Monthly median per Admin-1 subdivision |
+| `upload_mbps` | Median upstream throughput measured by NDT client | Megabits per second (Mbps) | Monthly median per Admin-1 subdivision |
+| `rtt_ms` | Median round-trip time (latency) between client and nearest M-Lab server | Milliseconds (ms) | Monthly median per Admin-1 subdivision |
+| `sample_count` | Number of valid completed NDT diagnostic tests | Integer count | Monthly total per Admin-1 subdivision |
+| `change_3m_pct` | Relative percentage shift in throughput/latency over preceding 3 months | % ($\Delta$) | $(M_0 - M_{-3}) / M_{-3} \times 100$ |
+| `change_6m_pct` | Relative percentage shift in throughput/latency over preceding 6 months | % ($\Delta$) | $(M_0 - M_{-6}) / M_{-6} \times 100$ |
+| `change_12m_pct` | Year-over-year relative percentage shift over preceding 12 months | % ($\Delta$) | $(M_0 - M_{-12}) / M_{-12} \times 100$ |
 
 ---
 
-## 4. Ground-Truth Layer 2: Citizen Assessments (`uwezo_KEN_latest.json` & `uwezo_TZA_latest.json`)
+## 4. UNICEF-ITU Giga School Connectivity Dataset Schema
+
+* **Reference Schema:** UNICEF-ITU Giga Global School Mapping Architecture.
+* **Output Path:** `out/dashboard/{ISO3}_schools.json` and `out/giga_qc.json`.
+* **Scope:** 21,000 schools across 7 focus economies (3,000 schools per country).
+
+### Schoolhouse Feature Properties
+
+| Property Name | Data Type | Permitted Values / Description | Analytical Function in Decision Models |
+| :--- | :--- | :--- | :--- |
+| `school_id` | String | Unique ISO-based identifier (e.g., `KEN-SCH-00042`) | Deterministic cross-referencing and spatial joining. |
+| `school_name` | String | De-identified institutional name | Institutional display in local drill-down panels. |
+| `lat` / `lon` | Float | WGS84 Geographic coordinates | Geospatial mapping and distance-to-tower analysis. |
+| `admin1_code` | String | ISO 3166-2 subnational code (e.g., `KE-30`) | Aggregation into Admin-1 choropleths and crosswalks. |
+| `connectivity_status` | String | `connected`, `partial`, `unconnected` | Governs Gatekeeping Tier 1 veto logic (connectivity availability). |
+| `download_speed` | Float | Measured or modeled throughput in Mbps | Evaluates video streaming vs text-only pedagogical feasibility. |
+| `electricity_status` | String | `grid`, `solar`, `generator`, `none` | Governs battery duty cycles and TaRL rotation device charging feasibility. |
+| `coverage_type` | String | `4G`, `3G`, `2G`, `fiber`, `none` | Informs offline DPG requirement (Sneakernet vs Wi-Fi cache). |
+
+---
+
+## 5. Ground-Truth Layer 1: Citizen Voice (Afrobarometer Round 9 & 10 Merged Panels)
+
+* **Sources:** Afrobarometer Round 9 (2021–2023) and Round 10 (2024–2025) National Surveys across 6 focus economies.
+* **Sample Size:** $N = 11,169$ (Round 9) and $N = 11,200$ (Round 10) adult citizens (weighted with within-country demographic weights).
+* **Generator:** `scripts/extract_afrobarometer_education.py`.
+
+| Indicator / Concept | Question Code | Weighted National (%) | Urban (%) | Rural (%) | Analytical Meaning |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Education in Top 3 Priorities** | `Q45PT1–3` (Code 14) | **18.59%** (KEN R9) | **15.97%** | **19.96%** | Rural citizens rate education quality/access as an acute emergency higher than urban peers. |
+| **Education as #1 Priority** | `Q45PT1` (Code 14) | **4.54%** (KEN R9) | **3.10%** | **5.32%** | Share naming education as their single most urgent national problem. |
+| **Delivery Handled Well** | `Q46H` ("Fairly/Very Well") | **63.79%** (KEN R9) | **69.11%** | **61.03%** | Public satisfaction with state handling of educational needs. |
+| **Delivery Handled Badly** | `Q46H` ("Fairly/Very Badly") | **36.21%** (KEN R9) | **30.89%** | **38.97%** | Acute rural dissatisfaction with education delivery. |
+| **Electricity Grid Connection** | `Q93A` (Presence of Grid) | **76.2%** (KEN R10) | **95.1%** | **64.3%** | Ground-truth household access vs official national statistics. |
+
+---
+
+## 6. Ground-Truth Layer 2: Citizen Assessments (Uwezo Kenya & Tanzania)
 
 * **Sources:** Usawa Agenda (Uwezo Kenya 6th & 7th National Learning Assessments, 2021–2023) and Twaweza East Africa (Uwezo Tanzania National Learning Assessments, 2021–2023).
-* **Sample Size:** $N = 135,000$ assessed children across Kenya; $N = 108,000$ assessed children across Tanzania Mainland.
-* **Raw Inputs:** `data/raw/uwezo_kenya_national_summary.csv` and `data/raw/uwezo_tanzania_national_summary.csv`.
-* **Institutional Coverage Scope:** Uwezo Citizen-Led Assessments (CLAs) operate exclusively in East Africa across **Kenya, Tanzania, and Uganda**. For the remaining focus economies:
-  * **Rwanda:** Non-Uwezo jurisdiction; citizen assessments are constrained. Governed by Ministry LARS and World Bank Service Delivery Indicators (SDI).
-  * **Ghana & Nigeria:** PAL Network ICAN assessments, National Standardised Assessment Test (NSAT), and Nigeria Education Data Survey (NEDS).
-  * **Zambia:** National Assessment Survey (NAS) and SACMEQ.
-  * **Mauritius:** SACMEQ and national high-proficiency benchmarks.
+* **Sample Size:** $N = 135,000$ assessed children across Kenya; $N = 108,000$ assessed children across Tanzania Mainland ($N = 243,000$ combined).
+* **Generator:** `scripts/extract_citizen_assessments.py`.
 
-### Kenya Uwezo Assessment Benchmark
-| Metric | Target Population | National (%) | Urban (%) | Rural (%) | Gender Split (M / F) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Foundational Literacy** | Grade 3–5 pupils reading Grade 2 story | **41.6%** | **54.2%** | **36.8%** | 39.5% (Boys) / 43.8% (Girls) |
-| **Foundational Numeracy** | Grade 3–5 pupils solving Grade 2 subtraction/division | **46.8%** | **58.1%** | **42.4%** | 47.1% (Boys) / 46.5% (Girls) |
-| **Out-of-School Rate** | Children ages 6–16 not enrolled | **8.5%** | **5.2%** | **10.1%** | Reaches >25% in arid counties (Turkana/Garissa) |
-| **Household Radio** | All households owning working radio | **62.0%** | **68.0%** | **59.0%** | Key broadcast vehicle for remote learning |
-| **Household Television** | All households owning working TV | **45.0%** | **72.0%** | **32.0%** | Severe urban-rural disparity |
-| **Household Mobile Phone** | All households owning mobile phone | **91.0%** | **96.0%** | **88.0%** | Universal reach for SMS/USSD interventions |
+### Comparative Uwezo Foundational Learning Benchmarks
 
-### Tanzania Uwezo Assessment Benchmark
-| Metric | Target Population | National (%) | Urban (%) | Rural (%) | Gender Split (M / F) |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Foundational Literacy** | Grade 3–5 pupils reading Grade 2 story (Kiswahili) | **52.0%** | **66.5%** | **44.0%** | 49.8% (Boys) / 54.2% (Girls) |
-| **Foundational Numeracy** | Grade 3–5 pupils solving Grade 2 arithmetic/subtraction | **51.5%** | **64.0%** | **45.2%** | 52.1% (Boys) / 50.9% (Girls) |
-| **Out-of-School Rate** | Children ages 6–16 not enrolled | **9.2%** | **5.8%** | **11.4%** | Elevated in pastoral/rural zones |
-| **Household Radio** | All households owning working radio | **69.0%** | **72.0%** | **67.0%** | Dominant reach across rural districts |
-| **Household Television** | All households owning working TV | **28.0%** | **58.0%** | **12.0%** | Sharp urban concentration (Dar es Salaam) |
-| **Household Mobile Phone** | All households owning mobile phone | **88.0%** | **95.0%** | **83.0%** | Broad foundation for micro-learning |
+| Metric | Target Population | Kenya National (Rural) | Tanzania National (Rural) | Analytical Meaning |
+| :--- | :--- | :--- | :--- | :--- |
+| **Foundational Literacy** | Grade 3–5 pupils reading Grade 2 story | **41.6%** (36.8%) | **52.0%** (44.0%) | High learning poverty; hardware-first initiatives bypass basic literacy prerequisites. |
+| **Foundational Numeracy** | Grade 3–5 pupils solving Grade 2 arithmetic | **46.8%** (42.4%) | **51.5%** (45.2%) | Over half of primary students lack foundational numeracy. |
+| **Out-of-School Rate** | Children ages 6–16 not enrolled | **8.5%** (10.1%) | **9.2%** (11.4%) | Severe regional variance (>25% in arid pastoral counties). |
+| **Household Radio** | All households owning working radio | **62.0%** (59.0%) | **69.0%** (67.0%) | Dominant broadcast reach for remote audio instruction. |
+| **Household Television** | All households owning working TV | **45.0%** (32.0%) | **28.0%** (12.0%) | Severe rural exclusion from video-based digital learning. |
+| **Household Mobile Phone** | All households owning mobile phone | **91.0%** (88.0%) | **88.0%** (83.0%) | Universal penetration enabling SMS/USSD and micro-learning. |
 
 ---
 
-## 5. Ground-Truth Layer 3: Delivery Modality & Friction (`modality_reach_KEN.json`)
+## 7. Delivery Modality & Friction Layer (`modality_reach_KEN.json`)
 
-* **Sources:** CEGA Busia Remote Learning Study (Cece et al.), Uwezo household surveys, GSMA 2025, ITU/A4AI Price Baskets.
+* **Sources:** CEGA Busia Remote Learning Evaluation, Uwezo household surveys, GSMA 2025, ITU/A4AI Price Baskets.
 * **Output Path:** `data/processed/modality_reach_KEN.json`
 
 | Modality Name | Typical Examples | Empirical Reach (%) | Household Access (%) | Friction Index (1–5) | Key Operational Bottleneck |
@@ -145,62 +183,34 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 
 ---
 
-## 6. Frontline Practitioner Survey (`survey_data_calibrated.json`)
+## 8. KoboToolbox Field Survey Hub & Privacy Boundary Specification
 
-* **Source:** UNESCO Global Education Coalition / Alliance of Alliances Field Survey.
-* **Sample:** $N = 800$ frontline educators and providers across 48 SSA nations.
-* **Key Calibrated Ground-Truth Metrics:**
-  * **The Informal Airtime Salary Tax:** Frontline teachers spend **4.2% to 7.8% of personal wages** buying commercial mobile data to perform official duties.
-  * **Device Inoperability Rate:** Over **60% of school tablets** become inoperable within 14 months due to battery degradation or cracked screens without replacement budgets.
-  * **Curricular Language Barrier:** Automated AI evaluation collapses from **90% accuracy in English** to **18–35% in indigenous African languages**.
+* **Protocol Definitions:** `AoA survey/xlsform/*.xlsx` (Teacher, Provider, Expert, Follow-up).
+* **Ingestion Pipelines:** `scripts/fetch_kobo_submissions.py` and `scripts/process_kobo_surveys.py`.
+* **Security & Audit Log:** `KOBO_PIPELINE_CHANGELOG.md`.
 
----
+### Survey Instrument Architecture & 6-Pillars Mapping
 
-## 7. Community Evidence & Survey Instrument Layer (`data/processed/survey_evidence_data.js`)
-
-* **Engine:** `scripts/build_survey_dataset.py` & `scripts/inject_survey_engine.py`
-* **Observatory Subtab:** Lens 2 (Classroom) → Subtab 4: `📊 Community Evidence & Survey Layer`
-* **Target Sample Size:** $N = 800$ multi-stakeholder respondents (600 Frontline Teachers, 120 EdTech Providers, 80 System Experts) across 48 Sub-Saharan African nations.
-* **Dual Ingestion Architecture:**
-  1. **Calibrated Baseline Synthesis:** Statistically grounded in World Bank WDI 2024, Global Education Monitoring (GEM) 2023, AfroBench, Briter Bridges, and HolonIQ distributions. Guarantees complete visual presentation and thesis defense readiness even prior to primary field data arrival.
-  2. **Live Field Hot-Swap Ingestion:** Client-side CSV/JSON drag-and-drop parser + Google Sheets published feed reader with fallback CORS handling. Includes a one-click simulated field batch ($N = 924$, +124 rural teachers from Western Kenya and Eastern Uganda) demonstrating real-time telemetry recalculation for defense committees.
-
-### 104-Item Survey Instrument Codebook Mapping to UNESCO Six Pillars
-
-| Instrument Protocol | Total Items | UNESCO Six Pillars Mapped | Key Quantifiable Variables | Primary Methodological Focus |
+| Instrument Protocol | Total Items | Mapped UNESCO Pillars | Key Quantifiable Variables | Primary Methodological Focus |
 | :--- | :--- | :--- | :--- | :--- |
-| **Teacher Survey** (`AoA survey/SSA_Teacher_Survey_v1_PUBLIC.docx`) | **40 Items** | Pillars 1, 2, 3, 4, 5, 6 | `elecByLocation` (A9), `internetDist` (A10), `deviceDist` (A11), `aiFrequency` / `aiConfidence` (B5–B8) | Grid reliability, mobile personal airtime tax, hardware scarcity, time-on-task, and vernacular AI collapse. |
-| **Provider Survey** (`AoA survey/SSA_EdTech_Provider_Survey_v1_PUBLIC.docx`) | **33 Items** | Pillars 1, 2, 3, 4, 5 | `deviceDist` (B1), `offlineDist` (B3), `monetization` (C1–C4), `grantDep` (C5) | Target form factor (mobile vs laptop), offline-first Bluetooth/SD caching, business model donor dependency. |
-| **Expert Consultation** (`AoA survey/SSA_Expert_Consultation_v1_PUBLIC.docx`) | **31 Items** | Pillars 1, 2, 3, 4, 6 | `donorExitDist` (B1), `procurementDrivers` (B4), `curriculumFit` (B6), `safeguardEnforcement` (B9) | Post-grant sustainability cliff, political ribbon-cutting vs classroom fit, child data protection enforcement. |
+| **Teacher Survey** (`SSA_Teacher_Survey_v1_EN_XLSForm.xlsx`) | **40 Items** | Pillars 1, 2, 3, 4, 5, 6 | `elecByLocation`, `internetDist`, `deviceDist`, `aiFrequency`, `aiConfidence` | Grid reliability, personal airtime taxation, hardware scarcity, time-on-task, vernacular AI accuracy. |
+| **Provider Survey** (`SSA_Provider_Survey_v1_EN_XLSForm.xlsx`) | **33 Items** | Pillars 1, 2, 3, 4, 5 | `deviceDist`, `offlineDist`, `monetization`, `grantDep` | Form factor (mobile vs laptop), offline-first caching, business model grant dependency. |
+| **Expert Consultation** (`SSA_Expert_Consultation_R1_v1_EN_XLSForm.xlsx`) | **31 Items** | Pillars 1, 2, 3, 4, 6 | `donorExitDist`, `procurementDrivers`, `curriculumFit`, `safeguardEnforcement` | Post-grant sustainability cliff, political ribbon-cutting, child data protection enforcement. |
+| **Follow-up Opt-in** (`SSA_Followup_Contact_Optin_v1_EN_XLSForm.xlsx`) | **8 Items** | Governance / Ethics | `contact_email`, `contact_phone`, `interview_consent` | **Strictly excluded from all public aggregates and dashboards.** |
 
-### Top-Down Macro Rhetoric vs. Frontline Field Ground-Truth Discrepancy Matrix
-
-| Dimension | Macro Benchmark Narrative | Ground-Truth Field Finding | Discrepancy Delta & Defense Meaning |
-| :--- | :--- | :--- | :--- |
-| **Grid Reliability Gap** | 67.1% national grid access (WDI Kenya) | **82.5%** rural teachers experience frequent outages or zero electricity | Top-down metrics track wire proximity, not reliable classroom voltage. |
-| **Informal Airtime Salary Tax** | "Broadband access expanding" (ITU 2024) | **39.3%** of teachers pay for pedagogical internet from personal wages | Official programs fail to budget recurring connectivity, shifting costs to teachers. |
-| **Hardware Architecture Divergence** | Laptops/desktops assumed by donor portals | **70.8%** providers target basic phones; only **31.7%** support fully offline sync | Severe mismatch between donor laptop procurement and offline mobile realities. |
-| **Post-Grant Sustainability Cliff** | "Successful pilot completed" reports | **61.3%** of initiatives collapse or contract drastically within 12 months of donor exit | Validates the 85% Pilot Graveyard thesis finding without ring-fenced OpEx. |
+### Privacy Boundary & De-identification Rules
+1. **Zero Raw Storage in Repo:** Raw submissions are fetched only to temporary runtime storage (`RUNNER_TEMP`) and never committed to Git.
+2. **Strict Allowlist Processing:** The normalizer extracts exclusively approved numerical choice codes. All respondent IDs, school names, telephone numbers, emails, and free-text fields are discarded.
+3. **Small-Group Suppression:** If any subnational or categorical grouping contains fewer than **5 respondents**, the distribution is suppressed to prevent deductive re-identification.
+4. **Demo Mode Isolation:** Explicit `--demo` mode generates synthetic fixtures in `data/demo/kobo` with `sub_t_`, `sub_p_` prefixes. Real and demo records are never combined.
 
 ---
 
-## 8. Macro-Fiscal & External Aid Observatory Layer (`data/processed/macro_fiscal_data.js` & `.json`)
+## 9. Macro-Fiscal & External Aid Observatory Layer (`data/processed/macro_fiscal_data.js` & `.json`)
 
-* **Engines:** `fetch_imf_cofog.py`, `fetch_iati_funding.py`, `compile_macro_fiscal_indicators.py`
-* **Observatory Location:** Lens 4: Macro-Fiscal & External Aid Reality (Tab 1)
-* **Coverage Scope:** All 54 African economies (with intensive deep-dive analytics across 7 focus economies: Kenya, Rwanda, Tanzania, Ghana, Nigeria, Zambia, and Mauritius as high-infrastructure control benchmark; supplemented by qualitative field voices from Senegal).
+* **Engines:** `scripts/fetch_imf_cofog.py`, `scripts/fetch_iati_funding.py`, `scripts/compile_macro_fiscal_indicators.py`.
+* **Coverage Scope:** All 54 African economies (intensive deep-dive analytics across 7 focus economies).
 * **Time Horizon:** 2017–2024 annual time series.
-
-### Processed Macro-Fiscal Assets
-
-| File Path | Description | Data Source | Records / Sample |
-| :--- | :--- | :--- | :--- |
-| `data/imf/imf_cofog_shares.csv` | Domestic public expenditures across COFOG functions (% of total outlays) | IMF Government Finance Statistics (GFS) COFOG | Annual domestic shares (2017–2024) across reporting economies (KEN, MUS, TZA, ZMB) |
-| `data/imf/imf_cofog_long.csv` | Long tidy-format expenditure amounts in local currency and USD | IMF GFS COFOG | Function codes 709 (Education), 7047 (Communication), 7045 (Transport), 7 (Total) |
-| `data/iati/iati_transactions.csv` | Cleaned and normalized official development finance transactions | IATI Datastore API | 29,388 raw transactions across 7 pilot economies |
-| `data/iati/iati_funding_by_year.csv` | Aggregated external aid flows by recipient country, year, and sector | IATI Datastore API | 1,187 country-year-sector records ($1.84B education, $52M ICT across 7 economies) |
-| `data/processed/macro_fiscal_ecosystem.json` | Master compiled JSON integrating domestic shares, aid totals, and ratios | Synthesizer compiler | 7 deep-dive economies + 54 country dynamic lookup |
-| `data/processed/macro_fiscal_data.js` | Direct client-side JavaScript export powering Lens 4 interactive UI | Synthesizer compiler | Window-scoped `MACRO_FISCAL_DATA` object |
 
 ### Core Macro-Fiscal & Aid Indicators
 
@@ -209,7 +219,7 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 | `COFOG 709 Share` | General government education outlays (% of total outlays) | IMF GFS COFOG | **18.4%** | Shows strong domestic political commitment to national schooling in aggregate public budgets. |
 | `COFOG 7047 Share` | General government communication/ICT outlays (% of total outlays) | IMF GFS COFOG | **0.46%** | Less than 0.5% of total budget is allocated to central communications and telecom infrastructure. |
 | `Dual Expenditure Gap (Domestic)` | Ratio of Domestic Education Outlays to Central ICT Outlays | Derived (`COFOG 709 / 7047`) | **40 : 1** | Demonstrates that national education spending exceeds central ICT spending by 40:1. Serves as a macro-level financing asymmetry proxy. |
-| `External Aid Asymmetry (Aid Flows)` | Ratio of Cumulative External Education Aid to External ICT Aid | Derived (`IATI CRS 111-114 / 220`) | **35.4 : 1** ($1.84B vs $52M across 7 economies) | Demonstrates that external development finance heavily favors educational program transfers over telecom infrastructure by 35:1. |
+| `External Aid Asymmetry (Aid Flows)` | Ratio of Cumulative External Education Aid to External ICT Aid | Derived (`IATI CRS 111-114 / 220`) | **35.4 : 1** ($1.84B vs $52M across 7 economies) | Demonstrates that external development finance heavily favors educational program transfers over telecom infrastructure by 35.4:1. |
 | `IATI Total Education Aid` | Cumulative external aid commitments/disbursements to education (2017–2024) | IATI Datastore (CRS 111, 112, 113, 114) | **$1.84 Billion** (Across 7 economies) | Heavy external donor subsidization of pedagogical initiatives and school capital projects. |
 | `IATI Total ICT Aid` | Cumulative external aid to telecommunications/ICT (2017–2024) | IATI Datastore (CRS 220) | **$52 Million** (Across 7 economies) | External ICT aid is less than 3% of education aid, illustrating the telecommunications funding gap. |
 | `2020 COVID Surge Ratio` | Ratio of 2020 emergency external disbursements to 2019 pre-pandemic baseline | IATI Datastore | **1.85× to 3.20×** | Emergency donor surges financed rapid remote learning pilots that suffered contraction post-pandemic. |
@@ -220,7 +230,7 @@ All indicators originate from the **World Bank World Development Indicators (WDI
 
 ---
 
-## 9. Headline Statistics Provenance Registry
+## 10. Headline Statistics Provenance Registry
 
 Every headline statistic cited in the thesis concept, analytical frameworks, and decision observatory is registered below with its originating agency, formal definition, measurement vintage, and denominator boundaries:
 
@@ -234,13 +244,3 @@ Every headline statistic cited in the thesis concept, analytical frameworks, and
 | **70.8% Products vs. 82.5% Rural Schools** | *Dual Denominator Finding:* Supply-Demand Discrepancy Matrix ($N=148$) vs. World Bank/UNESCO Rural Baseline | 2024 | **Product Denominator ($N=148$):** 70.8% of surveyed EdTech products require continuous smartphone/tablet and broadband connectivity.<br>**School Denominator ($N=\text{SSA rural schools}$):** 82.5% of rural public schools lack reliable grid power or broadband. | **Crucial Denominator Separation:** Contrasts the technical architectural assumptions of vendor offerings against rural structural classroom realities. |
 | **87% Learning Poverty Rate** | World Bank & UNESCO Institute for Statistics (UIS) Joint Learning Poverty Report | 2022 | Proportion of 10-year-olds in Sub-Saharan Africa unable to read and understand a simple narrative text. | Regional aggregate for Sub-Saharan Africa; composite of out-of-school rate and below-minimum-reading-proficiency rate. |
 | **Kenya 78,432 Verified Schools** | Kenya Ministry of Education Basic Education Statistical Booklet / NEMIS Registry / Giga Project | 2020–2022 | Total census count of all registered basic education learning institutions in Kenya. | **Institutional Composition:** Includes Early Childhood Development Education (ECDE pre-primary: ~46,530), primary schools (~32,437), and secondary schools (~10,487), spanning both public and registered private sectors. |
-
----
-
-## 10. Survey Evidence Layer: Schema Placeholder & Calibration Prior Notice
-
-The Alliance of Alliances (AoA) survey evidence module incorporates a dual-mode telemetry engine:
-* **Seed Schema Placeholder ($N = 800$):** A calibrated simulation prior derived from aggregate macro distributions (World Bank 6-Pillars WDI, UNESCO GEM 2023, Briter Bridges, and HolonIQ). It serves strictly as an architectural schema placeholder to validate UI layout, cross-tabulation algorithms, and telemetry cards without hardcoding. **No empirical thesis conclusions rest on this simulation prior.**
-* **Dynamic Ingestion Architecture:** The underlying ingestion pipeline (`process_survey_data_calibrated.py` and client-side `parseAndIngestCSV`) computes all distributions, cross-tabulations (e.g. electricity reliability by rural/urban location), and discrepancy gaps dynamically on the fly. When primary field survey returns are uploaded via CSV or Google Sheets, all metrics recalculate automatically with zero hardcoded analytical overrides.
-
-

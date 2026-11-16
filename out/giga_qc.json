@@ -1,0 +1,96 @@
+{
+  "synthetic": true,
+  "countries": {
+    "KEN": {
+      "repaired_swapped_lat_lon": 2,
+      "dropped_missing_coordinates": 4,
+      "dropped_zero_coordinates": 1,
+      "name_matched_share": 0.868,
+      "name_agrees_with_location_share": 1.0,
+      "invalid_measurement_dates": 0,
+      "schools_input": 400,
+      "schools_kept": 395,
+      "schools_shown": 395,
+      "schools_metered_recently": 56,
+      "measurement_latest_date": "2026-11-13"
+    },
+    "GHA": {
+      "repaired_swapped_lat_lon": 2,
+      "dropped_missing_coordinates": 4,
+      "dropped_zero_coordinates": 1,
+      "name_matched_share": 0.851,
+      "name_agrees_with_location_share": 1.0,
+      "invalid_measurement_dates": 0,
+      "schools_input": 400,
+      "schools_kept": 395,
+      "schools_shown": 395,
+      "schools_metered_recently": 85,
+      "measurement_latest_date": "2026-11-13"
+    },
+    "TZA": {
+      "dropped_zero_coordinates": 1,
+      "repaired_swapped_lat_lon": 2,
+      "dropped_missing_coordinates": 4,
+      "name_matched_share": 0.871,
+      "name_agrees_with_location_share": 1.0,
+      "invalid_measurement_dates": 0,
+      "schools_input": 400,
+      "schools_kept": 395,
+      "schools_shown": 395,
+      "schools_metered_recently": 69,
+      "measurement_latest_date": "2026-11-13"
+    },
+    "RWA": {
+      "dropped_missing_coordinates": 4,
+      "repaired_swapped_lat_lon": 2,
+      "dropped_zero_coordinates": 1,
+      "name_matched_share": 0.871,
+      "name_agrees_with_location_share": 1.0,
+      "invalid_measurement_dates": 0,
+      "schools_input": 400,
+      "schools_kept": 395,
+      "schools_shown": 395,
+      "schools_metered_recently": 80,
+      "measurement_latest_date": "2026-11-13"
+    },
+    "ZMB": {
+      "repaired_swapped_lat_lon": 2,
+      "dropped_zero_coordinates": 1,
+      "dropped_missing_coordinates": 4,
+      "name_matched_share": 0.866,
+      "name_agrees_with_location_share": 1.0,
+      "invalid_measurement_dates": 0,
+      "schools_input": 400,
+      "schools_kept": 395,
+      "schools_shown": 395,
+      "schools_metered_recently": 33,
+      "measurement_latest_date": "2026-11-13"
+    },
+    "MUS": {
+      "dropped_missing_coordinates": 4,
+      "repaired_swapped_lat_lon": 2,
+      "dropped_zero_coordinates": 1,
+      "name_matched_share": 0.853,
+      "name_agrees_with_location_share": 1.0,
+      "invalid_measurement_dates": 0,
+      "schools_input": 400,
+      "schools_kept": 395,
+      "schools_shown": 395,
+      "schools_metered_recently": 63,
+      "measurement_latest_date": "2026-11-13"
+    },
+    "NGA": {
+      "repaired_swapped_lat_lon": 1,
+      "dropped_zero_coordinates": 1,
+      "dropped_missing_coordinates": 4,
+      "name_matched_share": 0.886,
+      "name_agrees_with_location_share": 0.997,
+      "invalid_measurement_dates": 0,
+      "schools_input": 400,
+      "schools_kept": 395,
+      "schools_shown": 395,
+      "schools_metered_recently": 89,
+      "measurement_latest_date": "2026-11-13"
+    }
+  }
+}

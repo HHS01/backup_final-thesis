@@ -267,7 +267,48 @@
         "higher_is_better": true
       }
     ],
-    "extra_layers": []
+    "extra_layers": [
+      {
+        "id": "layer:giga_median_download",
+        "label": "Synthetic school 30-day median download",
+        "unit": "Mbps",
+        "kind": "school connectivity",
+        "decimals": 1,
+        "help": "Median of per-school 30-day download medians for metered schools. Synthetic placeholders; blank below the minimum sample size.",
+        "higher_is_better": true,
+        "csv": "layers/giga_median_download.csv"
+      },
+      {
+        "id": "layer:giga_below_1mbps",
+        "label": "Synthetic metered schools below 1 Mbps",
+        "unit": "%",
+        "kind": "school connectivity",
+        "decimals": 1,
+        "help": "Share of recently metered schools with median download below 1 Mbps. Synthetic placeholders; blank below the minimum sample size.",
+        "higher_is_better": false,
+        "csv": "layers/giga_below_1mbps.csv"
+      },
+      {
+        "id": "layer:giga_metered_share",
+        "label": "Synthetic schools with recent meter data",
+        "unit": "%",
+        "kind": "school coverage",
+        "decimals": 1,
+        "help": "Share of located schools with recent meter data. This is coverage, not connectivity quality; all values are synthetic placeholders.",
+        "higher_is_better": true,
+        "csv": "layers/giga_metered_share.csv"
+      },
+      {
+        "id": "layer:giga_reported_poor",
+        "label": "Synthetic reported-connected schools below 1 Mbps",
+        "unit": "%",
+        "kind": "school connectivity",
+        "decimals": 1,
+        "help": "Among recently metered schools reported as connected, share with median download below 1 Mbps. Synthetic placeholders; blank below the minimum sample size.",
+        "higher_is_better": false,
+        "csv": "layers/giga_reported_poor.csv"
+      }
+    ]
   },
   "changes": {
     "window": 3,

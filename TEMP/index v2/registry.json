@@ -1,0 +1,217 @@
+{
+  "siteTitle": "EdTech Traceability Observatory",
+  "siteSubtitle": "Vertical Alignment across Macro · Meso · Micro",
+  "bundleUrl": "../../out/dashboard/",
+  "schoolDataUrl": "../../out/dashboard/",
+  "dataStatusUrl": "../giga_synthetic/data_status.json",
+  "processedDataUrl": "../../data/processed/",
+  "defaults": { "level": "overview", "lens": "infrastructure" },
+  "levels": [
+    {
+      "id": "overview",
+      "number": "0",
+      "label": "0 · Overview",
+      "shortLabel": "Overview",
+      "scope": "Cross-Scale Matrix Grid",
+      "scale": "All Scales",
+      "optic": "Matrix Grid",
+      "blurb": "Cross-scale navigation matrix: explore where official policy, regional infrastructure, and classroom ground truth converge or diverge across all 4 analytical lenses."
+    },
+    {
+      "id": "macro",
+      "number": "1",
+      "label": "1 · Macro",
+      "shortLabel": "Macro",
+      "scope": "National Policy & Public Finance",
+      "scale": "1 : 1,000,000",
+      "optic": "Satellite / Systemic",
+      "blurb": "National macroeconomic context: IMF COFOG domestic outlays, IATI international aid transactions, and country-wide connectivity benchmarks contrasting Paper vs. Ground."
+    },
+    {
+      "id": "meso",
+      "number": "2",
+      "label": "2 · Meso",
+      "shortLabel": "Meso",
+      "scope": "Sub-National Regional Disparities",
+      "scale": "1 : 50,000",
+      "optic": "Aerial / Spatial",
+      "blurb": "Admin-1 regional disparities: M-Lab voluntary speed tests across sub-national counties/provinces, choropleth variance, and urban-rural gradients."
+    },
+    {
+      "id": "micro",
+      "number": "3",
+      "label": "3 · Micro",
+      "shortLabel": "Micro",
+      "scope": "Frontline Schoolhouse & Classroom",
+      "scale": "1 : 1",
+      "optic": "Ground-Level / Tactile",
+      "blurb": "Classroom reality: UNICEF-ITU Giga schoolhouse connectivity, frontline practitioner qualitative testimonies, and device-to-pupil scarcity."
+    }
+  ],
+  "lenses": [
+    {
+      "id": "infrastructure",
+      "label": "Infrastructure Reality",
+      "shortLabel": "Infrastructure",
+      "sub": "Grid power, mobile cell towers & schoolhouse connectivity",
+      "icon": "⚡"
+    },
+    {
+      "id": "fiscal",
+      "label": "Macro-Fiscal & Aid",
+      "shortLabel": "Fiscal & Aid",
+      "sub": "IMF domestic outlays & the Digital Recurrent Cliff",
+      "icon": "🏛️"
+    },
+    {
+      "id": "learning",
+      "label": "Learning Reality",
+      "shortLabel": "Learning",
+      "sub": "Citizen assessments & foundational literacy",
+      "icon": "📖"
+    },
+    {
+      "id": "pilot",
+      "label": "Pilot Reality",
+      "shortLabel": "Pilot Mortality",
+      "sub": "Supply-demand mismatch & loan sustainability",
+      "icon": "📉"
+    }
+  ],
+  "sourceLabels": {
+    "downloads": "M-Lab speed tests",
+    "uploads": "M-Lab speed tests",
+    "imf": "IMF GFS COFOG (2017-2024)",
+    "iati": "IATI Datastore Registry ($1.84B Normalized)",
+    "uwezo": "Uwezo Citizen-Led Assessments (N=135,000)",
+    "giga": "UNICEF-ITU Giga Spatial Pipeline (Demo)"
+  },
+  "panels": [
+    {
+      "id": "national-connectivity",
+      "level": "macro",
+      "lenses": ["infrastructure"],
+      "kind": "module",
+      "module": "./panels/country_snapshot.js",
+      "status": "live",
+      "title": "Paper vs Ground: National Connectivity Snapshot",
+      "source": "M-Lab voluntary speed tests (Ground) vs. Ministry targets (Paper)"
+    },
+    {
+      "id": "macro-fiscal",
+      "level": "macro",
+      "lenses": ["fiscal"],
+      "kind": "module",
+      "module": "./panels/macro_fiscal.js",
+      "status": "live",
+      "title": "Macro-Fiscal & External Aid Observatory: The Digital Recurrent Cliff",
+      "source": "IMF GFS COFOG (709/7047) + IATI Datastore Registry"
+    },
+    {
+      "id": "learning-benchmarks",
+      "level": "macro",
+      "lenses": ["learning"],
+      "kind": "module",
+      "module": "./panels/learning_reality.js",
+      "status": "live",
+      "title": "Learning Reality & Foundational Literacy Benchmarks",
+      "source": "Uwezo Citizen Assessments, World Bank HLO & SDI Diagnostics"
+    },
+    {
+      "id": "pilot-sustainability",
+      "level": "macro",
+      "lenses": ["pilot"],
+      "kind": "module",
+      "module": "./panels/pilot_reality.js",
+      "status": "live",
+      "title": "The 85% Pilot Graveyard: Market Supply vs. Classroom Demand",
+      "source": "148 SSA EdTech Product Audits & World Bank 237 Loan Tracker"
+    },
+    {
+      "id": "regional-explorer",
+      "level": "meso",
+      "lenses": ["infrastructure", "all"],
+      "kind": "explorer",
+      "status": "live",
+      "title": "Regional Internet Quality & Spatial Disparities",
+      "source": "M-Lab Speed Tests & Admin-1 GeoJSON Boundaries"
+    },
+    {
+      "id": "site-connectivity",
+      "level": "micro",
+      "lenses": ["infrastructure"],
+      "kind": "module",
+      "module": "./panels/giga_schools.js",
+      "status": "synthetic demo",
+      "title": "Schoolhouse Connectivity & Device Inventory",
+      "source": "Synthetic Giga-shaped placeholder data (calibrated layout tests)"
+    },
+    {
+      "id": "frontline-testimonies",
+      "level": "micro",
+      "lenses": ["pilot", "learning", "fiscal", "infrastructure", "all"],
+      "kind": "module",
+      "module": "./panels/frontline_voices.js",
+      "status": "live",
+      "title": "Frontline Field Voices: Reviewed Teacher & Headteacher Quotes",
+      "source": "UNESCO GEC / Alliance of Alliances Field Survey & Afrobarometer R9"
+    }
+  ],
+  "gaps": [
+    {
+      "level": "meso",
+      "lens": "learning",
+      "wouldFill": "Sub-national district-level Uwezo learning assessments or regional exam boards where open records exist."
+    },
+    {
+      "level": "meso",
+      "lens": "fiscal",
+      "wouldFill": "Devolved county / provincial education budgets and sub-national IATI project location coordinates."
+    },
+    {
+      "level": "meso",
+      "lens": "pilot",
+      "wouldFill": "Sub-national pilot registries tracking device distribution across rural vs. urban schools."
+    },
+    {
+      "level": "micro",
+      "lens": "fiscal",
+      "wouldFill": "School-level petty cash books, informal parent PTA levies, and personal teacher airtime receipts."
+    }
+  ],
+  "tools": [
+    {
+      "id": "readiness-check",
+      "label": "EdTech Readiness Check",
+      "for": "Teachers & School Management Committees (SMCs)",
+      "note": "Dual-gatekeeping diagnostic (feasibility screener + safeguarding rubric)",
+      "href": "/EdTech_Readiness_Check_Printable.html",
+      "target": "_blank"
+    },
+    {
+      "id": "rotation-planner",
+      "label": "Classroom Rotation Planner",
+      "for": "Teachers under device scarcity",
+      "note": "Generates 3-station TaRL pedagogical schedules (coaching, peer, offline digital)",
+      "href": "/Rotation_Planner_Printable.html",
+      "target": "_blank"
+    },
+    {
+      "id": "dpg-directory",
+      "label": "Resilient DPG Directory",
+      "for": "Curriculum leaders & ICT coordinators",
+      "note": "Verified 100% offline-first open educational solutions (Kolibri, Kiwix, PhET)",
+      "href": "/Vetted_Solutions_Directory_Printable.html",
+      "target": "_blank"
+    },
+    {
+      "id": "kobo-codebook",
+      "label": "Survey Codebook (104 Items)",
+      "for": "Researchers & Evaluators",
+      "note": "Complete UNESCO 6-Pillars instrument codebook for Kobo/ODK",
+      "href": "../../AoA%20survey/AoA_Survey_to_Pillar_Codebook.md",
+      "target": "_blank"
+    }
+  ],
+  "limits": "Vertical traceability bridges official administrative benchmarks with ground reality. Field quotes reflect verified practitioner testimonies; school-level Giga records are calibrated synthetic placeholders pending official API tokens."
+}
